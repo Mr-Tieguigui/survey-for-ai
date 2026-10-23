@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>Absolute Zero: Reinforced Self-play Reasoning with Zero Data · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_8cffd9d9c1aba22093/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_8cffd9d9c1aba22093/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">Absolute Zero: Reinforced Self-play Reasoning with Zero Data</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><section class="p-archive-brief"><span>EDITORIAL BRIEF / Absolute Zero</span><h2>Self-generated tasks &amp; shared-policy learning</h2><p>One policy acts as proposer and solver. Python execution supplies validation and rewards; policy parameters and validated task buffers persist across online self-play.</p><p><b>Evaluation conditions:</b> Distinguish task validity, learnability reward, solver reward and post-training evaluation.</p><p><b>Limits:</b> No external task dataset does not mean no pretraining, seed prompts, execution environment or human-designed algorithm.</p></section><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="absolute-zero-reinforced-self-play-reasoning-with-zero-data">Absolute Zero: Reinforced Self-play Reasoning with Zero Data</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_8cffd9d9c1aba22093</code></p>
+</blockquote>
+<p><strong>作者</strong>：Andrew Zhao, Yiran Wu, Yang Yue, Tong Wu, Quentin Xu, Yang Yue, Matthieu Lin, Shenzhi Wang, Qingyun Wu, Zilong Zheng, Gao Huang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2505.03335<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：A single shared policy serves as both task proposer and solver, together with validated task buffers and a Python execution environment；具体更新过程为：The shared policy proposes code tasks, receives a learnability reward derived from solver rollouts, and receives execution-grounded solver rewards. Proposer and solver roles are jointly trained; validated generated tasks enter persistent buffers used by subsequent proposals；更新状态的保留与后继使用为：Policy parameters persist across RL updates; validated task buffers persist across online self-play iterations。</p>
+<h3 id="_1">定点原文补充：具体问题与执行过程</h3>
+<p>同一个模型兼任出题者和解题者，通过自生成代码任务与执行反馈共同训练，课程随模型状态变化。</p>
+<ol>
+<li>围绕程序、输入、输出三元组构造演绎、归纳和溯因任务；执行器检查有效性与答案。</li>
+<li>有效任务进入持久缓冲区，后续采样与任务提议复用这些内容；TRR++ 更新共享策略。</li>
+</ol>
+<p><strong>实验与选择协议</strong>：</p>
+<ul>
+<li>主实验基于 Qwen2.5-7B 与其 Coder 版本；训练批次 64×6，学习率 1e-6，采用 AdamW。</li>
+<li>评价区分代码执行类同分布任务与数学/代码生成类分布外任务；不把两类分数混为一项。</li>
+</ul>
+<p><strong>解释边界</strong>：</p>
+<ul>
+<li>零外部任务数据不等于没有预训练、种子提示、执行器或人工奖励规则。</li>
+<li>执行正确性只覆盖规定的代码任务，不支持任意自然语言事实正确性。</li>
+</ul>
+<p>来源：<a href="https://arxiv.org/html/2505.03335v3">2505.03335v3</a>；定位：§3.1–3.3 Absolute Zero Reasoner；Algorithm 1；§4.1 Training Details and Evaluation Protocol。本补充只登记定点描述性阅读，不扩大旧配置或数值结果的准入权限。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_absolute_zero">configuration:cfg_absolute_zero</h3>
+<p>No externally supplied task dataset does not mean no pretrained knowledge, seed prompt, evaluator, or human designed algorithm.</p>
+<p><strong>适用版本</strong>：v3；<strong>原文定位</strong>：S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_absolute_zero">cfg_absolute_zero</h3>
+<p><code>cfg_absolute_zero</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>A single shared policy serves as both task proposer and solver, together with validated task buffers and a Python execution environment.</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>The shared policy proposes code tasks, receives a learnability reward derived from solver rollouts, and receives execution-grounded solver rewards. Proposer and solver roles are jointly trained; validated generated tasks enter persistent buffers used by subsequent proposals.</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>Policy parameters persist across RL updates; validated task buffers persist across online self-play iterations.</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- Pretrained model initialization - Python executor and task validation - Deduction, induction, and abduction task interfaces - TRR++ optimization and reward/format rules</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：A single shared policy serves as both task proposer and solver, together with validated task buffers and a Python execution environment.（状态：<code>supported</code>；定位：S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。
+- <strong>更新由什么过程产生</strong>：The shared policy proposes code tasks, receives a learnability reward derived from solver rollouts, and receives execution-grounded solver rewards. Proposer and solver roles are jointly trained; validated generated tasks enter persistent buffers used by subsequent proposals.（状态：<code>supported</code>；定位：S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。
+- <strong>状态怎样持久保留</strong>：Policy parameters persist across RL updates; validated task buffers persist across online self-play iterations.（状态：<code>supported</code>；定位：S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。
+- <strong>更新怎样进入后续改进</strong>：The shared policy proposes code tasks, receives a learnability reward derived from solver rollouts, and receives execution-grounded solver rewards. Proposer and solver roles are jointly trained; validated generated tasks enter persistent buffers used by subsequent proposals.（状态：<code>supported</code>；定位：S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。</p>
+<p><strong>已核对的公式、算法或任务定义</strong>：</p>
+<ul>
+<li>Eq. 4: proposer reward = 0 when mean solver success is 0; otherwise 1 - mean solver success.</li>
+<li>Eq. 5: solver reward is Python-checked answer correctness.</li>
+<li>Task triplet: o = p(i); deduction predicts o, abduction predicts a compatible i, induction synthesizes p.</li>
+</ul>
+<p><strong>配置判定</strong>：No externally supplied task dataset does not mean no pretrained knowledge, seed prompt, evaluator, or human designed algorithm.</p>
+<p>来源：https://arxiv.org/html/2505.03335v3；版本：v3；定位：S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_2">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e2_w_absolute_zero</code></strong>：提出与求解都训练；缓冲样例条件化后续提案，更新模型继续出题和求解</li>
+<li>
+<p>来源版本：v3；定位：S3.SS1.p1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2；深度：<code>AI_primary_method_passage_recheck</code>。</p>
+</li>
+<li>
+<p><strong><code>oct15_training_ev_w_absolute_zero</code></strong>：AZR jointly trains one policy in proposer and solver roles using execution-validated code tasks. Valid triplets survive in buffers that condition subsequent proposals and fill incomplete batches.</p>
+</li>
+<li>来源版本：v3；定位：S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2；深度：<code>AI_primary_method_passage_recheck</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>No externally supplied task dataset does not mean no pretrained knowledge, seed prompt, evaluator, or human designed algorithm.</li>
+<li>The executed truth concerns code reasoning task triplets; it does not establish truth of arbitrary natural language claims.</li>
+<li>The proposer reward is zero for zero solver success and otherwise one minus mean solver success; it is not R-Zero majority-vote uncertainty.</li>
+<li>零</li>
+<li>外</li>
+<li>部</li>
+<li>任</li>
+<li>务</li>
+<li>训</li>
+<li>练</li>
+<li>数</li>
+<li>据</li>
+<li>不</li>
+<li>等</li>
+<li>于</li>
+<li>无</li>
+<li>预</li>
+<li>、</li>
+<li>执</li>
+<li>行</li>
+<li>器</li>
+<li>或</li>
+<li>人</li>
+<li>工</li>
+<li>设</li>
+<li>计</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="coevo-co-evolving-context-and-parameters-for-recursive-self-improvement"><a href="../wf_3c776c3fd8713d0d43/">COEVO: Co-Evolving Context and Parameters for Recursive Self-Improvement</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r2_coevo_absolute_zero_10</code> · 当前展示权限：<code>primary_supported</code>。
+COEVO changes the subsequent learning experience by accepting editable strategy-prompt revisions; AZR changes it by self-proposing execution-validated code tasks. Both couple current model state to later training data, but prompt-scaffold adaptation and task-proposal self-play are different update mechanisms.</p>
+<p><strong>关系边界</strong>：未单列</p>
+<p><strong>关系主语端 / 宾语端依据</strong>：https://arxiv.org/html/2609.33398v1（v1；S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8）；https://arxiv.org/html/2505.03335v3（v3；S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。</p>
+<h3 id="r-zero-self-evolving-reasoning-llm-from-zero-data"><a href="../wf_d82ab8edb1ee6dcab2/">R-Zero: Self-Evolving Reasoning LLM from Zero Data</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r2_r_zero_absolute_zero_11</code> · 当前展示权限：<code>primary_supported</code>。
+Both adapt generated training tasks to current solver behavior. R-Zero alternately trains separate Challenger/Solver policies using majority-vote pseudo-labels and an uncertainty band. AZR jointly trains proposer/solver roles in one policy and grounds code-task labels and rewards in execution.</p>
+<p><strong>关系边界</strong>：未单列</p>
+<p><strong>关系主语端 / 宾语端依据</strong>：https://arxiv.org/html/2508.05004v4（v4；S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1）；https://arxiv.org/html/2505.03335v3（v3；S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。</p>
+<h3 id="recursive-self-improvement-in-unified-multimodal-models"><a href="../wf_27e4243aa4b5eee002/">Recursive Self-Improvement in Unified Multimodal Models</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r2_multimodal_rsi_absolute_zero_15</code> · 当前展示权限：<code>primary_supported</code>。
+Both use program execution to ground self-produced training material. The multimodal configuration verifies rendered chart targets/labels and merges separate generation/understanding updates under a fixed diagnosis-to-curriculum rule. AZR uses execution-validated code reasoning triplets for shared-policy proposer/solver RL.</p>
+<p><strong>关系边界</strong>：未单列</p>
+<p><strong>关系主语端 / 宾语端依据</strong>：https://arxiv.org/html/2610.03002v1（v1；S2.SS1；S2.SS2；S2.SS3；S2.SS4；S2.SS5.p1；S2.SS5.p2；S4.SS5.p1）；https://arxiv.org/html/2505.03335v3（v3；S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>expand_src_w_absolute_zero</code> · Absolute Zero · v3</li>
+<li>https://arxiv.org/html/2505.03335v3；阅读深度：<code>未单列</code>。</li>
+<li><code>oct15_training_src_w_absolute_zero</code> · 已存来源 · v3</li>
+<li>https://arxiv.org/html/2505.03335v3；阅读深度：<code>targeted_primary_method_and_configuration_crosscheck</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_8cffd9d9c1aba22093 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

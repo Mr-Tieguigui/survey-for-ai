@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>Quality-Guided Semi-Supervised Learning for Medical Image Segmentation · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_2830d755079311e4f8/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_2830d755079311e4f8/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">Quality-Guided Semi-Supervised Learning for Medical Image Segmentation</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="quality-guided-semi-supervised-learning-for-medical-image-segmentation">Quality-Guided Semi-Supervised Learning for Medical Image Segmentation</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_2830d755079311e4f8</code></p>
+</blockquote>
+<p><strong>作者</strong>：Kumar Abhishek, Ghassan Hamarneh<br>
+<strong>原文</strong>：https://arxiv.org/abs/2606.01753<br>
+<strong>研究分支</strong>：多模态、医疗与视觉<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Trains an image-mask quality regressor on corrupted and weak-model masks, freezes it, then uses its quality estimates as a regularizer or pseudo-label weights for segmentation training. Primary method and stated extension concern segmentation quality assessment. No explicit RSI bridge is established for this work; exclude from technical RSI evidence after primary scope review.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>Primary method and stated extension concern segmentation quality assessment. No explicit RSI bridge is established for this work; exclude from technical RSI evidence after primary scope review.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<p>没有已准入的原子主张。下面的已存角色解释和历史证据只能按其各自权限使用，不自动用于技术结论。</p>
+<h3 id="s18_role_review_wf_2830d755079311e4f8">已存角色解释 · <code>s18_role_review_wf_2830d755079311e4f8</code></h3>
+<p>医学分割质量引导 SSL 另训图像-mask 质量预测器，对伪标签加权与正则化；摘要批评置信度自指但没有明确自修改改进器，仅在说明伪标签评价信号时才有相邻用途。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h3 id="b570_07_role_wf_2830d755079311e4f8">已存角色解释 · <code>b570_07_role_wf_2830d755079311e4f8</code></h3>
+<p>Trains an image-mask quality regressor on corrupted and weak-model masks, freezes it, then uses its quality estimates as a regularizer or pseudo-label weights for segmentation training.</p>
+<p>研究类型：Two-phase medical-image semi-supervised segmentation method；权限：<code>bibliographic_disposition_only_not_technical_claims</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>Image/mask segmentation predictions; quality labels are Dice scores; segmentation tables report DSC and IoU, with five datasets and 70/10/20 splits. No RSI benchmark unit.</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_2830d755079311e4f8</code></strong>：医学分割质量引导 SSL 另训图像-mask 质量预测器，对伪标签加权与正则化；摘要批评置信度自指但没有明确自修改改进器，仅在说明伪标签评价信号时才有相邻用途。</li>
+<li>
+<p>来源版本：2606.01753v1；定位：Atom entry http://arxiv.org/abs/2606.01753v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>b570_07_ev_wf_2830d755079311e4f8</code></strong>：Trains an image-mask quality regressor on corrupted and weak-model masks, freezes it, then uses its quality estimates as a regularizer or pseudo-label weights for segmentation training.</p>
+</li>
+<li>来源版本：2606.01753v1；定位：Method and binary problem; PDF physical page 3, derived page-text lines 28-43 (one-based local extraction, not web-tool lines)；Frozen quality regressor and SSL integration; PDF physical page 4, derived page-text lines 16-39 (one-based local extraction, not web-tool lines)；Future multiclass scope; PDF physical page 9, derived page-text lines 17-19 (one-based local extraction, not web-tool lines)；Dataset split and study scope; PDF physical page 5, derived page-text lines 48-57 (one-based local extraction, not web-tool lines)；DSC and IoU reporting; PDF physical page 6, derived page-text lines 2-4 (one-based local extraction, not web-tool lines)；深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<h3 id="1-method-and-binary-problem">选段 1 · 机制 / 定义 · Method and binary problem</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2606.01753v1<br>
+<strong>实际版本</strong>：2606.01753v1<br>
+<strong>精确定位</strong>：PDF physical page 3, derived page-text lines 28-43 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_2830d755079311e4f8</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="2-frozen-quality-regressor-and-ssl-integration">选段 2 · 机制 / 定义 · Frozen quality regressor and SSL integration</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2606.01753v1<br>
+<strong>实际版本</strong>：2606.01753v1<br>
+<strong>精确定位</strong>：PDF physical page 4, derived page-text lines 16-39 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_2830d755079311e4f8</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="3-dataset-split-and-study-scope">选段 3 · 测量 / 结果 · Dataset split and study scope</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2606.01753v1<br>
+<strong>实际版本</strong>：2606.01753v1<br>
+<strong>精确定位</strong>：PDF physical page 5, derived page-text lines 48-57 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_2830d755079311e4f8</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="4-dsc-and-iou-reporting">选段 4 · 测量 / 结果 · DSC and IoU reporting</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2606.01753v1<br>
+<strong>实际版本</strong>：2606.01753v1<br>
+<strong>精确定位</strong>：PDF physical page 6, derived page-text lines 2-4 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_2830d755079311e4f8</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="5-future-multiclass-scope">选段 5 · 限制 · Future multiclass scope</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2606.01753v1<br>
+<strong>实际版本</strong>：2606.01753v1<br>
+<strong>精确定位</strong>：PDF physical page 9, derived page-text lines 17-19 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_2830d755079311e4f8</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+<li>Experiments concern binary segmentation; multi-class extension is future work. The frozen quality assessor must generalize from its training corruptions to real predictions. Self-referential confidence criticism is not evidence of a recursively modified improver.</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>b570_07_src_wf_2830d755079311e4f8</code> · Quality-Guided Semi-Supervised Learning for Medical Image Segmentation · 2606.01753v1</li>
+<li>https://arxiv.org/pdf/2606.01753v1；阅读深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+<li><code>s18_role_src_91ef344e772f165f</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=2605.30504%2C2605.30611%2C2605.30680%2C2605.30690%2C2605.30723%2C2605.30727%2C2605.30802%2C2605.30861%2C2605.30888%2C2605.30963%2C2605.30998%2C2605.31042%2C2605.31058%2C2605.31126%2C2605.31140%2C2605.31174%2C2605.31264%2C2605.31468%2C2605.31561%2C2606.00005%2C2606.00036%2C2606.00131%2C2606.00172%2C2606.00189%2C2606.00328%2C2606.00523%2C2606.00610%2C2606.00611%2C2606.00618%2C2606.00628%2C2606.00660%2C2606.00674%2C2606.00718%2C2606.00755%2C2606.00915%2C2606.01057%2C2606.01065%2C2606.01101%2C2606.01139%2C2606.01160%2C2606.01166%2C2606.01185%2C2606.01279%2C2606.01286%2C2606.01301%2C2606.01324%2C2606.01385%2C2606.01498%2C2606.01567%2C2606.01613%2C2606.01617%2C2606.01619%2C2606.01629%2C2606.01682%2C2606.01691%2C2606.01753%2C2606.02113%2C2606.02240%2C2606.02304%2C2606.02438%2C2606.02442%2C2606.02461%2C2606.02483%2C2606.02494%2C2606.02530%2C2606.02540%2C2606.02556%2C2606.02640%2C2606.02854%2C2606.02863%2C2606.02866%2C2606.02963%2C2606.03005%2C2606.03019%2C2606.03073%2C2606.03089%2C2606.03094%2C2606.03097%2C2606.03152%2C2606.03243%2C2606.03303%2C2606.03471%2C2606.03565%2C2606.03603%2C2606.03628%2C2606.03811%2C2606.03812%2C2606.03852%2C2606.03867%2C2606.03980%2C2606.04017%2C2606.04029%2C2606.04031%2C2606.04056%2C2606.04075%2C2606.04120%2C2606.04228%2C2606.04261%2C2606.04306%2C2606.04315&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>仍未核准的内容</strong>：</p>
+<ul>
+<li>Reported empirical results are author claims, not independently replicated by this review.</li>
+<li>Detailed configurations, performance magnitudes and inheritance relations are not certified by this role review.</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_role_definition_protocol_scope_and_limits。
+<strong>当前引用权限</strong>：<code>bibliographic_disposition_only_not_technical_claims</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_2830d755079311e4f8 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

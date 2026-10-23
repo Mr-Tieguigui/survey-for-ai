@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_1eed6ca399d6396ffa/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_1eed6ca399d6396ffa/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="rsibench-data-benchmarking-data-centric-research-for-recursive-self-improvement">RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement</h1>
+<blockquote>
+<p>Benchmark/数据集/任务套件 · 2026 · <code>wf_1eed6ca399d6396ffa</code></p>
+</blockquote>
+<p><strong>作者</strong>：Fanqing Meng, Lingxiao Du, Qiguang Chen, Ziqi Zhao, Haocheng Lu, Mengkang Hu, Michael Qizhe Shieh<br>
+<strong>原文</strong>：https://arxiv.org/abs/2607.25886<br>
+<strong>研究分支</strong>：Benchmark、数据集与任务<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>已核官方全文评测对象、任务协议和限制；测量协议与被测研究方法分开。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_rsibench_data_checkpoint_research_protocol_v1">configuration:cfg_rsibench_data_checkpoint_research_protocol_v1</h3>
+<p>adjacent评测协议：测量跨模型数据中心研究和checkpoint选择；不把受测研究策略的反馈循环自动记成benchmark自身的RSI能力。</p>
+<p><strong>适用版本</strong>：2607.25886v1；<strong>原文定位</strong>：PDF physical p4 §3.1 Eqs1–2 (tool L170–191)；PDF physical pp5–6 §§3.2–4.1 (tool L240–308)；PDF physical p7 §4.2–4.3 (tool L311–333)；PDF physical pp12–13 §§5.5–6 (tool L642–672)。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 任务、数据与评价设计</h2>
+<h3 id="rsibench-data-v1-main-controlled-checkpoint-research-protocol">RSIBench-Data v1 main controlled checkpoint research protocol</h3>
+<p><code>cfg_rsibench_data_checkpoint_research_protocol_v1</code> · evaluation_protocol</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定基模、共享LoRA-SFT/serving/Harbor–E2B评价服务、whitelist配置接口和有限资源预算组成评测协议；研究代理和其搜索历史为被测对象。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>被测代理提出D_t与whitelist c_t，后端从同一M0训练候选；selection证据回给代理作下一数据策略/停止/checkpoint选择；官方输出评分度量所选checkpoint。协议本身不更新评价器或训练后端。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>研究历史、数据候选和checkpoint在单次预算运行内保存；非研究代理权重自改，且每个候选从M0训练。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 固定基模、外部rollout模型、SFT实现、服务/沙箱/验证器/评分规则、允许训练配置的白名单、预算及任务子集</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>external rollout model</strong>：Claude Opus 4.8 - <strong>main budget</strong>：nominal 16h wall clock and $500 Tinker per run - <strong>main matrix</strong>：4 researcher systems × 6 benchmark settings - <strong>primary outcome</strong>：selected checkpoint official benchmark-native score - <strong>selection and official</strong>：same task subset; fresh environments, not statistically held-out tasks - <strong>target model</strong>：Qwen/Qwen3.5-35B-A3B-Base - <strong>training</strong>：Tinker LoRA SFT from fixed M0 each attempt</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：adjacent评测协议：测量跨模型数据中心研究和checkpoint选择；不把受测研究策略的反馈循环自动记成benchmark自身的RSI能力。</p>
+<p>来源：https://arxiv.org/pdf/2607.25886v1；版本：2607.25886v1；定位：PDF physical p4 §3.1 Eqs1–2 (tool L170–191)；PDF physical pp5–6 §§3.2–4.1 (tool L240–308)；PDF physical p7 §4.2–4.3 (tool L311–333)；PDF physical pp12–13 §§5.5–6 (tool L642–672)。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>external rollout model</strong>：Claude Opus 4.8</li>
+<li><strong>main budget</strong>：nominal 16h wall clock and $500 Tinker per run</li>
+<li><strong>main matrix</strong>：4 researcher systems × 6 benchmark settings</li>
+<li><strong>primary outcome</strong>：selected checkpoint official benchmark-native score</li>
+<li><strong>selection and official</strong>：same task subset; fresh environments, not statistically held-out tasks</li>
+<li><strong>target model</strong>：Qwen/Qwen3.5-35B-A3B-Base</li>
+<li><strong>training</strong>：Tinker LoRA SFT from fixed M0 each attempt</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>db4_ev_cfg_rsibench_data_checkpoint_research_protocol_v1</code></strong>：adjacent评测协议：测量跨模型数据中心研究和checkpoint选择；不把受测研究策略的反馈循环自动记成benchmark自身的RSI能力。</li>
+<li>来源版本：unknown；定位：PDF physical p4 §3.1 Eqs1–2 (tool L170–191)；PDF physical pp5–6 §§3.2–4.1 (tool L240–308)；PDF physical p7 §4.2–4.3 (tool L311–333)；PDF physical pp12–13 §§5.5–6 (tool L642–672)；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>方法§3.2固定训练基础设施，但数据及白名单内训练配置均可变；不能称纯数据单变量实验。</li>
+<li>selection与official用同任务子集；§6明确尚不能证明adaptive generalization。</li>
+<li>每设置代表性单次运行，研究者LLM、harness和reasoning effort绑定，不能分离单组件效应。</li>
+<li>§5.5同family探索与主矩阵分开：所有适配checkpoint仍低于未适配基线，不认证RSI有效能力增益。</li>
+<li>原文HTML v1不可得，已读的是官方v1 PDF工具文本，hash不是PDF原始字节。</li>
+<li>方法§3.2固定训练基础设施，但数据及白名单内训练配置均可变；不能称纯数据单变量实验。; selection与official用同任务子集；§6明确尚不能证明adaptive generalization。; 每设置代表性单次运行，研究者LLM、harness和reasoning effort绑定，不能分离单组件效应。; §5.5同family探索与主矩阵分开：所有适配checkpoint仍低于未适配基线，不认证RSI有效能力增益。; 原文HTML v1不可得，已读的是官方v1 PDF工具文本，hash不是PDF原始字节。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>db4_src_rsibench_data</code> · 已存来源 · 2607.25886v1</li>
+<li>https://arxiv.org/pdf/2607.25886v1；阅读深度：<code>selected_official_fulltext_protocol_and_limits</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_1eed6ca399d6396ffa --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

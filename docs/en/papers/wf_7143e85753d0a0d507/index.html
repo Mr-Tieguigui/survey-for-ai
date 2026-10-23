@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>SplitMeanFlow: Interval Splitting Consistency in Few-Step Generative Modeling · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_7143e85753d0a0d507/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_7143e85753d0a0d507/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">SplitMeanFlow: Interval Splitting Consistency in Few-Step Generative Modeling</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="splitmeanflow-interval-splitting-consistency-in-few-step-generative-modeling">SplitMeanFlow: Interval Splitting Consistency in Few-Step Generative Modeling</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_7143e85753d0a0d507</code></p>
+</blockquote>
+<p><strong>作者</strong>：Yi Guo, Wei Wang, Zhihang Yuan, Rong Cao, Kuan Chen, Zhengyang Chen, Yuanyuan Huo, Yang Zhang, Yuping Wang, Shouda Liu, Yuxuan Wang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2507.16884<br>
+<strong>研究分支</strong>：多模态、医疗与视觉<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>SplitMeanFlow derives average-velocity interval additivity and uses self-generated student targets plus teacher boundary targets for few-step speech. Self-reference concerns a velocity objective/sampler, not an AI improvement process. Excluded after primary scope review: algebraic flow-model training/audio sampling has no stated RSI bridge beyond generic self-supervision vocabulary.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>Excluded after primary scope review: algebraic flow-model training/audio sampling has no stated RSI bridge beyond generic self-supervision vocabulary.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<p>没有已准入的原子主张。下面的已存角色解释和历史证据只能按其各自权限使用，不自动用于技术结论。</p>
+<h3 id="s18_role_review_wf_7143e85753d0a0d507">已存角色解释 · <code>s18_role_review_wf_7143e85753d0a0d507</code></h3>
+<p>SplitMeanFlow 的自指是不同时间区间平均速度场的代数一致性，用于少步生成训练；摘要没有更新改进器或自生成改进链，需明确生成模型背景用途。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h3 id="b570_06_role_wf_7143e85753d0a0d507">已存角色解释 · <code>b570_06_role_wf_7143e85753d0a0d507</code></h3>
+<p>SplitMeanFlow derives average-velocity interval additivity and uses self-generated student targets plus teacher boundary targets for few-step speech. Self-reference concerns a velocity objective/sampler, not an AI improvement process.</p>
+<p>研究类型：Algebraic consistency training for few-step speech generation；权限：<code>bibliographic_disposition_only_not_technical_claims</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>Speech sample and network sampling-step count; SIM, WER and CMOS compare quality, not self-improvement rounds.</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_7143e85753d0a0d507</code></strong>：SplitMeanFlow 的自指是不同时间区间平均速度场的代数一致性，用于少步生成训练；摘要没有更新改进器或自生成改进链，需明确生成模型背景用途。</li>
+<li>
+<p>来源版本：2507.16884v1；定位：Atom entry http://arxiv.org/abs/2507.16884v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>b570_06_ev_wf_7143e85753d0a0d507</code></strong>：SplitMeanFlow derives average-velocity interval additivity and uses self-generated student targets plus teacher boundary targets for few-step speech. Self-reference concerns a velocity objective/sampler, not an AI improvement process.</p>
+</li>
+<li>来源版本：arXiv:2507.16884v1；定位：Algebraic interval additivity; PDF p6; derived text lines 37-60 (one-based local extraction, not web-tool lines)；Teacher/student protocol; PDF p9; derived text lines 13-34 (one-based local extraction, not web-tool lines)；Boundary-anchor restriction; PDF p9; derived text lines 24-40 (one-based local extraction, not web-tool lines)；深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<h3 id="1-algebraic-interval-additivity">选段 1 · 机制 / 定义 · Algebraic interval additivity</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2507.16884v1<br>
+<strong>实际版本</strong>：arXiv:2507.16884v1<br>
+<strong>精确定位</strong>：PDF p6; derived text lines 37-60 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_7143e85753d0a0d507</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="2-teacherstudent-protocol">选段 2 · 机制 / 定义 · Teacher/student protocol</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2507.16884v1<br>
+<strong>实际版本</strong>：arXiv:2507.16884v1<br>
+<strong>精确定位</strong>：PDF p9; derived text lines 13-34 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_7143e85753d0a0d507</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="3-boundary-anchor-restriction">选段 3 · 限制 · Boundary-anchor restriction</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2507.16884v1<br>
+<strong>实际版本</strong>：arXiv:2507.16884v1<br>
+<strong>精确定位</strong>：PDF p9; derived text lines 24-40 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_7143e85753d0a0d507</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+<li>Needs teacher/instantaneous-velocity boundary anchoring and sufficient boundary fraction to avoid drift/trivial collapse. Sampling-step reduction is generation efficiency, not RSI acceleration.</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>b570_06_src_wf_7143e85753d0a0d507</code> · SplitMeanFlow: Interval Splitting Consistency in Few-Step Generative Modeling · arXiv:2507.16884v1</li>
+<li>https://arxiv.org/pdf/2507.16884v1；阅读深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+<li><code>s18_role_src_f9de3277187c8542</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=2506.23235%2C2506.23639%2C2506.23667%2C2506.23918%2C2506.24019%2C2507.00014%2C2507.00487%2C2507.00951%2C2507.01001%2C2507.01352%2C2507.01903%2C2507.01967%2C2507.02259%2C2507.02592%2C2507.02664%2C2507.02825%2C2507.02833%2C2507.03041%2C2507.03298%2C2507.03616%2C2507.03724%2C2507.04053%2C2507.04103%2C2507.04136%2C2507.04221%2C2507.04370%2C2507.05257%2C2507.05292%2C2507.05520%2C2507.05720%2C2507.06229%2C2507.06261%2C2507.06448%2C2507.06952%2C2507.07957%2C2507.07966%2C2507.07998%2C2507.08616%2C2507.08800%2C2507.08944%2C2507.08960%2C2507.09075%2C2507.09089%2C2507.09177%2C2507.10057%2C2507.10628%2C2507.11128%2C2507.11277%2C2507.11473%2C2507.11662%2C2507.11988%2C2507.13300%2C2507.13334%2C2507.13729%2C2507.13833%2C2507.14293%2C2507.14403%2C2507.14705%2C2507.14897%2C2507.14988%2C2507.15061%2C2507.15480%2C2507.15618%2C2507.16331%2C2507.16725%2C2507.16853%2C2507.16884%2C2507.17061%2C2507.17365%2C2507.17512%2C2507.17515%2C2507.17699%2C2507.18071%2C2507.18074%2C2507.18122%2C2507.18130%2C2507.18224%2C2507.18755%2C2507.18809%2C2507.19468%2C2507.19849%2C2507.20534%2C2507.20673%2C2507.21035%2C2507.21206%2C2507.21407%2C2507.21428%2C2507.21439%2C2507.21524%2C2507.21848%2C2507.22025%2C2507.22028%2C2507.22313%2C2507.22358%2C2507.22606%2C2507.22879%2C2507.22925%2C2507.23261%2C2507.23361%2C2507.23370&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_role_definition_protocol_scope_and_limits。
+<strong>当前引用权限</strong>：<code>bibliographic_disposition_only_not_technical_claims</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_7143e85753d0a0d507 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_4c466e96bed2a78fbb/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_4c466e96bed2a78fbb/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="esaa-conversational-an-event-sourced-memory-layer-for-continuity-handoff-and-curation-across-heterogeneous-llm-coding-agents">ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_4c466e96bed2a78fbb</code></p>
+</blockquote>
+<p><strong>作者</strong>：Elzo Brito dos Santos Filho<br>
+<strong>原文</strong>：https://arxiv.org/abs/2606.23752<br>
+<strong>研究分支</strong>：持久记忆、反思与上下文<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>ESAA-Conversational 用可见对话事件日志及确定性投影维护异构编码代理交接，LLM 只参与显式整理；摘要的 self-referential 指开发案例，持久日志本身不证明改进器能力递归提升。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_r8b_esaa_memory_layer">configuration:cfg_r8b_esaa_memory_layer</h3>
+<p>保留所读边界；不由标题、持久日志或摘要自我表述认证core。</p>
+<p><strong>适用版本</strong>：unversioned_observed；<strong>原文定位</strong>：§3–4 tool L100–111, L130–304; §6 case L380–459。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="s18_role_review_wf_4c466e96bed2a78fbb">已存角色解释 · <code>s18_role_review_wf_4c466e96bed2a78fbb</code></h3>
+<p>ESAA-Conversational 用可见对话事件日志及确定性投影维护异构编码代理交接，LLM 只参与显式整理；摘要的 self-referential 指开发案例，持久日志本身不证明改进器能力递归提升。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="esaa-conversational-event-sourced-memory-infrastructure-view">ESAA-Conversational: event-sourced memory infrastructure view</h3>
+<p><code>cfg_r8b_esaa_memory_layer</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>确定性日志采集、投影、交接与显式curation组成可见对话记忆层；所判配置限定于该记忆基础设施。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>采集可见事件形成append-only日志，投影为后续上下文，LLM仅在显式整理阶段参与。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>持久事件日志和派生读模型跨会话保留。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 确定性采集/投影逻辑 - 工作区过滤、lock与adapter接口 - 外部代理与人工开发编排</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>selected view</strong>：memory_layer_only_not_whole_private_development_workflow</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：记忆层与代理边界可定位。（状态：<code>supported</code>；定位：§3–4 tool L100–111, L130–304; §6 case L380–459）。
+- <strong>更新由什么过程产生</strong>：机械capture及显式整理本身未定位可评价的自诱发能力更新；私有开发案例另有人工编排。（状态：<code>unknown</code>；定位：§3–4 tool L100–111, L130–304; §6 case L380–459）。
+- <strong>状态怎样持久保留</strong>：日志及读模型可持久。（状态：<code>supported</code>；定位：§3–4 tool L100–111, L130–304; §6 case L380–459）。
+- <strong>更新怎样进入后续改进</strong>：未来代理可读取记忆，但所读配置未闭合可评价的改进—后继改进链；不否认更宽开发系统可能闭合。（状态：<code>unknown</code>；定位：§3–4 tool L100–111, L130–304; §6 case L380–459）。</p>
+<p><strong>配置判定</strong>：保留所读边界；不由标题、持久日志或摘要自我表述认证core。</p>
+<p>来源：https://arxiv.org/html/2606.23752；版本：unversioned_observed；定位：§3–4 tool L100–111, L130–304; §6 case L380–459。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>selected view</strong>：memory_layer_only_not_whole_private_development_workflow</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_4c466e96bed2a78fbb</code></strong>：ESAA-Conversational 用可见对话事件日志及确定性投影维护异构编码代理交接，LLM 只参与显式整理；摘要的 self-referential 指开发案例，持久日志本身不证明改进器能力递归提升。</li>
+<li>
+<p>来源版本：2606.23752v1；定位：Atom entry http://arxiv.org/abs/2606.23752v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r8b_ev_esaa_memory_layer</code></strong>：确定性日志采集、投影、交接与显式curation组成可见对话记忆层；所判配置限定于该记忆基础设施。 采集可见事件形成append-only日志，投影为后续上下文，LLM仅在显式整理阶段参与。</p>
+</li>
+<li>来源版本：unversioned_observed；定位：§3–4 tool L100–111, L130–304; §6 case L380–459；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>私有self-development事件案例不是受控因果实验或全自主meta闭环。</li>
+<li>公开greenfield测试不等于公开完整私有历史；redaction、cold replay与hash-chain属于后续工作。</li>
+<li>零LLM-token仅指机械capture，不涵盖curation。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r8b_src_esaa</code> · 已存来源 · unversioned_observed</li>
+<li>https://arxiv.org/html/2606.23752；阅读深度：<code>selected_primary_method_protocol_and_limits</code>。</li>
+<li><code>s18_role_src_c39c3f10395bfa2a</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=2606.21005%2C2606.21037%2C2606.21124%2C2606.21262%2C2606.21339%2C2606.21401%2C2606.21445%2C2606.21559%2C2606.21597%2C2606.21627%2C2606.21710%2C2606.21811%2C2606.21856%2C2606.21930%2C2606.22263%2C2606.22329%2C2606.22330%2C2606.22417%2C2606.22495%2C2606.22528%2C2606.22678%2C2606.22723%2C2606.22783%2C2606.22844%2C2606.22877%2C2606.22913%2C2606.22918%2C2606.22950%2C2606.22961%2C2606.23032%2C2606.23038%2C2606.23104%2C2606.23130%2C2606.23255%2C2606.23387%2C2606.23449%2C2606.23629%2C2606.23752%2C2606.23835%2C2606.23927%2C2606.23991%2C2606.24051%2C2606.24064%2C2606.24155%2C2606.24177%2C2606.24292%2C2606.24311%2C2606.24370%2C2606.24496%2C2606.24530%2C2606.24595%2C2606.24773%2C2606.24775%2C2606.24786%2C2606.24937%2C2606.24965%2C2606.25039%2C2606.25057%2C2606.25139%2C2606.25189%2C2606.25207%2C2606.25358%2C2606.25407%2C2606.25447%2C2606.25996%2C2606.26057%2C2606.26080%2C2606.26300%2C2606.26429%2C2606.26614%2C2606.26669%2C2606.26722%2C2606.26728%2C2606.26806%2C2606.26859%2C2606.26935%2C2606.27136%2C2606.27146%2C2606.27180%2C2606.27188%2C2606.27316%2C2606.27330%2C2606.27350%2C2606.27359%2C2606.27446%2C2606.27593%2C2606.27619%2C2606.27666%2C2606.27780%2C2606.27922%2C2606.28050%2C2606.28249%2C2606.28270%2C2606.28347%2C2606.28349%2C2606.28370%2C2606.28406%2C2606.28409%2C2606.28413%2C2606.28570&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_method_protocol_and_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_4c466e96bed2a78fbb --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

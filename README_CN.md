@@ -20,6 +20,20 @@
 
 > **交付的是可复用知识系统：** 逐篇解析＋版本化证据＋领域关系＋读者模块＋有据可查的回答。网页负责展示，后续的叙述性论文可以建立在这些成果之上。
 
+<p align="center"><sub>◈ 方法与 Skill &nbsp; · &nbsp; ◎ RSI 展示实例 &nbsp; · &nbsp; 版本 v1.1.0 &nbsp; · &nbsp; 展示更新 2026-10-23</sub></p>
+
+## 一眼看懂项目
+
+| ◇ 通用方法 | ⌘ 可复用 Skill | ◎ 实例 | ↔ 双语界面 |
+|---|---|---|---|
+| 领域适配、证据权限、类型关系和回答契约 | 初始化、整理、综合、检索与增量维护 | 固定范围的 RSI 语料，明确各层证据深度 | [中文网站](https://mr-tieguigui.github.io/survey-for-ai/) · [English website](https://mr-tieguigui.github.io/survey-for-ai/en/) |
+
+<figure>
+<img src="website/assets/figures/framework-overview.svg" width="100%" alt="图 1：构建、组织、按需检索与沿依赖增量维护">
+</figure>
+
+*图 1．概念性构建与检索模型。底部证据边界区分导航信息与技术引用权限；返回路径表示局部维护，不代表已经测得的效率提升。*
+
 ## 根据你的需求开始
 
 | 我想做什么 | 从哪里进入 | 能得到什么 |
@@ -27,7 +41,7 @@
 | 理解整套方法 | [构建流程](#整套方法如何运作) | 生命周期、证据权限和各阶段验收门槛 |
 | 为另一个领域构建 Survey | [新领域快速开始](#为其他领域构建-survey) | 空白适配工作区和可执行的研究流程 |
 | 把已有 Survey 交给 AI 使用 | [AI_GUIDE.md](AI_GUIDE.md) | 权威层级、按需检索和引用规则 |
-| 看领域梳理的真实效果 | [RSI 领域图谱](https://mr-tieguigui.github.io/survey-for-ai/#atlas) | 纵向分支、关系连接、横向比较和需求阅读 |
+| 看领域梳理的真实效果 | [RSI 领域图谱](https://mr-tieguigui.github.io/survey-for-ai/atlas/) | 纵向分支、关系连接、横向比较和需求阅读 |
 | 查看具体论文 | [808 篇文献库](https://mr-tieguigui.github.io/survey-for-ai/explore/) | 具体机制、协议、限制、来源定位和证据深度 |
 | 下载 RSI 的全部整合信息 | [完整信息包——需访问权限](https://github.com/Mr-Tieguigui/rsi-survey/raw/refs/heads/main/survey/RSI-Survey-Knowledge.zip) | 规范数据、808 张 Markdown、筛选记录、方法及查询工具 |
 
@@ -168,7 +182,26 @@ python scripts/dossier.py wf_c29f716871f8031486 --excerpts
 状态：有支持 | 部分支持 | 证据不足
 ```
 
-**真实实例：** 读者问“修改代理代码，是否也修改了生成后续改进的方法？”RSI 模块会取 DGM 与 Hyperagents 的具体配置及关系 `r_hyper_dgm`，比较其系统边界和选择条件，不将所有题名含“自我改进”的论文当成等价。可查看[在线横向比较](https://mr-tieguigui.github.io/survey-for-ai/#compare)与 [DGM 解析页](https://mr-tieguigui.github.io/survey-for-ai/papers/wf_c29f716871f8031486/)。
+**真实实例：** 读者问“修改代理代码，是否也修改了生成后续改进的方法？”RSI 模块会取 DGM 与 Hyperagents 的具体配置及关系 `r_hyper_dgm`，比较其系统边界和选择条件，不将所有题名含“自我改进”的论文当成等价。可查看[在线横向比较](https://mr-tieguigui.github.io/survey-for-ai/compare/)与 [DGM 解析页](https://mr-tieguigui.github.io/survey-for-ai/papers/wf_c29f716871f8031486/)。
+
+## 代表论文展示：不同工作承担什么角色？
+
+以下选择用于展示不同角色与机制，不是排行榜，也不为每篇赋予整篇审查认证。版本链接指向本次记录实际采用的来源。
+
+| 年份 | 论文 / 实际来源 | 研究角色 | 保留对象与阅读边界 |
+|---|---|---|---|
+| 2003 | [Gödel Machine](https://arxiv.org/html/cs/0309048v5) · `v5` | 理论 / 形式系统 | 给定形式系统与效用假设下的可证明改写 |
+| 2025 | [Absolute Zero](https://arxiv.org/html/2505.03335v3) · `v3` | 方法 | 共享策略训练；任务缓冲区与参数保留 |
+| 2023 | [Voyager](https://arxiv.org/html/2305.16291v2) · `v2` | 方法 | 跨任务复用的可执行技能 |
+| 2023 | [ExpeL](https://arxiv.org/html/2308.10144v3) · `v3` | 方法 | 在后续提示中检索经验规则 |
+| 2024 | [ADAS](https://arxiv.org/html/2408.08435v2) · `v2` | 系统 / 智能体 | 归档目标代理设计；元代理固定 |
+| 2025 | [SICA](https://arxiv.org/html/2504.15228v2) · `v2` | 方法 | 选择归档编码代理参与后续改进 |
+| 2025 | [Darwin Gödel Machine](https://arxiv.org/html/2505.22954v3) · `v3` | 方法 | 代理源码演化；经验评价与形式证明分开 |
+| — | [Raven](https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf) · `tech-report-v1` | 系统 / 智能体 | Harness 策略适配；训练选择与密封测试分开 |
+
+<img src="website/assets/figures/rsi-relations.svg" width="100%" alt="Two evidence-supported RSI relationships">
+
+*图 2．展示方向为前驱到后继，保留关系账本的谓词与 ID；两条边均不构成通用 RSI 或持续加速的证据。*
 
 ## RSI 实例：当前有哪些内容？
 
@@ -186,13 +219,22 @@ python scripts/dossier.py wf_c29f716871f8031486 --excerpts
 
 候选账本还包括 28,393 条发现记录和 1,072 项历史 P1 筛选记录。这些是候选及筛选的分母，不是额外纳入的论文数量。六项定点描述性阅读补充了具体机制和协议，也没有被计为六篇整篇复审。
 
-<img src="website/assets/figures/home-preview.png" width="100%" alt="RSI 在线实例：领域图谱、案例、比较与需求阅读">
+<img src="website/assets/figures/rsi-preview.png" width="100%" alt="RSI 在线实例：领域图谱、案例、比较与需求阅读">
 
 ## 怎样控制成本，同时保留准确性？
 
 先读紧凑断点和本批变化；按实际 URL/版本复用来源缓存；同一所需选段提取一次，用稳定 ID 在多个视图复用。计数、连接、哈希和链接检查交给代码；身份歧义、机制、冲突及关系含义交给语义判断。复核者阅读变更及依据，避免重复整篇阅读。增量更新只修复受影响的依赖，并将实质批次统一构建。
 
 当前不声称具体节省比例。[评估协议](skill/survey-evidence-ledger/references/evaluation-protocol.md)规定同模型、同来源对照，消融、未暴露迁移案例、引用保真、回答效用、实际取源次数、token、时间和维护修复。数据结构检查通过，不代表模型准确率提升已经得到证明。
+
+## 版本时间与阅读地图
+
+| 日期 | 版本 / 范围 | 变化 |
+|---|---|---|
+| 2026-10-23 | 框架 v1.1.0 | 双语独立页面、可减少的动态效果、学术图示与代表论文表格 |
+| 固定语料 | RSI 快照 | 保留 808 家族及原有证据权限；展示更新不计为新的原文审查 |
+
+建议顺序：**[框架](https://mr-tieguigui.github.io/survey-for-ai/) → [方法](https://mr-tieguigui.github.io/survey-for-ai/method/) → [Skill](https://mr-tieguigui.github.io/survey-for-ai/skill/) → [RSI 概览](https://mr-tieguigui.github.io/survey-for-ai/rsi/) → [图谱](https://mr-tieguigui.github.io/survey-for-ai/atlas/) → [案例](https://mr-tieguigui.github.io/survey-for-ai/cases/) → [比较](https://mr-tieguigui.github.io/survey-for-ai/compare/) → [需求问答](https://mr-tieguigui.github.io/survey-for-ai/reader/)**。语言切换保持当前页面。主界面和代表导读为双语，档案保留原始整理语言。
 
 ## 文件、下载权限与持续维护
 

@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>StateSkill-Agent: An Effective and Efficient Embodied Agent via State-conditioned Skill · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_61559e687099cb99a5/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_61559e687099cb99a5/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">StateSkill-Agent: An Effective and Efficient Embodied Agent via State-conditioned Skill</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="stateskill-agent-an-effective-and-efficient-embodied-agent-via-state-conditioned-skill">StateSkill-Agent: An Effective and Efficient Embodied Agent via State-conditioned Skill</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_61559e687099cb99a5</code></p>
+</blockquote>
+<p><strong>作者</strong>：Changxu Wei, Jingyi Zhang, Zhiyu Zheng, Tianyi Lin, Yixian Zhang, Yunpeng Qing, Jingyuan Liu, Zhi Hou, Jiaxing Huang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2610.14601v1<br>
+<strong>研究分支</strong>：具身、机器人与交互环境<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>将固定技能推理、离线技能修订和技能—模型交替训练分别裁定。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_stateskill_evolve">configuration:cfg_stateskill_evolve</h3>
+<p>core限完整技能修订系统；离线调度不自动构成排除条件，不声称推理期间在线修订。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_stateskill_fixed_fsm_inference">configuration:cfg_stateskill_fixed_fsm_inference</h3>
+<p>运行时状态转移不等同于持续方法改进。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_stateskill_stategrpo_coevolution">configuration:cfg_stateskill_stategrpo_coevolution</h3>
+<p>训练闭环；不外推GPT-5.5参数训练或真实机器人在线自改。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_stateskill_fixed_fsm_inference">cfg_stateskill_fixed_fsm_inference</h3>
+<p><code>cfg_stateskill_fixed_fsm_inference</code> · inference_variant</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定技能与模型的具身执行。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>有限状态门控按观察推进当前技能，不修订技能。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>运行状态保留于当前任务；技能先验来自先前构建。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 模型、技能库、低层执行器、动作接口</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：运行时状态转移不等同于持续方法改进。</p>
+<p>来源：https://arxiv.org/html/2610.14601v1；版本：v1；定位：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1。</p>
+<h3 id="cfg_stateskill_evolve">cfg_stateskill_evolve</h3>
+<p><code>cfg_stateskill_evolve</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>包含离线LLM修订器、持久技能库和固定执行模型的完整循环。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>新成功/失败轨迹驱动状态图、指导、门控及动作先验修订；同实例验证提升才保留。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>更新技能用于后续轨迹采集和再次修订。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 执行模型与低层控制器 - 验证成功指标、接口和准入规则</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：core限完整技能修订系统；离线调度不自动构成排除条件，不声称推理期间在线修订。</p>
+<p>来源：https://arxiv.org/html/2610.14601v1；版本：v1；定位：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1。</p>
+<h3 id="cfg_stateskill_stategrpo_coevolution">cfg_stateskill_stategrpo_coevolution</h3>
+<p><code>cfg_stateskill_stategrpo_coevolution</code> · training_variant</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>StateSkill-Evolve与Qwen3.5-9B高层模型交替训练。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>固定当前技能执行状态条件GRPO，再收集新轨迹修订技能。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>模型与技能跨轮保留。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 低层VLA冻结 - 状态效率奖励、GRPO及验证规则</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：训练闭环；不外推GPT-5.5参数训练或真实机器人在线自改。</p>
+<p>来源：https://arxiv.org/html/2610.14601v1；版本：v1；定位：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r3_memory_ev_stateskill_method</code></strong>：§3.2固定FSM执行；§3.3依据新轨迹修订且验证成功率提升才保留；§3.4交替优化高层模型；§4.1低层执行器冻结。</li>
+<li>来源版本：v1；定位：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>局部技能结束不等于任务成功；最终评测种子独立。</li>
+<li>原文方法与报告结果已选段核查，未独立复现。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="voyager-an-open-ended-embodied-agent-with-large-language-models"><a href="../wf_b71b1297191d522793/">Voyager: An Open-Ended Embodied Agent with Large Language Models</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r3_stateskill_voyager_representation_boundary</code> · 当前展示权限：<code>primary_supported</code>。
+两者保留技能用于后续执行：StateSkill-Evolve离线修订有限状态结构并比较验证成功率；Voyager执行修订代码，经任务成功判断后加入可检索代码库。</p>
+<p><strong>关系边界</strong>：未单列</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- r3_memory_src_stateskill_v1：https://arxiv.org/html/2610.14601v1；版本：v1；定位：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1。
+- r3_memory_src_voyager_v2：https://arxiv.org/html/2305.16291v2；版本：v2；定位：S2.SS2.p2；S2.SS2.p3；S2.SS3.p1；S2.SS3.p2。
+- r3_memory_src_stateskill_v1：https://arxiv.org/html/2610.14601v1；版本：v1；定位：S3.SS2.p1；S3.SS2.SSS0.Px1.p1；S3.SS2.SSS0.Px2.p1；S3.SS2.SSS0.Px2.p2；S3.SS3.p1；S3.SS3.p2；S3.SS3.p3；S3.SS4.p1；S3.SS4.p5；S3.SS4.p6；S4.SS1.p1；S4.SS4.SSS0.Px1.p1。
+- r3_memory_src_voyager_v2：https://arxiv.org/html/2305.16291v2；版本：v2；定位：S2.SS2.p2；S2.SS2.p3；S2.SS3.p1；S2.SS3.p2。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r3_memory_src_stateskill_v1</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2610.14601v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：targeted_primary_fulltext_method_configuration_and_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_61559e687099cb99a5 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

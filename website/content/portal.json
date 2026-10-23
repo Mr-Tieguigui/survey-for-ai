@@ -1,0 +1,452 @@
+{
+  "version": "1.1.0",
+  "updated": "2026-10-23",
+  "pages": {
+    "home": {
+      "number": "01",
+      "area": "framework",
+      "zh": [
+        "框架介绍",
+        "为 AI 时代，重新组织领域知识。",
+        "一套可迁移的方法与 Skill，将文献构建为可查询、可追溯、可维护的知识系统。先介绍方法，再用 RSI 展示它如何工作。"
+      ],
+      "en": [
+        "Framework",
+        "Research knowledge, designed for AI readers.",
+        "A reusable method and Skill for turning literature into queryable, traceable and maintainable knowledge. Explore the framework first, then see it at work in RSI."
+      ]
+    },
+    "method": {
+      "number": "02",
+      "area": "framework",
+      "zh": [
+        "构建方法",
+        "从领域问题，到有依据的回答。",
+        "七个相互衔接的步骤。每一步定义输入、产物与验收条件，保留证据权限与未解决问题。"
+      ],
+      "en": [
+        "Method",
+        "From a field question to a supported answer.",
+        "Seven connected stages, each with explicit inputs, outputs and acceptance gates. Evidence permissions and unresolved questions remain visible."
+      ]
+    },
+    "skill": {
+      "number": "03",
+      "area": "framework",
+      "zh": [
+        "可复用 Skill",
+        "把方法，变成下一次研究的起点。",
+        "领域适配器定义术语、角色、比较维度与读者需求；通用流程保留身份、版本、证据和回答规则。"
+      ],
+      "en": [
+        "Reusable Skill",
+        "Make the method your next starting point.",
+        "A domain adapter defines terminology, roles, comparison axes and reader needs. The shared workflow preserves identity, versions, evidence and answer rules."
+      ]
+    },
+    "rsi": {
+      "number": "04",
+      "area": "example",
+      "zh": [
+        "RSI 实例",
+        "一个真实领域，一套完整的阅读入口。",
+        "递归自我改进是当前展示实例。下列数量属于固定整理范围，不表示全球穷尽，也不等于每篇均已获得全文认证。"
+      ],
+      "en": [
+        "RSI example",
+        "One real field. Several ways into its knowledge.",
+        "Recursive self-improvement is the current worked example. Counts describe a fixed corpus, not global completeness or full-paper certification for every item."
+      ]
+    },
+    "atlas": {
+      "number": "05",
+      "area": "example",
+      "zh": [
+        "领域图谱",
+        "沿分支纵向读，沿关系横向看。",
+        "26 条组织分支与有类型的谱系关系。分支是导航结构，关系边承载独立的证据和语义。"
+      ],
+      "en": [
+        "Field atlas",
+        "Read along branches. Connect across them.",
+        "26 navigational branches with typed relationships. A branch organizes reading; each relationship has its own evidence and meaning."
+      ]
+    },
+    "cases": {
+      "number": "06",
+      "area": "example",
+      "zh": [
+        "论文案例",
+        "看见一篇论文，如何变成知识。",
+        "七个代表案例连接机制、具体协议、保留对象、适用边界和实际来源。公开页展示导读与定位，完整账本仍受访问控制。"
+      ],
+      "en": [
+        "Paper cases",
+        "See how a paper becomes usable knowledge.",
+        "Seven representative cases connect mechanisms, protocols, retained objects, limits and actual sources. Public views show briefs and locators; the full ledger remains access-controlled."
+      ]
+    },
+    "compare": {
+      "number": "07",
+      "area": "example",
+      "zh": [
+        "横向比较",
+        "比较机制，也比较结论的前提。",
+        "同一维度下阅读不同系统。理论保证、代码演化、参数训练和程序搜索使用不同的证据边界，不构造跨协议排行榜。"
+      ],
+      "en": [
+        "Comparison",
+        "Compare mechanisms and the conditions behind them.",
+        "Read distinct systems along shared axes. Formal guarantees, code evolution, parameter training and program search have different evidence boundaries; this is not a cross-protocol leaderboard."
+      ]
+    },
+    "reader": {
+      "number": "08",
+      "area": "example",
+      "zh": [
+        "需求与问答",
+        "从你的问题，进入所需的知识。",
+        "选择读者目标，再阅读已有的有界回答和证据入口。这里的答案来自已整理模块，不会临时生成未经审查的模型结论。"
+      ],
+      "en": [
+        "Reader & answers",
+        "Start with your question, then retrieve the evidence.",
+        "Choose a reader goal and explore existing bounded answers and evidence routes. These are curated module answers, not newly generated unreviewed model claims."
+      ]
+    },
+    "explore": {
+      "number": "09",
+      "area": "example",
+      "zh": [
+        "文献库",
+        "查找论文，也查看它的证据深度。",
+        "808 个家族，按角色和研究分支筛选。界面和代表案例提供双语导读，完整档案保留原始整理语言与来源用语。"
+      ],
+      "en": [
+        "Paper library",
+        "Find a paper. Inspect its evidence depth.",
+        "808 work families, filterable by role and branch. The interface and selected case briefs are bilingual; archival records preserve their original curatorial and source language."
+      ]
+    },
+    "data": {
+      "number": "10",
+      "area": "resources",
+      "zh": [
+        "数据与版本",
+        "公开展示，清晰的证据与访问边界。",
+        "方法和站点公开；完整 RSI 知识库继续保持私有。下载信息、版本、覆盖情况与限制在此分别说明。"
+      ],
+      "en": [
+        "Data & release",
+        "Public presentation, explicit evidence and access boundaries.",
+        "The method and website are public. The complete RSI knowledge repository remains private. Downloads, versions, coverage and limits are documented separately."
+      ]
+    }
+  },
+  "stages": [
+    [
+      "Scope",
+      "领域适配",
+      "Domain adapter",
+      "固定问题、角色、纳入排除、来源、截止与预算。",
+      "Fix the question, roles, inclusion criteria, sources, cutoff and budget.",
+      "领域适配契约与范围锁",
+      "Adapter contract and scope lock",
+      "范围与验收单位明确，新增发现另入候选队列。",
+      "Declare the scope and acceptance unit; keep later discoveries in a candidate queue."
+    ],
+    [
+      "Identity",
+      "身份与版本",
+      "Identity & versions",
+      "确认工作家族，分别保留实际来源与观察版本。",
+      "Resolve work families and retain actual source manifestations and observed versions.",
+      "稳定 ID、别名和来源清单",
+      "Stable IDs, aliases and source ledger",
+      "题名相似不是合并依据，歧义与旧版本保留。",
+      "Title similarity is not identity; preserve ambiguity and earlier versions."
+    ],
+    [
+      "Evidence",
+      "角色证据",
+      "Role evidence",
+      "按方法、评测、理论或综述的角色读取所需正文。",
+      "Read the primary passages needed for the method, evaluation, theory or survey role.",
+      "具体解析、有界主张、可选配置",
+      "Dossiers, bounded claims and optional configurations",
+      "主张绑定 URL、版本、定位与限制；未知不强造。",
+      "Bind claims to URL, version, locator and limits; do not invent missing fields."
+    ],
+    [
+      "Relations",
+      "领域关系",
+      "Field relationships",
+      "用分支组织阅读，以有类型关系连接不同工作。",
+      "Organize reading in branches and connect works through typed relationships.",
+      "导航树与跨分支关系图",
+      "Navigation tree and typed cross-links",
+      "端点有效；具体继承须有对应双端支持。",
+      "Resolve endpoints; technical inheritance needs corresponding two-endpoint support."
+    ],
+    [
+      "Synthesis",
+      "多视角模块",
+      "Multi-view modules",
+      "沿纵向、横向、机制、前沿和需求组织同一套事实。",
+      "Organize the same facts by development, comparison, mechanism, frontier and reader need.",
+      "可追溯的读者模块",
+      "Traceable reader modules",
+      "保留主张 ID、比较条件、整理解释和真实缺口。",
+      "Retain claim IDs, comparison conditions, curator interpretation and genuine gaps."
+    ],
+    [
+      "Answers",
+      "问题路由",
+      "Question routing",
+      "先定位问题与模块，再按需展开主张和来源。",
+      "Locate questions and modules before expanding claims and sources as needed.",
+      "有支持、部分支持或证据不足的答案",
+      "Supported, partial or insufficient-evidence answers",
+      "返回准确引用、适用条件、限制与缺失证据。",
+      "Return exact citations, applicable conditions, limitations and missing evidence."
+    ],
+    [
+      "Maintenance",
+      "增量维护",
+      "Incremental maintenance",
+      "沿反向依赖修复受影响记录，保留历史与失败。",
+      "Repair affected records through reverse dependencies, preserving history and failures.",
+      "新版本、变更影响与完整性清单",
+      "Release, change impact and integrity manifest",
+      "引用可解析、成员守恒，最后更新清单。",
+      "Resolve references, conserve membership and update the manifest last."
+    ]
+  ],
+  "branches_en": {
+    "M0_surveys": "Surveys & field navigation",
+    "M0_definitions": "Definitions, theory & boundaries",
+    "M0_historical": "Historical foundations",
+    "M1_reward": "Rewards, evaluators & preferences",
+    "M1_verification": "Verification, critique & credit",
+    "M7_benchmarks": "Benchmarks, datasets & tasks",
+    "M7_measurement": "Evaluation, attribution & replication",
+    "M2_memory": "Persistent memory & reflection",
+    "M2_prompt": "Prompt & program optimization",
+    "M2_reasoning": "Reasoning & output revision",
+    "M3_tools": "Tools, skills & experience",
+    "M3_harness": "Agent architecture & code",
+    "M3_workflow": "Workflows & execution control",
+    "M4_alignment": "Preferences & alignment training",
+    "M4_weights": "Self-referential weights & meta-learning",
+    "M4_selftraining": "Self-generated data & training",
+    "M5_program": "Program & evolutionary search",
+    "M5_population": "Populations & self-play",
+    "M6_research": "Research agents & discovery",
+    "M6_ai4ai": "AI for AI & metascience",
+    "M8_failure": "Failures, drift & collapse",
+    "M8_safety": "Safety, attacks & update governance",
+    "M8_impact": "Economic & societal implications",
+    "M9_embodied": "Embodied agents & robotics",
+    "M9_multimodal": "Multimodal & domain interfaces",
+    "M9_application": "Applications & adjacent interfaces"
+  },
+  "roles_en": {
+    "R01_SURVEY": "Survey",
+    "R02_CONCEPT": "Concept / theory",
+    "R03_METHOD": "Method",
+    "R04_SYSTEM": "System / agent",
+    "R05_BENCHMARK": "Benchmark",
+    "R06_EVALUATION": "Evaluation method",
+    "R07_EMPIRICAL": "Empirical / replication",
+    "R08_LIMITATION": "Failure / limitations",
+    "R09_RESOURCE": "Infrastructure / resource",
+    "R10_APPLICATION": "Application",
+    "R11_BACKGROUND": "Background",
+    "R12_IMPACT": "Economic / societal impact"
+  },
+  "profiles_en": {
+    "beginner": [
+      "Newcomer",
+      "Understand definitions, retention and distinct feedback loops."
+    ],
+    "safety": [
+      "Safety & governance",
+      "Examine feedback failures, writable boundaries and scope limits."
+    ],
+    "lookup": [
+      "Quick lookup",
+      "Locate a question, comparison and exact evidence route."
+    ],
+    "research": [
+      "Researcher",
+      "Trace mechanisms, system boundaries and open questions."
+    ],
+    "implementation": [
+      "Builder",
+      "Compare retained states, tools and implementation boundaries."
+    ],
+    "evaluation": [
+      "Evaluator",
+      "Inspect task units, scoring, selection and held-out evaluation."
+    ]
+  },
+  "questions_en": {
+    "Q0": [
+      "What recurs, and what counts as improvement?",
+      "RSI starts with system boundaries: identify the modified object, feedback, retained state and its later use. Self-referential dynamics, provable rewriting and implemented harness changes have different evidence levels. A structural loop alone does not establish sustained acceleration."
+    ],
+    "Q1": [
+      "How does a system know it has improved?",
+      "Separate training selection, sealed tests, evaluation unit, budget and evaluator authority. A higher score supports performance under that protocol; it does not automatically show a stronger improver or transfer to another environment."
+    ],
+    "Q2": [
+      "Which external states influence later behavior?",
+      "A retained state matters through its time scale and actual use in later decisions. Describe single-task revision, cross-attempt reflection, cross-task experience pools, scored prompt histories and editable harnesses separately."
+    ],
+    "Q3": [
+      "How do parameters, data and search form a learning loop?",
+      "Track data pools, generators, student parameters, teachers and optimizers separately. Data feedback, inherited parameters and teacher refresh can each occur; one undifferentiated round does not capture them."
+    ],
+    "Q4": [
+      "How can research and AI R&D participate in improvement?",
+      "Research feedback can reside in idea archives, experiment trees, program databases or persistent research memory. It is bounded feedback when that state actually affects subsequent research actions. Paper output or task scores alone do not establish an upgraded research improver."
+    ],
+    "Q5": [
+      "Which gains transfer, and which constraints remain?",
+      "Transfer and safety claims retain task, generation, data provenance, evaluator and governance conditions. Local failures, local mitigations and conceptual governance frameworks answer distinct questions; they do not combine into universal safety or impossibility claims."
+    ]
+  },
+  "case_briefs": {
+    "wf_8cffd9d9c1aba22093": {
+      "name": "Absolute Zero",
+      "zh": [
+        "自生成任务与共享策略训练",
+        "共享策略担任任务提出者和求解者，经 Python 执行验证与奖励形成在线自博弈；策略参数和验证任务缓冲区跨轮次保留。",
+        "评价需区分任务有效性、求解难度奖励、求解奖励与训练后测试。",
+        "没有外部任务数据不等于没有预训练、初始提示、执行器或人工算法设计。"
+      ],
+      "en": [
+        "Self-generated tasks & shared-policy learning",
+        "One policy acts as proposer and solver. Python execution supplies validation and rewards; policy parameters and validated task buffers persist across online self-play.",
+        "Distinguish task validity, learnability reward, solver reward and post-training evaluation.",
+        "No external task dataset does not mean no pretraining, seed prompts, execution environment or human-designed algorithm."
+      ]
+    },
+    "wf_b71b1297191d522793": {
+      "name": "Voyager",
+      "zh": [
+        "跨任务保留可执行技能",
+        "在 Minecraft 中以自动课程、迭代代码生成和技能库组织开放式探索；执行反馈促成代码修订，技能供后续任务检索。",
+        "评价探索、技能获得和迁移时，保留环境与交互预算条件。",
+        "技能库的保留不等于基础模型权重更新，也不证明改进器本身获得无界提升。"
+      ],
+      "en": [
+        "Retained executable skills across tasks",
+        "Automatic curriculum, iterative code generation and a skill library support exploration in Minecraft. Execution feedback guides revisions and stored skills are retrieved for later tasks.",
+        "Keep environment and interaction-budget conditions when reading exploration, skill acquisition and transfer results.",
+        "A persistent skill library is not a base-model weight update or evidence of unbounded improver gains."
+      ]
+    },
+    "wf_984256074226b209d4": {
+      "name": "ExpeL",
+      "zh": [
+        "从经验中提炼可检索知识",
+        "从训练任务的尝试、反馈和反思中提取经验规则，并在后续任务提示中复用。",
+        "训练期经验提取与测试期检索分开，结果限定在所用任务与设置内。",
+        "外部经验影响后续行为不等于模型权重或经验提取器自身被训练。"
+      ],
+      "en": [
+        "Experience distilled into retrievable knowledge",
+        "Attempts, feedback and reflection on training tasks yield experience rules that are reused in prompts for subsequent tasks.",
+        "Separate training-time experience extraction from test-time retrieval and keep task/setup boundaries.",
+        "Experience affecting later behavior does not imply trained model weights or a self-updated experience extractor."
+      ]
+    },
+    "wf_c9890d5668d1c1b33e": {
+      "name": "ADAS",
+      "zh": [
+        "固定元代理搜索目标代理设计",
+        "Meta Agent Search 使用程序化设计空间，生成、评价并归档目标代理的实现，后续候选利用档案经验。",
+        "区分搜索训练条件、选中设计以及迁移评价。",
+        "所核配置中，目标代理函数可变而元代理固定；档案循环不自动证明元级改进。"
+      ],
+      "en": [
+        "A fixed meta-agent searches agent designs",
+        "Meta Agent Search generates, evaluates and archives target-agent implementations in a programmatic design space. Later proposals use the archive.",
+        "Separate search conditions, selected designs and transfer evaluation.",
+        "In the reviewed configuration, target-agent functions change while the meta-agent is fixed; an archive loop alone does not establish meta-level improvement."
+      ]
+    },
+    "wf_f5d4d370636d9b3832": {
+      "name": "SICA",
+      "zh": [
+        "由档案选择下一轮改进代理",
+        "允许编码代理修改完整 Python 代码库，并选择档案中效用最高的代理参与后续改进。",
+        "保留代理档案、评价效用与选择规则，区分尝试和接纳。",
+        "具体结构闭环不自动推出通用 RSI、持续加速或跨环境收益。"
+      ],
+      "en": [
+        "Select the next improving agent from an archive",
+        "Coding agents can edit the Python codebase. The archive retains agents and utilities, and the highest-utility agent participates in subsequent improvement.",
+        "Keep the archive, utility measurement and selection rule; distinguish attempts from adoption.",
+        "This bounded structural loop does not automatically establish universal RSI, sustained acceleration or cross-environment gains."
+      ]
+    },
+    "wf_c29f716871f8031486": {
+      "name": "Darwin Gödel Machine",
+      "zh": [
+        "用开放式档案探索代理代码",
+        "代理产生代码修改，经编译、编辑能力与任务评价筛选后进入可保留档案，为后续代码提案提供父代。",
+        "作者结果需结合 pass@1、训练选择、测试、任务集和预算阅读。",
+        "经验评价不继承 Gödel Machine 的形式最优保证；主体配置不等于父代选择器自改写。"
+      ],
+      "en": [
+        "Open-ended archive search over agent code",
+        "Agents propose code changes. Compilation, continued editability and task evaluation screen candidates for an archive whose members can parent later proposals.",
+        "Read author-reported results with pass@1, training selection, tests, task sets and budgets.",
+        "Empirical evaluation does not inherit Gödel Machine formal optimality; the main configuration does not imply a self-rewritten parent selector."
+      ]
+    },
+    "wf_e8c73f3205702cf753": {
+      "name": "Raven",
+      "zh": [
+        "冻结任务代理外的 harness 适配",
+        "围绕任务代理的记忆、规划、能力与行动策略提出受限修改，经筛选、训练评价与档案竞争选择，并在密封测试前冻结。",
+        "训练选择与密封测试分开，只有经筛选和接纳的策略改变才算保留。",
+        "有界 harness 反馈和组合不自动证明更强递归改进器；固定模型并不否认外部状态反馈。"
+      ],
+      "en": [
+        "Harness adaptation around a frozen task agent",
+        "Restricted changes target memory, planning, capability and action strategies. Screening, training evaluation and archive competition select a harness that is frozen before sealed tests.",
+        "Separate training selection from sealed testing; distinguish proposed changes from screened and adopted strategies.",
+        "Bounded harness adaptation and composition do not automatically establish a stronger recursive improver; a fixed model does not negate external-state feedback."
+      ]
+    }
+  },
+  "config_en": {
+    "cfg_godel": [
+      "Its own code and proof-searcher.",
+      "A proved beneficial switch can rewrite code used in later proof search.",
+      "The formal machine lifetime after executing the switch program.",
+      "The guarantee depends on the formal system, utility and provability conditions; it is not an empirical guarantee for present LLMs."
+    ],
+    "cfg_dgm": [
+      "An archive of agents whose code can compile and remain editable.",
+      "Modified coding agents can participate in subsequent self-modification.",
+      "Archived parents produce successor code versions.",
+      "Bounded structural feedback does not establish universal RSI or autonomy; empirical evaluation is not a formal optimality proof."
+    ],
+    "cfg_absolute_zero": [
+      "A shared proposer/solver policy, validated task buffers and a Python execution environment.",
+      "The proposer receives learnability reward; the solver receives execution-grounded reward. Joint training updates the shared policy.",
+      "Policy parameters and validated task buffers persist across online self-play.",
+      "No external task dataset does not remove pretrained knowledge, seed prompts, execution infrastructure or human algorithm design."
+    ],
+    "cfg_alphaevolve": [
+      "A fixed language model and evaluator with a persistent program database and prompt sampler.",
+      "Scored programs inform sampled prompts; model-proposed changes are evaluated and written back for later proposals.",
+      "Programs and evaluation information persist across evolutionary generations.",
+      "Program-database feedback does not imply base-model weight training or an accelerating improver."
+    ]
+  }
+}

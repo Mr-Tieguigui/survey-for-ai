@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>Here Comes The AI Worm: Unleashing Zero-click Worms that Target GenAI-Powered Applications · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_db2ab7f6a8568f9e8e/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_db2ab7f6a8568f9e8e/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">Here Comes The AI Worm: Unleashing Zero-click Worms that Target GenAI-Powered Applications</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="here-comes-the-ai-worm-unleashing-zero-click-worms-that-target-genai-powered-applications">Here Comes The AI Worm: Unleashing Zero-click Worms that Target GenAI-Powered Applications</h1>
+<blockquote>
+<p>实证/审计/复现 · 2024 · <code>wf_db2ab7f6a8568f9e8e</code></p>
+</blockquote>
+<p><strong>作者</strong>：Stav Cohen, Ron Bitton, Ben Nassi<br>
+<strong>原文</strong>：https://arxiv.org/abs/2403.02817<br>
+<strong>研究分支</strong>：安全、攻击与持续更新治理<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<p><strong>实际来源题名（已存版本）</strong>：Here Comes The AI Worm: Unleashing Zero-click Worms that Target GenAI-Powered Applications (https://arxiv.org/html/2403.02817v2)。工作家族题名与具体来源题名分别保留。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Morris-II evaluates self-replicating prompt propagation and extraction in a Gemini Flash1.5 RAG email client. The unit is2,000 emails from20 Enron employees; replication requires exact string reproduction, and reported metrics distinguish retrieval, replication, payload and their combination. Optional RSI safety adjacency for memory/input contamination and propagation; do not equate replication with improvement.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>Optional RSI safety adjacency for memory/input contamination and propagation; do not equate replication with improvement.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roleb570_02_role_wf_db2ab7f6a8568f9e8e">role:b570_02_role_wf_db2ab7f6a8568f9e8e</h3>
+<p>Morris-II evaluates self-replicating prompt propagation and extraction in a Gemini Flash1.5 RAG email client. The unit is2,000 emails from20 Enron employees; replication requires exact string reproduction, and reported metrics distinguish retrieval, replication, payload and their combination.</p>
+<p><strong>适用版本</strong>：2403.02817v2；<strong>原文定位</strong>：§IV-A/B actual setup and metric definitions tool L176–199；§VI limitations tool L512–517。
+<strong>引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>。</p>
+<h3 id="s18ctx_role_review_wf_db2ab7f6a8568f9e8e">已存角色解释 · <code>s18ctx_role_review_wf_db2ab7f6a8568f9e8e</code></h3>
+<p>Morris-II 在 RAG 应用通信中用自复制提示传播间接注入，并评价防传播 guardrail；自复制攻击链不同于能力递归改进，可作记忆/信息污染安全邻接案例但不能嫁接未测试 RSI 框架。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 具体机制、研究对象与协议</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18ctx_role_ev_wf_db2ab7f6a8568f9e8e</code></strong>：Morris-II 在 RAG 应用通信中用自复制提示传播间接注入，并评价防传播 guardrail；自复制攻击链不同于能力递归改进，可作记忆/信息污染安全邻接案例但不能嫁接未测试 RSI 框架。</li>
+<li>
+<p>来源版本：2403.02817v2；定位：Atom entry http://arxiv.org/abs/2403.02817v2；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>b570_02_ev_wf_db2ab7f6a8568f9e8e</code></strong>：Morris-II evaluates self-replicating prompt propagation and extraction in a Gemini Flash1.5 RAG email client. The unit is2,000 emails from20 Enron employees; replication requires exact string reproduction, and reported metrics distinguish retrieval, replication, payload and their combination.</p>
+</li>
+<li>来源版本：2403.02817v2；定位：§IV-A/B actual setup and metric definitions tool L176–199；§VI limitations tool L512–517；深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<h3 id="1-iv-ab-actual-setup-and-metric-definitions">选段 1 · 机制 / 定义 · §IV-A/B actual setup and metric definitions</h3>
+<p><strong>来源</strong>：https://arxiv.org/html/2403.02817v2<br>
+<strong>实际版本</strong>：2403.02817v2<br>
+<strong>精确定位</strong>：tool L176–199<br>
+<strong>关联证据</strong>：<code>b570_02_ev_wf_db2ab7f6a8568f9e8e</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="2-vi-limitations">选段 2 · 限制 · §VI limitations</h3>
+<p><strong>来源</strong>：https://arxiv.org/html/2403.02817v2<br>
+<strong>实际版本</strong>：2403.02817v2<br>
+<strong>精确定位</strong>：tool L512–517<br>
+<strong>关联证据</strong>：<code>b570_02_ev_wf_db2ab7f6a8568f9e8e</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Exact-string replication is a lower bound because modified prompts can also work. §VI notes visible prompts/payloads and does not test the Virtual Donkey mitigation against adaptive attacks. Self-propagating content is not measured recursive capability improvement.</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>b570_02_src_wf_db2ab7f6a8568f9e8e</code> · Here Comes The AI Worm: Unleashing Zero-click Worms that Target GenAI-Powered Applications (https://arxiv.org/html/2403.02817v2) · 2403.02817v2</li>
+<li>https://arxiv.org/html/2403.02817v2；阅读深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+<li><code>s18ctx_role_src_20fe003e28646d5b</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=2402.08957%2C2402.09015%2C2402.09269%2C2402.09283%2C2402.09727%2C2402.09742%2C2402.09748%2C2402.10110%2C2402.10176%2C2402.10196%2C2402.10200%2C2402.10663%2C2402.10770%2C2402.10890%2C2402.10963%2C2402.10980%2C2402.10987%2C2402.11190%2C2402.11218%2C2402.11359%2C2402.11411%2C2402.11451%2C2402.11550%2C2402.11633%2C2402.11827%2C2402.11975%2C2402.12048%2C2402.12185%2C2402.12255%2C2402.12317%2C2402.12348%2C2402.12391%2C2402.12431%2C2402.12451%2C2402.12545%2C2402.12914%2C2402.12959%2C2402.13210%2C2402.13212%2C2402.13296%2C2402.13426%2C2402.13542%2C2402.13598%2C2402.13669%2C2402.13717%2C2402.14034%2C2402.14083%2C2402.14207%2C2402.14268%2C2402.14382%2C2402.15057%2C2402.15116%2C2402.15391%2C2402.15538%2C2402.15589%2C2402.15809%2C2402.15810%2C2402.16288%2C2402.16313%2C2402.16499%2C2402.16696%2C2402.16767%2C2402.16823%2C2402.16837%2C2402.16906%2C2402.16965%2C2402.17168%2C2402.17453%2C2402.17505%2C2402.17574%2C2402.17613%2C2402.17753%2C2402.18005%2C2402.18060%2C2402.18361%2C2402.18381%2C2402.18485%2C2402.19085%2C2402.19173%2C2402.19446%2C2402.19473%2C2403.00198%2C2403.00690%2C2403.00833%2C2403.00839%2C2403.01197%2C2403.01244%2C2403.01248%2C2403.01528%2C2403.02164%2C2403.02502%2C2403.02691%2C2403.02817%2C2403.02985%2C2403.03101%2C2403.03129%2C2403.03186%2C2403.03218%2C2403.03768%2C2403.03883&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_primary_role_definition_protocol_scope_and_limits。
+<strong>当前引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_db2ab7f6a8568f9e8e --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

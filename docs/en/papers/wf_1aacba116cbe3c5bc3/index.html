@@ -1,0 +1,126 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>A-MEM: Agentic Memory for LLM Agents · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_1aacba116cbe3c5bc3/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_1aacba116cbe3c5bc3/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">A-MEM: Agentic Memory for LLM Agents</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="a-mem-agentic-memory-for-llm-agents">A-MEM: Agentic Memory for LLM Agents</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_1aacba116cbe3c5bc3</code></p>
+</blockquote>
+<p><strong>作者</strong>：Wujiang Xu, Zujie Liang, Kai Mei, Hang Gao, Juntao Tan, Yongfeng Zhang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2502.12110<br>
+<strong>研究分支</strong>：持久记忆、反思与上下文<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：记忆集合及属性、嵌入和链接；具体更新过程为：演化后记忆替换旧项；后续检索到的集合继续输入链接与记忆演化；更新状态的保留与后继使用为：跨记忆写入与检索事件。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_amem">configuration:cfg_amem</h3>
+<p>核心是记忆状态参与后续记忆更新；未证明记忆管理算法或模型参数自改</p>
+<p><strong>适用版本</strong>：v11；<strong>原文定位</strong>：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_amem">cfg_amem</h3>
+<p><code>cfg_amem</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>记忆集合及属性、嵌入和链接</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>演化后记忆替换旧项；后续检索到的集合继续输入链接与记忆演化</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>跨记忆写入与检索事件</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>LLM、文本编码器、提示模板及top-k检索程序</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：记忆集合及属性、嵌入和链接（状态：<code>supported</code>；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1）。
+- <strong>更新由什么过程产生</strong>：演化后记忆替换旧项；后续检索到的集合继续输入链接与记忆演化（状态：<code>supported</code>；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1）。
+- <strong>状态怎样持久保留</strong>：跨记忆写入与检索事件（状态：<code>supported</code>；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1）。
+- <strong>更新怎样进入后续改进</strong>：演化后记忆替换旧项；后续检索到的集合继续输入链接与记忆演化（状态：<code>supported</code>；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1）。</p>
+<p><strong>配置判定</strong>：核心是记忆状态参与后续记忆更新；未证明记忆管理算法或模型参数自改</p>
+<p>来源：https://arxiv.org/html/2502.12110v11；版本：v11；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e2_w_amem</code></strong>：演化后记忆替换旧项；后续检索到的集合继续输入链接与记忆演化</li>
+<li>
+<p>来源版本：v11；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1；深度：<code>AI_primary_method_passage_recheck</code>。</p>
+</li>
+<li>
+<p><strong><code>r4_memory_ev_amem_existing</code></strong>：LLM生成note语义、链接及邻近旧记忆更新，查询使用embedding相似检索。</p>
+</li>
+<li>来源版本：v11；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1；S3.SS4.p1；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>核</li>
+<li>心</li>
+<li>是</li>
+<li>记</li>
+<li>忆</li>
+<li>状</li>
+<li>态</li>
+<li>参</li>
+<li>与</li>
+<li>后</li>
+<li>续</li>
+<li>更</li>
+<li>新</li>
+<li>；</li>
+<li>未</li>
+<li>证</li>
+<li>明</li>
+<li>管</li>
+<li>理</li>
+<li>算</li>
+<li>法</li>
+<li>或</li>
+<li>模</li>
+<li>型</li>
+<li>数</li>
+<li>自</li>
+<li>改</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="evolvemem-self-evolving-memory-architecture-via-autoresearch-for-llm-agents"><a href="../wf_6e6b14494848e97940/">EvolveMem: Self-Evolving Memory Architecture via AutoResearch for LLM Agents</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r4_memory_cfg_evolvemem_retrieval_diagnosis_loop_cfg_amem</code> · 当前展示权限：<code>primary_supported</code>。
+EvolveMem监督失败诊断修改检索配置；A-MEM由新note触发LLM语义/链接/旧note更新，查询方法为embedding近邻。修改检索控制与修改存储知识应分开。</p>
+<p><strong>关系边界</strong>：双端方法机制对照；非继承、共同实验臂、代码复用或性能优劣认证。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- r4_memory_src_evolvemem：https://arxiv.org/html/2605.13941v1；版本：v1；定位：§3.1–3.2, tool text L114–140；§3.3 Eq.3–4/Algorithm1, tool text L141–196；§4.1, tool text L200–211。
+- r4_memory_src_amem_existing：https://arxiv.org/html/2502.12110v11；版本：v11；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1；S3.SS4.p1。
+- r4_memory_src_evolvemem：https://arxiv.org/html/2605.13941v1；版本：v1；定位：§3.1–3.2, tool text L114–140；§3.3 Eq.3–4/Algorithm1, tool text L141–196；§4.1, tool text L200–211。
+- r4_memory_src_amem_existing：https://arxiv.org/html/2502.12110v11；版本：v11；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1；S3.SS4.p1。</p>
+<h3 id="mindset-energy-based-schema-evolution-for-long-conversational-agent-memory"><a href="../wf_d045f6a3ccf0df1e41/">MINDSET: Energy-based Schema Evolution for Long Conversational Agent Memory</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r4_memory_cfg_mindset_versioned_schema_controller_cfg_amem</code> · 当前展示权限：<code>primary_supported</code>。
+MINDSET固定能量规则管理不可变episodes的版本schema；A-MEM通过LLM重写邻近note语义和链接。两者持久组织变化均不能自动推得控制器参数或改进规则自改。</p>
+<p><strong>关系边界</strong>：双端方法机制对照；非继承、共同实验臂、代码复用或性能优劣认证。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- r4_memory_src_mindset：https://arxiv.org/html/2610.08586v1；版本：v1；定位：§3.1–3.3, tool text L112–206；§3.5–3.7, tool text L210–240。
+- r4_memory_src_amem_existing：https://arxiv.org/html/2502.12110v11；版本：v11；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1；S3.SS4.p1。
+- r4_memory_src_mindset：https://arxiv.org/html/2610.08586v1；版本：v1；定位：§3.1–3.3, tool text L112–206；§3.5–3.7, tool text L210–240。
+- r4_memory_src_amem_existing：https://arxiv.org/html/2502.12110v11；版本：v11；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1；S3.SS4.p1。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>expand_src_w_amem</code> · A-MEM · v11</li>
+<li>https://arxiv.org/html/2502.12110v11；阅读深度：<code>未单列</code>。</li>
+<li><code>r4_memory_src_amem_existing</code> · 已存来源 · v11</li>
+<li>https://arxiv.org/html/2502.12110v11；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_1aacba116cbe3c5bc3 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

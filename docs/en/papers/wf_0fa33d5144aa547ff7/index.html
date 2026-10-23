@@ -1,0 +1,88 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>MetaSkill-Evolve: Recursive Self-Improvement of LLM Agents via Two-Timescale Meta-Skill Evolution · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_0fa33d5144aa547ff7/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_0fa33d5144aa547ff7/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">MetaSkill-Evolve: Recursive Self-Improvement of LLM Agents via Two-Timescale Meta-Skill Evolution</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="metaskill-evolve-recursive-self-improvement-of-llm-agents-via-two-timescale-meta-skill-evolution">MetaSkill-Evolve: Recursive Self-Improvement of LLM Agents via Two-Timescale Meta-Skill Evolution</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_0fa33d5144aa547ff7</code></p>
+</blockquote>
+<p><strong>作者</strong>：Zefeng Wang, Minxi Yan, Jinhe Bi, Sikuan Yan, Volker Tresp, Yunpu Ma<br>
+<strong>原文</strong>：https://arxiv.org/abs/2607.05297<br>
+<strong>研究分支</strong>：持久记忆、反思与上下文<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：固定五agent pipeline、branch-local task skill s和五meta-skill文件m、SQLite DAG/archive/frontier、train failure mining/val utility evaluator；具体更新过程为：fast loop恢复parent s/m快照，train最差case驱动diagnose/retrieve/allocate/propose/execute，val评估child。每H步聚合历史子代ΔU为meta-failure，同pipeline重写全部五meta files，child携新m；后继从archive评分选parent并恢复其s/m；更新状态的保留与后继使用为：SQLite记录(s,m,U,ΔU,tag)、路径及访问count，failed/neutral节点也保留作inspiration；只有ΔU&gt;0进deployable/parent archive。m分支局部存储，跨支只经retrieval传递。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_metaskill_evolve_task_meta_skill_dag_v1">configuration:cfg_metaskill_evolve_task_meta_skill_dag_v1</h3>
+<p>task/meta-skill文件与archive的两时标有界反馈支持四条件；不把五agent角色/wiring、H或模型weights描述为被进化。</p>
+<p><strong>适用版本</strong>：2607.05297v1；<strong>原文定位</strong>：§3.2–3.3 branch state/archive tool L124–158；§3.4 fast loop/validation tool L177–196；§3.5 slow loop/accumulation tool L244–258；Limitations tool L358–360；§4.1 frozen model/splits tool L296–301。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="metaskill-evolve-v1-branch-taskmeta-files-and-two-timescales">MetaSkill-Evolve v1 branch task/meta files and two timescales</h3>
+<p><code>cfg_metaskill_evolve_task_meta_skill_dag_v1</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定五agent pipeline、branch-local task skill s和五meta-skill文件m、SQLite DAG/archive/frontier、train failure mining/val utility evaluator。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>fast loop恢复parent s/m快照，train最差case驱动diagnose/retrieve/allocate/propose/execute，val评估child。每H步聚合历史子代ΔU为meta-failure，同pipeline重写全部五meta files，child携新m；后继从archive评分选parent并恢复其s/m。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>SQLite记录(s,m,U,ΔU,tag)、路径及访问count，failed/neutral节点也保留作inspiration；只有ΔU&gt;0进deployable/parent archive。m分支局部存储，跨支只经retrieval传递。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- frozen Gemma4 31B、五pipeline roles/wiring - slow-loop固定H触发 - 外部train/val/test split和reward</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>backbone</strong>：Gemma4 31B frozen across five agents - <strong>benchmarks</strong>：OfficeQA, SealQA, ALFWorld - <strong>meta</strong>：every H fast iterations; branch-local files; cumulative meta children - <strong>split</strong>：stratified disjoint train/val/test</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：§3.1–3.3明task/meta/state以及固定pipeline。（状态：<code>supported</code>；定位：§3.2–3.3 branch state/archive tool L124–158；§3.4 fast loop/validation tool L177–196；§3.5 slow loop/accumulation tool L244–258；Limitations tool L358–360；§4.1 frozen model/splits tool L296–301）。
+- <strong>更新由什么过程产生</strong>：自身失败与后继utility驱动skill/meta文件修改。（状态：<code>supported</code>；定位：§3.2–3.3 branch state/archive tool L124–158；§3.4 fast loop/validation tool L177–196；§3.5 slow loop/accumulation tool L244–258；Limitations tool L358–360；§4.1 frozen model/splits tool L296–301）。
+- <strong>状态怎样持久保留</strong>：节点及m快照落SQLite，后继恢复对应记录而非偶然workingtree。（状态：<code>supported</code>；定位：§3.2–3.3 branch state/archive tool L124–158；§3.4 fast loop/validation tool L177–196；§3.5 slow loop/accumulation tool L244–258；Limitations tool L358–360；§4.1 frozen model/splits tool L296–301）。
+- <strong>更新怎样进入后续改进</strong>：新m参数化下一轮五步骤，U/productivity/visitation改变frontier；negative evidence也可检索。（状态：<code>supported</code>；定位：§3.2–3.3 branch state/archive tool L124–158；§3.4 fast loop/validation tool L177–196；§3.5 slow loop/accumulation tool L244–258；Limitations tool L358–360；§4.1 frozen model/splits tool L296–301）。</p>
+<p><strong>配置判定</strong>：task/meta-skill文件与archive的两时标有界反馈支持四条件；不把五agent角色/wiring、H或模型weights描述为被进化。</p>
+<p>来源：https://arxiv.org/html/2607.05297v1；版本：2607.05297v1；定位：§3.2–3.3 branch state/archive tool L124–158；§3.4 fast loop/validation tool L177–196；§3.5 slow loop/accumulation tool L244–258；Limitations tool L358–360；§4.1 frozen model/splits tool L296–301。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>backbone</strong>：Gemma4 31B frozen across five agents</li>
+<li><strong>benchmarks</strong>：OfficeQA, SealQA, ALFWorld</li>
+<li><strong>meta</strong>：every H fast iterations; branch-local files; cumulative meta children</li>
+<li><strong>split</strong>：stratified disjoint train/val/test</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r12_ev_cfg_metaskill_evolve_task_meta_skill_dag_v1</code></strong>：task/meta-skill文件与archive的两时标有界反馈支持四条件；不把五agent角色/wiring、H或模型weights描述为被进化。 fast loop恢复parent s/m快照，train最差case驱动diagnose/retrieve/allocate/propose/execute，val评估child。每H步聚合历史子代ΔU为meta-failure，同pipeline重写全部五meta files，child携新m；后继从archive评分选parent并恢复其s/m。</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>targeted_primary_method_state_feedback_limits_20261019</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>三curated benchmarks，long-horizon real-world noisy feedback未测。</li>
+<li>慢层不是无限递归，H和pipeline本身固定；meta child累积写而非独立从parent并行生成。</li>
+<li>child utility用val反复选择，不将val称完全未参与优化；heldout test另做benchmark-mode。</li>
+<li>meta-update独立acceptance效度/参数敏感性未独立代码复现。</li>
+<li>三curated benchmarks，long-horizon real-world noisy feedback未测。; 慢层不是无限递归，H和pipeline本身固定；meta child累积写而非独立从parent并行生成。; child utility用val反复选择，不将val称完全未参与优化；heldout test另做benchmark-mode。; meta-update独立acceptance效度/参数敏感性未独立代码复现。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r12_src_skill</code> · MetaSkill-Evolve: Recursive Self-Improvement of LLM Agents via Two-Timescale Meta-Skill Evolution · 2607.05297v1</li>
+<li>https://arxiv.org/html/2607.05297v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, targeted_primary_method_state_feedback_limits_20261019。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_0fa33d5144aa547ff7 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

@@ -1,0 +1,131 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>R-Zero: Self-Evolving Reasoning LLM from Zero Data · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_d82ab8edb1ee6dcab2/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_d82ab8edb1ee6dcab2/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">R-Zero: Self-Evolving Reasoning LLM from Zero Data</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="r-zero-self-evolving-reasoning-llm-from-zero-data">R-Zero: Self-Evolving Reasoning LLM from Zero Data</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_d82ab8edb1ee6dcab2</code></p>
+</blockquote>
+<p><strong>作者</strong>：Chengsong Huang, Wenhao Yu, Xiaoyang Wang, Hongming Zhang, Zongxia Li, Ruosen Li, Jiaxin Huang, Haitao Mi, Dong Yu<br>
+<strong>原文</strong>：https://arxiv.org/abs/2508.05004<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：Separate Challenger and Solver policies, initialized from the same base model, alternate GRPO training on self-generated mathematical questions；具体更新过程为：The current Solver answers generated questions multiple times. Majority answers become pseudo-labels; an uncertainty reward trains the Challenger, and a filtered informative-band curriculum trains the Solver against those pseudo-labels；更新状态的保留与后继使用为：Both policy checkpoints persist across alternating training rounds; generated filtered datasets train the next Solver。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_r_zero">configuration:cfg_r_zero</h3>
+<p>Agreement with a majority pseudo-label is not independent ground-truth verification.</p>
+<p><strong>适用版本</strong>：v4；<strong>原文定位</strong>：S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_r_zero">cfg_r_zero</h3>
+<p><code>cfg_r_zero</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Separate Challenger and Solver policies, initialized from the same base model, alternate GRPO training on self-generated mathematical questions.</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>The current Solver answers generated questions multiple times. Majority answers become pseudo-labels; an uncertainty reward trains the Challenger, and a filtered informative-band curriculum trains the Solver against those pseudo-labels.</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>Both policy checkpoints persist across alternating training rounds; generated filtered datasets train the next Solver.</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- Base model initialization - GRPO and filtering rules - Majority-vote pseudo-label mechanism - Question prompt and mathematical task domain</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：Separate Challenger and Solver policies, initialized from the same base model, alternate GRPO training on self-generated mathematical questions.（状态：<code>supported</code>；定位：S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1）。
+- <strong>更新由什么过程产生</strong>：The current Solver answers generated questions multiple times. Majority answers become pseudo-labels; an uncertainty reward trains the Challenger, and a filtered informative-band curriculum trains the Solver against those pseudo-labels.（状态：<code>supported</code>；定位：S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1）。
+- <strong>状态怎样持久保留</strong>：Both policy checkpoints persist across alternating training rounds; generated filtered datasets train the next Solver.（状态：<code>supported</code>；定位：S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1）。
+- <strong>更新怎样进入后续改进</strong>：The current Solver answers generated questions multiple times. Majority answers become pseudo-labels; an uncertainty reward trains the Challenger, and a filtered informative-band curriculum trains the Solver against those pseudo-labels.（状态：<code>supported</code>；定位：S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1）。</p>
+<p><strong>已核对的公式、算法或任务定义</strong>：</p>
+<ul>
+<li>Uncertainty reward: 1 - 2 * abs(p_hat - 1/2), where p_hat is agreement with the majority pseudo-label.</li>
+<li>Curriculum admits question/pseudo-label pairs satisfying abs(p_hat - 1/2) &lt;= delta.</li>
+<li>Solver binary reward tests equality to the majority pseudo-label, not Python execution truth.</li>
+</ul>
+<p><strong>配置判定</strong>：Agreement with a majority pseudo-label is not independent ground-truth verification.</p>
+<p>来源：https://arxiv.org/html/2508.05004v4；版本：v4；定位：S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e2_w_r_zero</code></strong>：当前Solver响应定义Challenger不确定性奖励；更新Challenger生成下一批Solver训练题</li>
+<li>
+<p>来源版本：v4；定位：S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1；深度：<code>AI_primary_method_passage_recheck</code>。</p>
+</li>
+<li>
+<p><strong><code>oct15_training_ev_w_r_zero</code></strong>：R-Zero co-trains separate Challenger and Solver policies. Repeated Solver samples provide majority pseudo-labels, an uncertainty-based Challenger reward, and Solver training targets.</p>
+</li>
+<li>来源版本：v4；定位：S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1；深度：<code>AI_primary_method_passage_recheck</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Agreement with a majority pseudo-label is not independent ground-truth verification.</li>
+<li>The two-role parameterization differs from AZR shared-role policy training.</li>
+<li>Author wording that the framework is fully automated is not a certification of unrestricted autonomy.</li>
+<li>伪</li>
+<li>标</li>
+<li>签</li>
+<li>一</li>
+<li>致</li>
+<li>性</li>
+<li>不</li>
+<li>等</li>
+<li>于</li>
+<li>独</li>
+<li>立</li>
+<li>正</li>
+<li>确</li>
+<li>；</li>
+<li>借</li>
+<li>用</li>
+<li>A</li>
+<li>b</li>
+<li>s</li>
+<li>o</li>
+<li>l</li>
+<li>u</li>
+<li>t</li>
+<li>e</li>
+<li></li>
+<li>Z</li>
+<li>r</li>
+<li>代</li>
+<li>码</li>
+<li>执</li>
+<li>行</li>
+<li>器</li>
+<li>作</li>
+<li>其</li>
+<li>证</li>
+<li>据</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="absolute-zero-reinforced-self-play-reasoning-with-zero-data"><a href="../wf_8cffd9d9c1aba22093/">Absolute Zero: Reinforced Self-play Reasoning with Zero Data</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r2_r_zero_absolute_zero_11</code> · 当前展示权限：<code>primary_supported</code>。
+Both adapt generated training tasks to current solver behavior. R-Zero alternately trains separate Challenger/Solver policies using majority-vote pseudo-labels and an uncertainty band. AZR jointly trains proposer/solver roles in one policy and grounds code-task labels and rewards in execution.</p>
+<p><strong>关系边界</strong>：未单列</p>
+<p><strong>关系主语端 / 宾语端依据</strong>：https://arxiv.org/html/2508.05004v4（v4；S2.SS1.p1；S2.SS2.SSS0.Px1.p1；S2.SS3.p1；S2.SS4.p1）；https://arxiv.org/html/2505.03335v3（v3；S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>expand_src_w_r_zero</code> · R-Zero · v4</li>
+<li>https://arxiv.org/html/2508.05004v4；阅读深度：<code>未单列</code>。</li>
+<li><code>oct15_training_src_w_r_zero</code> · 已存来源 · v4</li>
+<li>https://arxiv.org/html/2508.05004v4；阅读深度：<code>targeted_primary_method_and_configuration_crosscheck</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_d82ab8edb1ee6dcab2 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

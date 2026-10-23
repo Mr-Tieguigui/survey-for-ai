@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>AFlow: Automating Agentic Workflow Generation · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_aa4728a57c94677a3d/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_aa4728a57c94677a3d/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">AFlow: Automating Agentic Workflow Generation</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="aflow-automating-agentic-workflow-generation">AFlow: Automating Agentic Workflow Generation</h1>
+<blockquote>
+<p>方法论文 · 2024 · <code>wf_aa4728a57c94677a3d</code></p>
+</blockquote>
+<p><strong>作者</strong>：Jiayi Zhang, Jinyu Xiang, Zhaoyang Yu, Fengwei Teng, Xionghui Chen, Jiaqi Chen, Mingchen Zhuge, Xin Cheng, Sirui Hong, Jinlin Wang, Bingnan Zheng, Bang Liu, Yuyu Luo, Chenglin Wu<br>
+<strong>原文</strong>：https://arxiv.org/html/2410.10762v1<br>
+<strong>研究分支</strong>：工作流与执行控制<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Configuration-specific structural and empirical boundary review; no universal RSI, autonomous researcher, or independent replication certification.</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_aflow_code_workflow_mcts_v1">configuration:cfg_aflow_code_workflow_mcts_v1</h3>
+<p>在工作流与搜索经验边界内持续改进；实际实验搜索空间是声明完整形式空间的受约束子集。</p>
+<p><strong>适用版本</strong>：2410.10762v1；<strong>原文定位</strong>：§3.2 tool L147–167；§4 Algorithm1 and detail tool L168–213；§5.1 tool L215–221。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="aflow-code-workflow-mcts-v1">aflow code workflow mcts v1</h3>
+<p><code>cfg_aflow_code_workflow_mcts_v1</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>工作流代码、提示、候选搜索树和父节点修改经验；优化LLM与executor权重固定。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>软混合选择父工作流，LLM编辑提示与连接代码，执行验证集多次评分并回传修改/成败经验，供下一轮搜索。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>候选代码与树经验跨搜索步骤保留，选定工作流应用到测试例。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 模型/温度/输出格式固定的实际搜索设定、operator集、外部评价函数、数据划分、树选择与停止规则</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：在工作流与搜索经验边界内持续改进；实际实验搜索空间是声明完整形式空间的受约束子集。</p>
+<p>来源：https://arxiv.org/html/2410.10762v1；版本：2410.10762v1；定位：§3.2 tool L147–167；§4 Algorithm1 and detail tool L168–213；§5.1 tool L215–221。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>found4_ev_cfg_aflow_code_workflow_mcts_v1</code></strong>：在工作流与搜索经验边界内持续改进；实际实验搜索空间是声明完整形式空间的受约束子集。</li>
+<li>来源版本：unknown；定位：§3.2 tool L147–167；§4 Algorithm1 and detail tool L168–213；§5.1 tool L215–221；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>节点模型M、温度、输出格式在实做中固定；不将形式上完整搜索空间当实际穷尽。</li>
+<li>5次验证评分/20搜索轮/固定operator由研究者配置，优化器和MCTS控制不自改。</li>
+<li>报告的不同基线预算与模型绑定不能外推普遍性能排序。</li>
+<li>节点模型M、温度、输出格式在实做中固定；不将形式上完整搜索空间当实际穷尽。; 5次验证评分/20搜索轮/固定operator由研究者配置，优化器和MCTS控制不自改。; 报告的不同基线预算与模型绑定不能外推普遍性能排序。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>found4_src_aflow</code> · 已存来源 · 2410.10762v1</li>
+<li>https://arxiv.org/html/2410.10762v1；阅读深度：<code>selected_official_fulltext_method_passages</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_official_fulltext_method_and_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_aa4728a57c94677a3d --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

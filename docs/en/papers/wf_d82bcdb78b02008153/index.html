@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>Language Models Need Sleep: Learning to Self-Modify and Consolidate Memories · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_d82bcdb78b02008153/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_d82bcdb78b02008153/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">Language Models Need Sleep: Learning to Self-Modify and Consolidate Memories</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="language-models-need-sleep-learning-to-self-modify-and-consolidate-memories">Language Models Need Sleep: Learning to Self-Modify and Consolidate Memories</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_d82bcdb78b02008153</code></p>
+</blockquote>
+<p><strong>作者</strong>：Ali Behrouz, Farnoosh Hashemi, Adel Javanmard, Vahab Mirrokni<br>
+<strong>原文</strong>：https://arxiv.org/abs/2606.03979<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：CMS不同频率memory参数、激活/低秩扩展和梦生成模型；外部任务tau、选择/蒸馏/ReSTEM流程固定；具体更新过程为：巩固把快memory知识蒸馏入新慢参数；当前模型生成dream，经选样SFT隔离副本与任务增益奖励，再以ReSTEM强化好dream生成器；更新状态的保留与后继使用为：新增慢memory保留；快块低秩参数在巩固后重置；外层训练后的dream生成参数用于后续生成。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_sleep_dreaming_seal_extension">configuration:cfg_sleep_dreaming_seal_extension</h3>
+<p>全流程中训练后的模型继续生成后续自编辑训练数据，满足声明边界内四条件；只含memory consolidation的§4.1实验不能代替dream闭环证据。</p>
+<p><strong>适用版本</strong>：2606.03979v1；<strong>原文定位</strong>：v1 §3.2–3.4 L154–208；v1 §4.1 L228–229；v1 §4 L298。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="sleep-consolidation-plus-trained-dream-generation">Sleep: consolidation plus trained dream generation</h3>
+<p><code>cfg_sleep_dreaming_seal_extension</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>CMS不同频率memory参数、激活/低秩扩展和梦生成模型；外部任务tau、选择/蒸馏/ReSTEM流程固定。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>巩固把快memory知识蒸馏入新慢参数；当前模型生成dream，经选样SFT隔离副本与任务增益奖励，再以ReSTEM强化好dream生成器。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>新增慢memory保留；快块低秩参数在巩固后重置；外层训练后的dream生成参数用于后续生成。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- CMS频率/触发时机 - 参数扩展与冻结策略 - LoRA/SFT - 固定语义reward model与编辑距离 - 任务tau - ReSTEM</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>consolidation only</strong>：Llama 3B/8B continual classification, separate from dreaming - <strong>dream inner update</strong>：isolated per-dream LoRA SFT model - <strong>dream outer update</strong>：ReSTEM on binary task performance gain - <strong>dream selection</strong>：top-k importance plus b random samples; selected passage does not supply exact k,b - <strong>knowledge incorporation</strong>：SQuAD, SEAL setup</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：全流程中训练后的模型继续生成后续自编辑训练数据，满足声明边界内四条件；只含memory consolidation的§4.1实验不能代替dream闭环证据。</p>
+<p>来源：https://arxiv.org/html/2606.03979v1；版本：2606.03979v1；定位：v1 §3.2–3.4 L154–208；v1 §4.1 L228–229；v1 §4 L298。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>consolidation only</strong>：Llama 3B/8B continual classification, separate from dreaming</li>
+<li><strong>dream inner update</strong>：isolated per-dream LoRA SFT model</li>
+<li><strong>dream outer update</strong>：ReSTEM on binary task performance gain</li>
+<li><strong>dream selection</strong>：top-k importance plus b random samples; selected passage does not supply exact k,b</li>
+<li><strong>knowledge incorporation</strong>：SQuAD, SEAL setup</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r4training_ev_cfg_sleep_dreaming_seal_extension</code></strong>：全流程中训练后的模型继续生成后续自编辑训练数据，满足声明边界内四条件；只含memory consolidation的§4.1实验不能代替dream闭环证据。</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>§4.1明确不含self-improvement/dreaming，应与完整流程结果分开。</li>
+<li>语义reward model固定；扩展可用预分配masked参数实现，不意味着物理容量无界增长。</li>
+<li>任务真值评价、种子上下文与固定外层优化仍存在；不能写成无外部数据/设计。</li>
+<li>选段核查和有限任务配置；不是整篇逐段认证、跨领域保证或独立复现。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r4training_src_w_lm_sleep</code> · 已存来源 · 2606.03979v1</li>
+<li>https://arxiv.org/html/2606.03979v1；阅读深度：<code>targeted_primary_method_controls_and_limits</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, targeted_primary_method_controls_limits_20261016。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_d82bcdb78b02008153 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

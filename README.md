@@ -8,7 +8,7 @@
 
 **English** · [简体中文](README_CN.md)
 
-[Explore the live example](https://mr-tieguigui.github.io/survey-for-ai/) · [Use the Skill](skill/survey-evidence-ledger/SKILL.md) · [Method contract](method/workflow.json) · [AI reading guide](AI_GUIDE.md)
+[Explore the live example](https://mr-tieguigui.github.io/survey-for-ai/en/) · [Use the Skill](skill/survey-evidence-ledger/SKILL.md) · [Method contract](method/workflow.json) · [AI reading guide](AI_GUIDE.md)
 
 ![Method](https://img.shields.io/badge/Method-domain_adapted-c7e9a4?labelColor=17211b&color=c7e9a4) ![Evidence](https://img.shields.io/badge/Knowledge-versioned_%26_traceable-abcac0?labelColor=17211b) ![Example](https://img.shields.io/badge/Worked_example-RSI-dbc7a0?labelColor=17211b)
 
@@ -20,6 +20,20 @@
 
 > **The unit of delivery is a reusable knowledge system:** paper dossiers + versioned evidence + field relationships + reader modules + bounded answers. A website presents it; a narrative article can later be written from it.
 
+<p align="center"><sub>◈ Method + Skill &nbsp; · &nbsp; ◎ RSI worked example &nbsp; · &nbsp; Release v1.1.0 &nbsp; · &nbsp; Presentation updated 2026-10-23</sub></p>
+
+## Research at a glance
+
+| ◇ Framework | ⌘ Reusable Skill | ◎ Worked example | ↔ Bilingual interface |
+|---|---|---|---|
+| Domain adapter, evidence permissions, typed relations and answer contract | Initialize, curate, synthesize, retrieve and maintain | Fixed RSI corpus, with explicit evidence depth | [English website](https://mr-tieguigui.github.io/survey-for-ai/en/) · [中文网站](https://mr-tieguigui.github.io/survey-for-ai/) |
+
+<figure>
+<img src="website/assets/figures/framework-overview.svg" width="100%" alt="Figure 1: construction, organization, targeted retrieval and dependency-aware maintenance">
+</figure>
+
+*Figure 1. A conceptual construction and retrieval model. The shaded evidence boundary distinguishes navigational context from technical citation permission; the return path represents selective maintenance, not a measured speedup.*
+
 ## Start with your goal
 
 | I want to… | Start here | What I get |
@@ -27,8 +41,8 @@
 | Understand the idea | [Construction method](#the-construction-method) | Lifecycle, evidence permissions and completion gates |
 | Build a survey in another field | [New-domain quick start](#build-a-survey-in-another-domain) | An empty adapter-driven workspace and an agent workflow |
 | Give an existing survey to an AI | [AI_GUIDE.md](AI_GUIDE.md) | Authority order, targeted retrieval and citation rules |
-| Explore a finished example | [RSI research atlas](https://mr-tieguigui.github.io/survey-for-ai/#atlas) | Vertical branches, typed relations, comparisons and reader routes |
-| Inspect a paper | [808-paper library](https://mr-tieguigui.github.io/survey-for-ai/explore/) | Concrete content, protocol, limitations, links and evidence depth |
+| Explore a finished example | [RSI research atlas](https://mr-tieguigui.github.io/survey-for-ai/en/atlas/) | Vertical branches, typed relations, comparisons and reader routes |
+| Inspect a paper | [808-paper library](https://mr-tieguigui.github.io/survey-for-ai/en/explore/) | Concrete content, protocol, limitations, links and evidence depth |
 | Download all RSI information | [Complete knowledge ZIP — access required](https://github.com/Mr-Tieguigui/rsi-survey/raw/refs/heads/main/survey/RSI-Survey-Knowledge.zip) | Canonical data, 808 Markdown dossiers, screening, methods and query tools |
 
 ## Why a survey for AI?
@@ -169,7 +183,26 @@ comparison_conditions / limits / gaps
 status: supported | partial | insufficient_evidence
 ```
 
-**Concrete example:** a reader asks whether changing an agent's code also changes the mechanism that generates future improvements. The RSI route retrieves the DGM and Hyperagents configurations and relation `r_hyper_dgm`; it compares the documented boundaries and selection conditions rather than treating every “self-improving” title as equivalent. See the [live comparison](https://mr-tieguigui.github.io/survey-for-ai/#compare) and [DGM dossier](https://mr-tieguigui.github.io/survey-for-ai/papers/wf_c29f716871f8031486/).
+**Concrete example:** a reader asks whether changing an agent's code also changes the mechanism that generates future improvements. The RSI route retrieves the DGM and Hyperagents configurations and relation `r_hyper_dgm`; it compares the documented boundaries and selection conditions rather than treating every “self-improving” title as equivalent. See the [live comparison](https://mr-tieguigui.github.io/survey-for-ai/en/compare/) and [DGM dossier](https://mr-tieguigui.github.io/survey-for-ai/en/papers/wf_c29f716871f8031486/).
+
+## Representative papers and what each demonstrates
+
+The selection below illustrates different roles and mechanisms, rather than ranking papers or certifying all-paper review. Versions link to the sources actually recorded in this release.
+
+| Year | Paper / actual source | Research role | Retained object / reading boundary |
+|---|---|---|---|
+| 2003 | [Gödel Machine](https://arxiv.org/html/cs/0309048v5) · `v5` | Theory / formal system | Provable rewriting under stated formal and utility assumptions |
+| 2025 | [Absolute Zero](https://arxiv.org/html/2505.03335v3) · `v3` | Method | Shared-policy learning; task buffers and parameters |
+| 2023 | [Voyager](https://arxiv.org/html/2305.16291v2) · `v2` | Method | Executable skills across later tasks |
+| 2023 | [ExpeL](https://arxiv.org/html/2308.10144v3) · `v3` | Method | Experience rules retrieved in later prompts |
+| 2024 | [ADAS](https://arxiv.org/html/2408.08435v2) · `v2` | System / agent | Archived target-agent designs; fixed meta-agent |
+| 2025 | [SICA](https://arxiv.org/html/2504.15228v2) · `v2` | Method | Archived coding agents selected for later improvement |
+| 2025 | [Darwin Gödel Machine](https://arxiv.org/html/2505.22954v3) · `v3` | Method | Agent-code evolution; empirical evaluation rather than formal proof |
+| — | [Raven](https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf) · `tech-report-v1` | System / agent | Harness strategy adaptation; training selection separate from sealed tests |
+
+<img src="website/assets/figures/rsi-relations.svg" width="100%" alt="Two evidence-supported RSI relationships">
+
+*Figure 2. The display runs from predecessor to successor; ledger predicates and relation IDs are preserved. Neither edge is evidence of universal RSI or sustained acceleration.*
 
 ## RSI: the worked example
 
@@ -187,13 +220,22 @@ status: supported | partial | insufficient_evidence
 
 The candidate ledger contains 28,393 discovery records and 1,072 historical P1 screening items. Those are discovery/screening denominators, not extra admitted papers. Six targeted descriptive reading notes enrich specific mechanisms and protocols without becoming six whole-paper reviews.
 
-<img src="website/assets/figures/home-preview.png" width="100%" alt="RSI example: interactive field atlas, cases, comparisons and reader routes">
+<img src="website/assets/figures/rsi-preview.png" width="100%" alt="RSI example: interactive field atlas, cases, comparisons and reader routes">
 
 ## Low-cost operation and honest evaluation
 
 Read compact state and the current changes first. Reuse exact URL/version caches; extract a needed passage once; use identifiers to reuse it across views. Let scripts perform counting, joins, hashing and link checks. Keep semantic work for identity ambiguity, mechanism interpretation, conflicting evidence and relation meaning. Review changed fields rather than rereading every paper. Update only affected dependencies and batch accepted changes before rebuilding.
 
 No numeric efficiency claim is made. The [evaluation protocol](skill/survey-evidence-ledger/references/evaluation-protocol.md) specifies same-model/same-source comparisons, ablations, unexposed transfer cases, citation fidelity, answer utility, source reads, tokens, elapsed time and incremental repair. Passing a schema check is not evidence that a model became more accurate.
+
+## Release and reading map
+
+| Date | Version / scope | What changed |
+|---|---|---|
+| 2026-10-23 | Framework v1.1.0 | Bilingual page-based website, accessible motion, academic figures and representative-paper tables |
+| Fixed corpus | RSI snapshot | 808 families and existing evidence permissions retained; presentation changes do not count as new reviews |
+
+Read in order: **[Framework](https://mr-tieguigui.github.io/survey-for-ai/en/) → [Method](https://mr-tieguigui.github.io/survey-for-ai/en/method/) → [Skill](https://mr-tieguigui.github.io/survey-for-ai/en/skill/) → [RSI overview](https://mr-tieguigui.github.io/survey-for-ai/en/rsi/) → [Atlas](https://mr-tieguigui.github.io/survey-for-ai/en/atlas/) → [Cases](https://mr-tieguigui.github.io/survey-for-ai/en/cases/) → [Comparison](https://mr-tieguigui.github.io/survey-for-ai/en/compare/) → [Reader questions](https://mr-tieguigui.github.io/survey-for-ai/en/reader/)**. The language switch preserves the current page. Interfaces and selected briefs are bilingual; archival dossiers retain their original curatorial language.
 
 ## Files, access and maintenance
 

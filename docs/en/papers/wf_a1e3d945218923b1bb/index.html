@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>MUSTARD: Mastering Uniform Synthesis of Theorem and Proof Data · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_a1e3d945218923b1bb/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_a1e3d945218923b1bb/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">MUSTARD: Mastering Uniform Synthesis of Theorem and Proof Data</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="mustard-mastering-uniform-synthesis-of-theorem-and-proof-data">MUSTARD: Mastering Uniform Synthesis of Theorem and Proof Data</h1>
+<blockquote>
+<p>方法论文 · 2024 · <code>wf_a1e3d945218923b1bb</code></p>
+</blockquote>
+<p><strong>作者</strong>：Yinya Huang, Xiaohan Lin, Zhengying Liu, Qingxing Cao, Huajian Xin, Haiming Wang, Zhenguo Li, Linqi Song, Xiaodan Liang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2402.08957<br>
+<strong>研究分支</strong>：验证、批评与信用分配<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>MUSTARD生成数学题及形式证明并用Lean筛选，MUSTARDSAUCE作为数据集训练较小模型；摘要未说明更新后小模型反复生成后续训练数据。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_mustard_lean3_generation_filter_train_v3">configuration:cfg_mustard_lean3_generation_filter_train_v3</h3>
+<p>相邻数据构建/外部安全协议配置；不把产物修订、基准难度增加或外部guard认证成学习改进器自改。</p>
+<p><strong>适用版本</strong>：v3；<strong>原文定位</strong>：§3.1–3.3 tool L100–134；§4.2 human inspection tool L174–185；§4.3 tool L202–212。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="r4_role_review_wf_a1e3d945218923b1bb">已存角色解释 · <code>r4_role_review_wf_a1e3d945218923b1bb</code></h3>
+<p>MUSTARD生成数学题及形式证明并用Lean筛选，MUSTARDSAUCE作为数据集训练较小模型；摘要未说明更新后小模型反复生成后续训练数据。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="mustard-fixed-generator-lean3-filtering-downstream-fine-tuning">MUSTARD fixed generator + Lean3 filtering + downstream fine-tuning</h3>
+<p><code>cfg_mustard_lean3_generation_filter_train_v3</code> · verified_data_generation_pipeline</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>GPT4固定生成器、概念池与Lean3 proof-error修复/过滤、数据集及较小学生fine-tuning；无学生回写生成器链。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>采1–2数学概念生成自然命题/解答及Lean3证明，失败以error message重试，过prover则入数据集，再LoRA训练下游学生。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>验证数据集跨样本保留供训练；证明修复只在本题上下文，未证明训练学生重生后续Mustard数据。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 概念池及采样规则 - GPT4基础模型 - Lean3 verifier - 学生LoRA训练协议</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>generator</strong>：GPT4 - <strong>students</strong>：- GPT2-large - Llama2-7B - Llama2-70B - <strong>training</strong>：LoRA - <strong>valid points</strong>：5866 - <strong>valid split</strong>：- 4866 - 500 - 500 - <strong>verifier</strong>：Lean3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：§3描述生成器/验证器/下游学生（状态：<code>supported</code>；定位：§3.1–3.3 tool L100–134；§4.2 human inspection tool L174–185）。
+- <strong>更新由什么过程产生</strong>：本题error修复但固定生成器未学习（状态：<code>partial</code>；定位：§3.1–3.3 tool L100–134；§4.2 human inspection tool L174–185）。
+- <strong>状态怎样持久保留</strong>：数据集持久供下游训练（状态：<code>supported</code>；定位：§3.1–3.3 tool L100–134；§4.2 human inspection tool L174–185）。
+- <strong>更新怎样进入后续改进</strong>：§4.3只显示小模型fine-tune，无更新学生回到生成器的后续回流（状态：<code>contradicted</code>；定位：§3.1–3.3 tool L100–134；§4.2 human inspection tool L174–185）。</p>
+<p><strong>配置判定</strong>：相邻数据构建/外部安全协议配置；不把产物修订、基准难度增加或外部guard认证成学习改进器自改。</p>
+<p>来源：https://arxiv.org/html/2402.08957v3；版本：v3；定位：§3.1–3.3 tool L100–134；§4.2 human inspection tool L174–185；§4.3 tool L202–212。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>generator</strong>：GPT4</li>
+<li><strong>students</strong>：- GPT2-large - Llama2-7B - Llama2-70B</li>
+<li><strong>training</strong>：LoRA</li>
+<li><strong>valid points</strong>：5866</li>
+<li><strong>valid split</strong>：- 4866 - 500 - 500</li>
+<li><strong>verifier</strong>：Lean3</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r4_role_ev_wf_a1e3d945218923b1bb</code></strong>：MUSTARD生成数学题及形式证明并用Lean筛选，MUSTARDSAUCE作为数据集训练较小模型；摘要未说明更新后小模型反复生成后续训练数据。</li>
+<li>
+<p>来源版本：2402.08957v3；定位：Atom entry http://arxiv.org/abs/2402.08957v3；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r6safe_ev_cfg_mustard_lean3_generation_filter_train_v3</code></strong>：采1–2数学概念生成自然命题/解答及Lean3证明，失败以error message重试，过prover则入数据集，再LoRA训练下游学生。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Lean3接受形式证明不认证自然命题/形式命题等价；人工valid集IS-FS alignment约74%、IP-FP约72%，不能声称自然语言全真。</li>
+<li>通过率或修复次数是给定GPT4/模板下的难度proxy，不是客观数学难度。</li>
+<li>MustardSauce-valid 5866，训练4866/验证500/测试500；其他数据组合用途不同不混用。</li>
+<li>下游优于random/invalid的作者报告不等于独立证明所有增益由formal filtering单因素造成。</li>
+<li>仅实读官方摘要作角色和范围判读，未核全文方法、实验、定理及数值；不得直接支持技术回答或继承关系。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r4_role_src_20fe003e28646d5b</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=2402.08957%2C2402.09015%2C2402.09269%2C2402.09283%2C2402.09727%2C2402.09742%2C2402.09748%2C2402.10110%2C2402.10176%2C2402.10196%2C2402.10200%2C2402.10663%2C2402.10770%2C2402.10890%2C2402.10963%2C2402.10980%2C2402.10987%2C2402.11190%2C2402.11218%2C2402.11359%2C2402.11411%2C2402.11451%2C2402.11550%2C2402.11633%2C2402.11827%2C2402.11975%2C2402.12048%2C2402.12185%2C2402.12255%2C2402.12317%2C2402.12348%2C2402.12391%2C2402.12431%2C2402.12451%2C2402.12545%2C2402.12914%2C2402.12959%2C2402.13210%2C2402.13212%2C2402.13296%2C2402.13426%2C2402.13542%2C2402.13598%2C2402.13669%2C2402.13717%2C2402.14034%2C2402.14083%2C2402.14207%2C2402.14268%2C2402.14382%2C2402.15057%2C2402.15116%2C2402.15391%2C2402.15538%2C2402.15589%2C2402.15809%2C2402.15810%2C2402.16288%2C2402.16313%2C2402.16499%2C2402.16696%2C2402.16767%2C2402.16823%2C2402.16837%2C2402.16906%2C2402.16965%2C2402.17168%2C2402.17453%2C2402.17505%2C2402.17574%2C2402.17613%2C2402.17753%2C2402.18005%2C2402.18060%2C2402.18361%2C2402.18381%2C2402.18485%2C2402.19085%2C2402.19173%2C2402.19446%2C2402.19473%2C2403.00198%2C2403.00690%2C2403.00833%2C2403.00839%2C2403.01197%2C2403.01244%2C2403.01248%2C2403.01528%2C2403.02164%2C2403.02502%2C2403.02691%2C2403.02817%2C2403.02985%2C2403.03101%2C2403.03129%2C2403.03186%2C2403.03218%2C2403.03768%2C2403.03883&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+<li><code>r6safe_src_mustard</code> · 已存来源 · v3</li>
+<li>https://arxiv.org/html/2402.08957v3；阅读深度：<code>selected_original_method_and_scope_limits</code>。</li>
+<li><code>r6safe_src_mustard_setup</code> · 已存来源 · v3</li>
+<li>https://arxiv.org/html/2402.08957v3；阅读深度：<code>selected_original_method_and_scope_limits</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_original_method_and_scope_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_a1e3d945218923b1bb --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

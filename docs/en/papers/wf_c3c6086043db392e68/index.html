@@ -1,0 +1,194 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>Self-Modifying Lean Proof Agents with Verifier-Grounded Benchmark Coevolution · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_c3c6086043db392e68/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_c3c6086043db392e68/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">Self-Modifying Lean Proof Agents with Verifier-Grounded Benchmark Coevolution</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="self-modifying-lean-proof-agents-with-verifier-grounded-benchmark-coevolution">Self-Modifying Lean Proof Agents with Verifier-Grounded Benchmark Coevolution</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_c3c6086043db392e68</code></p>
+</blockquote>
+<p><strong>作者</strong>：Yuqing Li, Zeguan Wu, Yu Gan, Junyu Liu<br>
+<strong>原文</strong>：https://arxiv.org/abs/2607.17352<br>
+<strong>研究分支</strong>：工作流与执行控制<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Lean 系统在固定可信 runtime 内演化工作流、提示和工具，champion 还更新课程并在新 benchmark 上重校准，成功由 Lean 验证；主角色应为方法而非仅 benchmark，可信验证范围和测试分离待全文核实。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_lean_mutable_workflow_fixed_benchmark_v1">configuration:cfg_lean_mutable_workflow_fixed_benchmark_v1</h3>
+<p>在明确可编辑工作区及档案边界内支持结构四条件；不认证改进效率递增、全自主或无限能力增长。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181；Appendix A L221–236。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_lean_workspace_curriculum_coevolution_v1">configuration:cfg_lean_workspace_curriculum_coevolution_v1</h3>
+<p>在明确可编辑工作区及档案边界内支持结构四条件；不认证改进效率递增、全自主或无限能力增长。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181；Appendix A L221–236。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="s18_role_review_wf_c3c6086043db392e68">已存角色解释 · <code>s18_role_review_wf_c3c6086043db392e68</code></h3>
+<p>Lean 系统在固定可信 runtime 内演化工作流、提示和工具，champion 还更新课程并在新 benchmark 上重校准，成功由 Lean 验证；主角色应为方法而非仅 benchmark，可信验证范围和测试分离待全文核实。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="lean-mutable-proof-workflow-fixed-benchmark-ablation">Lean mutable proof workflow: fixed-benchmark ablation</h3>
+<p><code>cfg_lean_mutable_workflow_fixed_benchmark_v1</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定76题benchmark条件下的可编辑证明workflow、工具、prompts、meta修改逻辑与后代代码档案；可信Lean runtime固定。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>代理通过受约束编辑接口改写自身工作区；代码smoke gate后由Lean独立验证证明，接受后代进入档案并可在同代或后代再次作为修改父代。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>接受后的可编辑工作区在15代演化档案内跨证明任务和自修改保留；活动benchmark固定，非LLM权重训练。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- Lean/Mathlib和可信重验证runtime - proof-context groundedness约束 - 编辑接口、code smoke gates与隔离worker - DGM-style父代权重公式 - mastery阈值与候选任务池 - 基础LLM权重</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>accepted children per generation max</strong>：3 - <strong>active generations</strong>：15 - <strong>active tasks</strong>：76 - <strong>api timeout seconds</strong>：600 - <strong>backend</strong>：DeepSeek deepseek-v4-pro - <strong>benchmark update threshold</strong>：0.3 - <strong>candidate level counts</strong>：- 52 - 57 - 256 - <strong>candidate pool</strong>：365 - <strong>curriculum replacement budget</strong>：0 - <strong>heldout dataset</strong>：miniF2F test, disjoint from valid curriculum, never used for evolution selection - <strong>heldout tasks</strong>：244 - <strong>initial active level counts</strong>：- 27 - 46 - 3 - <strong>mastery threshold</strong>：0.7 - <strong>mutation attempts per generation max</strong>：6 - <strong>recalibration epsilon</strong>：0.1 - <strong>reported runs</strong>：single trajectory per arm, no variance estimates - <strong>temperature</strong>：0 - <strong>verifier</strong>：real Lean4/Mathlib v4.30.0 - <strong>workflow timeout seconds</strong>：1200</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：固定76题benchmark条件下的可编辑证明workflow、工具、prompts、meta修改逻辑与后代代码档案；可信Lean runtime固定。（状态：<code>supported</code>；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181）。
+- <strong>更新由什么过程产生</strong>：§3.1明确工作区包括agent-facing workflow及适应它的meta-level逻辑，工作区为唯一演化对象。（状态：<code>supported</code>；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181）。
+- <strong>状态怎样持久保留</strong>：§3.4接受后代立即进档案并可作后续父代；课程配置另外保留更新后的B和c。（状态：<code>supported</code>；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181）。
+- <strong>更新怎样进入后续改进</strong>：§3.1的可变meta逻辑随工作区后代保留，§3.4后代被再次采样为父代；协同配置中后代解题表现亦回流到新课程及下一轮选择。（状态：<code>supported</code>；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181）。</p>
+<p><strong>配置判定</strong>：在明确可编辑工作区及档案边界内支持结构四条件；不认证改进效率递增、全自主或无限能力增长。</p>
+<p>来源：https://arxiv.org/html/2607.17352v1；版本：v1；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181；Appendix A L221–236。</p>
+<h3 id="lean-workspace-verifier-grounded-benchmark-coevolution">Lean workspace + verifier-grounded benchmark coevolution</h3>
+<p><code>cfg_lean_workspace_curriculum_coevolution_v1</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>可编辑证明工作区、meta修改逻辑、代码档案及champion驱动的活动课程B和系数c；可信验证与课程规则固定。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>选中父工作区产生后代；Lean验证记录决定champion及档案弱点，按固定mastery规则替换活动课程任务并重评champion更新c；更新的代码、B和c影响后续变体选择与验证反馈。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>接受后的可编辑工作区在15代演化档案内跨证明任务和自修改保留；课程B与系数c跨代传递。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- Lean/Mathlib和可信重验证runtime - proof-context groundedness约束 - 编辑接口、code smoke gates与隔离worker - DGM-style父代权重公式 - mastery阈值与候选任务池 - 基础LLM权重</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>accepted children per generation max</strong>：3 - <strong>active generations</strong>：15 - <strong>active tasks</strong>：76 - <strong>api timeout seconds</strong>：600 - <strong>backend</strong>：DeepSeek deepseek-v4-pro - <strong>benchmark update threshold</strong>：0.3 - <strong>candidate level counts</strong>：- 52 - 57 - 256 - <strong>candidate pool</strong>：365 - <strong>curriculum replacement budget</strong>：6 - <strong>heldout dataset</strong>：miniF2F test, disjoint from valid curriculum, never used for evolution selection - <strong>heldout tasks</strong>：244 - <strong>initial active level counts</strong>：- 27 - 46 - 3 - <strong>mastery threshold</strong>：0.7 - <strong>mutation attempts per generation max</strong>：6 - <strong>recalibration epsilon</strong>：0.1 - <strong>reported runs</strong>：single trajectory per arm, no variance estimates - <strong>temperature</strong>：0 - <strong>verifier</strong>：real Lean4/Mathlib v4.30.0 - <strong>workflow timeout seconds</strong>：1200</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：可编辑证明工作区、meta修改逻辑、代码档案及champion驱动的活动课程B和系数c；可信验证与课程规则固定。（状态：<code>supported</code>；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181）。
+- <strong>更新由什么过程产生</strong>：§3.1明确工作区包括agent-facing workflow及适应它的meta-level逻辑，工作区为唯一演化对象。（状态：<code>supported</code>；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181）。
+- <strong>状态怎样持久保留</strong>：§3.4接受后代立即进档案并可作后续父代；课程配置另外保留更新后的B和c。（状态：<code>supported</code>；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181）。
+- <strong>更新怎样进入后续改进</strong>：§3.1的可变meta逻辑随工作区后代保留，§3.4后代被再次采样为父代；协同配置中后代解题表现亦回流到新课程及下一轮选择。（状态：<code>supported</code>；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181）。</p>
+<p><strong>配置判定</strong>：在明确可编辑工作区及档案边界内支持结构四条件；不认证改进效率递增、全自主或无限能力增长。</p>
+<p>来源：https://arxiv.org/html/2607.17352v1；版本：v1；定位：§3.1–3.2 tool L121–138；§3.3–3.4 tool L139–162；§4 tool L165–181；Appendix A L221–236。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>accepted children per generation max</strong>：3</li>
+<li><strong>active generations</strong>：15</li>
+<li><strong>active tasks</strong>：76</li>
+<li><strong>api timeout seconds</strong>：600</li>
+<li><strong>backend</strong>：DeepSeek deepseek-v4-pro</li>
+<li><strong>benchmark update threshold</strong>：0.3</li>
+<li><strong>candidate level counts</strong>：- 52 - 57 - 256</li>
+<li><strong>candidate pool</strong>：365</li>
+<li><strong>curriculum replacement budget</strong>：0</li>
+<li><strong>heldout dataset</strong>：miniF2F test, disjoint from valid curriculum, never used for evolution selection</li>
+<li><strong>heldout tasks</strong>：244</li>
+<li><strong>initial active level counts</strong>：- 27 - 46 - 3</li>
+<li><strong>mastery threshold</strong>：0.7</li>
+<li><strong>mutation attempts per generation max</strong>：6</li>
+<li><strong>recalibration epsilon</strong>：0.1</li>
+<li><strong>reported runs</strong>：single trajectory per arm, no variance estimates</li>
+<li><strong>temperature</strong>：0</li>
+<li><strong>verifier</strong>：real Lean4/Mathlib v4.30.0</li>
+<li>
+<p><strong>workflow timeout seconds</strong>：1200</p>
+</li>
+<li>
+<p><strong>accepted children per generation max</strong>：3</p>
+</li>
+<li><strong>active generations</strong>：15</li>
+<li><strong>active tasks</strong>：76</li>
+<li><strong>api timeout seconds</strong>：600</li>
+<li><strong>backend</strong>：DeepSeek deepseek-v4-pro</li>
+<li><strong>benchmark update threshold</strong>：0.3</li>
+<li><strong>candidate level counts</strong>：- 52 - 57 - 256</li>
+<li><strong>candidate pool</strong>：365</li>
+<li><strong>curriculum replacement budget</strong>：6</li>
+<li><strong>heldout dataset</strong>：miniF2F test, disjoint from valid curriculum, never used for evolution selection</li>
+<li><strong>heldout tasks</strong>：244</li>
+<li><strong>initial active level counts</strong>：- 27 - 46 - 3</li>
+<li><strong>mastery threshold</strong>：0.7</li>
+<li><strong>mutation attempts per generation max</strong>：6</li>
+<li><strong>recalibration epsilon</strong>：0.1</li>
+<li><strong>reported runs</strong>：single trajectory per arm, no variance estimates</li>
+<li><strong>temperature</strong>：0</li>
+<li><strong>verifier</strong>：real Lean4/Mathlib v4.30.0</li>
+<li><strong>workflow timeout seconds</strong>：1200</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_c3c6086043db392e68</code></strong>：Lean 系统在固定可信 runtime 内演化工作流、提示和工具，champion 还更新课程并在新 benchmark 上重校准，成功由 Lean 验证；主角色应为方法而非仅 benchmark，可信验证范围和测试分离待全文核实。</li>
+<li>
+<p>来源版本：2607.17352v1；定位：Atom entry http://arxiv.org/abs/2607.17352v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>scope18_lean_ev_cfg_lean_mutable_workflow_fixed_benchmark_v1</code></strong>：在明确可编辑工作区及档案边界内支持结构四条件；不认证改进效率递增、全自主或无限能力增长。</p>
+</li>
+<li>
+<p>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>scope18_lean_ev_cfg_lean_workspace_curriculum_coevolution_v1</code></strong>：在明确可编辑工作区及档案边界内支持结构四条件；不认证改进效率递增、全自主或无限能力增长。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>单次运行研究，无跨seed方差估计（Appendix A L221）；不认证一般增益、独立复现或开放式持续加速。</li>
+<li>固定DeepSeek deepseek-v4-pro服务于证明与自修改；温度0仍存在输出不稳定，不能视作严格确定性。</li>
+<li>可信Lean4/Mathlib v4.30.0、评分和benchmark管理runtime不在演化范围；改进代码与证明结果必须分别通过smoke gate和可信重验证。</li>
+<li>禁止sorry/admit并隔离mutable进程等是声明threat model下的控制；未独立执行安全测试，不断言对任意恶意环境绝对免疫。</li>
+<li>proof context的结构质量仅记录、不奖励；高solve率未等于形成深层耐久证明DAG。</li>
+<li>miniF2F valid进入课程，244题test与之分离且不参与演化选择；评估了不同数量的run候选，不能作等量候选无偏最优比较。</li>
+<li>该消融kappa=0，不能将协同臂任务替换/重校准归因到固定benchmark配置。</li>
+<li>champion单锚缩放只固定该anchor的归一分数，且r_new&lt;epsilon时并非严格保分；不证明任意代理跨课程的可比性或无selection bias。</li>
+<li>课程只在既有365题分层池内更换；未生成新定理，未改变Lean正确性标准或自改benchmark规则。</li>
+<li>45.1%为所选9个协同轨迹检查点的最佳held-out结果；固定臂只对最高活动分数的2个代理做held-out，不是同量候选的随机多次运行对照。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>s18_role_src_296fdf533f23d85c</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28%28ti%3Averifier+OR+ti%3A%22process+reward%22+OR+ti%3A%22feedback+reliability%22%29+AND+%28all%3Areasoning+OR+all%3Aagent%29%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=200&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+<li><code>scope18_lean_src_method</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2607.17352v1；阅读深度：<code>selected_primary_method_trusted_boundary_and_experimental_protocol</code>。</li>
+<li><code>scope18_lean_src_settings</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2607.17352v1；阅读深度：<code>selected_primary_method_trusted_boundary_and_experimental_protocol</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_method_trusted_boundary_and_experimental_protocol。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_c3c6086043db392e68 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

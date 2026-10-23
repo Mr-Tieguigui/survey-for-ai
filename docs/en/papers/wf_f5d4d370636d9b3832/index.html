@@ -1,0 +1,143 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>A Self-Improving Coding Agent · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_f5d4d370636d9b3832/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_f5d4d370636d9b3832/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">A Self-Improving Coding Agent</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><section class="p-archive-brief"><span>EDITORIAL BRIEF / SICA</span><h2>Select the next improving agent from an archive</h2><p>Coding agents can edit the Python codebase. The archive retains agents and utilities, and the highest-utility agent participates in subsequent improvement.</p><p><b>Evaluation conditions:</b> Keep the archive, utility measurement and selection rule; distinguish attempts from adoption.</p><p><b>Limits:</b> This bounded structural loop does not automatically establish universal RSI, sustained acceleration or cross-environment gains.</p></section><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="a-self-improving-coding-agent">A Self-Improving Coding Agent</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_f5d4d370636d9b3832</code></p>
+</blockquote>
+<p><strong>作者</strong>：Maxime Robeyns, Martin Szummer, Laurence Aitchison<br>
+<strong>原文</strong>：https://arxiv.org/abs/2504.15228<br>
+<strong>研究分支</strong>：代理架构、harness与代码<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：代理版本及成绩归档；具体更新过程为：被选代理执行后继代码修改；更新状态的保留与后继使用为：下一轮选择归档最优代理作meta-agent。</p>
+<h3 id="_1">定点原文补充：具体问题与执行过程</h3>
+<p>将编码代理本身作为改进任务，下一轮由档案中效用最高的代理担任元代理，允许改动完整 Python 代码库。</p>
+<ol>
+<li>初始系统有文件与命令工具、编码/问题求解/推理子代理，以及周期检查偏离行为的 overseer。</li>
+<li>保留代理和评测成绩；档案选中的代理查阅历史、提出改进并实现后继版本。</li>
+</ol>
+<p><strong>实验与选择协议</strong>：</p>
+<ul>
+<li>效用综合任务得分、美元成本与墙钟时间，权重为 0.5/0.25/0.25；成本与时间归一化上限为 $10 和 300 秒。</li>
+<li>超时后效用再乘 0.5；这一分数用于选择后继元代理，不用于参数梯度更新。</li>
+</ul>
+<p><strong>解释边界</strong>：</p>
+<ul>
+<li>成本、时间和超时会影响选择，不能把其效用等同于单一准确率。</li>
+<li>作者指出持续提出新颖、可实现修改的困难；固定效用和评测设置不认证强 RSI。</li>
+</ul>
+<p>来源：<a href="https://arxiv.org/html/2504.15228v2">2504.15228v2</a>；定位：§3 Methods, Eq. (1)–(2), Algorithm 1；§3.1 Initial agent；§5.1 Limitations。本补充只登记定点描述性阅读，不扩大旧配置或数值结果的准入权限。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_sica">configuration:cfg_sica</h3>
+<p>Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.</p>
+<p><strong>适用版本</strong>：v2；<strong>原文定位</strong>：Sections 3-4。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_sica_hgm_comparison">configuration:cfg_sica_hgm_comparison</h3>
+<p>Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.</p>
+<p><strong>适用版本</strong>：v3；<strong>原文定位</strong>：S2.p1；S2.p3；S4.SS1.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_sica">cfg_sica</h3>
+<p><code>cfg_sica</code> · method_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>代理版本及成绩归档。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>被选代理执行后继代码修改。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>下一轮选择归档最优代理作meta-agent。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.</p>
+<p>来源：https://arxiv.org/html/2504.15228v2；版本：v2；定位：Sections 3-4。</p>
+<h3 id="cfg_sica_hgm_comparison">cfg_sica_hgm_comparison</h3>
+<p><code>cfg_sica_hgm_comparison</code> · evaluation_variant</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>SICA baseline implementation in HGM SWE-Verified-60 and Polyglot comparison</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>被选代理执行后继代码修改。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>下一轮选择归档最优代理作meta-agent。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：HGM研究的基线重实现与搜索树分析配置，非原论文全套实验协议；具体代码/预算等价未认证。</p>
+<p>来源：https://arxiv.org/html/2510.21614v3；版本：v3；定位：S2.p1；S2.p3；S4.SS1.p1。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_2">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e_sica</code></strong>：SICA从档案选最优代理作为下一轮元代理；无模型权重更新。</li>
+<li>
+<p>来源版本：v2；定位：S3.p1；S3.p3；深度：<code>AI_rechecked_primary_text_author_report</code>。</p>
+</li>
+<li>
+<p><strong><code>e_sica_eval</code></strong>：所查实验采用固定50题SWE子集；成本与短超时影响收益解释。</p>
+</li>
+<li>来源版本：v2；定位：S4.p1；S5.SS1.p2；深度：<code>AI_rechecked_primary_text_author_report</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>外部基准与效用固定</li>
+<li>不能与其他论文不同设置直接按百分比排名</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="automated-design-of-agentic-systems"><a href="../wf_c9890d5668d1c1b33e/">Automated Design of Agentic Systems</a></h3>
+<p>关系：<code>adapts_design_of</code> · <code>r_sica_adas</code> · 当前展示权限：<code>primary_supported</code>。
+SICA作者明确将其主循环与ADAS档案循环对照：保留代理档案与评测结果，但从档案选择最佳代理充当下一轮元代理，并允许编辑完整Python代码库；ADAS原配置是固定元代理生成目标代理forward函数。</p>
+<p><strong>关系边界</strong>：支持作者明确说明的循环改造，不认证源码复用；ADAS不修改元代理这一结论限于所核Meta Agent Search配置，不将作者对self-improving的术语立场当统一范围协议。</p>
+<p><strong>关系主语端 / 宾语端依据</strong>：https://arxiv.org/html/2504.15228v2（v2；S3.p1.1；S2.p5.1）；https://arxiv.org/html/2408.08435v2（v2；S3.p1.1；S3.p2.1）。</p>
+<h3 id="darwin-godel-machine-open-ended-evolution-of-self-improving-agents"><a href="../wf_c29f716871f8031486/">Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents</a></h3>
+<p>关系：<code>alternative_mechanism_to</code> · <code>r_dgm_sica</code> · 当前展示权限：<code>primary_supported</code>。
+SICA按当前最佳得分选择下一轮元代理；DGM保留多分支档案并按表现与子代探索程度采样父代。</p>
+<p><strong>关系边界</strong>：作者明确同期工作；仅比较选择机制，不画继承边，也不接受任务表现必然等于改进能力的推论。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- subject：https://arxiv.org/html/2505.22954v3；版本：v3；定位：S2.p3；S3.p3。
+- object：https://arxiv.org/html/2504.15228v2；版本：v2；定位：S3.p1；S3.p3。
+- recheck_src_w_dgm：https://arxiv.org/html/2505.22954v3；版本：v3；定位：S2.p3。</p>
+<h3 id="huxley-godel-machine-human-level-coding-agent-development-by-an-approximation-of-the-optimal-self-improving-machine"><a href="../wf_title_1935c85b092513ff/">Huxley-Gödel Machine: Human-Level Coding Agent Development by an Approximation of the Optimal Self-Improving Machine</a></h3>
+<p>关系：<code>evaluates_configuration</code> · <code>r_hgm_sica</code> · 当前展示权限：<code>primary_supported</code>。
+HGM在其SWE-Verified-60/Polyglot算法比较中分析SICA的任务得分选择准则与后代clade实证生产力。</p>
+<p><strong>关系边界</strong>：只认证HGM研究中的SICA式算法实例与选择分析，不把结果推广到全部SICA版本或任务；相关性不是因果能力保证。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- subject：https://arxiv.org/html/2510.21614v3；版本：v3；定位：S2.p1；S2.p3；S4.SS1.p1。
+- object：https://arxiv.org/html/2504.15228v2；版本：v2；定位：S3.p1；S3.p3。
+- recheck_src_w_hgm：https://arxiv.org/html/2510.21614v3；版本：v3；定位：S2.p1；S2.p3；S4.SS1.p1。
+- recheck_src_w_sica：https://arxiv.org/html/2504.15228v2；版本：v2；定位：S3.p1；S3.p3。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>recheck_src_w_sica</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/html/2504.15228v2；阅读深度：<code>未单列</code>。</li>
+<li><code>root_crosscheck_src_w_hgm</code> · 已存来源 · v3</li>
+<li>https://arxiv.org/html/2510.21614v3；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_f5d4d370636d9b3832 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

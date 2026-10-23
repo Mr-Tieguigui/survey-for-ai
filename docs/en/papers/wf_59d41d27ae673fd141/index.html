@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>Recursive self-improvement of AI research agents · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_59d41d27ae673fd141/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_59d41d27ae673fd141/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">Recursive self-improvement of AI research agents</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="recursive-self-improvement-of-ai-research-agents">Recursive self-improvement of AI research agents</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_59d41d27ae673fd141</code></p>
+</blockquote>
+<p><strong>作者</strong>：Dhruv Srikanth, Bingchen Zhao, Dixing Xu, Yuxiang Wu, Zhengyao Jiang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2609.26457<br>
+<strong>研究分支</strong>：科研代理、实验与发现<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：接受的incumbent代码；具体更新过程为：内层候选选择可编辑；主发现轨迹外层未换成后继代理；更新状态的保留与后继使用为：固定外层继续修改内层incumbent。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_aide2">configuration:cfg_aide2</h3>
+<p>Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：Section 2.1 outer loop。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_aide2_ignition">configuration:cfg_aide2_ignition</h3>
+<p>Ignition comparison probes second-order behavior; do not replace the main outer-loop configuration with this probe.</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：Section 3.6。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_aide2">cfg_aide2</h3>
+<p><code>cfg_aide2</code> · main_experiment</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>接受的incumbent代码。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>内层候选选择可编辑；主发现轨迹外层未换成后继代理。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>固定外层继续修改内层incumbent。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.</p>
+<p>来源：https://arxiv.org/html/2609.26457v1；版本：v1；定位：Section 2.1 outer loop。</p>
+<h3 id="cfg_aide2_ignition">cfg_aide2_ignition</h3>
+<p><code>cfg_aide2_ignition</code> · evaluation_probe</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>各arm自己的候选与incumbent。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>比较AIDE_47与AIDE_human作外层；不是持续自动晋升。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>每个arm的外层代理保持指定身份。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：Ignition comparison probes second-order behavior; do not replace the main outer-loop configuration with this probe.</p>
+<p>来源：https://arxiv.org/html/2609.26457v1；版本：v1；定位：Section 3.6。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e_aide2</code></strong>：内层代码与候选选择可编辑，主轨迹外层AIDE_human及argmax固定。</li>
+<li>
+<p>来源版本：v1；定位：S2.SS1.p3；S2.SS1.p4；S2.SS2.p2；深度：<code>AI_rechecked_primary_text_author_report</code>。</p>
+</li>
+<li>
+<p><strong><code>e_aide2_lineage</code></strong>：AIDE₀从AIDE重构，去掉ML专用组件并保留树搜索。</p>
+</li>
+<li>来源版本：v1；定位：S2.SS2.p1；深度：<code>AI_rechecked_primary_text_author_report</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>点火探测不能混作主轨迹持续晋升</li>
+<li>来源为作者明确说明，不证明完整代码相同</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="aide-ai-driven-exploration-in-the-space-of-code"><a href="../wf_bc4a082767b6da7c5d/">AIDE: AI-Driven Exploration in the Space of Code</a></h3>
+<p>关系：<code>refactors_implementation_of</code> · <code>r_aide2_aide</code> · 当前展示权限：<code>primary_supported</code>。
+AIDE²作者明确称初始内环代理AIDE0是AIDE的精简重构：移除ML专用机制但保留树搜索与draft/debug/improve操作，外环重写内环代理。AIDE原文的方案树、搜索策略、代码与摘要算子提供被保留组件的双端依据。</p>
+<p><strong>关系边界</strong>：重构关系具体属于AIDE²初始内环AIDE0；AIDE_human是另一个人为研发基线/外环代理，不与原始AIDE混同；主运行固定每环模型且外环更强，不能声称两个循环均无人工固定组件。</p>
+<p><strong>关系主语端 / 宾语端依据</strong>：https://arxiv.org/html/2609.26457v1（v1；S2.SS2.p1.1；S2.SS2.p2.1）；https://arxiv.org/html/2502.13138v1（v1；S3.SS1.p1.1；S3.SS2.SSS0.Px1.p1.1）。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>recheck_src_w_aide2</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2609.26457v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_59d41d27ae673fd141 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

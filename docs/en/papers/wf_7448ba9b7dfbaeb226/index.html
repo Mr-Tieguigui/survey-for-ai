@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>DataSense-Bench: The First Step Toward an AI Scientist · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_7448ba9b7dfbaeb226/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_7448ba9b7dfbaeb226/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">DataSense-Bench: The First Step Toward an AI Scientist</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="datasense-bench-the-first-step-toward-an-ai-scientist">DataSense-Bench: The First Step Toward an AI Scientist</h1>
+<blockquote>
+<p>Benchmark/数据集/任务套件 · 2026 · <code>wf_7448ba9b7dfbaeb226</code></p>
+</blockquote>
+<p><strong>作者</strong>：Yudi Zhang, Mingyu Cao, Lu Yin, Mykola Pechenizkiy, Shiwei Liu<br>
+<strong>原文</strong>：https://arxiv.org/abs/2610.12190<br>
+<strong>研究分支</strong>：Benchmark、数据集与任务<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>DataSense-Bench测量训练前数据价值判断：代理提交五个互不重叠的轨迹子集及效用排序，随后外部固定SFT分别从新基模副本训练并评测。首选数据收益与排序预测是两个独立指标，训练结果不回传用于修改本次选择。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roler11_role_datasense">role:r11_role_datasense</h3>
+<p>DataSense-Bench测量训练前数据价值判断：代理提交五个互不重叠的轨迹子集及效用排序，随后外部固定SFT分别从新基模副本训练并评测。首选数据收益与排序预测是两个独立指标，训练结果不回传用于修改本次选择。</p>
+<p><strong>适用版本</strong>：2610.12190v1；<strong>原文定位</strong>：§3.1 data units tool L88–94；§3.1–3.2 submission/freeze tool L106–116；§3.3–4.1 metrics/downstream evaluation tool L118–133；§5 conclusion/limitations/impact tool L197–206。
+<strong>引用权限</strong>：<code>selected_primary_evaluation_protocol_claims_and_limits_only</code>。</p>
+<h2 id="3">3. 任务、数据与评价设计</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>actual RSI relation</strong>：作者直接关联RSI中训练资源分配的数据判断能力；该协议隔离的是训练前预测，不是有训练收益回传的递归选择循环。</li>
+<li><strong>leakage and information boundary</strong>：评测访问限制与排除validation是协议约束；未独立审计源池和所有测试任务的语义去重或预训练污染。</li>
+<li><strong>metrics</strong>：- 首组s1及相同规模/recipe随机选择的差值Δrandom - best-group accuracy与五组预测/真实效用Spearman相关分开 - TBLite 100任务×3尝试平均reward；BFCL V3四类别各200case、每checkpoint三评测种子</li>
+<li><strong>selection and reuse</strong>：同一4小时选择预算内首次交付无效可重试一次；提交索引CSV及method report。训练/评测不计入该预算，且结果仅事后验证。</li>
+<li><strong>split and visibility</strong>：EnvScaler的validation轨迹排除；代理只能推理访问基模，不能训练或看BFCL/TBLite评测实例。提交顺序冻结后才从五个独立基模副本SFT并评分。</li>
+<li><strong>task or data unit</strong>：选择单元是完整轨迹；BFCL每组50条、TBLite每组1000条，均选五组；固定Qwen3-4B和任务内相同训练recipe。每代理任务三次独立选择run。</li>
+<li><strong>unknowns</strong>：- 源池与测试集全量重叠审计unknown - RL和自生成数据扩展unknown</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r11_ev_datasense</code></strong>：DataSense-Bench测量训练前数据价值判断：代理提交五个互不重叠的轨迹子集及效用排序，随后外部固定SFT分别从新基模副本训练并评测。首选数据收益与排序预测是两个独立指标，训练结果不回传用于修改本次选择。</li>
+<li>来源版本：2610.12190v1；定位：§3.1 data units tool L88–94；§3.1–3.2 submission/freeze tool L106–116；§3.3–4.1 metrics/downstream evaluation tool L118–133；§5 conclusion/limitations/impact tool L197–206；深度：<code>selected_primary_benchmark_or_evaluation_protocol_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>只测已有数据SFT选择与排序，RL后训练及生成新数据为未来工作。</li>
+<li>收益有限且跨任务排序不稳定；挑中有用子集不代表可靠地比较所有子集。</li>
+<li>未独立复现训练recipe、随机基线或全部失败惩罚。</li>
+<li>只测已有数据SFT选择与排序，RL后训练及生成新数据为未来工作。; 收益有限且跨任务排序不稳定；挑中有用子集不代表可靠地比较所有子集。; 未独立复现训练recipe、随机基线或全部失败惩罚。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r11_src_datasense</code> · DataSense-Bench: The First Step Toward an AI Scientist · 2610.12190v1</li>
+<li>https://arxiv.org/html/2610.12190v1；阅读深度：<code>selected_primary_benchmark_or_evaluation_protocol_and_limits</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_benchmark_or_evaluation_protocol_and_limits。
+<strong>当前引用权限</strong>：<code>selected_primary_evaluation_protocol_claims_and_limits_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_7448ba9b7dfbaeb226 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

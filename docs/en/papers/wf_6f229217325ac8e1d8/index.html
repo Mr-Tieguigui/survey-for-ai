@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>Online Operator Design in Evolutionary Optimization for Flexible Job Shop Scheduling via Large Language Models · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_6f229217325ac8e1d8/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_6f229217325ac8e1d8/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">Online Operator Design in Evolutionary Optimization for Flexible Job Shop Scheduling via Large Language Models</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="online-operator-design-in-evolutionary-optimization-for-flexible-job-shop-scheduling-via-large-language-models">Online Operator Design in Evolutionary Optimization for Flexible Job Shop Scheduling via Large Language Models</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_6f229217325ac8e1d8</code></p>
+</blockquote>
+<p><strong>作者</strong>：Rongjie Liao, Junhao Qiu, Xin Chen, Xiaoping Li<br>
+<strong>原文</strong>：https://arxiv.org/abs/2511.16485<br>
+<strong>研究分支</strong>：程序、算法与演化搜索<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<p><strong>实际来源题名（已存版本）</strong>：LLM4EO: Large Language Model for Evolutionary Optimization in Flexible Job Shop Scheduling。工作家族题名与具体来源题名分别保留。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：FJSP solution population P、Python gene-selector operator population Q、operator成功率及fixed LLM/prompting流程；具体更新过程为：以生成更好解的次数/使用次数评价Q，roulette选operator；停滞trigger后LLM读P变化与Q代码思想/fitness建议，生成可运行新operator替换worst，reset所有operator fitness再继续EA；更新状态的保留与后继使用为：Q内新代码与P跨iterations保留；后继P/Q结果再次触发LLM operator设计。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_llm4eo_online_operator_population_v1">configuration:cfg_llm4eo_online_operator_population_v1</h3>
+<p>在线operator代码与solution population的双向反馈满足有界四条件；v1题名LLM4EO与规范表后续标题分开，按同arXiv家族绑定实际版本。</p>
+<p><strong>适用版本</strong>：2511.16485v1；<strong>原文定位</strong>：§4.2.3 operator fitness tool L142–144；§4.3 Algorithm1 replacement/reset tool L145–199；§5.1 budgets/model API comparison tool L207–209；§6 conclusion task scope tool L374–377。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="llm4eo-v1-online-gene-selector-operator-replacement">LLM4EO v1: online gene-selector operator replacement</h3>
+<p><code>cfg_llm4eo_online_operator_population_v1</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>FJSP solution population P、Python gene-selector operator population Q、operator成功率及fixed LLM/prompting流程。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>以生成更好解的次数/使用次数评价Q，roulette选operator；停滞trigger后LLM读P变化与Q代码思想/fitness建议，生成可运行新operator替换worst，reset所有operator fitness再继续EA。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>Q内新代码与P跨iterations保留；后继P/Q结果再次触发LLM operator设计。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 遗传表示/七features - 基础LLM及validity check - population sizes/trigger formula - evaluator makespan</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>crossover probability</strong>：0.9 - <strong>max iterations</strong>：200 - <strong>mutation probability</strong>：0.9 - <strong>operator population</strong>：3 - <strong>solution population</strong>：100 - <strong>trigger epsilon</strong>：0.05</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：§4.2/4.3明确P,Q和gene-selector函数。（状态：<code>supported</code>；定位：§4.2.3 operator fitness tool L142–144；§4.3 Algorithm1 replacement/reset tool L145–199；§5.1 budgets/model API comparison tool L207–209；§6 conclusion task scope tool L374–377）。
+- <strong>更新由什么过程产生</strong>：优化过程自己的P/Q表现驱动LLM生成后继operator。（状态：<code>supported</code>；定位：§4.2.3 operator fitness tool L142–144；§4.3 Algorithm1 replacement/reset tool L145–199；§5.1 budgets/model API comparison tool L207–209；§6 conclusion task scope tool L374–377）。
+- <strong>状态怎样持久保留</strong>：新operator替换worst并留Q供后续搜索。（状态：<code>supported</code>；定位：§4.2.3 operator fitness tool L142–144；§4.3 Algorithm1 replacement/reset tool L145–199；§5.1 budgets/model API comparison tool L207–209；§6 conclusion task scope tool L374–377）。
+- <strong>更新怎样进入后续改进</strong>：新Q影响P演化，新的P/Q统计再用于后继operator构造。（状态：<code>supported</code>；定位：§4.2.3 operator fitness tool L142–144；§4.3 Algorithm1 replacement/reset tool L145–199；§5.1 budgets/model API comparison tool L207–209；§6 conclusion task scope tool L374–377）。</p>
+<p><strong>配置判定</strong>：在线operator代码与solution population的双向反馈满足有界四条件；v1题名LLM4EO与规范表后续标题分开，按同arXiv家族绑定实际版本。</p>
+<p>来源：https://arxiv.org/html/2511.16485v1；版本：2511.16485v1；定位：§4.2.3 operator fitness tool L142–144；§4.3 Algorithm1 replacement/reset tool L145–199；§5.1 budgets/model API comparison tool L207–209；§6 conclusion task scope tool L374–377。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>crossover probability</strong>：0.9</li>
+<li><strong>max iterations</strong>：200</li>
+<li><strong>mutation probability</strong>：0.9</li>
+<li><strong>operator population</strong>：3</li>
+<li><strong>solution population</strong>：100</li>
+<li><strong>trigger epsilon</strong>：0.05</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r10_ev_cfg_llm4eo_online_operator_population_v1</code></strong>：在线operator代码与solution population的双向反馈满足有界四条件；v1题名LLM4EO与规范表后续标题分开，按同arXiv家族绑定实际版本。</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>新operator只要求can run就替换worst，不是先证fitness更好后accept，不能写每次replacement都提高。</li>
+<li>operator fitness在每次evolution后全部reset，不能声称跨全run累计成功率memory。</li>
+<li>基础LLM调用不训练权重；fine-tune task description是prompt文字编辑，不是parameter finetuning。</li>
+<li>200 iteration budget和FJSP/DFJSP benchmark不外推任意EA或真实生产保证。</li>
+<li>
+<ul>
+<li>新operator只要求can run就替换worst，不是先证fitness更好后accept，不能写每次replacement都提高。 - operator fitness在每次evolution后全部reset，不能声称跨全run累计成功率memory。 - 基础LLM调用不训练权重；fine-tune task description是prompt文字编辑，不是parameter finetuning。 - 200 iteration budget和FJSP/DFJSP benchmark不外推任意EA或真实生产保证。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r10_src_online_operator</code> · LLM4EO: Large Language Model for Evolutionary Optimization in Flexible Job Shop Scheduling · 2511.16485v1</li>
+<li>https://arxiv.org/html/2511.16485v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, targeted_primary_method_state_feedback_limits_20261019。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_6f229217325ac8e1d8 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

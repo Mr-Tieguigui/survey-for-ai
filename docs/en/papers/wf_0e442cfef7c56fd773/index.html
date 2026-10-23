@@ -1,0 +1,117 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A method and Skill for AI-readable research surveys, with RSI as the worked example."><meta name="theme-color" content="#f5f4ef"><title>Self-Instruct: Aligning Language Models with Self-Generated Instructions · Survey for AI</title><link rel="icon" href="../../../assets/figures/mark.svg"><link rel="stylesheet" href="../../../assets/css/app.css"><link rel="stylesheet" href="../../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../../explore/"></head><body class="portal-body" data-lang="en" data-view="explore" data-root="../../../"><a class="p-skip" href="#main">Skip to content</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../../en/"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="Main navigation"><a class="" href="../../../en/method/">◇ Method</a><a class="" href="../../../en/skill/">⌘ Reusable Skill</a><a class="" href="../../../en/rsi/">◎ RSI example</a><a class="" href="../../../en/data/">↗ Data &amp; release</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../../papers/wf_0e442cfef7c56fd773/" lang="zh" aria-label="切换至中文">中文 <span>↔</span></a><button id="themeToggle" aria-label="Toggle theme">◐</button><button id="menuToggle" aria-expanded="false" aria-label="Open navigation">☰</button></div></header><div class="p-context"><span>RSI WORKED EXAMPLE</span><nav aria-label="Page directory"><a class="" href="../../../en/rsi/">04 / RSI example</a><a class="" href="../../../en/atlas/">05 / Field atlas</a><a class="" href="../../../en/cases/">06 / Paper cases</a><a class="" href="../../../en/compare/">07 / Comparison</a><a class="" href="../../../en/reader/">08 / Reader &amp; answers</a><a class="is-current" href="../../../en/explore/">09 / Paper library</a><a class="" href="../../../en/data/">10 / Data &amp; release</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../../en/explore/">← Paper library</a><a id="paperMarkdown" href="../../../papers/wf_0e442cfef7c56fd773/paper.md">Original-language Markdown ↓</a></div><h1 class="p-archive-title">Self-Instruct: Aligning Language Models with Self-Generated Instructions</h1><div class="p-archive-notice">This archive retains its original curatorial and source language. Public views contain analysis and locators; verbatim source passages remain in the private package.</div><details class="p-original"><summary>Open the original curatorial record · Chinese / English</summary><article class="paper-article"><h1 id="self-instruct-aligning-language-models-with-self-generated-instructions">Self-Instruct: Aligning Language Models with Self-Generated Instructions</h1>
+<blockquote>
+<p>方法论文 · 2022 · <code>wf_0e442cfef7c56fd773</code></p>
+</blockquote>
+<p><strong>作者</strong>：Yizhong Wang, Yeganeh Kordi, Swaroop Mishra, Alisa Liu, Noah A. Smith, Daniel Khashabi, Hannaneh Hajishirzi<br>
+<strong>原文</strong>：https://aclanthology.org/2023.acl-long.754/<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Configuration-specific structural and empirical boundary review; no universal RSI, autonomous researcher, or independent replication certification.</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_self_instruct_data_pool_bootstrap">configuration:cfg_self_instruct_data_pool_bootstrap</h3>
+<p>在任务池搜索状态与反馈边界内满足四个结构条件；core只指保留任务池参与后续生成的有界闭环，不证明教师权重或更新器自改。</p>
+<p><strong>适用版本</strong>：ACL-2023-camera-ready；<strong>原文定位</strong>：PDF physical pp2–4 Figure2 and §§2.1–2.3；tool lines L122–126/L170–271。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_self_instruct_data_then_sft">configuration:cfg_self_instruct_data_then_sft</h3>
+<p>邻接的最终学生权重训练/部署配置；没有把数据池的迭代保留当成学生参数参与后续改进循环的证据。</p>
+<p><strong>适用版本</strong>：ACL-2023-camera-ready；<strong>原文定位</strong>：PDF physical pp2–4 Figure2 and §§2.1–2.3；tool lines L122–126/L170–271。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="self-instruct-data-then-sft">self instruct data then sft</h3>
+<p><code>cfg_self_instruct_data_then_sft</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>最终学生模型的SFT权重更新和随后部署视图；已完成的自生成指令数据集作为固定训练输入，数据池生成循环在本配置边界外。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>按§2.3在已合成数据上标准监督微调原GPT3，最终学生接受任务指令并产生回答；未展示微调学生返回下一轮数据生成。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>训练所得权重跨部署测试任务保留；本视图没有部署后持续更新或学生→生成教师反馈的证据。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 已完成的合成训练集、SFT目标和优化算法、模板、部署解码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：邻接的最终学生权重训练/部署配置；没有把数据池的迭代保留当成学生参数参与后续改进循环的证据。</p>
+<p>来源：https://aclanthology.org/2023.acl-long.754.pdf；版本：ACL-2023-camera-ready；定位：PDF physical pp2–4 Figure2 and §§2.1–2.3；tool lines L122–126/L170–271。</p>
+<h3 id="self-instruct-data-pool-bootstrap">self instruct data pool bootstrap</h3>
+<p><code>cfg_self_instruct_data_pool_bootstrap</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定GPT3生成器、人工种子和持续扩充的指令任务池组成的数据自举搜索系统；不包含最终SFT学生参数更新。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>每步从池中取8条示例（6个人工种子、2个此前已生成任务），生成新指令与实例，经相似度/格式过滤后加入任务池；更新后的池再次提供生成上下文。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>新任务跨生成步骤保留并影响后续任务生成；最终数据可用于独立的SFT阶段。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- GPT3教师权重、175人工种子、6+2采样比例、ROUGE-L&lt;0.7等过滤规则、提示模板</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：在任务池搜索状态与反馈边界内满足四个结构条件；core只指保留任务池参与后续生成的有界闭环，不证明教师权重或更新器自改。</p>
+<p>来源：https://aclanthology.org/2023.acl-long.754.pdf；版本：ACL-2023-camera-ready；定位：PDF physical pp2–4 Figure2 and §§2.1–2.3；tool lines L122–126/L170–271。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>found4_ev_cfg_self_instruct_data_then_sft</code></strong>：邻接的最终学生权重训练/部署配置；没有把数据池的迭代保留当成学生参数参与后续改进循环的证据。</li>
+<li>
+<p>来源版本：unknown；定位：PDF physical pp2–4 Figure2 and §§2.1–2.3；tool lines L122–126/L170–271；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>found4_ev_cfg_self_instruct_data_pool_bootstrap</code></strong>：在任务池搜索状态与反馈边界内满足四个结构条件；core只指保留任务池参与后续生成的有界闭环，不证明教师权重或更新器自改。</p>
+</li>
+<li>来源版本：unknown；定位：PDF physical pp2–4 Figure2 and §§2.1–2.3；tool lines L122–126/L170–271；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>教师模型在该自举循环中固定，更新后的学生不返回循环。</li>
+<li>固定的过滤和种子采样规则不自我改写；未认证改进器增益、无界增长或独立复现。</li>
+<li>该结构判断不依赖最终SFT收益，也不把合成任务数量当自主能力增益。</li>
+<li>原文未展示微调学生重新生成下一轮训练数据；数据池自举另建配置。</li>
+<li>自生成训练数据来源与学生权重自主改写、部署持续学习是不同主张。</li>
+<li>依赖人工种子与启发式过滤；无独立复现实证。</li>
+<li>原文未展示微调学生重新生成下一轮训练数据；数据池自举另建配置。; 自生成训练数据来源与学生权重自主改写、部署持续学习是不同主张。; 依赖人工种子与启发式过滤；无独立复现实证。</li>
+<li>教师模型在该自举循环中固定，更新后的学生不返回循环。; 固定的过滤和种子采样规则不自我改写；未认证改进器增益、无界增长或独立复现。; 该结构判断不依赖最终SFT收益，也不把合成任务数量当自主能力增益。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>found4_src_self_instruct</code> · 已存来源 · ACL-2023-camera-ready</li>
+<li>https://aclanthology.org/2023.acl-long.754.pdf；阅读深度：<code>selected_official_fulltext_method_passages</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_official_fulltext_method_and_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_0e442cfef7c56fd773 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></details></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../../en/"><b>Survey for AI</b></a><p>Adapt the method. Trace the evidence. RSI is the current example.</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../../assets/data/portal.js"></script><script src="../../../assets/js/portal.js"></script></body></html>

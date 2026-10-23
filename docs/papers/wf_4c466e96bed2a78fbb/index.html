@@ -1,29 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2606.23752" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
-<ul>
-<li><a href="#esaa-conversational-an-event-sourced-memory-layer-for-continuity-handoff-and-curation-across-heterogeneous-llm-coding-agents">ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents</a><ul>
-<li><a href="#1">1. 这项工作研究什么</a></li>
-<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
-<li><a href="#configurationcfg_r8b_esaa_memory_layer">configuration:cfg_r8b_esaa_memory_layer</a></li>
-<li><a href="#s18_role_review_wf_4c466e96bed2a78fbb">已存角色解释 · s18_role_review_wf_4c466e96bed2a78fbb</a></li>
-</ul>
-</li>
-<li><a href="#3">3. 方法机制与实现细节</a><ul>
-<li><a href="#esaa-conversational-event-sourced-memory-infrastructure-view">ESAA-Conversational: event-sourced memory infrastructure view</a></li>
-</ul>
-</li>
-<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
-<li><a href="#_1">原文证据记录中的具体观察</a></li>
-</ul>
-</li>
-<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
-<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
-<li><a href="#7">7. 与其他论文的具体关系</a></li>
-<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</aside><article class="paper-article"><h1 id="esaa-conversational-an-event-sourced-memory-layer-for-continuity-handoff-and-curation-across-heterogeneous-llm-coding-agents">ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents</h1>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="面向 AI 阅读的领域 Survey 方法与 Skill，RSI 为实例。"><meta name="theme-color" content="#f5f4ef"><title>ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents · Survey for AI</title><link rel="icon" href="../../assets/figures/mark.svg"><link rel="stylesheet" href="../../assets/css/app.css"><link rel="stylesheet" href="../../assets/css/portal.css"><link rel="alternate" hreflang="en" href="../../en/explore/"><link rel="alternate" hreflang="zh-CN" href="../../explore/"></head><body class="portal-body" data-lang="zh" data-view="explore" data-root="../../"><a class="p-skip" href="#main">跳至内容</a><div class="p-progress" aria-hidden="true"></div><header class="p-masthead"><a class="p-brand" href="../../"><span class="p-logo">s<span>↗</span></span><b>Survey for AI</b></a><nav class="p-mainnav" aria-label="主导航"><a class="" href="../../method/">◇ 构建方法</a><a class="" href="../../skill/">⌘ 可复用 Skill</a><a class="" href="../../rsi/">◎ RSI 实例</a><a class="" href="../../data/">↗ 数据与版本</a></nav><div class="p-tools"><a id="languageSwitch" class="p-language" href="../../en/papers/wf_4c466e96bed2a78fbb/" lang="en" aria-label="Switch to English">EN <span>↔</span></a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-expanded="false" aria-label="打开导航">☰</button></div></header><div class="p-context"><span>RSI 展示实例</span><nav aria-label="页面目录"><a class="" href="../../rsi/">04 / RSI 实例</a><a class="" href="../../atlas/">05 / 领域图谱</a><a class="" href="../../cases/">06 / 论文案例</a><a class="" href="../../compare/">07 / 横向比较</a><a class="" href="../../reader/">08 / 需求与问答</a><a class="is-current" href="../../explore/">09 / 文献库</a><a class="" href="../../data/">10 / 数据与版本</a></nav></div><main id="main"><div class="p-wrap p-archive"><div class="p-archive-top"><a href="../../explore/">← 文献库</a><a id="paperMarkdown" href="../../papers/wf_4c466e96bed2a78fbb/paper.md">原语言 Markdown ↓</a></div><h1 class="p-archive-title">ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents</h1><div class="p-archive-notice">档案保留原始整理语言与来源用语。公开页只展示解析及定位，逐字原文选段保存在私有信息包。</div><article class="paper-article"><h1 id="esaa-conversational-an-event-sourced-memory-layer-for-continuity-handoff-and-curation-across-heterogeneous-llm-coding-agents">ESAA-Conversational: An Event-Sourced Memory Layer for Continuity, Handoff, and Curation Across Heterogeneous LLM Coding Agents</h1>
 <blockquote>
 <p>方法论文 · 2026 · <code>wf_4c466e96bed2a78fbb</code></p>
 </blockquote>
@@ -117,4 +92,4 @@
 </ul>
 <p><strong>证据深度</strong>：original_abstract, selected_primary_method_protocol_and_limits。
 <strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
-<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_4c466e96bed2a78fbb --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_4c466e96bed2a78fbb --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main><footer class="p-footer p-wrap"><div><a class="p-brand" href="../../"><b>Survey for AI</b></a><p>方法可适配，依据可追溯。RSI 是当前实例。</p></div><div><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README.md">English</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai/blob/main/README_CN.md">简体中文</a><span>v1.1.0 · 2026-10-23</span></div></footer><script src="../../assets/data/portal.js"></script><script src="../../assets/js/portal.js"></script></body></html>
