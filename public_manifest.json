@@ -4,7 +4,7 @@
   "private_corpus_included": false,
   "source_transcripts_included": false,
   "knowledge_package_access": "Private repository permissions required",
-  "file_count": 2540,
+  "file_count": 2538,
   "files": [
     {
       "path": ".gitattributes",
@@ -85,10 +85,6 @@
     {
       "path": "docs/assets/figures/rsi-relations.svg",
       "sha256": "fa915a484c9cc2dde510b1fa37451ced150b3e903c54419b43cf077dc5a74d98"
-    },
-    {
-      "path": "docs/assets/figures/survey-for-ai.svg",
-      "sha256": "ca82ef72e30e762ab1ca87d66d09cca1ddd941e5eac666551709e4ab5403b7da"
     },
     {
       "path": "docs/assets/js/experience.js",
@@ -9988,11 +9984,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "82d4173c52b8dec6e645d02f6e83cd1d18bd55e4d6c6460a08eb98bf91eaa820"
+      "sha256": "3bab64065cf29b2a3a61710dda295dbb04c4c3a1d3e7bf4df943320dcb2110c1"
     },
     {
       "path": "README_CN.md",
-      "sha256": "4d1f7aa8f71c0c3194d43928d6eaa18b4028b4342cf2948d14ed91381ffa5f26"
+      "sha256": "469f88ff116ede42bbf9f42062f54b523a6d4b949422dc13c2fa38f2c3487afa"
     },
     {
       "path": "scripts/build_frontier_index.py",
@@ -10089,10 +10085,6 @@
     {
       "path": "website/assets/figures/rsi-relations.svg",
       "sha256": "fa915a484c9cc2dde510b1fa37451ced150b3e903c54419b43cf077dc5a74d98"
-    },
-    {
-      "path": "website/assets/figures/survey-for-ai.svg",
-      "sha256": "ca82ef72e30e762ab1ca87d66d09cca1ddd941e5eac666551709e4ab5403b7da"
     },
     {
       "path": "website/assets/js/experience.js",
