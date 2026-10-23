@@ -1,0 +1,134 @@
+# Hyperagents
+
+> 方法论文 · 2026 · `wf_17eec8a15debc212b5`
+
+**作者**：Jenny Zhang, Bingchen Zhao, Wannan Yang, Jakob Foerster, Jeff Clune, Minqi Jiang, Sam Devlin, Tatiana Shavrina  
+**原文**：https://arxiv.org/abs/2603.19461  
+**研究分支**：代理架构、harness与代码  
+**解析依据**：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。
+
+## 1. 这项工作研究什么
+在当前已核配置中，系统边界为：任务与meta代码组合的hyperagent归档；具体更新过程为：可编辑meta程序影响后续修改；更新状态的保留与后继使用为：后继hyperagent可再次被选中生成修改。
+
+## 2. 论文的核心内容与贡献
+
+### configuration:cfg_hyperagents
+Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.
+
+**适用版本**：v1；**原文定位**：Section 3; Appendix A.2 Algorithm 1。
+**引用权限**：`listed_configuration_scope_only`。
+
+### configuration:cfg_hyperagents_fixed_meta_probe
+Fixed-meta probe evaluates improvement capability; not a separate deployed recursive loop.
+
+**适用版本**：v1；**原文定位**：Appendix D.3。
+**引用权限**：`listed_configuration_scope_only`。
+
+### configuration:cfg_hyperagents_parent_selection
+Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.
+
+**适用版本**：v1；**原文定位**：Appendix E.5 Algorithm 5。
+**引用权限**：`listed_configuration_scope_only`。
+
+## 3. 方法机制与实现细节
+
+### cfg_hyperagents
+`cfg_hyperagents` · main_experiment
+
+| 方法要素 | 当前记录的具体内容 |
+|---|---|
+| 系统边界 | 任务与meta代码组合的hyperagent归档。 |
+| 改进过程与下一轮参与 | 可编辑meta程序影响后续修改。 |
+| 保留的状态及时间尺度 | 后继hyperagent可再次被选中生成修改。 |
+
+**配置判定**：Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.
+
+来源：https://arxiv.org/html/2603.19461v1；版本：v1；定位：Section 3; Appendix A.2 Algorithm 1。
+
+### cfg_hyperagents_parent_selection
+`cfg_hyperagents_parent_selection` · appendix_variant
+
+| 方法要素 | 当前记录的具体内容 |
+|---|---|
+| 系统边界 | 任务与meta代码组合的hyperagent归档。 |
+| 改进过程与下一轮参与 | 可编辑meta程序影响后续修改。 |
+| 保留的状态及时间尺度 | 后继hyperagent可再次被选中生成修改。 |
+
+**配置判定**：Structural core within the explicitly stated boundary; not a claim of universal/full RSI, improver gain or autonomy.
+
+来源：https://arxiv.org/html/2603.19461v1；版本：v1；定位：Appendix E.5 Algorithm 5。
+
+### cfg_hyperagents_fixed_meta_probe
+`cfg_hyperagents_fixed_meta_probe` · evaluation_probe
+
+| 方法要素 | 当前记录的具体内容 |
+|---|---|
+| 系统边界 | 生成的任务代理及归档。 |
+| 改进过程与下一轮参与 | 测量已有meta的生成能力；探测本身不持续修改meta。 |
+| 保留的状态及时间尺度 | 探测期间meta-agent保持固定。 |
+
+**配置判定**：Fixed-meta probe evaluates improvement capability; not a separate deployed recursive loop.
+
+来源：https://arxiv.org/html/2603.19461v1；版本：v1；定位：Appendix D.3。
+
+## 4. 实验、评价协议与结果的可解释范围
+当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。
+
+### 原文证据记录中的具体观察
+这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。
+
+- **`e_hyper`**：DGM-H保留DGM开放式结构，将任务及元代理放入可编辑程序。
+  - 来源版本：v1；定位：S3.p1；S3.p3；深度：`AI_rechecked_primary_text_author_report`。
+
+- **`e_hyper_fixed`**：主实验父选择手工固定，FM冻结；附录选择机制探索是另设实验。
+  - 来源版本：v1；定位：S3.p5；S4.p1；深度：`AI_rechecked_primary_text_author_report`。
+
+## 5. 原文选段：把方法与实验细节展开
+目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。
+
+## 6. 局限、冲突与不能推出的结论
+
+- 主实验仍有固定外层组件
+- 不认证系统全部组件可改
+
+## 7. 与其他论文的具体关系
+
+### [Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents](../r03_method/wf_c29f716871f8031486.md)
+关系：`extends_configuration_of` · `r_hyper_dgm` · 当前展示权限：`primary_supported`。
+DGM-H作者明确基于DGM保留开放式档案探索，并将任务代理与可编辑元代理结合为同一程序，使生成后续改进的元级机制可被编辑。DGM原方法将开放探索与档案/父代选择排除在代理可修改代码之外。
+
+**关系边界**：主实验的父代选择仍手工固定；父代选择修改为附加探测配置，不将其结果混入主配置；仅作者方法继承核查，不证明任意任务无界加速。
+
+**关系主语端 / 宾语端依据**：https://arxiv.org/html/2603.19461v1（v1；S3.p1.1；S3.p3.1；S3.p4.1；S3.p5.1）；https://arxiv.org/html/2505.22954v3（v3；S3.p2.1；S3.p3.1）。
+
+### [Meta$^n$: Recursive Self-Improvement through Emergent Depth](../r03_method/wf_518f6f6cde2093479a.md)
+关系：`contrasts_system_boundary_with` · `r_meta_n_hyper` · 当前展示权限：`primary_supported`。
+Meta-n固定Ω并增深其输入代码/轨迹栈；HyperAgents将任务与元修改代码放入可编辑程序，但主实验父代选择仍固定。
+
+**关系边界**：不沿用Meta-n作者自定的2.5层深度作为领域标准；输入层级增长不同于外算子自改，主实验与父代选择附加探测分开。
+
+**已存关系来源与定位（保留原记录端点语义）**：
+- subject：https://arxiv.org/html/2608.24735v1；版本：v1；定位：S2.SS1.p5；S2.SS2.SSS0.Px1.p1；S2.SS2.SSS0.Px1.p3。
+- object：https://arxiv.org/html/2603.19461v1；版本：v1；定位：S3.p1；S3.p3；S3.p5。
+- recheck_src_w_meta_n：https://arxiv.org/html/2608.24735v1；版本：v1；定位：S2.SS1.p3。
+- recheck_src_w_meta_n：https://arxiv.org/html/2608.24735v1；版本：v1；定位：S2.SS1.p5；S2.SS2.SSS0.Px1.p1；S2.SS2.SSS0.Px1.p3。
+- recheck_src_w_hyperagents：https://arxiv.org/html/2603.19461v1；版本：v1；定位：S3.p5；S4.p1。
+
+### [The Red Queen Gödel Machine: Co-Evolving Agents and Their Evaluators](../r04_system/wf_616c2bdc62bb176053.md)
+关系：`adapts_design_of` · `r3_red_queen_adapts_hyperagents_workspace` · 当前展示权限：`primary_supported`。
+RQGM把每个归档节点设为任务角色、评价角色及meta-agent共同组成的可编辑工作区；Appendix B.1明确采用HyperAgents的角色工作区与meta编辑设定。HyperAgents原文§3确认任务代理与可自改meta程序的共同可编辑边界。
+
+**关系边界**：继承只覆盖共享可编辑任务/meta工作区组件；RQGM替换了搜索调度并增加评价slot与utility版本处理，不等于沿用原HyperAgents主实验完整算法或parent-selection变体。HGM-H基线仍是RQGM内部组合变体。
+
+**已存关系来源与定位（保留原记录端点语义）**：
+- subject：https://arxiv.org/pdf/2606.26294v3；版本：v3；定位：PDF p.3 §3；PDF p.18 Appendix B.1；PDF p.5 §4 Baselines。
+- object：https://arxiv.org/html/2603.19461v1；版本：v1；定位：S3.p1.1；S3.p3.1；S3.p4.1；S3.p5.1。
+
+## 8. 来源清单、复查入口与解析缺口
+- `recheck_src_w_hyperagents` · 已存来源 · v1
+  - https://arxiv.org/html/2603.19461v1；阅读深度：`未单列`。
+
+**证据深度**：selected_method_passages_with_abstract_baseline。
+**当前引用权限**：`configuration_bounded_claims_only`；人工签核：`False`。
+
+**AI 联合读取**：`python scripts/dossier.py wf_17eec8a15debc212b5 --excerpts`。解析卡编排本身不新增主张、原文核查或独立复现。

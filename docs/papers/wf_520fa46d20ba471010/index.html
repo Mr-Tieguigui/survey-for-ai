@@ -1,0 +1,116 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Incorporating Self-Rewriting into Large Language Model Reasoning Reinforcement · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2511.16331" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#incorporating-self-rewriting-into-large-language-model-reasoning-reinforcement">Incorporating Self-Rewriting into Large Language Model Reasoning Reinforcement</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_self_rewriting_online_grpo_feedback_v1">configuration:cfg_self_rewriting_online_grpo_feedback_v1</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#self-rewriting-selective-own-reasoning-generation-in-online-grpo">Self-Rewriting: selective own-reasoning generation in online GRPO</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="incorporating-self-rewriting-into-large-language-model-reasoning-reinforcement">Incorporating Self-Rewriting into Large Language Model Reasoning Reinforcement</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_520fa46d20ba471010</code></p>
+</blockquote>
+<p><strong>作者</strong>：Jiashu Yao, Heyan Huang, Shuang Zeng, Chuwei Luo, WangJie You, Jie Tang, Qingsong Liu, Yuhang Guo, Yangyang Kang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2511.16331<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：current policy、query group、correctness verifier、own rewrite/continued-answer采样与fixed GRPO step；具体更新过程为：先采G/2并验；全正确才用同模型改reasoning再续答，否则普通采样；全部仍正确时对rewritten给1/original给0，其他用correctness rewards；GRPO更新M后处理后继query；更新状态的保留与后继使用为：Algorithm1 M←step跨query保留，后续采样/rewriting由更新M执行；不是只输出层refine。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_self_rewriting_online_grpo_feedback_v1">configuration:cfg_self_rewriting_online_grpo_feedback_v1</h3>
+<p>自生成reasoning/rewrites进入GRPO并保留更新policy用于下一query，四结构条件在online RL训练闭环成立；self-rewriting不指修改模型源码。</p>
+<p><strong>适用版本</strong>：2511.16331v1；<strong>原文定位</strong>：§3 Selective Rewriting/Optimization/Algorithm1 tool L119–183；§4.1 datasets/judge tool L217–225；§6 conclusion/task scope tool L285–303。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="self-rewriting-selective-own-reasoning-generation-in-online-grpo">Self-Rewriting: selective own-reasoning generation in online GRPO</h3>
+<p><code>cfg_self_rewriting_online_grpo_feedback_v1</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>current policy、query group、correctness verifier、own rewrite/continued-answer采样与fixed GRPO step。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>先采G/2并验；全正确才用同模型改reasoning再续答，否则普通采样；全部仍正确时对rewritten给1/original给0，其他用correctness rewards；GRPO更新M后处理后继query。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>Algorithm1 M←step跨query保留，后续采样/rewriting由更新M执行；不是只输出层refine。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- general rewrite instruction - 规则correctness verifier - GRPO/二段group采样与reward式</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>evaluation</strong>：MATH500/GPQA/ARC/MMLUPro; 4 sampled runs - <strong>judging</strong>：LLM-based internal-quality scores - <strong>train data</strong>：DeepMath-103K subset - <strong>train samples</strong>：10000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：§3明确M, verifier和GRPO的复合训练边界。（状态：<code>supported</code>；定位：§3 Selective Rewriting/Optimization/Algorithm1 tool L119–183；§4.1 datasets/judge tool L217–225；§6 conclusion/task scope tool L285–303）。
+- <strong>更新由什么过程产生</strong>：policy自己产生reasoning及rewrites影响当前policy训练。（状态：<code>supported</code>；定位：§3 Selective Rewriting/Optimization/Algorithm1 tool L119–183；§4.1 datasets/judge tool L217–225；§6 conclusion/task scope tool L285–303）。
+- <strong>状态怎样持久保留</strong>：Algorithm1 step赋回M并继续query loop。（状态：<code>supported</code>；定位：§3 Selective Rewriting/Optimization/Algorithm1 tool L119–183；§4.1 datasets/judge tool L217–225；§6 conclusion/task scope tool L285–303）。
+- <strong>更新怎样进入后续改进</strong>：更新M用于后继generation/rewriting，改变再训练信号。（状态：<code>supported</code>；定位：§3 Selective Rewriting/Optimization/Algorithm1 tool L119–183；§4.1 datasets/judge tool L217–225；§6 conclusion/task scope tool L285–303）。</p>
+<p><strong>配置判定</strong>：自生成reasoning/rewrites进入GRPO并保留更新policy用于下一query，四结构条件在online RL训练闭环成立；self-rewriting不指修改模型源码。</p>
+<p>来源：https://arxiv.org/html/2511.16331v1；版本：2511.16331v1；定位：§3 Selective Rewriting/Optimization/Algorithm1 tool L119–183；§4.1 datasets/judge tool L217–225；§6 conclusion/task scope tool L285–303。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>evaluation</strong>：MATH500/GPQA/ARC/MMLUPro; 4 sampled runs</li>
+<li><strong>judging</strong>：LLM-based internal-quality scores</li>
+<li><strong>train data</strong>：DeepMath-103K subset</li>
+<li><strong>train samples</strong>：10000</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r10_ev_cfg_self_rewriting_online_grpo_feedback_v1</code></strong>：自生成reasoning/rewrites进入GRPO并保留更新policy用于下一query，四结构条件在online RL训练闭环成立；self-rewriting不指修改模型源码。</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>仅全正确半组触发rewriting且最终全组正确才产生rewrite偏好；不能称所有sample都被改写或只因更短直接奖励。</li>
+<li>正确性仍外部verifier；DeepSeek-V3等更强LLM用于结果judge，不是训练无外部真值。</li>
+<li>reasoning内部质量是LLM judge proxy，不认证真实faithfulness或独立因果推理质量。</li>
+<li>约10% overhead限报告batch实现/小规模post-tuning，不是任意预训练等效成本。</li>
+<li>
+<ul>
+<li>仅全正确半组触发rewriting且最终全组正确才产生rewrite偏好；不能称所有sample都被改写或只因更短直接奖励。 - 正确性仍外部verifier；DeepSeek-V3等更强LLM用于结果judge，不是训练无外部真值。 - reasoning内部质量是LLM judge proxy，不认证真实faithfulness或独立因果推理质量。 - 约10% overhead限报告batch实现/小规模post-tuning，不是任意预训练等效成本。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r10_src_rewriting</code> · Incorporating Self-Rewriting into Large Language Model Reasoning Reinforcement · 2511.16331v1</li>
+<li>https://arxiv.org/html/2511.16331v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, targeted_primary_method_state_feedback_limits_20261019。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_520fa46d20ba471010 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

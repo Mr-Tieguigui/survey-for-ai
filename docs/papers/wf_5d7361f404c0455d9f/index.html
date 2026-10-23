@@ -1,0 +1,117 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Metalearning Continual Learning Algorithms · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2312.00276" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#metalearning-continual-learning-algorithms">Metalearning Continual Learning Algorithms</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_acl_srwm_meta_test_continual">configuration:cfg_acl_srwm_meta_test_continual</a></li>
+<li><a href="#s18_role_review_wf_5d7361f404c0455d9f">已存角色解释 · s18_role_review_wf_5d7361f404c0455d9f</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#acl-self-referential-matrix-continual-learning-at-meta-test">ACL: self-referential matrix continual learning at meta-test</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="metalearning-continual-learning-algorithms">Metalearning Continual Learning Algorithms</h1>
+<blockquote>
+<p>方法论文 · 2023 · <code>wf_5d7361f404c0455d9f</code></p>
+</blockquote>
+<p><strong>作者</strong>：Kazuki Irie, Róbert Csordás, Jürgen Schmidhuber<br>
+<strong>原文</strong>：https://arxiv.org/abs/2312.00276<br>
+<strong>研究分支</strong>：自指权重、优化器与元学习<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>ACL 通过同时考虑旧新任务的元学习目标训练自指网络，学习上下文内持续学习算法；应区分元训练权重更新与部署期上下文状态，摘要不证明无限任务的持续改进。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_acl_srwm_meta_test_continual">configuration:cfg_acl_srwm_meta_test_continual</h3>
+<p>W是运行时自修改且同时生成后续自身更新的状态，在有限持续任务序列中四结构条件成立；meta-train固定优化器与meta-test自修改不能混为一层。</p>
+<p><strong>适用版本</strong>：2312.00276v1；<strong>原文定位</strong>：v1 §2.3 Eqs1–3 tool L88–103；v1 §3 Eq4 tool L104–123；v1 §5 limitations tool L219–222；v1 AppendixA.1–A.5 tool L341–385。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="s18_role_review_wf_5d7361f404c0455d9f">已存角色解释 · <code>s18_role_review_wf_5d7361f404c0455d9f</code></h3>
+<p>ACL 通过同时考虑旧新任务的元学习目标训练自指网络，学习上下文内持续学习算法；应区分元训练权重更新与部署期上下文状态，摘要不证明无限任务的持续改进。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="acl-self-referential-matrix-continual-learning-at-meta-test">ACL: self-referential matrix continual learning at meta-test</h3>
+<p><code>cfg_acl_srwm_meta_test_continual</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>SRWM当前W及其自生成key/query/value/rate，固定Conv4视觉backend；外层学习到的初始化W0进入meta-test。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>输入带标签训练样本的forward pass由W自身生成target/input/rate并rank-one delta更新W；之后W同时预测新旧任务并产生下一更新信号。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>W在连续任务序列内由A转为A,B并保留旧任务信息；任意长跨batch状态续传明确未在本文实验。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- delta-update计算式 - 固定网络架构和视觉backend - meta-training Adam/BPTT及多任务监督目标 - meta-test不运行人设计optimizer更新</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>backbone</strong>：Conv4+2 SRWM layers, hidden256,16heads - <strong>test</strong>：meta-test no human-designed optimizer; 5 support sets for standard datasets; Split-MNIST10runs - <strong>training</strong>：Adam+BPTT, old/new-task labels objective</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：W是运行时自修改且同时生成后续自身更新的状态，在有限持续任务序列中四结构条件成立；meta-train固定优化器与meta-test自修改不能混为一层。</p>
+<p>来源：https://arxiv.org/html/2312.00276v1；版本：2312.00276v1；定位：v1 §2.3 Eqs1–3 tool L88–103；v1 §3 Eq4 tool L104–123；v1 §5 limitations tool L219–222；v1 AppendixA.1–A.5 tool L341–385。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>backbone</strong>：Conv4+2 SRWM layers, hidden256,16heads</li>
+<li><strong>test</strong>：meta-test no human-designed optimizer; 5 support sets for standard datasets; Split-MNIST10runs</li>
+<li><strong>training</strong>：Adam+BPTT, old/new-task labels objective</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_5d7361f404c0455d9f</code></strong>：ACL 通过同时考虑旧新任务的元学习目标训练自指网络，学习上下文内持续学习算法；应区分元训练权重更新与部署期上下文状态，摘要不证明无限任务的持续改进。</li>
+<li>
+<p>来源版本：2312.00276v3；定位：Atom entry http://arxiv.org/abs/2312.00276v3；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>h6_ev_cfg_acl_srwm_meta_test_continual</code></strong>：W是运行时自修改且同时生成后续自身更新的状态，在有限持续任务序列中四结构条件成立；meta-train固定优化器与meta-test自修改不能混为一层。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>v1标题是Automating Continual Learning，主库较后标题Metalearning Continual Learning Algorithms不据此回填v1。</li>
+<li>分类任务与有限训练跨度，视觉backend固定，未认证开放世界终身不遗忘或任意模型通用学习算法。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+<li>原文关键选段与指定状态反馈边界；非穷尽全文、所有证明认证或独立复现。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>h6_src_w_acl_srwm</code> · 已存来源 · 2312.00276v1</li>
+<li>https://arxiv.org/html/2312.00276v1；阅读深度：<code>targeted_primary_method_state_feedback_and_limits</code>。</li>
+<li><code>s18_role_src_f856fccb78b754f3</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=2310.13032%2C2310.13227%2C2310.13255%2C2310.13420%2C2310.13548%2C2310.14420%2C2310.14696%2C2310.14735%2C2310.15123%2C2310.15746%2C2310.16045%2C2310.16218%2C2310.16340%2C2310.16379%2C2310.16450%2C2310.16763%2C2310.16828%2C2310.16944%2C2310.17551%2C2310.17631%2C2310.17976%2C2310.18685%2C2310.18852%2C2310.19736%2C2310.19852%2C2310.20025%2C2310.20081%2C2310.20689%2C2311.01041%2C2311.01043%2C2311.01455%2C2311.02018%2C2311.02462%2C2311.03099%2C2311.04177%2C2311.04205%2C2311.04254%2C2311.04661%2C2311.04850%2C2311.05112%2C2311.05232%2C2311.05657%2C2311.05661%2C2311.05762%2C2311.05772%2C2311.05876%2C2311.05965%2C2311.05997%2C2311.06062%2C2311.06622%2C2311.07226%2C2311.07361%2C2311.07397%2C2311.07594%2C2311.07911%2C2311.08152%2C2311.08364%2C2311.08377%2C2311.08562%2C2311.08719%2C2311.08803%2C2311.08896%2C2311.09114%2C2311.09180%2C2311.09210%2C2311.09277%2C2311.09469%2C2311.09476%2C2311.09533%2C2311.09735%2C2311.10122%2C2311.10372%2C2311.10537%2C2311.10751%2C2311.10776%2C2311.11315%2C2311.11855%2C2311.12022%2C2311.12351%2C2311.12871%2C2311.12983%2C2311.13743%2C2311.15296%2C2311.16079%2C2311.16206%2C2311.16452%2C2311.16543%2C2311.16822%2C2311.16832%2C2311.16839%2C2311.17227%2C2311.17311%2C2311.18206%2C2311.18232%2C2311.18445%2C2311.18760%2C2312.00276%2C2312.00326%2C2312.00752%2C2312.01823&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, targeted_primary_method_state_feedback_limits_20261018。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_5d7361f404c0455d9f --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

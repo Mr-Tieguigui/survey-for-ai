@@ -1,0 +1,108 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Personality Editing for Language Models through Adjusting Self-Referential Queries · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2502.11789" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>0 条准入主张</span><span>0 个配置</span><span>3 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#personality-editing-for-language-models-through-adjusting-self-referential-queries">Personality Editing for Language Models through Adjusting Self-Referential Queries</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a><ul>
+<li><a href="#rsi">与 RSI 的具体关系</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#s18_role_review_wf_8154bda2f6d3efd7c9">已存角色解释 · s18_role_review_wf_8154bda2f6d3efd7c9</a></li>
+<li><a href="#b570_06_role_wf_8154bda2f6d3efd7c9">已存角色解释 · b570_06_role_wf_8154bda2f6d3efd7c9</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a><ul>
+<li><a href="#1-rank-one-trait-editing">选段 1 · 机制 / 定义 · Rank-one trait editing</a></li>
+<li><a href="#2-query-and-personality-evaluation-protocol">选段 2 · 机制 / 定义 · Query and personality evaluation protocol</a></li>
+<li><a href="#3-computation-limitation">选段 3 · 限制 · Computation limitation</a></li>
+</ul>
+</li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="personality-editing-for-language-models-through-adjusting-self-referential-queries">Personality Editing for Language Models through Adjusting Self-Referential Queries</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_8154bda2f6d3efd7c9</code></p>
+</blockquote>
+<p><strong>作者</strong>：Seojin Hwang, Yumin Kim, Byeongjeong Kim, Donghoon Shin, Hwanhee Lee<br>
+<strong>原文</strong>：https://arxiv.org/abs/2502.11789<br>
+<strong>研究分支</strong>：其他应用与相邻接口<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<p><strong>实际来源题名（已存版本）</strong>：Personality Editing for Language Models through Relevant Knowledge Editing。工作家族题名与具体来源题名分别保留。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>PALETTE constructs MBTI adjustment queries and applies r-ROME rank-one weight changes to shift trait responses; evaluates alignment and trait ratios with model/human comparisons. Excluded after primary scope review: externally specified opposite personality traits and self-referential I/me statements do not provide an RSI technical bridge.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>Excluded after primary scope review: externally specified opposite personality traits and self-referential I/me statements do not provide an RSI technical bridge.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<p>没有已准入的原子主张。下面的已存角色解释和历史证据只能按其各自权限使用，不自动用于技术结论。</p>
+<h3 id="s18_role_review_wf_8154bda2f6d3efd7c9">已存角色解释 · <code>s18_role_review_wf_8154bda2f6d3efd7c9</code></h3>
+<p>PALETTE 将心理学自指陈述当作可编辑知识以控制语言模型人格；所编辑的是人格响应，摘要没有评价反馈驱动的递归自改链，不能仅按 self-referential 纳入核心方法。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h3 id="b570_06_role_wf_8154bda2f6d3efd7c9">已存角色解释 · <code>b570_06_role_wf_8154bda2f6d3efd7c9</code></h3>
+<p>PALETTE constructs MBTI adjustment queries and applies r-ROME rank-one weight changes to shift trait responses; evaluates alignment and trait ratios with model/human comparisons.</p>
+<p>研究类型：Externally targeted personality editing with r-ROME；权限：<code>bibliographic_disposition_only_not_technical_claims</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>Trait query/response; pairwise alignment and T/F response proportions, with GPT-4o and human agreement checks. Trait-ratio change is not a general improvement score.</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_8154bda2f6d3efd7c9</code></strong>：PALETTE 将心理学自指陈述当作可编辑知识以控制语言模型人格；所编辑的是人格响应，摘要没有评价反馈驱动的递归自改链，不能仅按 self-referential 纳入核心方法。</li>
+<li>
+<p>来源版本：2502.11789v4；定位：Atom entry http://arxiv.org/abs/2502.11789v4；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>b570_06_ev_wf_8154bda2f6d3efd7c9</code></strong>：PALETTE constructs MBTI adjustment queries and applies r-ROME rank-one weight changes to shift trait responses; evaluates alignment and trait ratios with model/human comparisons.</p>
+</li>
+<li>来源版本：arXiv:2502.11789v1；定位：Rank-one trait editing; PDF p2; derived text lines 28-71 (one-based local extraction, not web-tool lines)；Query and personality evaluation protocol; PDF p3; derived text lines 61-96 (one-based local extraction, not web-tool lines)；Computation limitation; PDF p5; derived text lines 1-13 (one-based local extraction, not web-tool lines)；深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<h3 id="1-rank-one-trait-editing">选段 1 · 机制 / 定义 · Rank-one trait editing</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2502.11789v1<br>
+<strong>实际版本</strong>：arXiv:2502.11789v1<br>
+<strong>精确定位</strong>：PDF p2; derived text lines 28-71 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_8154bda2f6d3efd7c9</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="2-query-and-personality-evaluation-protocol">选段 2 · 机制 / 定义 · Query and personality evaluation protocol</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2502.11789v1<br>
+<strong>实际版本</strong>：arXiv:2502.11789v1<br>
+<strong>精确定位</strong>：PDF p3; derived text lines 61-96 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_8154bda2f6d3efd7c9</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="3-computation-limitation">选段 3 · 限制 · Computation limitation</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2502.11789v1<br>
+<strong>实际版本</strong>：arXiv:2502.11789v1<br>
+<strong>精确定位</strong>：PDF p5; derived text lines 1-13 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_8154bda2f6d3efd7c9</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+<li>Query construction/internal representation edits add computation. Desired trait control does not demonstrate improved general capability or a feedback loop redesigning its updater.</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>b570_06_src_wf_8154bda2f6d3efd7c9</code> · Personality Editing for Language Models through Relevant Knowledge Editing · arXiv:2502.11789v1</li>
+<li>https://arxiv.org/pdf/2502.11789v1；阅读深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+<li><code>s18_role_src_4a72693a250c423c</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28ti%3A%22self-modifying%22+OR+ti%3A%22self-referential%22+OR+ti%3A%22self-rewriting%22%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=0&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_role_definition_protocol_scope_and_limits。
+<strong>当前引用权限</strong>：<code>bibliographic_disposition_only_not_technical_claims</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_8154bda2f6d3efd7c9 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

@@ -1,0 +1,246 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2507.19457" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>1 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#gepa-reflective-prompt-evolution-can-outperform-reinforcement-learning">GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_gepa">configuration:cfg_gepa</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#cfg_gepa">cfg_gepa</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a><ul>
+<li><a href="#promptbreeder-self-referential-self-improvement-via-prompt-evolution">Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution</a></li>
+</ul>
+</li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="gepa-reflective-prompt-evolution-can-outperform-reinforcement-learning">GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_c1ef72d96fa3292590</code></p>
+</blockquote>
+<p><strong>作者</strong>：Lakshya A Agrawal, Shangyin Tan, Dilara Soylu, Noah Ziems, Rishi Khare, Krista Opsahl-Ong, Arnav Singhvi, Herumb Shandilya, Michael J Ryan, Meng Jiang, Christopher Potts, Koushik Sen, Alexandros G. Dimakis, Ion Stoica, Dan Klein, Matei Zaharia, Omar Khattab<br>
+<strong>原文</strong>：https://arxiv.org/abs/2507.19457<br>
+<strong>研究分支</strong>：提示与程序化优化<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：复合系统任务提示与固定reflection meta-prompt；具体更新过程为：AppendixC确认改写的是任务assistant instruction，当前指令/任务轨迹/反馈作为固定reflection提示输入；更新状态的保留与后继使用为：跨候选优化轮次。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_gepa">configuration:cfg_gepa</h3>
+<p>更正条件4：原待定理由额外要求改进执行者本身改变，强于既有协议。固定reflection meta-prompt和LM不自改；本结论为完整优化回路边界内的执行反馈参与，不认证改进器能力增长。</p>
+<p><strong>适用版本</strong>：v2；<strong>原文定位</strong>：A3.p1；S3.p1；S3.p2；S3.p3；S3.p4。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_gepa">cfg_gepa</h3>
+<p><code>cfg_gepa</code> · 已存配置视图</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>复合系统任务提示与固定reflection meta-prompt</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>AppendixC确认改写的是任务assistant instruction，当前指令/任务轨迹/反馈作为固定reflection提示输入</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>跨候选优化轮次</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>reflection meta-prompt、模型权重、Pareto规则</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：复合系统任务提示与固定reflection meta-prompt（状态：<code>supported</code>；定位：S3.p1；S3.p4；A3.p1）。
+- <strong>更新由什么过程产生</strong>：AppendixC确认改写的是任务assistant instruction，当前指令/任务轨迹/反馈作为固定reflection提示输入（状态：<code>supported</code>；定位：S3.p1；S3.p4；A3.p1）。
+- <strong>状态怎样持久保留</strong>：跨候选优化轮次（状态：<code>supported</code>；定位：S3.p1；S3.p4；A3.p1）。
+- <strong>更新怎样进入后续改进</strong>：保留的候选提示实际执行生成模块输入/输出、推理和诊断反馈；这些信号与当前提示一起进入固定反思LM，提案获接受后进入候选池并可参与下一轮。（状态：<code>supported</code>；定位：S3.p1；S3.p2；S3.p3；S3.p4；A3.p1）。</p>
+<p><strong>配置判定</strong>：更正条件4：原待定理由额外要求改进执行者本身改变，强于既有协议。固定reflection meta-prompt和LM不自改；本结论为完整优化回路边界内的执行反馈参与，不认证改进器能力增长。</p>
+<p>来源：https://arxiv.org/html/2507.19457v2；版本：v2；定位：A3.p1；S3.p1；S3.p2；S3.p3；S3.p4。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e2_w_gepa</code></strong>：候选运行轨迹和反馈用于修订提示，池和父选择保留；reflection meta-prompt是否被更新未建立</li>
+<li>
+<p>来源版本：v2；定位：S3.p1；S3.p2；S3.p3；S3.p4；S3.SS1.p1；S6.p1；深度：<code>AI_primary_method_passage_recheck</code>。</p>
+</li>
+<li>
+<p><strong><code>e3_w_gepa</code></strong>：AppendixC确认改写的是任务assistant instruction，当前指令/任务轨迹/反馈作为固定reflection提示输入</p>
+</li>
+<li>
+<p>来源版本：v2；定位：S3.p1；S3.p4；A3.p1；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>e4_cfg_gepa</code></strong>：保留的候选提示实际执行生成模块输入/输出、推理和诊断反馈；这些信号与当前提示一起进入固定反思LM，提案获接受后进入候选池并可参与下一轮。</p>
+</li>
+<li>来源版本：v2；定位：S3.p1；S3.p2；S3.p3；S3.p4；A3.p1；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>提</li>
+<li>示</li>
+<li>收</li>
+<li>益</li>
+<li>和</li>
+<li>诊</li>
+<li>断</li>
+<li>轨</li>
+<li>迹</li>
+<li>有</li>
+<li>报</li>
+<li>告</li>
+<li>；</li>
+<li>更</li>
+<li>新</li>
+<li>的</li>
+<li>目</li>
+<li>标</li>
+<li>是</li>
+<li>否</li>
+<li>支</li>
+<li>配</li>
+<li>改</li>
+<li>进</li>
+<li>算</li>
+<li>子</li>
+<li>尚</li>
+<li>未</li>
+<li>闭</li>
+<li>合</li>
+<li>，</li>
+<li>条</li>
+<li>件</li>
+<li>4</li>
+<li>保</li>
+<li>留</li>
+<li>知</li>
+<li>实</li>
+<li>际</li>
+<li>执</li>
+<li>行</li>
+<li>及</li>
+<li>反</li>
+<li>馈</li>
+<li>已</li>
+<li>核</li>
+<li>固</li>
+<li>定</li>
+<li>思</li>
+<li>器</li>
+<li>满</li>
+<li>足</li>
+<li>项</li>
+<li>所</li>
+<li>需</li>
+<li>者</li>
+<li>参</li>
+<li>与</li>
+<li>仍</li>
+<li>界</li>
+<li>不</li>
+<li>仅</li>
+<li>因</li>
+<li>迭</li>
+<li>代</li>
+<li>或</li>
+<li>题</li>
+<li>升</li>
+<li>心</li>
+<li>正</li>
+<li>：</li>
+<li>原</li>
+<li>待</li>
+<li>理</li>
+<li>由</li>
+<li>额</li>
+<li>外</li>
+<li>要</li>
+<li>求</li>
+<li>本</li>
+<li>身</li>
+<li>变</li>
+<li>强</li>
+<li>于</li>
+<li>既</li>
+<li>协</li>
+<li>议</li>
+<li>。</li>
+<li>r</li>
+<li>e</li>
+<li>f</li>
+<li>l</li>
+<li>c</li>
+<li>t</li>
+<li>i</li>
+<li>o</li>
+<li>n</li>
+<li></li>
+<li>m</li>
+<li>a</li>
+<li>-</li>
+<li>p</li>
+<li>L</li>
+<li>M</li>
+<li>自</li>
+<li>结</li>
+<li>论</li>
+<li>为</li>
+<li>完</li>
+<li>整</li>
+<li>优</li>
+<li>化</li>
+<li>回</li>
+<li>路</li>
+<li>边</li>
+<li>内</li>
+<li>认</li>
+<li>证</li>
+<li>能</li>
+<li>力</li>
+<li>增</li>
+<li>长</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="promptbreeder-self-referential-self-improvement-via-prompt-evolution"><a href="../wf_title_85954f3817cf3610/">Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r2_gepa_promptbreeder_6</code> · 当前展示权限：<code>primary_supported</code>。
+GEPA用固定反思模板处理候选执行轨迹/文字反馈并改写模块指令；Promptbreeder共同演化任务提示及其变异提示。</p>
+<p><strong>关系边界</strong>：GEPA确有相关工作引用，机制对照由整理者双端核查得出；引用不证明派生、共用代码或等预算优越。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- subject：https://arxiv.org/html/2507.19457v2；版本：v2；定位：S3.p4；S6.p1。
+- object：https://arxiv.org/html/2309.16797v1；版本：v1；定位：S3.p3；S3.p4；S3.p5；S3.SS2.SSS3.p3。
+- expand_src_w_gepa：https://arxiv.org/html/2507.19457v2；版本：v2；定位：S3.p1；S3.p2；S3.p3；S3.p4；S3.SS1.p1；S6.p1。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>expand_src_w_gepa</code> · GEPA · v2</li>
+<li>https://arxiv.org/html/2507.19457v2；阅读深度：<code>未单列</code>。</li>
+<li><code>src_20261013_w_gepa</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/html/2507.19457v2；阅读深度：<code>未单列</code>。</li>
+<li><code>stage1_src_w_gepa</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/html/2507.19457v2；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_c1ef72d96fa3292590 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

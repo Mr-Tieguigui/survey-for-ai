@@ -1,0 +1,189 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Recursive Introspection: Teaching Language Model Agents How to Self-Improve · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2407.18219" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>2 条准入主张</span><span>2 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#recursive-introspection-teaching-language-model-agents-how-to-self-improve">Recursive Introspection: Teaching Language Model Agents How to Self-Improve</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_rise">configuration:cfg_rise</a></li>
+<li><a href="#configurationcfg_rise_test_rollout">configuration:cfg_rise_test_rollout</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#cfg_rise">cfg_rise</a></li>
+<li><a href="#cfg_rise_test_rollout">cfg_rise_test_rollout</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="recursive-introspection-teaching-language-model-agents-how-to-self-improve">Recursive Introspection: Teaching Language Model Agents How to Self-Improve</h1>
+<blockquote>
+<p>方法论文 · 2024 · <code>wf_6265b745e845c2b4f1</code></p>
+</blockquote>
+<p><strong>作者</strong>：Yuxiao Qu, Tianjun Zhang, Naman Garg, Aviral Kumar<br>
+<strong>原文</strong>：https://arxiv.org/abs/2407.18219<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：离线迭代训练的策略与累积多轮数据；具体更新过程为：当前策略产生on-policy轨迹，重标注后训练，更新策略参与下一轮数据收集；通常从base在累积数据上重训；更新状态的保留与后继使用为：跨训练轮次。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_rise">configuration:cfg_rise</h3>
+<p>core只指训练配置；单问题测试时rollout另列adjacent，oracle与非oracle模式不混合</p>
+<p><strong>适用版本</strong>：v2；<strong>原文定位</strong>：S3.p1；S4.SS2.p3；S4.SS2.p4；S4.SS2.p5；S4.SS4.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_rise_test_rollout">configuration:cfg_rise_test_rollout</h3>
+<p>当前答案被修订，不跨最终输出保留，oracle模式与非oracle另列</p>
+<p><strong>适用版本</strong>：v2；<strong>原文定位</strong>：S4.SS3.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_rise">cfg_rise</h3>
+<p><code>cfg_rise</code> · 已存配置视图</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>离线迭代训练的策略与累积多轮数据</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>当前策略产生on-policy轨迹，重标注后训练，更新策略参与下一轮数据收集；通常从base在累积数据上重训</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>跨训练轮次</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>验证奖励、加权SFT、教师或自蒸馏重标注方法</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：离线迭代训练的策略与累积多轮数据（状态：<code>supported</code>；定位：S4.SS2.p3；S4.SS2.p4；S4.SS2.p5；S4.SS3.p1；S4.SS4.p1）。
+- <strong>更新由什么过程产生</strong>：当前策略产生on-policy轨迹，重标注后训练，更新策略参与下一轮数据收集；通常从base在累积数据上重训（状态：<code>supported</code>；定位：S4.SS2.p3；S4.SS2.p4；S4.SS2.p5；S4.SS3.p1；S4.SS4.p1）。
+- <strong>状态怎样持久保留</strong>：跨训练轮次（状态：<code>supported</code>；定位：S4.SS2.p3；S4.SS2.p4；S4.SS2.p5；S4.SS3.p1；S4.SS4.p1）。
+- <strong>更新怎样进入后续改进</strong>：当前策略产生on-policy轨迹，重标注后训练，更新策略参与下一轮数据收集；通常从base在累积数据上重训（状态：<code>supported</code>；定位：S4.SS2.p3；S4.SS2.p4；S4.SS2.p5；S4.SS3.p1；S4.SS4.p1）。</p>
+<p><strong>配置判定</strong>：core只指训练配置；单问题测试时rollout另列adjacent，oracle与非oracle模式不混合</p>
+<p>来源：https://arxiv.org/html/2407.18219v2；版本：v2；定位：S3.p1；S4.SS2.p3；S4.SS2.p4；S4.SS2.p5；S4.SS4.p1。</p>
+<h3 id="cfg_rise_test_rollout">cfg_rise_test_rollout</h3>
+<p><code>cfg_rise_test_rollout</code> · split_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单问题测试rollout</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：当前答案被修订，不跨最终输出保留，oracle模式与非oracle另列</p>
+<p>来源：https://arxiv.org/html/2407.18219v2；版本：v2；定位：S4.SS3.p1。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e3_w_rise</code></strong>：当前策略产生on-policy轨迹，重标注后训练，更新策略参与下一轮数据收集；通常从base在累积数据上重训</li>
+<li>
+<p>来源版本：v2；定位：S4.SS2.p3；S4.SS2.p4；S4.SS2.p5；S4.SS3.p1；S4.SS4.p1；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>e3_training_p2b1_rise_spin</code></strong>：RISE将包含SPIN的自生成训练工作与自身多回合改进目标作分组对照；双端方法核查显示，RISE训练对历史错误作下一回合修订，SPIN用人类SFT回答对抗前轮模型输出并更新下一轮对手。</p>
+</li>
+<li>
+<p>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>oct15_agents_ev_p2b1_rise_self_correction_limit</code></strong>：RISE明确引用现成模型内生自纠正常失败的研究，以额外多轮训练诱导顺序修订能力；被引用研究把intrinsic self-correction限定为没有外部或人类反馈的部署纠正，并另检验oracle停止、调用成本和初始提示公平性。训练条件改变使两项结论适用范围不同。</p>
+</li>
+<li>
+<p>来源版本：unknown；定位：参见来源索引；深度：<code>author_explicit_plus_two_endpoint_method_check</code>。</p>
+</li>
+<li>
+<p><strong><code>oct15_agents_ev_p2b1_rise_self_refine</code></strong>：RISE以多轮on-policy轨迹、教师或best-of-N重标注及加权回归训练单一模型，使其学会逐轮修订；Self-Refine原方法固定同一LM及生成/反馈/修订提示，在单输入内保留反馈历史、迭代改写输出。RISE附录另明确实现Self-Refine式评测基线。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>author_explicit_plus_two_endpoint_method_check</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>distillation与self-distillation是两种数据重标注变体。</li>
+<li>离线训练关系不能赋予部署单问题rollout持续跨题学习。</li>
+<li>与Self-Refine的横向对照限指定训练/推理边界，不能认定原任务与RISE适配基线完全同配置。</li>
+<li>RISE的非oracle测试模式不表示离线训练数据构造不使用正确性奖励或教师。</li>
+<li>c</li>
+<li>o</li>
+<li>r</li>
+<li>e</li>
+<li>只</li>
+<li>指</li>
+<li>训</li>
+<li>练</li>
+<li>配</li>
+<li>置</li>
+<li>；</li>
+<li>单</li>
+<li>问</li>
+<li>题</li>
+<li>测</li>
+<li>试</li>
+<li>时</li>
+<li>l</li>
+<li>u</li>
+<li>t</li>
+<li>另</li>
+<li>列</li>
+<li>a</li>
+<li>d</li>
+<li>j</li>
+<li>n</li>
+<li>，</li>
+<li>与</li>
+<li>非</li>
+<li>模</li>
+<li>式</li>
+<li>不</li>
+<li>混</li>
+<li>合</li>
+<li>RISE引用SPIN是在分组背景中，支持目标与训练数据/轮次机制的横向对照，不支持由SPIN派生。RISE本端限定离线训练配置，单问题部署rollout为另列配置；SPIN跨训练轮次自博弈不能误写成部署多轮自纠正。</li>
+<li>没有在目标研究的相同模型、提示、预算及样本上独立重做其全部实验。RISE训练数据与奖励可使用正确性信号，不能因其非oracle测试模式而改写为训练也无监督；目标文主要结论限其已测推理设置，原文已承认其他领域可能有效。关系不是直接反驳、失败复现或消除原研究结论。</li>
+<li>主边比较RISE离线训练配置与Self-Refine单输入提示配置，不混入RISE单问题部署rollout。原Self-Refine数学推理附录A15.p5使用正确标签控制迭代；不可笼统声称其全部原实验无外部标签。RISE的Self-Refine适配基线与原Self-Refine各任务、后端、预算不等同；不推出公平统一性能排名、代码复用或历史继承。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>expand_src_w_spin</code> · SPIN · v3</li>
+<li>https://arxiv.org/html/2401.01335v3；阅读深度：<code>未单列</code>。</li>
+<li><code>oct15_agents_src_w_rise</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/html/2407.18219v2；阅读深度：<code>selected_two_endpoint_primary_method_passages</code>。</li>
+<li><code>oct15_agents_src_w_self_correction_limit</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/html/2310.01798v2；阅读深度：<code>selected_two_endpoint_primary_method_passages</code>。</li>
+<li><code>oct15_agents_src_w_self_refine</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/html/2303.17651v2；阅读深度：<code>selected_two_endpoint_primary_method_passages</code>。</li>
+<li><code>stage1_src_w_rise</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/html/2407.18219v2；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_6265b745e845c2b4f1 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

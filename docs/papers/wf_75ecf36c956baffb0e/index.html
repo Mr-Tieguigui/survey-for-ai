@@ -1,0 +1,84 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Deep Collective Learning: Learning Optimal Inputs and Weights Jointly in Deep Neural Networks · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2009.07988" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>0 条准入主张</span><span>0 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#deep-collective-learning-learning-optimal-inputs-and-weights-jointly-in-deep-neural-networks">Deep Collective Learning: Learning Optimal Inputs and Weights Jointly in Deep Neural Networks</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a><ul>
+<li><a href="#rsi">与 RSI 的具体关系</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#r3_abstract_review_wf_75ecf36c956baffb0e">已存角色解释 · r3_abstract_review_wf_75ecf36c956baffb0e</a></li>
+<li><a href="#b570_01_role_2009_07988">已存角色解释 · b570_01_role_2009_07988</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 具体机制、研究对象与协议</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="deep-collective-learning-learning-optimal-inputs-and-weights-jointly-in-deep-neural-networks">Deep Collective Learning: Learning Optimal Inputs and Weights Jointly in Deep Neural Networks</h1>
+<blockquote>
+<p>背景/相邻基础 · 2020 · <code>wf_75ecf36c956baffb0e</code></p>
+</blockquote>
+<p><strong>作者</strong>：Xiang Deng,  Zhongfei,  Zhang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2009.07988<br>
+<strong>研究分支</strong>：自指权重、优化器与元学习<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Lookup-VNets jointly train DNN weights W and color lookup-table parameters T through gradient descent on a task loss, with parameters combined as Theta=[W,T]. Current survey selection decision: exclude this Lookup-VNet training paper from technical synthesis for insufficient demonstrated RSI thematic connection; preserve its joint update facts and bounded feedback. Ordinary supervised training with a fixed optimizer can provide feedback; rewriting the optimizer is not required.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>Current survey selection decision: exclude this Lookup-VNet training paper from technical synthesis for insufficient demonstrated RSI thematic connection; preserve its joint update facts and bounded feedback. Ordinary supervised training with a fixed optimizer can provide feedback; rewriting the optimizer is not required.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<p>没有已准入的原子主张。下面的已存角色解释和历史证据只能按其各自权限使用，不自动用于技术结论。</p>
+<h3 id="r3_abstract_review_wf_75ecf36c956baffb0e">已存角色解释 · <code>r3_abstract_review_wf_75ecf36c956baffb0e</code></h3>
+<p>共同学习输入表示与神经网络权重的Lookup-VNet；联合优化不等于系统更新自身改进规则。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h3 id="b570_01_role_2009_07988">已存角色解释 · <code>b570_01_role_2009_07988</code></h3>
+<p>Lookup-VNets jointly train DNN weights W and color lookup-table parameters T through gradient descent on a task loss, with parameters combined as Theta=[W,T].</p>
+<p>研究类型：未单列；权限：<code>bibliographic_disposition_only_not_technical_claims</code>。</p>
+<h2 id="3">3. 具体机制、研究对象与协议</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r3_abstract_ev_2009_07988</code></strong>：共同学习输入表示与神经网络权重的Lookup-VNet；联合优化不等于系统更新自身改进规则。</li>
+<li>
+<p>来源版本：2009.07988v1；定位：Atom entry http://arxiv.org/abs/2009.07988v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>b570_01_ev_2009_07988</code></strong>：Lookup-VNets jointly train DNN weights W and color lookup-table parameters T through gradient descent on a task loss, with parameters combined as Theta=[W,T].</p>
+</li>
+<li>来源版本：unversioned official PDF, revision not identifiable from inspected document；定位：§III learning lookup tables, equation 5 tool L311–330；Assumptions / boundaries: §III learning lookup tables, equation 5 tool L182–191；深度：<code>selected_primary_scope_exclusion_supported_by_original_body</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>本轮只读官方版本摘要，未核全文方法、证明、数据或性能数值；未建立与RSI的直接机制关系。保留作角色/相关性复核和术语边界，不自动进入最终引用清单。</li>
+<li>The inputs are parameterized color embeddings. Joint gradient-based updates of representations and weights provide bounded training feedback, and the paper also studies sharing tables across networks/tasks. The selected evidence does not establish a sufficiently explicit bridge to the current RSI Survey’s recursive or system-level capability improvement questions.</li>
+<li>Actual observed URL is unversioned; no revision stamp was identifiable in the selected PDF. The official identity page shows the paper and sole v1 submission, but this review does not silently substitute the PDF into an earlier exact-version claim or assert latest-version equivalence.</li>
+<li>The inputs are parameterized color embeddings. Joint gradient-based updates of representations and weights provide bounded training feedback, and the paper also studies sharing tables across networks/tasks. The selected evidence does not establish a sufficiently explicit bridge to the current RSI Survey’s recursive or system-level capability improvement questions.; Actual observed URL is unversioned; no revision stamp was identifiable in the selected PDF. The official identity page shows the paper and sole v1 submission, but this review does not silently substitute the PDF into an earlier exact-version claim or assert latest-version equivalence.</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>b570_01_src_2009_07988</code> · Deep Collective Learning: Learning Optimal Inputs and Weights Jointly in Deep Neural Networks · unversioned official PDF, revision not identifiable from inspected document</li>
+<li>https://arxiv.org/pdf/2009.07988；阅读深度：<code>selected_primary_scope_exclusion_supported_by_original_body</code>。</li>
+<li><code>r3_abstract_src_src_7a001528abaea2f3</code> · 已存来源 · Atom snapshot 2026-10-11 with per-entry arXiv versions</li>
+<li>https://export.arxiv.org/api/query?search_query=%28ti%3A%22learned+optimizer%22+OR+ti%3A%22learning+to+learn%22+OR+ti%3A%22learning+to+optimize%22%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=1000&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_primary_scope_exclusion_supported_by_original_body。
+<strong>当前引用权限</strong>：<code>bibliographic_disposition_only_not_technical_claims</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_75ecf36c956baffb0e --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

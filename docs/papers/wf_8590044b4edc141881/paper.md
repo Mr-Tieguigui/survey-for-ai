@@ -1,0 +1,93 @@
+# WizardMath: Empowering Mathematical Reasoning for Large Language Models via Reinforced Evol-Instruct
+
+> 方法论文 · 2023 · `wf_8590044b4edc141881`
+
+**作者**：Haipeng Luo, Qingfeng Sun, Can Xu, Pu Zhao, Jianguang Lou, Chongyang Tao, Xiubo Geng, Qingwei Lin, Shifeng Chen, Yansong Tang, Dongmei Zhang  
+**原文**：https://arxiv.org/abs/2308.09583  
+**研究分支**：自生成数据、课程与参数训练  
+**解析依据**：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。
+
+## 1. 这项工作研究什么
+WizardMath 以数学域 RLEIF 将 Evol-Instruct 反馈与过程监督用于推理训练；应优先核数据演化、反馈提供者及模型更新链，版本中的模型成绩不代表递归过程因果贡献。
+
+## 2. 论文的核心内容与贡献
+
+### configuration:cfg_wizardmath_rleif_data_reward_pipeline_v3
+相邻数据构建/外部安全协议配置；不把产物修订、基准难度增加或外部guard认证成学习改进器自改。
+
+**适用版本**：v3；**原文定位**：§3.1–3.4 tool L103–143；§4.1 tool L147–152。
+**引用权限**：`listed_configuration_scope_only`。
+
+### 已存角色解释 · `s18ctx_role_review_wf_8590044b4edc141881`
+WizardMath 以数学域 RLEIF 将 Evol-Instruct 反馈与过程监督用于推理训练；应优先核数据演化、反馈提供者及模型更新链，版本中的模型成绩不代表递归过程因果贡献。
+
+研究类型：未单列；权限：`role_and_relevance_boundary_only_not_technical_answer_evidence`。
+
+## 3. 方法机制与实现细节
+
+### WizardMath externally evolved data + reward-model training pipeline
+`cfg_wizardmath_rleif_data_reward_pipeline_v3` · synthetic_data_and_reward_training_pipeline
+
+| 方法要素 | 当前记录的具体内容 |
+|---|---|
+| 系统边界 | 固定GPT4指令演化/标注、预训练学生、IRM/PRM监督及PPO阶段的流水线；不把外部GPT4作为已训练学生的后代。 |
+| 改进过程与下一轮参与 | GPT4五轮上下难度演化构造指令与答案，另用学生SFT答案及GPT4标注训练IRM/PRM；随后以instruction×minimum-step reward做PPO。 |
+| 保留的状态及时间尺度 | 合成指令、reward模型与学生参数在分阶段训练后保留；指令文本轮次依赖前一文本，不证明训练学生反向改写GPT4生成器。 |
+| 外部固定部分 | - GPT4标注/演化服务 - PPO与IRM/PRM规则 - 初始GSM8K/MATH训练集 - 筛选协议 |
+| 评价与选择设置 | - **SFT instructions**：418000 - **evolution rounds**：5 - **instruction generator**：GPT4-0613 - **reward instruction set**：90000 - **training**：SFT then IRM/PRM then one-epoch PPO - **version**：v3 June2025 |
+
+**反馈闭环如何成立（按配置核查）**：
+- **明确的系统边界**：§3/4给数据与训练阶段（状态：`supported`；定位：§3.1–3.4 tool L103–143）。
+- **更新由什么过程产生**：外部teacher造数/标注，学生参与答案生成但未核每阶段主动闭环（状态：`partial`；定位：§3.1–3.4 tool L103–143）。
+- **状态怎样持久保留**：固定数据/训练权重持久（状态：`supported`；定位：§3.1–3.4 tool L103–143）。
+- **更新怎样进入后续改进**：文本演化与学生PPO存在更新，不足以认证学生升级数据生成器/评分器的跨周期闭环（状态：`partial`；定位：§3.1–3.4 tool L103–143）。
+
+**配置判定**：相邻数据构建/外部安全协议配置；不把产物修订、基准难度增加或外部guard认证成学习改进器自改。
+
+来源：https://arxiv.org/html/2308.09583v3；版本：v3；定位：§3.1–3.4 tool L103–143；§4.1 tool L147–152。
+
+## 4. 实验、评价协议与结果的可解释范围
+
+
+- **SFT instructions**：418000
+- **evolution rounds**：5
+- **instruction generator**：GPT4-0613
+- **reward instruction set**：90000
+- **training**：SFT then IRM/PRM then one-epoch PPO
+- **version**：v3 June2025
+
+### 原文证据记录中的具体观察
+这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。
+
+- **`s18ctx_role_ev_wf_8590044b4edc141881`**：WizardMath 以数学域 RLEIF 将 Evol-Instruct 反馈与过程监督用于推理训练；应优先核数据演化、反馈提供者及模型更新链，版本中的模型成绩不代表递归过程因果贡献。
+  - 来源版本：2308.09583v3；定位：Atom entry http://arxiv.org/abs/2308.09583v3；Atom summary element；深度：`official_primary_abstract_role_and_relevance_only`。
+
+- **`r6safe_ev_cfg_wizardmath_rleif_data_reward_pipeline_v3`**：GPT4五轮上下难度演化构造指令与答案，另用学生SFT答案及GPT4标注训练IRM/PRM；随后以instruction×minimum-step reward做PPO。
+  - 来源版本：unknown；定位：参见来源索引；深度：`未单列`。
+
+## 5. 原文选段：把方法与实验细节展开
+目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。
+
+## 6. 局限、冲突与不能推出的结论
+
+- evol-instruct文本五轮不等于五轮学生自训练或自改GPT4。
+- IRM/PRM为学习的代理分数，不是Lean形式正确性或真实过程真值保证。
+- 本卡不从PPO通常on-policy常识补充原文未展开的逐batch实现。
+- v3扩展表与初版年份分开，不将2025扩展成绩当作2023已得结果；仅作者报告，未复现。
+- 仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。
+
+## 7. 与其他论文的具体关系
+当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。
+
+## 8. 来源清单、复查入口与解析缺口
+- `r6safe_src_wizard` · 已存来源 · v3
+  - https://arxiv.org/html/2308.09583v3；阅读深度：`selected_original_method_and_scope_limits`。
+- `r6safe_src_wizard_setup` · 已存来源 · v3
+  - https://arxiv.org/html/2308.09583v3；阅读深度：`selected_original_method_and_scope_limits`。
+- `s18ctx_role_src_9a122f27337d9156` · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review
+  - https://export.arxiv.org/api/query?id_list=2307.12980%2C2307.13528%2C2307.13702%2C2307.13854%2C2307.14984%2C2307.15043%2C2307.15217%2C2307.15818%2C2307.16449%2C2307.16789%2C2308.00304%2C2308.00352%2C2308.00436%2C2308.00675%2C2308.01399%2C2308.01552%2C2308.01825%2C2308.01990%2C2308.02151%2C2308.03281%2C2308.03427%2C2308.03688%2C2308.03990%2C2308.04592%2C2308.05345%2C2308.05374%2C2308.05481%2C2308.06259%2C2308.06610%2C2308.07107%2C2308.07201%2C2308.07234%2C2308.07269%2C2308.07286%2C2308.07633%2C2308.07902%2C2308.07921%2C2308.08155%2C2308.08239%2C2308.08747%2C2308.08833%2C2308.09381%2C2308.09583%2C2308.09597%2C2308.09687%2C2308.10144%2C2308.10149%2C2308.10248%2C2308.10379%2C2308.10792%2C2308.10848%2C2308.10882%2C2308.11339%2C2308.11432%2C2308.11606%2C2308.11764%2C2308.12503%2C2308.12519%2C2308.12950%2C2308.12966%2C2308.14296%2C2308.14508%2C2308.15605%2C2308.16175%2C2308.16369%2C2308.16505%2C2309.00071%2C2309.00267%2C2309.00770%2C2309.01157%2C2309.01219%2C2309.02427%2C2309.02726%2C2309.03409%2C2309.03736%2C2309.04175%2C2309.04295%2C2309.05196%2C2309.05457%2C2309.05463%2C2309.05653%2C2309.05922%2C2309.06256%2C2309.06365%2C2309.06794%2C2309.07544%2C2309.07864%2C2309.08172%2C2309.08395%2C2309.09117%2C2309.09444%2C2309.09727%2C2309.09971%2C2309.11436%2C2309.11489%2C2309.11495%2C2309.11690%2C2309.11696%2C2309.12284%2C2309.12815&max_results=100；阅读深度：`未单列`。
+
+**证据深度**：selected_original_method_and_scope_limits。
+**当前引用权限**：`configuration_bounded_claims_only`；人工签核：`False`。
+
+**AI 联合读取**：`python scripts/dossier.py wf_8590044b4edc141881 --excerpts`。解析卡编排本身不新增主张、原文核查或独立复现。

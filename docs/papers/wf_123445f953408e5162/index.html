@@ -1,0 +1,170 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>HELIX: Model-Harness Co-evolution for Recursive Self-Improvement · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2608.13951" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>2 条准入主张</span><span>2 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>1 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#helix-model-harness-co-evolution-for-recursive-self-improvement">HELIX: Model-Harness Co-evolution for Recursive Self-Improvement</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_helix_build_update_rebuild_protocol">configuration:cfg_helix_build_update_rebuild_protocol</a></li>
+<li><a href="#configurationcfg_helix_harness_portfolio_data">configuration:cfg_helix_harness_portfolio_data</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 系统架构、组件与更新过程</a><ul>
+<li><a href="#cfg_helix_build_update_rebuild_protocol">cfg_helix_build_update_rebuild_protocol</a></li>
+<li><a href="#cfg_helix_harness_portfolio_data">cfg_helix_harness_portfolio_data</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a><ul>
+<li><a href="#the-red-queen-godel-machine-co-evolving-agents-and-their-evaluators">The Red Queen Gödel Machine: Co-Evolving Agents and Their Evaluators</a></li>
+</ul>
+</li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="helix-model-harness-co-evolution-for-recursive-self-improvement">HELIX: Model-Harness Co-evolution for Recursive Self-Improvement</h1>
+<blockquote>
+<p>综合系统/智能体 · 2026 · <code>wf_123445f953408e5162</code></p>
+</blockquote>
+<p><strong>作者</strong>：Tianyu Fan, Chao Huang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2608.13951<br>
+<strong>研究分支</strong>：代理架构、harness与代码<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>已读原文系统实现、协议与评价限制；将声明协议和实做证据分开。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_helix_build_update_rebuild_protocol">configuration:cfg_helix_build_update_rebuild_protocol</h3>
+<p>形式化协议支持模型–harness状态在声明边界内闭环返回；该判定只对应所提协议，不对应已实施模型训练或多轮整环实验。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：S2.SS1.p1；S2.SS3.p1；S2.SS3.p2；S9.SS5.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_helix_harness_portfolio_data">configuration:cfg_helix_harness_portfolio_data</h3>
+<p>实际研究证明harness比较和验证数据交接；所查有限候选枚举与数据导出不足以证明由已更新模型驱动下一次harness重建，保留为邻接证据配置。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：S3.SS3.p1；S5.SS2.p1；S5.SS2.p2；S5.SS3.p1；S5.SS4.p1；S6.SS2.p1；S9.SS1.p1；S9.SS3.p1；S9.SS5.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 系统架构、组件与更新过程</h2>
+<h3 id="cfg_helix_build_update_rebuild_protocol">cfg_helix_build_update_rebuild_protocol</h3>
+<p><code>cfg_helix_build_update_rebuild_protocol</code> · protocol</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>模型参数与可执行harness组合库组成的跨轮状态Z_t=(M_theta_t,Phi_t)。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>协议规定G把已验证sibling轨迹变成训练记录，U更新模型；B结合证据和新模型重建harness组合库。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>形式协议跨build–update–rebuild轮次保留模型与harness状态。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>外部任务、目标、验证器、类型化组合约束；G/U/B为声明的接口，不是已验证的自主改写算法。</td>
+</tr>
+<tr>
+<td>实验实现状态</td>
+<td>proposed_protocol_model_update_not_executed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：形式化协议支持模型–harness状态在声明边界内闭环返回；该判定只对应所提协议，不对应已实施模型训练或多轮整环实验。（状态：<code>supported</code>；定位：S2.SS1.p1；S2.SS3.p1；S2.SS3.p2；S9.SS5.p1）。
+- <strong>更新由什么过程产生</strong>：形式化协议支持模型–harness状态在声明边界内闭环返回；该判定只对应所提协议，不对应已实施模型训练或多轮整环实验。（状态：<code>supported</code>；定位：S2.SS1.p1；S2.SS3.p1；S2.SS3.p2；S9.SS5.p1）。
+- <strong>状态怎样持久保留</strong>：形式化协议支持模型–harness状态在声明边界内闭环返回；该判定只对应所提协议，不对应已实施模型训练或多轮整环实验。（状态：<code>supported</code>；定位：S2.SS1.p1；S2.SS3.p1；S2.SS3.p2；S9.SS5.p1）。
+- <strong>更新怎样进入后续改进</strong>：形式化协议支持模型–harness状态在声明边界内闭环返回；该判定只对应所提协议，不对应已实施模型训练或多轮整环实验。（状态：<code>supported</code>；定位：S2.SS1.p1；S2.SS3.p1；S2.SS3.p2；S9.SS5.p1）。</p>
+<p><strong>配置判定</strong>：形式化协议支持模型–harness状态在声明边界内闭环返回；该判定只对应所提协议，不对应已实施模型训练或多轮整环实验。</p>
+<p>来源：https://arxiv.org/html/2608.13951v1；版本：v1；定位：S2.SS1.p1；S2.SS3.p1；S2.SS3.p2；S9.SS5.p1。</p>
+<h3 id="cfg_helix_harness_portfolio_data">cfg_helix_harness_portfolio_data</h3>
+<p><code>cfg_helix_harness_portfolio_data</code> · implemented_harness_evaluation_and_data_materialization</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定模型标签下的类型化harness组合、运行证据和导出的模型更新数据。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>枚举并检查源可追溯的组件组合，执行65候选×100任务矩阵及选定候选后续评价；将sibling结果物化为训练数据。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>运行轨迹、recipe/lockfile、评价证据和导出数据保存；本轮未训练后继模型。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>固定模型标签MiniMax-M2.7-highspeed、预设组件空间/筛查和评价协议、外部验证器。</td>
+</tr>
+<tr>
+<td>实验实现状态</td>
+<td>implemented_harness_and_export_only_no_model_update</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：实际研究证明harness比较和验证数据交接；所查有限候选枚举与数据导出不足以证明由已更新模型驱动下一次harness重建，保留为邻接证据配置。（状态：<code>supported</code>；定位：S3.SS3.p1；S5.SS2.p1；S5.SS2.p2；S5.SS3.p1；S5.SS4.p1；S6.SS2.p1；S9.SS1.p1；S9.SS3.p1；S9.SS5.p1）。
+- <strong>更新由什么过程产生</strong>：实际研究证明harness比较和验证数据交接；所查有限候选枚举与数据导出不足以证明由已更新模型驱动下一次harness重建，保留为邻接证据配置。（状态：<code>unknown</code>；定位：S3.SS3.p1；S5.SS2.p1；S5.SS2.p2；S5.SS3.p1；S5.SS4.p1；S6.SS2.p1；S9.SS1.p1；S9.SS3.p1；S9.SS5.p1）。
+- <strong>状态怎样持久保留</strong>：实际研究证明harness比较和验证数据交接；所查有限候选枚举与数据导出不足以证明由已更新模型驱动下一次harness重建，保留为邻接证据配置。（状态：<code>supported</code>；定位：S3.SS3.p1；S5.SS2.p1；S5.SS2.p2；S5.SS3.p1；S5.SS4.p1；S6.SS2.p1；S9.SS1.p1；S9.SS3.p1；S9.SS5.p1）。
+- <strong>更新怎样进入后续改进</strong>：实际研究证明harness比较和验证数据交接；所查有限候选枚举与数据导出不足以证明由已更新模型驱动下一次harness重建，保留为邻接证据配置。（状态：<code>unknown</code>；定位：S3.SS3.p1；S5.SS2.p1；S5.SS2.p2；S5.SS3.p1；S5.SS4.p1；S6.SS2.p1；S9.SS1.p1；S9.SS3.p1；S9.SS5.p1）。</p>
+<p><strong>配置判定</strong>：实际研究证明harness比较和验证数据交接；所查有限候选枚举与数据导出不足以证明由已更新模型驱动下一次harness重建，保留为邻接证据配置。</p>
+<p>来源：https://arxiv.org/html/2608.13951v1；版本：v1；定位：S3.SS3.p1；S5.SS2.p1；S5.SS2.p2；S5.SS3.p1；S5.SS4.p1；S6.SS2.p1；S9.SS1.p1；S9.SS3.p1；S9.SS5.p1。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>new_sys_ev_cfg_helix_build_update_rebuild_protocol</code></strong>：形式化协议支持模型–harness状态在声明边界内闭环返回；该判定只对应所提协议，不对应已实施模型训练或多轮整环实验。</li>
+<li>
+<p>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>new_sys_ev_cfg_helix_harness_portfolio_data</code></strong>：实际研究证明harness比较和验证数据交接；所查有限候选枚举与数据导出不足以证明由已更新模型驱动下一次harness重建，保留为邻接证据配置。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>§9.5明确未训练更新后的模型；不能认证模型–harness全环实证或其递归收益。</li>
+<li>四条件在formal_specification层次成立，不代表自主性、代码复用或实验复现。</li>
+<li>未实施模型参数更新，不升级为模型–harness整环实证。</li>
+<li>100个LCB来源AtCoder题只检查公开测试，不等于官方LiveCodeBench隐藏测试表现。</li>
+<li>79/100是事后候选组合覆盖并集，不能作为单一可部署harness得分。</li>
+<li>65候选主矩阵每题一次、选定LCB后续10次、SWE后续2次；不能混合排名或声称同预算因果改善。</li>
+<li>§9.5明确未训练更新后的模型；不能认证模型–harness全环实证或其递归收益。；四条件在formal_specification层次成立，不代表自主性、代码复用或实验复现。</li>
+<li>未实施模型参数更新，不升级为模型–harness整环实证。；100个LCB来源AtCoder题只检查公开测试，不等于官方LiveCodeBench隐藏测试表现。；79/100是事后候选组合覆盖并集，不能作为单一可部署harness得分。；65候选主矩阵每题一次、选定LCB后续10次、SWE后续2次；不能混合排名或声称同预算因果改善。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="the-red-queen-godel-machine-co-evolving-agents-and-their-evaluators"><a href="../wf_616c2bdc62bb176053/">The Red Queen Gödel Machine: Co-Evolving Agents and Their Evaluators</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r3_helix_red_queen_boundary</code> · 当前展示权限：<code>primary_supported</code>。
+HELIX实际评价配置固定模型与外部验证器，重组harness并导出模型更新数据；RQGM的代码搜索则把学习评价者纳入工作区、在固定验证锚点约束下按checkpoint替换。两者的已实施可变状态及评价边界不同。</p>
+<p><strong>关系边界</strong>：仅为策展者双端机制比较，无直接历史继承或共同基准性能主张；HELIX提出的模型–harness整环没有在该v1中实际训练完成，不能与RQGM已实施的评价slot搜索混作同一证据级实验。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- subject：https://arxiv.org/html/2608.13951v1；版本：v1；定位：S2.SS3.p1；S3.SS3.p1；S9.SS5.p1。
+- object：https://arxiv.org/pdf/2606.26294v3；版本：v3；定位：PDF p.3 §3；PDF p.4 §3.2；PDF p.19 Algorithm 1。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>new_sys_src_helix</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2608.13951v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_original_methods_and_limitations。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_123445f953408e5162 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

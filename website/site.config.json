@@ -1,0 +1,13 @@
+{
+  "project_name": "Survey for AI",
+  "repository_name": "rsi-survey",
+  "repository_url": "https://github.com/Mr-Tieguigui/rsi-survey",
+  "github_owner": "Mr-Tieguigui",
+  "default_theme": "dark",
+  "publication_status": "private_corpus_public_showcase_prepared",
+  "source_note": "Complete corpus remains private. Only the method, Skill and source-locator reading views are exported to the separate public showcase.",
+  "public_repository_url": "https://github.com/Mr-Tieguigui/survey-for-ai",
+  "public_site_url": "https://mr-tieguigui.github.io/survey-for-ai/",
+  "public_base_path": "/survey-for-ai/",
+  "public_source_quotes": false
+}

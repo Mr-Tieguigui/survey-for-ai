@@ -1,0 +1,109 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Eliminating Meta Optimization Through Self-Referential Meta Learning · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2212.14392" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#eliminating-meta-optimization-through-self-referential-meta-learning">Eliminating Meta Optimization Through Self-Referential Meta Learning</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_fme_selfreferential_weights">configuration:cfg_fme_selfreferential_weights</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#fme-with-self-referential-outer-product-neural-states">FME with self-referential outer-product neural states</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="eliminating-meta-optimization-through-self-referential-meta-learning">Eliminating Meta Optimization Through Self-Referential Meta Learning</h1>
+<blockquote>
+<p>方法论文 · 2022 · <code>wf_1f30dff0c96d60fb96</code></p>
+</blockquote>
+<p><strong>作者</strong>：Louis Kirsch, Jürgen Schmidhuber<br>
+<strong>原文</strong>：https://arxiv.org/abs/2212.14392<br>
+<strong>研究分支</strong>：自指权重、优化器与元学习<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Fitness Monotonic Execution empirical self-referential weight modification; theoretical expressivity analysis separately bounded.</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_fme_selfreferential_weights">configuration:cfg_fme_selfreferential_weights</h3>
+<p>在明确的自指权重和FME状态保留边界内满足四个结构条件；外部FME调度和网络结构仍固定，不据此声称无外部设计或无界增长。</p>
+<p><strong>适用版本</strong>：2212.14392v1；<strong>原文定位</strong>：PDF physical pp2–3 §2.2 Observation2.2；PDF physical pp3–4 §3 Fitness Monotonic Execution；PDF physical p4 Algorithm 1 and Eqs1–4；PDF physical pp4–5 §4 Experiments；PDF physical p5 §6 Limitations。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="fme-with-self-referential-outer-product-neural-states">FME with self-referential outer-product neural states</h3>
+<p><code>cfg_fme_selfreferential_weights</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>自指网络变量φ及FME保留的候选状态集合Φ；架构、绩效评价和计算时间分配器在边界外固定。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>当前W生成动作、key、query和学习率并以外积delta更新自身；更新后的W继续生成未来更新。FME按平均绩效单调分配执行概率。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>一次FME运行内，更新后的φ进入Φ并可被再次执行；LRU会移除较旧候选，未认证跨独立实验永久保留。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 自指网络架构和外积delta形式 - 环境/奖励 - FME概率分配和LRU分桶规则 - 执行片段长度与实验预算</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>initialization</strong>：random self-referential network states - <strong>performance claim</strong>：原文报告的小规模实证；本次不建立跨论文排名 - <strong>tasks</strong>：- 2-armed stationary bandit - Cartpole - nonstationary 2-armed bandit</td>
+</tr>
+<tr>
+<td>实际状态组件</td>
+<td>- 自指权重W，含输出、key、query和更新率的生成参数 - 候选φ与按绩效分桶的LRU保留集合Φ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：在明确的自指权重和FME状态保留边界内满足四个结构条件；外部FME调度和网络结构仍固定，不据此声称无外部设计或无界增长。</p>
+<p>来源：https://arxiv.org/pdf/2212.14392v1；版本：2212.14392v1；定位：PDF physical pp2–3 §2.2 Observation2.2；PDF physical pp3–4 §3 Fitness Monotonic Execution；PDF physical p4 Algorithm 1 and Eqs1–4；PDF physical pp4–5 §4 Experiments；PDF physical p5 §6 Limitations。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>initialization</strong>：random self-referential network states</li>
+<li><strong>performance claim</strong>：原文报告的小规模实证；本次不建立跨论文排名</li>
+<li><strong>tasks</strong>：- 2-armed stationary bandit - Cartpole - nonstationary 2-armed bandit</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>oct15_root_ev_fme_method</code></strong>：原文§3–4给出自指W更新、FME保留与按绩效分配执行，以及小规模任务实证。</li>
+<li>来源版本：unknown；定位：PDF physical pp2–3 §2.2 Observation2.2；PDF physical pp3–4 §3 Fitness Monotonic Execution；PDF physical p4 Algorithm 1 and Eqs1–4；PDF physical pp4–5 §4 Experiments；PDF physical p5 §6 Limitations；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>§2.2为充分表达条件下的表示等价，不是所有架构效率、优化难度或实测性能等价。</li>
+<li>作者§6明确实证仍minimalistic；架构修改和候选通信仅提出的扩展。</li>
+<li>避免显式meta参数优化不等于没有固定选择/计算资源分配规则。</li>
+<li>在明确的自指权重和FME状态保留边界内满足四个结构条件；外部FME调度和网络结构仍固定，不据此声称无外部设计或无界增长。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>oct15_root_src_w_selfreferential_fme</code> · 已存来源 · 2212.14392v1</li>
+<li>https://arxiv.org/pdf/2212.14392v1；阅读深度：<code>selected_primary_method_and_limits_passages</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_1f30dff0c96d60fb96 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

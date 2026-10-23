@@ -1,0 +1,143 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>COEVO: Co-Evolving Context and Parameters for Recursive Self-Improvement · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2609.33398" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>1 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#coevo-co-evolving-context-and-parameters-for-recursive-self-improvement">COEVO: Co-Evolving Context and Parameters for Recursive Self-Improvement</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_coevo">configuration:cfg_coevo</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#cfg_coevo">cfg_coevo</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a><ul>
+<li><a href="#absolute-zero-reinforced-self-play-reasoning-with-zero-data">Absolute Zero: Reinforced Self-play Reasoning with Zero Data</a></li>
+</ul>
+</li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="coevo-co-evolving-context-and-parameters-for-recursive-self-improvement">COEVO: Co-Evolving Context and Parameters for Recursive Self-Improvement</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_3c776c3fd8713d0d43</code></p>
+</blockquote>
+<p><strong>作者</strong>：Siwei Chen, Xinping Bao, Xinyu Cai, Yuan Cao, Wan Jiang, Shaohong Chen<br>
+<strong>原文</strong>：https://arxiv.org/abs/2609.33398<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：Model parameters theta_t and an editable strategy scaffold s_t co-adapt; the full prompt contains fixed constraints c plus editable scaffold s_t；具体更新过程为：An RL window updates parameters under a fixed prompt. The resulting frozen checkpoint proposes constrained prompt revisions, which are accepted only after policy-state and task-performance checks. An accepted prompt generates the next on-policy training distribution；更新状态的保留与后继使用为：Accepted strategy context and updated policy checkpoints persist across alternating RL windows。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_coevo">configuration:cfg_coevo</h3>
+<p>Entropy and attention are intervention signals, not correctness evidence or unrestricted objectives.</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_coevo">cfg_coevo</h3>
+<p><code>cfg_coevo</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Model parameters theta_t and an editable strategy scaffold s_t co-adapt; the full prompt contains fixed constraints c plus editable scaffold s_t.</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>An RL window updates parameters under a fixed prompt. The resulting frozen checkpoint proposes constrained prompt revisions, which are accepted only after policy-state and task-performance checks. An accepted prompt generates the next on-policy training distribution.</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>Accepted strategy context and updated policy checkpoints persist across alternating RL windows.</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- Task objective and immutable prompt instructions - Optimizer - Evaluator - Execution interface - Acceptance criteria and editable prompt region</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：Model parameters theta_t and an editable strategy scaffold s_t co-adapt; the full prompt contains fixed constraints c plus editable scaffold s_t.（状态：<code>supported</code>；定位：S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8）。
+- <strong>更新由什么过程产生</strong>：An RL window updates parameters under a fixed prompt. The resulting frozen checkpoint proposes constrained prompt revisions, which are accepted only after policy-state and task-performance checks. An accepted prompt generates the next on-policy training distribution.（状态：<code>supported</code>；定位：S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8）。
+- <strong>状态怎样持久保留</strong>：Accepted strategy context and updated policy checkpoints persist across alternating RL windows.（状态：<code>supported</code>；定位：S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8）。
+- <strong>更新怎样进入后续改进</strong>：An RL window updates parameters under a fixed prompt. The resulting frozen checkpoint proposes constrained prompt revisions, which are accepted only after policy-state and task-performance checks. An accepted prompt generates the next on-policy training distribution.（状态：<code>supported</code>；定位：S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8）。</p>
+<p><strong>已核对的公式、算法或任务定义</strong>：</p>
+<ul>
+<li>State: (theta_t, p_t), with p_t = c concatenated with s_t.</li>
+<li>Dependency: accepted p_(t+1) changes next on-policy D_(t+1), which changes theta_(t+1).</li>
+</ul>
+<p><strong>配置判定</strong>：Entropy and attention are intervention signals, not correctness evidence or unrestricted objectives.</p>
+<p>来源：https://arxiv.org/html/2609.33398v1；版本：v1；定位：S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e2_w_coevo</code></strong>：当前checkpoint编辑策略上下文，接受提示改变下一轮on-policy数据；参数更新又改变下一次编辑依据</li>
+<li>
+<p>来源版本：v1；定位：S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8；深度：<code>AI_primary_method_passage_recheck</code>。</p>
+</li>
+<li>
+<p><strong><code>oct15_training_ev_w_coevo</code></strong>：COEVO alternates parameter learning and accepted strategy-prompt adaptation. The revised prompt changes subsequent on-policy experience while later parameter updates change the policy that evaluates the next context revision.</p>
+</li>
+<li>来源版本：v1；定位：S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8；深度：<code>AI_primary_method_passage_recheck</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Entropy and attention are intervention signals, not correctness evidence or unrestricted objectives.</li>
+<li>Only the strategy scaffold is editable; the task specification and output requirements remain fixed.</li>
+<li>The comparison with AZR concerns endogenous changes to subsequent learning experience, not author-certified inheritance.</li>
+<li>熵</li>
+<li>/</li>
+<li>注</li>
+<li>意</li>
+<li>力</li>
+<li>是</li>
+<li>操</li>
+<li>作</li>
+<li>性</li>
+<li>信</li>
+<li>号</li>
+<li>；</li>
+<li>不</li>
+<li>因</li>
+<li>果</li>
+<li>证</li>
+<li>据</li>
+<li>或</li>
+<li>无</li>
+<li>限</li>
+<li>增</li>
+<li>长</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="absolute-zero-reinforced-self-play-reasoning-with-zero-data"><a href="../wf_8cffd9d9c1aba22093/">Absolute Zero: Reinforced Self-play Reasoning with Zero Data</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r2_coevo_absolute_zero_10</code> · 当前展示权限：<code>primary_supported</code>。
+COEVO changes the subsequent learning experience by accepting editable strategy-prompt revisions; AZR changes it by self-proposing execution-validated code tasks. Both couple current model state to later training data, but prompt-scaffold adaptation and task-proposal self-play are different update mechanisms.</p>
+<p><strong>关系边界</strong>：未单列</p>
+<p><strong>关系主语端 / 宾语端依据</strong>：https://arxiv.org/html/2609.33398v1（v1；S3.SS1.p1；S3.SS1.p2；S3.SS1.p3；S3.SS3.p4；S3.SS3.p5；S3.SS3.p8）；https://arxiv.org/html/2505.03335v3（v3；S3.SS1；S3.SS2；S3.SS3.SSS1；S3.SS3.SSS2.p1；S3.SS3.SSS2.p2）。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>expand_src_w_coevo</code> · COEVO · v1</li>
+<li>https://arxiv.org/html/2609.33398v1；阅读深度：<code>未单列</code>。</li>
+<li><code>oct15_training_src_w_coevo</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2609.33398v1；阅读深度：<code>targeted_primary_method_and_configuration_crosscheck</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_3c776c3fd8713d0d43 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

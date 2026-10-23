@@ -1,0 +1,161 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>A-Evolve-Training: Autonomous Post-Training of a 30B Model · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2606.20657" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>2 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#a-evolve-training-autonomous-post-training-of-a-30b-model">A-Evolve-Training: Autonomous Post-Training of a 30B Model</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_aevolve_search_policy">configuration:cfg_aevolve_search_policy</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#cfg_aevolve_search_policy">cfg_aevolve_search_policy</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a><ul>
+<li><a href="#bilevel-autoresearch-meta-autoresearching-itself">Bilevel Autoresearch: Meta-Autoresearching Itself</a></li>
+<li><a href="#ai4ai-bench-benchmarking-llm-agents-in-algorithmic-design-for-recursive-self-improvement">AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement</a></li>
+</ul>
+</li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="a-evolve-training-autonomous-post-training-of-a-30b-model">A-Evolve-Training: Autonomous Post-Training of a 30B Model</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_9e90cee574e4ed4db3</code></p>
+</blockquote>
+<p><strong>作者</strong>：Zhan Shi, Bing He, Yisi Sang, Benoit Dumoulin, Hanqing Lu<br>
+<strong>原文</strong>：https://arxiv.org/abs/2606.20657<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：rolling search policy及dead-end registry；具体更新过程为：元代理按round evidence重写下一轮搜索规则和经验阈值，后续workers继承策略；更新状态的保留与后继使用为：四轮campaign的策略保留。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_aevolve_search_policy">configuration:cfg_aevolve_search_policy</h3>
+<p>单次未复核campaign；完整代码/模型释放时间待确认；不把训练产物晋升到substrate</p>
+<p><strong>适用版本</strong>：v3；<strong>原文定位</strong>：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_aevolve_search_policy">cfg_aevolve_search_policy</h3>
+<p><code>cfg_aevolve_search_policy</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>rolling search policy及dead-end registry</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>元代理按round evidence重写下一轮搜索规则和经验阈值，后续workers继承策略</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>四轮campaign的策略保留</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>只读constitution、不可覆写substrate、固定证据schema</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：rolling search policy及dead-end registry（状态：<code>supported</code>；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1）。
+- <strong>更新由什么过程产生</strong>：元代理按round evidence重写下一轮搜索规则和经验阈值，后续workers继承策略（状态：<code>supported</code>；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1）。
+- <strong>状态怎样持久保留</strong>：四轮campaign的策略保留（状态：<code>supported</code>；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1）。
+- <strong>更新怎样进入后续改进</strong>：元代理按round evidence重写下一轮搜索规则和经验阈值，后续workers继承策略（状态：<code>supported</code>；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1）。</p>
+<p><strong>配置判定</strong>：单次未复核campaign；完整代码/模型释放时间待确认；不把训练产物晋升到substrate</p>
+<p>来源：https://arxiv.org/html/2606.20657v3；版本：v3；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>e2_w_aevolve_training</code></strong>：元代理按round evidence重写下一轮搜索规则和经验阈值，后续workers继承策略</li>
+<li>来源版本：v3；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1；深度：<code>AI_primary_method_passage_recheck</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>单</li>
+<li>次</li>
+<li>未</li>
+<li>复</li>
+<li>核</li>
+<li>c</li>
+<li>a</li>
+<li>m</li>
+<li>p</li>
+<li>i</li>
+<li>g</li>
+<li>n</li>
+<li>；</li>
+<li>完</li>
+<li>整</li>
+<li>代</li>
+<li>码</li>
+<li>/</li>
+<li>模</li>
+<li>型</li>
+<li>释</li>
+<li>放</li>
+<li>时</li>
+<li>间</li>
+<li>待</li>
+<li>确</li>
+<li>认</li>
+<li>不</li>
+<li>把</li>
+<li>训</li>
+<li>练</li>
+<li>产</li>
+<li>物</li>
+<li>晋</li>
+<li>升</li>
+<li>到</li>
+<li>s</li>
+<li>u</li>
+<li>b</li>
+<li>t</li>
+<li>r</li>
+<li>e</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="bilevel-autoresearch-meta-autoresearching-itself"><a href="../wf_7d83bc86747f407ae5/">Bilevel Autoresearch: Meta-Autoresearching Itself</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r2_aevolve_training_bilevel_14</code> · 当前展示权限：<code>primary_supported</code>。
+A-Evolve-Training在不可覆写substrate与只读constitution约束下，由元代理依据轮次证据重写rolling search policy、继承配方、搜索轴和dead-end registry；Bilevel Autoresearch的Level 1.5更新SearchConfig，Level 2则生成Python机制并原位修补runner.py，经动态导入检查后激活或回退。两者改变后续搜索的载体分别是策略工件和活动执行器代码。</p>
+<p><strong>关系边界</strong>：比较对象是明确的改进表面，不是直接继承。A-Evolve-Training只报告单次未复现的四轮、单一30B模型后训练campaign；Bilevel只证明外层改善内层，未证明同一机制反哺Level 2或无界递归。动态导入检查也不等于功能/安全性证明。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- subject：https://arxiv.org/html/2606.20657v3；版本：v3；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1。
+- object：https://arxiv.org/html/2603.23420v2；版本：v2；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1；S3.SS4.p2；S3.SS4.p3；S5.SS4.SSS0.Px5.p1。
+- expand_src_w_aevolve_training：https://arxiv.org/html/2606.20657v3；版本：v3；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1。
+- expand_src_w_bilevel：https://arxiv.org/html/2603.23420v2；版本：v2；定位：S3.SS1.p1；S3.SS2.p1；S3.SS3.p1；S3.SS4.p2；S3.SS4.p3；S5.SS4.SSS0.Px5.p1。</p>
+<h3 id="ai4ai-bench-benchmarking-llm-agents-in-algorithmic-design-for-recursive-self-improvement"><a href="../wf_c68aa5fb00021bf53f/">AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r2_ai4ai_bench_aevolve_training_17</code> · 当前展示权限：<code>primary_supported</code>。
+AI4AI-Bench将开发与验证严格隔开：4小时单B300开发后只提交源代码，不传递开发权重、缓存或笔记；训练任务从初始化执行至结束或12小时上限，非训练任务一次执行后评分。A-Evolve-Training的所查四轮campaign保留rolling policy、继承配方及dead-end registry，以一个公共排行榜作为外部锚点，基底不被胜出配方覆盖。因此两者规定的跨边界持久状态和评价对象不同。</p>
+<p><strong>关系边界</strong>：这是评价协议与campaign证据边界的双端比较；原文没有支持AI4AI-Bench实际评测了A-Evolve-Training，不应标为evaluates。12小时是上限而非所有任务固定训练时长；不能用AI4AI-Bench的独立从头运行保障为A-Evolve campaign背书。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- subject：https://arxiv.org/html/2608.20318v1；版本：v1；定位：S2.SS1.p1；S2.SS3.p1；S2.SS3.p2；S2.SS5.p1。
+- object：https://arxiv.org/html/2606.20657v3；版本：v3；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1。
+- expand_src_w_ai4ai_bench：https://arxiv.org/html/2608.20318v1；版本：v1；定位：S2.SS1.p1；S2.SS3.p1；S2.SS3.p2；S2.SS5.p1。
+- expand_src_w_aevolve_training：https://arxiv.org/html/2606.20657v3；版本：v3；定位：S3.SS0.SSS0.Px3.p1；S3.SS0.SSS0.Px3.p2；S6.SS1.p1；S7.p1。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>expand_src_w_aevolve_training</code> · A-Evolve-Training: Autonomous Post-Training of a 30B Model · v3</li>
+<li>https://arxiv.org/html/2606.20657v3；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_9e90cee574e4ed4db3 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

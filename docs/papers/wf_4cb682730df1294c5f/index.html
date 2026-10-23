@@ -1,0 +1,281 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Bounded Recursive Self-Improvement · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/1312.6764" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>2 个配置</span><span>3 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#bounded-recursive-self-improvement">Bounded Recursive Self-Improvement</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a><ul>
+<li><a href="#rsi">与 RSI 的具体关系</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#roleb570_06_role_wf_4cb682730df1294c5f">role:b570_06_role_wf_4cb682730df1294c5f</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#cfg_bounded_blueprint">cfg_bounded_blueprint</a></li>
+<li><a href="#cfg_bounded_s1">cfg_bounded_s1</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a><ul>
+<li><a href="#1-self-monitoring-and-resource-metacontrol">选段 1 · 机制 / 定义 · Self-monitoring and resource metacontrol</a></li>
+<li><a href="#2-s1-evaluation-protocol">选段 2 · 机制 / 定义 · S1 evaluation protocol</a></li>
+<li><a href="#3-metacontrol-not-used-in-s1">选段 3 · 限制 · Metacontrol not used in S1</a></li>
+</ul>
+</li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="bounded-recursive-self-improvement">Bounded Recursive Self-Improvement</h1>
+<blockquote>
+<p>方法论文 · 2013 · <code>wf_4cb682730df1294c5f</code></p>
+</blockquote>
+<p><strong>作者</strong>：E. Nivel, K. R. Thórisson, B. R. Steunebrink, H. Dindo, G. Pezzulo, M. Rodriguez, C. Hernandez, D. Ognibene, J. Schmidhuber, R. Sanz, H. P. Helgason, A. Chella, G. K. Jonsson<br>
+<strong>原文</strong>：https://arxiv.org/abs/1312.6764<br>
+<strong>研究分支</strong>：定义、理论与系统边界<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>AERA describes self-monitoring data, causal model construction and resource metacontrol. S1 observes human multimodal interviews and learns either role; task-learning demonstrations are distinct from the architecture ability proposed for recursive self-modeling. Direct bounded-RSI foundation; demonstrated task learning is separated from unused self-modeling and prospective self-compilation.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>Direct bounded-RSI foundation; demonstrated task learning is separated from unused self-modeling and prospective self-compilation.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roleb570_06_role_wf_4cb682730df1294c5f">role:b570_06_role_wf_4cb682730df1294c5f</h3>
+<p>AERA describes self-monitoring data, causal model construction and resource metacontrol. S1 observes human multimodal interviews and learns either role; task-learning demonstrations are distinct from the architecture ability proposed for recursive self-modeling.</p>
+<p><strong>适用版本</strong>：arXiv:1312.6764v1 (requested route; no extracted PDF stamp)；<strong>原文定位</strong>：Self-monitoring and resource metacontrol; PDF p34; derived text lines 7-44 (one-based local extraction, not web-tool lines)；S1 evaluation protocol; PDF p35; derived text lines 12-39 (one-based local extraction, not web-tool lines)；Metacontrol not used in S1; PDF p34; derived text lines 45-47 (one-based local extraction, not web-tool lines)。
+<strong>引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_bounded_blueprint">cfg_bounded_blueprint</h3>
+<p><code>cfg_bounded_blueprint</code> · protocol</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>AERA可执行program/model memory、learning/planning/reliability与可选self-monitoring/meta-system；固定executive及资源限制。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>监测prediction/goal、触发TPX模型构造、按可靠性phase-in/out和调度；执行trace可纳入model conditions；meta-control作为另层可用能力但S1未启用。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>学得models及reliability持续保留/淘汰；meta-control/自编译能力与S1实证分开。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>executive、设计者种子/目标、资源限制</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：AERA的程序模型和监控协议明确：prediction失败/goal意外成功触发模型构造，reliability决定模型phase-in/out及资源调度，执行trace可作为新model的pre/post-condition。程序memory由固定executive解释，学习/规划共用可变models。作者还描述已实现的self-modeling/meta-control设施，但S1没有启用，编译加速和一般scalability尚未实验建立；保留旧蓝图pending。（状态：<code>supported</code>；定位：PDF physical pp11–12 (§3 principles/Fig3), tool L476–507；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334；PDF physical p34–35 (§5.3), tool L1627–1677；PDF physical pp51–52 (§7), tool L2447–2475）。
+- <strong>更新由什么过程产生</strong>：AERA的程序模型和监控协议明确：prediction失败/goal意外成功触发模型构造，reliability决定模型phase-in/out及资源调度，执行trace可作为新model的pre/post-condition。程序memory由固定executive解释，学习/规划共用可变models。作者还描述已实现的self-modeling/meta-control设施，但S1没有启用，编译加速和一般scalability尚未实验建立；保留旧蓝图pending。（状态：<code>supported</code>；定位：PDF physical pp11–12 (§3 principles/Fig3), tool L476–507；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334；PDF physical p34–35 (§5.3), tool L1627–1677；PDF physical pp51–52 (§7), tool L2447–2475）。
+- <strong>状态怎样持久保留</strong>：AERA的程序模型和监控协议明确：prediction失败/goal意外成功触发模型构造，reliability决定模型phase-in/out及资源调度，执行trace可作为新model的pre/post-condition。程序memory由固定executive解释，学习/规划共用可变models。作者还描述已实现的self-modeling/meta-control设施，但S1没有启用，编译加速和一般scalability尚未实验建立；保留旧蓝图pending。（状态：<code>supported</code>；定位：PDF physical pp11–12 (§3 principles/Fig3), tool L476–507；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334；PDF physical p34–35 (§5.3), tool L1627–1677；PDF physical pp51–52 (§7), tool L2447–2475）。
+- <strong>更新怎样进入后续改进</strong>：AERA的程序模型和监控协议明确：prediction失败/goal意外成功触发模型构造，reliability决定模型phase-in/out及资源调度，执行trace可作为新model的pre/post-condition。程序memory由固定executive解释，学习/规划共用可变models。作者还描述已实现的self-modeling/meta-control设施，但S1没有启用，编译加速和一般scalability尚未实验建立；保留旧蓝图pending。（状态：<code>unknown</code>；定位：PDF physical pp11–12 (§3 principles/Fig3), tool L476–507；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334；PDF physical p34–35 (§5.3), tool L1627–1677；PDF physical pp51–52 (§7), tool L2447–2475）。</p>
+<p><strong>配置判定</strong>：AERA的程序模型和监控协议明确：prediction失败/goal意外成功触发模型构造，reliability决定模型phase-in/out及资源调度，执行trace可作为新model的pre/post-condition。程序memory由固定executive解释，学习/规划共用可变models。作者还描述已实现的self-modeling/meta-control设施，但S1没有启用，编译加速和一般scalability尚未实验建立；保留旧蓝图pending。</p>
+<p>来源：https://arxiv.org/pdf/1312.6764v1；版本：1312.6764v1；定位：PDF physical pp11–12 (§3 principles/Fig3), tool L476–507；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334；PDF physical p34–35 (§5.3), tool L1627–1677；PDF physical pp51–52 (§7), tool L2447–2475。</p>
+<h3 id="cfg_bounded_s1">cfg_bounded_s1</h3>
+<p><code>cfg_bounded_s1</code> · demonstrator</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>S1 E1/E2基于bootstrap ontology/drives/models从人类互动观察学model；未开启self-modeling meta-control。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>self-modeling for meta-control explicitly not leveraged in S1</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>online observational interaction</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：S1 E1/E2有观察学习的实证；AERA方法文本也明确支持reliability影响后继学习jobs、model预测失败触发TPX及执行trace建模。§5.3未启用meta-control不能否定普通有界状态feedback。当前选段未将这些机制在S1的实际激活/运行路径与架构能力逐一分解，因此C4由旧contradicted纠正为unknown，ring转pending，待具体实现路径独立核定；不据此断言不存在反馈。（状态：<code>supported</code>；定位：PDF physical pp34–35 (§5.3/§6 intro), tool L1665–1690；PDF physical pp50–51 (§6.4), tool L2377–2405；PDF physical pp53–54 (§8), tool L2542–2582；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334）。
+- <strong>更新由什么过程产生</strong>：S1 E1/E2有观察学习的实证；AERA方法文本也明确支持reliability影响后继学习jobs、model预测失败触发TPX及执行trace建模。§5.3未启用meta-control不能否定普通有界状态feedback。当前选段未将这些机制在S1的实际激活/运行路径与架构能力逐一分解，因此C4由旧contradicted纠正为unknown，ring转pending，待具体实现路径独立核定；不据此断言不存在反馈。（状态：<code>supported</code>；定位：PDF physical pp34–35 (§5.3/§6 intro), tool L1665–1690；PDF physical pp50–51 (§6.4), tool L2377–2405；PDF physical pp53–54 (§8), tool L2542–2582；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334）。
+- <strong>状态怎样持久保留</strong>：S1 E1/E2有观察学习的实证；AERA方法文本也明确支持reliability影响后继学习jobs、model预测失败触发TPX及执行trace建模。§5.3未启用meta-control不能否定普通有界状态feedback。当前选段未将这些机制在S1的实际激活/运行路径与架构能力逐一分解，因此C4由旧contradicted纠正为unknown，ring转pending，待具体实现路径独立核定；不据此断言不存在反馈。（状态：<code>supported</code>；定位：PDF physical pp34–35 (§5.3/§6 intro), tool L1665–1690；PDF physical pp50–51 (§6.4), tool L2377–2405；PDF physical pp53–54 (§8), tool L2542–2582；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334）。
+- <strong>更新怎样进入后续改进</strong>：S1 E1/E2有观察学习的实证；AERA方法文本也明确支持reliability影响后继学习jobs、model预测失败触发TPX及执行trace建模。§5.3未启用meta-control不能否定普通有界状态feedback。当前选段未将这些机制在S1的实际激活/运行路径与架构能力逐一分解，因此C4由旧contradicted纠正为unknown，ring转pending，待具体实现路径独立核定；不据此断言不存在反馈。 §6.2.2的S1 E1实现结果具体报告：学得在state-transition model上的抓取前置条件、不同目标连续执行形成的control hierarchy，以及以job priority解释代词指向。该段把已学模型结构用于后续动作/目标，而非只陈述AERA架构能力；但没有明示这些特定更新继续触发或调度下一轮模型学习的运行路径。（状态：<code>unknown</code>；定位：PDF physical pp34–35 (§5.3/§6 intro), tool L1665–1690；PDF physical pp50–51 (§6.4), tool L2377–2405；PDF physical pp53–54 (§8), tool L2542–2582；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334）。</p>
+<p><strong>配置判定</strong>：S1 E1/E2有观察学习的实证；AERA方法文本也明确支持reliability影响后继学习jobs、model预测失败触发TPX及执行trace建模。§5.3未启用meta-control不能否定普通有界状态feedback。当前选段未将这些机制在S1的实际激活/运行路径与架构能力逐一分解，因此C4由旧contradicted纠正为unknown，ring转pending，待具体实现路径独立核定；不据此断言不存在反馈。</p>
+<p>来源：https://arxiv.org/pdf/1312.6764v1；版本：1312.6764v1；定位：PDF physical pp34–35 (§5.3/§6 intro), tool L1665–1690；PDF physical pp50–51 (§6.4), tool L2377–2405；PDF physical pp53–54 (§8), tool L2542–2582；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334；PDF physical p38 §6.2.2 locally extracted lines64–78；PDF physical p39 §6.2.2 locally extracted lines1–4。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>S1 human-human observation and avatar-interview conditions; t-pattern analysis depends on coding/parameters (minimum 3 occurrences, significance 0.0005 unless noted). No accepted-generation count or acceleration is inferred.</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r13_ev_aera_s1_new_impl_result</code></strong>：§6.2.2的S1 E1实现结果具体报告：学得在state-transition model上的抓取前置条件、不同目标连续执行形成的control hierarchy，以及以job priority解释代词指向。该段把已学模型结构用于后续动作/目标，而非只陈述AERA架构能力；但没有明示这些特定更新继续触发或调度下一轮模型学习的运行路径。</li>
+<li>
+<p>来源版本：unknown；定位：参见来源索引；深度：<code>selected_previously_uninspected_primary_S1_implementation_result_only</code>。</p>
+</li>
+<li>
+<p><strong><code>b570_06_ev_wf_4cb682730df1294c5f</code></strong>：AERA describes self-monitoring data, causal model construction and resource metacontrol. S1 observes human multimodal interviews and learns either role; task-learning demonstrations are distinct from the architecture ability proposed for recursive self-modeling.</p>
+</li>
+<li>
+<p>来源版本：arXiv:1312.6764v1 (requested route; no extracted PDF stamp)；定位：Self-monitoring and resource metacontrol; PDF p34; derived text lines 7-44 (one-based local extraction, not web-tool lines)；S1 evaluation protocol; PDF p35; derived text lines 12-39 (one-based local extraction, not web-tool lines)；Metacontrol not used in S1; PDF p34; derived text lines 45-47 (one-based local extraction, not web-tool lines)；深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</p>
+</li>
+<li>
+<p><strong><code>e3_w_bounded</code></strong>：可变程序记忆支持学习/规划；5.3说明self-modeling meta-control实现可用但S1未启用</p>
+</li>
+<li>
+<p>来源版本：v1；定位：PDF physical p.11；PDF physical p.12；PDF physical p.34；PDF physical p.53；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>e4_cfg_bounded_blueprint</code></strong>：架构描述可执行模型记忆耦合学习/规划；第34物理页明确S1未启用self-modeling meta-control。</p>
+</li>
+<li>
+<p>来源版本：v1；定位：PDF physical p.11；PDF physical p.12；PDF physical p.34；PDF physical p.53；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>r9_ev_bounded_blueprint_scope</code></strong>：AERA的程序模型和监控协议明确：prediction失败/goal意外成功触发模型构造，reliability决定模型phase-in/out及资源调度，执行trace可作为新model的pre/post-condition。程序memory由固定executive解释，学习/规划共用可变models。作者还描述已实现的self-modeling/meta-control设施，但S1没有启用，编译加速和一般scalability尚未实验建立；保留旧蓝图pending。</p>
+</li>
+<li>
+<p>来源版本：1312.6764v1；定位：PDF physical pp11–12 (§3 principles/Fig3), tool L476–507；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334；PDF physical p34–35 (§5.3), tool L1627–1677；PDF physical pp51–52 (§7), tool L2447–2475；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>r9_ev_bounded_s1_scope</code></strong>：S1 E1/E2有观察学习的实证；AERA方法文本也明确支持reliability影响后继学习jobs、model预测失败触发TPX及执行trace建模。§5.3未启用meta-control不能否定普通有界状态feedback。当前选段未将这些机制在S1的实际激活/运行路径与架构能力逐一分解，因此C4由旧contradicted纠正为unknown，ring转pending，待具体实现路径独立核定；不据此断言不存在反馈。</p>
+</li>
+<li>来源版本：1312.6764v1；定位：PDF physical pp34–35 (§5.3/§6 intro), tool L1665–1690；PDF physical pp50–51 (§6.4), tool L2377–2405；PDF physical pp53–54 (§8), tool L2542–2582；PDF physical pp24–28 (§5.1.1/5.2.1/5.2.3), tool L1130–1147,L1222–1239,L1301–1334；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<h3 id="1-self-monitoring-and-resource-metacontrol">选段 1 · 机制 / 定义 · Self-monitoring and resource metacontrol</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/1312.6764v1<br>
+<strong>实际版本</strong>：arXiv:1312.6764v1 (requested route; no extracted PDF stamp)<br>
+<strong>精确定位</strong>：PDF p34; derived text lines 7-44 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_4cb682730df1294c5f</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="2-s1-evaluation-protocol">选段 2 · 机制 / 定义 · S1 evaluation protocol</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/1312.6764v1<br>
+<strong>实际版本</strong>：arXiv:1312.6764v1 (requested route; no extracted PDF stamp)<br>
+<strong>精确定位</strong>：PDF p35; derived text lines 12-39 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_4cb682730df1294c5f</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="3-metacontrol-not-used-in-s1">选段 3 · 限制 · Metacontrol not used in S1</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/1312.6764v1<br>
+<strong>实际版本</strong>：arXiv:1312.6764v1 (requested route; no extracted PDF stamp)<br>
+<strong>精确定位</strong>：PDF p34; derived text lines 45-47 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_4cb682730df1294c5f</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Section 5.3 explicitly says self-modeling for metacontrol was not leveraged in S1 despite implemented functionality. S1 therefore does not demonstrate recursive metacontrol or repeated self-compilation speedups.</li>
+<li>规范/架构描述与作者声称implemented and operational不是同一层实验证明；本次没有运行AERA代码或核完整日志。</li>
+<li>固定executive创建chaining/monitoring/TPX程序；model与composite state可学，不能写executive学习算法自身改写。</li>
+<li>§5.3 self-compilation是预计提升scalability的路径；§8计划未来leveraging，不是本文已测加速。</li>
+<li>不得把S1未启用meta-control推成架构没有模型反馈；§5.1.1和5.2.1确有学习模型/可靠性/后继job反馈，旧混合blueprint的运行证据仍待独立配置核定。</li>
+<li>meta-control未启用不能作为普通C4反证；固定executive也不是排除有界反馈的理由。</li>
+<li>架构协议已有普通模型反馈支持，S1具体执行/激活日志与配置路径尚未独立区分，暂不认证运行闭环。</li>
+<li>作者“无显著重要差别”“无错误”等是这组演示的报告，未独立统计复验或外推人类等价能力。</li>
+<li>motor babbling曾用designer ad-hoc goals探索，但本报告S1实验不允许使用；不能把另次原型干预算本实验自主探索。</li>
+<li>仅补充已实现S1模型/控制状态的有限证据。不能据“控制/注意任务priority”自动认证后继learning-job反馈；与Round9已核架构reliability/TPX描述分开。disabled meta-control仍不能作普通C4否定依据。</li>
+<li>原</li>
+<li>文</li>
+<li>细</li>
+<li>分</li>
+<li>设</li>
+<li>计</li>
+<li>能</li>
+<li>力</li>
+<li>和</li>
+<li>S</li>
+<li>1</li>
+<li>实</li>
+<li>证</li>
+<li>；</li>
+<li>完</li>
+<li>整</li>
+<li>重</li>
+<li>复</li>
+<li>改</li>
+<li>进</li>
+<li>算</li>
+<li>子</li>
+<li>回</li>
+<li>路</li>
+<li>仍</li>
+<li>未</li>
+<li>建</li>
+<li>立</li>
+<li>。</li>
+<li>保</li>
+<li>留</li>
+<li>a</li>
+<li>d</li>
+<li>j</li>
+<li>c</li>
+<li>e</li>
+<li>n</li>
+<li>t</li>
+<li>，</li>
+<li>不</li>
+<li>用</li>
+<li>蓝</li>
+<li>图</li>
+<li>覆</li>
+<li>盖</li>
+<li>已</li>
+<li>新</li>
+<li>核</li>
+<li>对</li>
+<li>第</li>
+<li>3</li>
+<li>4</li>
+<li>页</li>
+<li>渲</li>
+<li>染</li>
+<li>与</li>
+<li>本</li>
+<li>继</li>
+<li>承</li>
+<li>到</li>
+<li>及</li>
+<li>其</li>
+<li>运</li>
+<li>行</li>
+<li>据</li>
+<li>续</li>
+<li>待</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r13_src_aera_s1_new_impl_result</code> · Bounded Recursive Self-Improvement · 1312.6764v1</li>
+<li>https://arxiv.org/pdf/1312.6764v1；阅读深度：<code>未单列</code>。</li>
+<li><code>b570_06_src_wf_4cb682730df1294c5f</code> · Bounded Recursive Self-Improvement · arXiv:1312.6764v1 (requested route; no extracted PDF stamp)</li>
+<li>https://arxiv.org/pdf/1312.6764v1；阅读深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+<li><code>r9_src_bounded_method_s1_scope</code> · 已存来源 · 1312.6764v1</li>
+<li>https://arxiv.org/pdf/1312.6764v1；阅读深度：<code>未单列</code>。</li>
+<li><code>src_20261013_w_bounded</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/abs/1312.6764v1；阅读深度：<code>未单列</code>。</li>
+<li><code>stage1_src_w_bounded</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/abs/1312.6764v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>仍未核准的内容</strong>：</p>
+<ul>
+<li>Recursive metacontrol and self-compilation/scalability gains are not tested by S1.</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_method_passages_with_abstract_baseline, targeted_architecture_demonstrator_scope_20261018, selected_previously_uninspected_S1_model_control_result_20261019, selected_primary_role_definition_protocol_scope_and_limits。
+<strong>当前引用权限</strong>：<code>pending_scope_only_no_configuration_claim_admission</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_4cb682730df1294c5f --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

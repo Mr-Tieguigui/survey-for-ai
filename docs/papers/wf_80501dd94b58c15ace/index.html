@@ -1,0 +1,151 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>TeleTune: Evolving Agent Skills From Offline Telemetry · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2610.05437v2" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>2 条准入主张</span><span>2 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>1 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#teletune-evolving-agent-skills-from-offline-telemetry">TeleTune: Evolving Agent Skills From Offline Telemetry</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_teletune_fixed_library_deployment">configuration:cfg_teletune_fixed_library_deployment</a></li>
+<li><a href="#configurationcfg_teletune_offline_library_optimizer">configuration:cfg_teletune_offline_library_optimizer</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#cfg_teletune_offline_library_optimizer">cfg_teletune_offline_library_optimizer</a></li>
+<li><a href="#cfg_teletune_fixed_library_deployment">cfg_teletune_fixed_library_deployment</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a><ul>
+<li><a href="#expel-llm-agents-are-experiential-learners">ExpeL: LLM Agents Are Experiential Learners</a></li>
+</ul>
+</li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="teletune-evolving-agent-skills-from-offline-telemetry">TeleTune: Evolving Agent Skills From Offline Telemetry</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_80501dd94b58c15ace</code></p>
+</blockquote>
+<p><strong>作者</strong>：Justin Chih-Yao Chen, Elias Stengel-Eskin, Yan Chen, Pol Llado, Scott Counts, Mohit Bansal, Benjamin Van Durme, Harsh Jhamtani, Gaurav Verma<br>
+<strong>原文</strong>：https://arxiv.org/abs/2610.05437v2<br>
+<strong>研究分支</strong>：工具、技能与经验复用<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>依具体更新边界裁定；不按self-evolving标题认证递归性。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_teletune_fixed_library_deployment">configuration:cfg_teletune_fixed_library_deployment</h3>
+<p>固定部署不能借用离线优化的递归核心身份。</p>
+<p><strong>适用版本</strong>：v2；<strong>原文定位</strong>：§2.1–2.2, tool text L85–110；§2.3–2.4, tool text L111–118。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_teletune_offline_library_optimizer">configuration:cfg_teletune_offline_library_optimizer</h3>
+<p>core仅完整离线自反馈编辑系统；固定人类/专家日志是外部监督，不是在线探索。</p>
+<p><strong>适用版本</strong>：v2；<strong>原文定位</strong>：§2.1–2.2, tool text L85–110；§2.3–2.4, tool text L111–118。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_teletune_offline_library_optimizer">cfg_teletune_offline_library_optimizer</h3>
+<p><code>cfg_teletune_offline_library_optimizer</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>冻结LM预测器/优化器、固定成功日志及可编辑工作流/技能库。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>以当前库预测固定日志，首错驱动局部编辑；dev动作预测准确率提升才替换库，随后再用新库预测和编辑。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>接受库跨优化步checkpoint并影响下一轮自生预测错误。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 固定日志与teacher forcing - train/dev划分、预测匹配规则 - 同骨干冻结权重及停止预算</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：core仅完整离线自反馈编辑系统；固定人类/专家日志是外部监督，不是在线探索。</p>
+<p>来源：https://arxiv.org/html/2610.05437v2；版本：v2；定位：§2.1–2.2, tool text L85–110；§2.3–2.4, tool text L111–118。</p>
+<h3 id="cfg_teletune_fixed_library_deployment">cfg_teletune_fixed_library_deployment</h3>
+<p><code>cfg_teletune_fixed_library_deployment</code> · inference_variant</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>冻结模型与优化后库；新任务只组装示例并执行。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>按工作流覆盖检索示例，执行期间库和示例固定。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>训练产物跨任务复用；此部署配置没有继续编辑。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 模型、全局库 - 每任务开始确定的示例</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：固定部署不能借用离线优化的递归核心身份。</p>
+<p>来源：https://arxiv.org/html/2610.05437v2；版本：v2；定位：§2.1–2.2, tool text L85–110；§2.3–2.4, tool text L111–118。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r4_memory_ev_cfg_teletune_offline_library_optimizer</code></strong>：以当前库预测固定日志，首错驱动局部编辑；dev动作预测准确率提升才替换库，随后再用新库预测和编辑。</li>
+<li>
+<p>来源版本：v2；定位：§2.1–2.2, tool text L85–110；§2.3–2.4, tool text L111–118；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>r4_memory_ev_cfg_teletune_fixed_library_deployment</code></strong>：按工作流覆盖检索示例，执行期间库和示例固定。</p>
+</li>
+<li>来源版本：v2；定位：§2.1–2.2, tool text L85–110；§2.3–2.4, tool text L111–118；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>任务goal在测试期可用；训练日志未记录goal时另行推断。</li>
+<li>优化目标是动作预测代理指标，非每项编辑在线任务成功验证。</li>
+<li>反复使用同dev集并不证明对任意未来任务泛化。</li>
+<li>core仅完整离线自反馈编辑系统；固定人类/专家日志是外部监督，不是在线探索。</li>
+<li>固定部署不能借用离线优化的递归核心身份。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<h3 id="expel-llm-agents-are-experiential-learners"><a href="../wf_984256074226b209d4/">ExpeL: LLM Agents Are Experiential Learners</a></h3>
+<p>关系：<code>contrasts_system_boundary_with</code> · <code>r4_memory_cfg_teletune_offline_library_optimizer_cfg_expel</code> · 当前展示权限：<code>primary_supported</code>。
+两者保留文字知识供之后行为使用。TeleTune按固定日志的动作预测错误编辑且dev准确率门控；ExpeL比较成功/失败轨迹编辑insight并在评估检索成功轨迹。</p>
+<p><strong>关系边界</strong>：双端方法机制对照；非继承、共同实验臂、代码复用或性能优劣认证。</p>
+<p><strong>已存关系来源与定位（保留原记录端点语义）</strong>：
+- r4_memory_src_teletune：https://arxiv.org/html/2610.05437v2；版本：v2；定位：§2.1–2.2, tool text L85–110；§2.3–2.4, tool text L111–118。
+- r4_memory_src_expel_existing：https://arxiv.org/html/2308.10144v3；版本：v3；定位：S4.SS1.p1；S4.SS2.SSSx2.p1；S4.SS2.SSSx2.p2；S4.SS3.p1。
+- r4_memory_src_teletune：https://arxiv.org/html/2610.05437v2；版本：v2；定位：§2.1–2.2, tool text L85–110；§2.3–2.4, tool text L111–118。
+- r4_memory_src_expel_existing：https://arxiv.org/html/2308.10144v3；版本：v3；定位：S4.SS1.p1；S4.SS2.SSSx2.p1；S4.SS2.SSSx2.p2；S4.SS3.p1。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r4_memory_src_teletune</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/html/2610.05437v2；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_primary_method_configuration_and_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_80501dd94b58c15ace --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

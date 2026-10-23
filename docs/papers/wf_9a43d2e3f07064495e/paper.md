@@ -1,0 +1,63 @@
+# Curb Your Self-Modifying Code
+
+> 背景/相邻基础 · 2022 · `wf_9a43d2e3f07064495e`
+
+**作者**：Patrik Christen  
+**原文**：https://arxiv.org/abs/2202.13830  
+**研究分支**：历史基础与其他背景  
+**解析依据**：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。
+
+## 1. 这项工作研究什么
+以 allagmatic 方法原型限制可修改代码区段及代码与数据间转换；摘要讨论控制机制与基因调控类比，尚不证明实际 RSI 性能提升或完整安全性。
+
+## 2. 论文的核心内容与贡献
+
+### role:r6safe_role_w_curb_selfmod
+提出并原型实现C# code/data双向转换与可修改update-rule区域，用类型/邻域/有限代码词表限制运行时自修改；作为RSI实现基础语境。
+
+**适用版本**：v2；**原文定位**：PDF p2–3 §III–IV tool L246–387；PDF p3–4 §V tool L388–455。
+**引用权限**：`selected_role_claim_only_no_configuration_certification`。
+
+### 已存角色解释 · `s18_role_review_wf_9a43d2e3f07064495e`
+以 allagmatic 方法原型限制可修改代码区段及代码与数据间转换；摘要讨论控制机制与基因调控类比，尚不证明实际 RSI 性能提升或完整安全性。
+
+研究类型：未单列；权限：`role_and_relevance_boundary_only_not_technical_answer_evidence`。
+
+## 3. 具体机制、研究对象与协议
+该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。
+
+## 4. 实验、评价协议与结果的可解释范围
+当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。
+
+### 原文证据记录中的具体观察
+这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。
+
+- **`s18_role_ev_wf_9a43d2e3f07064495e`**：以 allagmatic 方法原型限制可修改代码区段及代码与数据间转换；摘要讨论控制机制与基因调控类比，尚不证明实际 RSI 性能提升或完整安全性。
+  - 来源版本：2202.13830v2；定位：Atom entry http://arxiv.org/abs/2202.13830v2；Atom summary element；深度：`official_primary_abstract_role_and_relevance_only`。
+
+- **`r6safe_role_w_curb_selfmod_ev`**：提出并原型实现C# code/data双向转换与可修改update-rule区域，用类型/邻域/有限代码词表限制运行时自修改；作为RSI实现基础语境。
+  - 来源版本：unknown；定位：参见来源索引；深度：`未单列`。
+
+## 5. 原文选段：把方法与实验细节展开
+目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。
+
+## 6. 局限、冲突与不能推出的结论
+
+- 选读§III–V原型，不是LLM训练/能力评测或安全证明。
+- 没有目标utility、学习选择或已测改进闭环，不因可修改U直接标核心自改方法。
+- 动态编译和命名约束只能限定所述原型，不能认证任意代码注入免疫。
+- 仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。
+
+## 7. 与其他论文的具体关系
+当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。
+
+## 8. 来源清单、复查入口与解析缺口
+- `r6safe_src_curb` · 已存来源 · v2
+  - https://arxiv.org/pdf/2202.13830v2；阅读深度：`selected_original_method_and_scope_limits`。
+- `s18_role_src_4a72693a250c423c` · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review
+  - https://export.arxiv.org/api/query?search_query=%28ti%3A%22self-modifying%22+OR+ti%3A%22self-referential%22+OR+ti%3A%22self-rewriting%22%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending；阅读深度：`未单列`。
+
+**证据深度**：original_abstract。
+**当前引用权限**：`selected_role_claims_only`；人工签核：`False`。
+
+**AI 联合读取**：`python scripts/dossier.py wf_9a43d2e3f07064495e --excerpts`。解析卡编排本身不新增主张、原文核查或独立复现。

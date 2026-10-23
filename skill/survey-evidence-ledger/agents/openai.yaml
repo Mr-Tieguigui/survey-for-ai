@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survey for AI · Evidence Ledger"
+  short_description: "Build queryable surveys with evidence and reader modules"
+  default_prompt: "Use $survey-evidence-ledger to build or maintain a domain-adapted survey, with traceable claims, field relationships and reader answers."

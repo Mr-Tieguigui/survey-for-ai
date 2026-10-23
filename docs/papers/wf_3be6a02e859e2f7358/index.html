@@ -1,0 +1,124 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2609.14857" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#modularrsi-modular-and-generalizable-recursive-harness-self-improvement">ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_modularrsi_function_library_evolution">configuration:cfg_modularrsi_function_library_evolution</a></li>
+<li><a href="#s18_role_review_wf_3be6a02e859e2f7358">已存角色解释 · s18_role_review_wf_3be6a02e859e2f7358</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#modularrsi-independently-evolved-harness-modules-with-integration">ModularRSI: independently evolved harness modules with integration</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="modularrsi-modular-and-generalizable-recursive-harness-self-improvement">ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_3be6a02e859e2f7358</code></p>
+</blockquote>
+<p><strong>作者</strong>：Siwei Wu, Jincheng Ren, Yizhi Li, Haau-Sing Li, Chengran Yang, Yuxuan Zhang, Weicheng Gu, Jian Yang, Riza Batista-Navarro, Chuanyi Zhang, Xianglong Liu, Ming Zhou, Bryan Dai, Chenghua Lin<br>
+<strong>原文</strong>：https://arxiv.org/abs/2609.14857<br>
+<strong>研究分支</strong>：代理架构、harness与代码<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>ModularRSI 对同任务成功与失败轨迹作跨任务归因，独立演化五类 harness 模块后整合，并称演化任务与下游 benchmark 分离；应核作用对象、模块合并和泛化协议，不能仅据摘要认证无泄漏。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_modularrsi_function_library_evolution">configuration:cfg_modularrsi_function_library_evolution</h3>
+<p>代码层函数库及其历史在后续自修改循环中保留并生效，四项结构条件在此harness边界内满足；未认证基础模型或固定gate自行改进。</p>
+<p><strong>适用版本</strong>：2609.14857v1；<strong>原文定位</strong>：v1 §3.1–3.7 tool L130–181；v1 §4–5.3 tool L182–208；v1 §6.4 tool L260–271；v1 §7 tool L294–298。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="s18_role_review_wf_3be6a02e859e2f7358">已存角色解释 · <code>s18_role_review_wf_3be6a02e859e2f7358</code></h3>
+<p>ModularRSI 对同任务成功与失败轨迹作跨任务归因，独立演化五类 harness 模块后整合，并称演化任务与下游 benchmark 分离；应核作用对象、模块合并和泛化协议，不能仅据摘要认证无泄漏。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="modularrsi-independently-evolved-harness-modules-with-integration">ModularRSI: independently evolved harness modules with integration</h3>
+<p><code>cfg_modularrsi_function_library_evolution</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定基础模型和代码修改提示内，五类harness行为函数库、历史轨迹memory、每函数演化history；基础通信和sandbox初始化不属演化目标。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>正在演化的agent承担分析与Code-Modify角色；同任务成功/失败对照、跨任务票数定位函数后改写，校验通过的模块函数用于后续rollout/分析和跨模块整合。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>每轮保留验证函数、轨迹和演化history，五模块独立演化后额外整合；最终库冻结但评价时仍按任务选择激活函数。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 基础LLM权重 - Code-Modify/分析和gate提示模板 - 任务评价器 - 固定五模块接口及可编辑范围 - benchmark留出协议</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>backbones</strong>：- DeepSeek-V4-Flash-Preview - DeepSeek-V4-Flash-0731 - <strong>batch size</strong>：10 - <strong>comparison control</strong>：§6.4 AHE/Meta-Harness 16 epochs to match aggregate evolution rounds; not certified identical token or dollar expenditure; web search disabled in this comparison - <strong>curated resource size</strong>：2000 - <strong>downstream</strong>：- TerminalBench2.0 - SWE-Bench Verified - <strong>evolution epochs per module</strong>：3 - <strong>evolution instances per domain</strong>：120 - <strong>seed harness</strong>：Terminus-2 / Harbor</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：代码层函数库及其历史在后续自修改循环中保留并生效，四项结构条件在此harness边界内满足；未认证基础模型或固定gate自行改进。</p>
+<p>来源：https://arxiv.org/html/2609.14857v1；版本：2609.14857v1；定位：v1 §3.1–3.7 tool L130–181；v1 §4–5.3 tool L182–208；v1 §6.4 tool L260–271；v1 §7 tool L294–298。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>backbones</strong>：- DeepSeek-V4-Flash-Preview - DeepSeek-V4-Flash-0731</li>
+<li><strong>batch size</strong>：10</li>
+<li><strong>comparison control</strong>：§6.4 AHE/Meta-Harness 16 epochs to match aggregate evolution rounds; not certified identical token or dollar expenditure; web search disabled in this comparison</li>
+<li><strong>curated resource size</strong>：2000</li>
+<li><strong>downstream</strong>：- TerminalBench2.0 - SWE-Bench Verified</li>
+<li><strong>evolution epochs per module</strong>：3</li>
+<li><strong>evolution instances per domain</strong>：120</li>
+<li><strong>seed harness</strong>：Terminus-2 / Harbor</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_3be6a02e859e2f7358</code></strong>：ModularRSI 对同任务成功与失败轨迹作跨任务归因，独立演化五类 harness 模块后整合，并称演化任务与下游 benchmark 分离；应核作用对象、模块合并和泛化协议，不能仅据摘要认证无泄漏。</li>
+<li>
+<p>来源版本：2609.14857v1；定位：Atom entry http://arxiv.org/abs/2609.14857v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r5agent_ev_cfg_modularrsi_function_library_evolution</code></strong>：代码层函数库及其历史在后续自修改循环中保留并生效，四项结构条件在此harness边界内满足；未认证基础模型或固定gate自行改进。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>静态检查、同agent的diff审查及随机2任务执行验证主要排运行/协议错误，不是跨任务性能显著性或独立安全保证。</li>
+<li>作者明确未做单独隔离contrastive分析贡献的消融；不能把集成收益全部归因对照机制。</li>
+<li>策展bench-disjoint是作者构建和筛选协议声明；下游benchmark高层领域标签用于检索引导，不等于从未参考benchmark领域。</li>
+<li>原始2000任务中实验仅每域120；不同表使用的Flash-Preview/Flash-0731及对照协议不能混同。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+<li>有限任务配置的结构核查，不是全文逐段审核、独立复现或单调收益认证。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r5agent_src_w_modularrsi</code> · 已存来源 · 2609.14857v1</li>
+<li>https://arxiv.org/html/2609.14857v1；阅读深度：<code>targeted_primary_method_controls_and_limits</code>。</li>
+<li><code>s18_role_src_cf0403161b25df87</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28ti%3A%22self-improving%22+AND+%28all%3Aagent+OR+all%3Alanguage%29%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=0&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, targeted_primary_method_controls_limits_20261018。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_3be6a02e859e2f7358 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

@@ -1,0 +1,83 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Automatic Prompt Optimization with &quot;Gradient Descent&quot; and Beam Search · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://aclanthology.org/2023.emnlp-main.494.pdf" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#automatic-prompt-optimization-with-gradient-descent-and-beam-search">Automatic Prompt Optimization with "Gradient Descent" and Beam Search</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_protegi">configuration:cfg_protegi</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#cfg_protegi">cfg_protegi</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a></li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="automatic-prompt-optimization-with-gradient-descent-and-beam-search">Automatic Prompt Optimization with &quot;Gradient Descent&quot; and Beam Search</h1>
+<blockquote>
+<p>方法论文 · 2023 · <code>wf_97c595829770a700ec</code></p>
+</blockquote>
+<p><strong>作者</strong>：Reid Pryzant, Dan Iter, Jerry Li, Yin Lee, Chenguang Zhu, Michael Zeng<br>
+<strong>原文</strong>：https://aclanthology.org/2023.emnlp-main.494.pdf<br>
+<strong>研究分支</strong>：提示与程序化优化<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在提示优化系统边界下满足项目四条件；作为TextGrad文本梯度谱系的直接前作</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_protegi">configuration:cfg_protegi</h3>
+<p>在提示优化系统边界下满足项目四条件；作为TextGrad文本梯度谱系的直接前作</p>
+<p><strong>适用版本</strong>：EMNLP-2023-version-of-record；<strong>原文定位</strong>：P0:L11-L28；P1:L52-L68；P1-2:L75-L167；P2:L168-L221；Algorithms 1-2。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_protegi">cfg_protegi</h3>
+<p><code>cfg_protegi</code> · 已存配置视图</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>提示候选、数据小批量、文本梯度生成器、编辑器、beam search与候选选择器</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>LLM根据错误生成自然语言梯度，再沿相反语义方向编辑当前提示并筛选后继候选</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>beam中的提示跨优化步保留，并进入下一轮评估、诊断和扩展</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>黑盒LLM、训练数据、评价指标、梯度/编辑模板与搜索预算</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：在提示优化系统边界下满足项目四条件；作为TextGrad文本梯度谱系的直接前作</p>
+<p>来源：https://aclanthology.org/2023.emnlp-main.494.pdf；版本：EMNLP-2023-version-of-record；定位：P0:L11-L28；P1:L52-L68；P1-2:L75-L167；P2:L168-L221；Algorithms 1-2。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<p>当前未单列具体局限；这不表示没有局限。</p>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>registered_cfg_src_2ba4e1dd13f80ecd</code> · 已存来源 · EMNLP-2023-version-of-record</li>
+<li>https://aclanthology.org/2023.emnlp-main.494.pdf；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：targeted_primary_full_text_method_pass。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_97c595829770a700ec --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

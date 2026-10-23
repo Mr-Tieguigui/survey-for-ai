@@ -1,0 +1,127 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>TrustGeoGen: Formal-Verified Data Engine for Trustworthy Multi-modal Geometric Problem Solving · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2504.15780" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#trustgeogen-formal-verified-data-engine-for-trustworthy-multi-modal-geometric-problem-solving">TrustGeoGen: Formal-Verified Data Engine for Trustworthy Multi-modal Geometric Problem Solving</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_trustgeogen_formal_bootstrap_engine_v3">configuration:cfg_trustgeogen_formal_bootstrap_engine_v3</a></li>
+<li><a href="#r4_role_review_wf_de680d15ee15b41451">已存角色解释 · r4_role_review_wf_de680d15ee15b41451</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#trustgeogen-rule-engine-with-premise-bootstrap-and-translator">TrustGeoGen rule engine with premise bootstrap and translator</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="trustgeogen-formal-verified-data-engine-for-trustworthy-multi-modal-geometric-problem-solving">TrustGeoGen: Formal-Verified Data Engine for Trustworthy Multi-modal Geometric Problem Solving</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_de680d15ee15b41451</code></p>
+</blockquote>
+<p><strong>作者</strong>：Daocheng Fu, Jianlong Chen, Renqiu Xia, Zijun Chen, Qi Liu, Yuan Feng, Hongbin Zhou, Renrui Zhang, Shiyang Feng, Peng Gao, Hongyuan Zha, Junchi Yan, Botian Shi, Yu Qiao, Bo Zhang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2504.15780<br>
+<strong>研究分支</strong>：多模态、医疗与视觉<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>TrustGeoGen生成正式验证的多模态几何数据，并以难度过滤和迭代自举组织训练数据；具体生成器/学生更新链需全文区分。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_trustgeogen_formal_bootstrap_engine_v3">configuration:cfg_trustgeogen_formal_bootstrap_engine_v3</h3>
+<p>§III.B质量指标筛选保留当前图样本作为后继初始scene，保留状态改变后继提案，满足有界生成搜索反馈；不要求固定rule或下游学生改写生成器，也不认证更强RSI。</p>
+<p><strong>适用版本</strong>：v3；<strong>原文定位</strong>：§III.A tool L115–141；§III.A Translator tool L228–232；§III.B Bootstrap tool L251–255；§III.D traceback tool L263–276。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="r4_role_review_wf_de680d15ee15b41451">已存角色解释 · <code>r4_role_review_wf_de680d15ee15b41451</code></h3>
+<p>TrustGeoGen生成正式验证的多模态几何数据，并以难度过滤和迭代自举组织训练数据；具体生成器/学生更新链需全文区分。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="trustgeogen-rule-engine-with-premise-bootstrap-and-translator">TrustGeoGen rule engine with premise bootstrap and translator</h3>
+<p><code>cfg_trustgeogen_formal_bootstrap_engine_v3</code> · formal_synthetic_data_engine</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定构建库、reasoner和sampler，加上跨轮保留的高质量初始scene/前提；只覆盖质量筛选驱动的生成器bootstrap。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>46基础scene函数及正式规则构图；sampler质量高的结果成为下一次初始场景并加前提，GPT4o逐步翻译和补连接解释，供下游训练。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>几何场景和推理结果跨bootstrap迭代保留并增加复杂度；固定rule/LLM生成器未据学生训练反馈改写。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 46场景生成函数 - 几何定理/验证器 - 质量阈值及采样算法 - GPT4o译文服务</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>base scene functions</strong>：46 - <strong>bootstrap</strong>：sampler quality selects premise foundation, constructor appends constructions - <strong>student feedback to generator</strong>：not_shown - <strong>translator</strong>：GPT4o fixed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：§III.B: selected high-average-quality sampled data becomes the next iteration initial scenario; fixed top-level rules do not negate bounded search-state feedback.（状态：<code>supported</code>；定位：§III.A tool L115–141）。
+- <strong>更新由什么过程产生</strong>：§III.B: selected high-average-quality sampled data becomes the next iteration initial scenario; fixed top-level rules do not negate bounded search-state feedback.（状态：<code>supported</code>；定位：§III.A tool L115–141）。
+- <strong>状态怎样持久保留</strong>：§III.B: selected high-average-quality sampled data becomes the next iteration initial scenario; fixed top-level rules do not negate bounded search-state feedback.（状态：<code>supported</code>；定位：§III.A tool L115–141）。
+- <strong>更新怎样进入后续改进</strong>：§III.B: selected high-average-quality sampled data becomes the next iteration initial scenario; fixed top-level rules do not negate bounded search-state feedback.（状态：<code>supported</code>；定位：§III.A tool L115–141）。</p>
+<p><strong>配置判定</strong>：§III.B质量指标筛选保留当前图样本作为后继初始scene，保留状态改变后继提案，满足有界生成搜索反馈；不要求固定rule或下游学生改写生成器，也不认证更强RSI。</p>
+<p>来源：https://arxiv.org/html/2504.15780v3；版本：v3；定位：§III.A tool L115–141；§III.A Translator tool L228–232；§III.B Bootstrap tool L251–255；§III.D traceback tool L263–276。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>base scene functions</strong>：46</li>
+<li><strong>bootstrap</strong>：sampler quality selects premise foundation, constructor appends constructions</li>
+<li><strong>student feedback to generator</strong>：not_shown</li>
+<li><strong>translator</strong>：GPT4o fixed</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r4_role_ev_wf_de680d15ee15b41451</code></strong>：TrustGeoGen生成正式验证的多模态几何数据，并以难度过滤和迭代自举组织训练数据；具体生成器/学生更新链需全文区分。</li>
+<li>
+<p>来源版本：2504.15780v3；定位：Atom entry http://arxiv.org/abs/2504.15780v3；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r6safe_ev_cfg_trustgeogen_formal_bootstrap_engine_v3</code></strong>：固定构建库、reasoner和sampler，加上跨轮保留的高质量初始scene/前提；只覆盖质量筛选驱动的生成器bootstrap。 46基础scene函数及正式规则构图；sampler质量高的结果成为下一次初始场景并加前提，GPT4o逐步翻译和补连接解释，供下游训练。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>核心仅指质量门控的scene bootstrap状态回流；不表示下游学生反馈训练生成器，也不表示固定reasoner规则或GPT4o自改。</li>
+<li>bootstrap增加场景/问题复杂度不等于solver改进效率或生成器自训练。</li>
+<li>formal engine核的是形式几何关系；GPT4o连接解释未因此获得形式保证。</li>
+<li>traceback样本为图路径构造，不是模型运行时真的犯错反思。</li>
+<li>下游混合数据效果按模型/任务不同，不能宣称所有模型/组合普遍改善。</li>
+<li>仅实读官方摘要作角色和范围判读，未核全文方法、实验、定理及数值；不得直接支持技术回答或继承关系。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r4_role_src_d22fac9661be8768</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28%28ti%3Averifier+OR+ti%3A%22process+reward%22+OR+ti%3A%22feedback+reliability%22%29+AND+%28all%3Areasoning+OR+all%3Aagent%29%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=800&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+<li><code>r6safe_src_geo</code> · 已存来源 · v3</li>
+<li>https://arxiv.org/html/2504.15780v3；阅读深度：<code>selected_original_method_and_scope_limits</code>。</li>
+<li><code>r6safe_src_geo_bootstrap</code> · 已存来源 · v3</li>
+<li>https://arxiv.org/html/2504.15780v3；阅读深度：<code>selected_original_method_and_scope_limits</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：selected_original_method_and_scope_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_de680d15ee15b41451 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

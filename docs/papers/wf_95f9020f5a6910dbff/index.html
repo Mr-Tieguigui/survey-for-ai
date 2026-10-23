@@ -1,0 +1,205 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>ReSAIL: Mitigating Collapse in Iterative Agent Self-Distillation · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2609.39306" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>2 条准入主张</span><span>2 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#resail-mitigating-collapse-in-iterative-agent-self-distillation">ReSAIL: Mitigating Collapse in Iterative Agent Self-Distillation</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_resail_aitz_sgs_single_offline_cycle_v1">configuration:cfg_resail_aitz_sgs_single_offline_cycle_v1</a></li>
+<li><a href="#configurationcfg_resail_oel_three_cycle_retention_v1">configuration:cfg_resail_oel_three_cycle_retention_v1</a></li>
+<li><a href="#r4_role_review_wf_95f9020f5a6910dbff">已存角色解释 · r4_role_review_wf_95f9020f5a6910dbff</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#resail-oel-three-cycle-offline-privileged-retention">ReSAIL + OEL: three-cycle offline privileged retention</a></li>
+<li><a href="#aitz-oel-sgs-bounded-single-cycle-on-policy-response-distillation">AITZ OEL + SGS: bounded single-cycle on-policy response distillation</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="resail-mitigating-collapse-in-iterative-agent-self-distillation">ReSAIL: Mitigating Collapse in Iterative Agent Self-Distillation</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_95f9020f5a6910dbff</code></p>
+</blockquote>
+<p><strong>作者</strong>：Shengjie Jin, Hengbo Xu, Zelong Sun, YuJie Guo, Zhiwu Lu<br>
+<strong>原文</strong>：https://arxiv.org/abs/2609.39306<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>ReSAIL在迭代privileged-information自蒸馏中选择信息步骤并约束学生保持下一轮教师行为；摘要报告三轮实验，不能外推无界增长。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_resail_aitz_sgs_single_offline_cycle_v1">configuration:cfg_resail_aitz_sgs_single_offline_cycle_v1</h3>
+<p>在此训练/生成/教师状态边界内支持结构四条件；固定优化器与目标不因此自改，不认证效率递增或无界增长。</p>
+<p><strong>适用版本</strong>：2609.39306v1；<strong>原文定位</strong>：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_resail_oel_three_cycle_retention_v1">configuration:cfg_resail_oel_three_cycle_retention_v1</h3>
+<p>在此训练/生成/教师状态边界内支持结构四条件；固定优化器与目标不因此自改，不认证效率递增或无界增长。</p>
+<p><strong>适用版本</strong>：2609.39306v1；<strong>原文定位</strong>：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="r4_role_review_wf_95f9020f5a6910dbff">已存角色解释 · <code>r4_role_review_wf_95f9020f5a6910dbff</code></h3>
+<p>ReSAIL在迭代privileged-information自蒸馏中选择信息步骤并约束学生保持下一轮教师行为；摘要报告三轮实验，不能外推无界增长。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="resail-oel-three-cycle-offline-privileged-retention">ReSAIL + OEL: three-cycle offline privileged retention</h3>
+<p><code>cfg_resail_oel_three_cycle_retention_v1</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>ALFWorld/TextCraft的policy、按周期冻结的PI教师和下一周期部署—内化反馈链。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>cycle-start从当前policy复制teacher/student；OEL每update采样新ordinary responses，按teacher PI敏感性选步骤、按轨迹平衡KL，并对全部步骤加privileged retention；final学生进入下一cycle。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>模型参数跨3周期保留；每cycle optimizer和random状态重置，旧轨迹集被新的自采轨迹替换。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- AdamW与loss/选择/保留公式 - PI提取模板与任务接口 - 每cycle冻结teacher - 外部环境和任务成功判据</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>ALFWorld</strong>：- <strong>ID test</strong>：128 - <strong>OOD test</strong>：128 - <strong>batch trajectories</strong>：32 - <strong>retention weight</strong>：0.5 - <strong>rho</strong>：0.05 - <strong>trajectories per cycle</strong>：960 - <strong>TextCraft</strong>：- <strong>batch trajectories</strong>：8 - <strong>retention weight</strong>：1.0 - <strong>rho</strong>：0.25 - <strong>test</strong>：100 - <strong>trajectories per cycle</strong>：240 - <strong>cycles</strong>：3 - <strong>deployment PI</strong>：False - <strong>evaluation checkpoint</strong>：final each cycle, no intermediate selection - <strong>learning rate</strong>：1e-06 - <strong>models</strong>：- Qwen3-4B - Qwen3-8B - <strong>optimizer</strong>：AdamW - <strong>teacher schedule</strong>：frozen within cycle; refreshed from preceding final student next cycle - <strong>thinking</strong>：False - <strong>training seed variance</strong>：not established by 3 decoding seeds - <strong>updates per cycle</strong>：30</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：声明policy、PI teacher及3周期收集/内化训练整体边界；固定外部环境和训练规则。（状态：<code>supported</code>；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903）。
+- <strong>更新由什么过程产生</strong>：policy自行收集轨迹、提取summary并监督自身学生，参数据此更新。（状态：<code>supported</code>；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903）。
+- <strong>状态怎样持久保留</strong>：前周期final模型参数成为下一周期起点；不是只保留本题答案。（状态：<code>supported</code>；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903）。
+- <strong>更新怎样进入后续改进</strong>：更新student成为下周期PI教师、summary提取者和轨迹收集者，改变未来监督。（状态：<code>supported</code>；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903）。</p>
+<p><strong>配置判定</strong>：在此训练/生成/教师状态边界内支持结构四条件；固定优化器与目标不因此自改，不认证效率递增或无界增长。</p>
+<p>来源：https://arxiv.org/html/2609.39306v1；版本：2609.39306v1；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903。</p>
+<h3 id="aitz-oel-sgs-bounded-single-cycle-on-policy-response-distillation">AITZ OEL + SGS: bounded single-cycle on-policy response distillation</h3>
+<p><code>cfg_resail_aitz_sgs_single_offline_cycle_v1</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Qwen3-VL-4B-Instruct在外部Aguvis CoAT日志上单cycle训练；SGS仅作固定离线数据过滤。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>初始policy对日志history准备诊断与summary，teacher PI敏感性全局选80%步骤；保留OEL loss，不用TLB/PR，训练响应每update新采样，teacher全cycle冻结。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>训练模型在100更新的单cycle内持续保留，每步更新student影响随后新采样响应；未演示新部署后刷新teacher或日志集。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 外部Aguvis轨迹 - 一次固定SGS集合及PI - 冻结cycle-start teacher - OEL/AdamW loss及日志行动匹配器</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>PR</strong>：False - <strong>SGS fraction</strong>：0.8 - <strong>TLB</strong>：False - <strong>batch trajectories</strong>：16 - <strong>cycles</strong>：1 - <strong>deployment PI</strong>：False - <strong>evaluation</strong>：101 logged episodes,843 non-stop steps,ground-truth prior actions; no action execution - <strong>model</strong>：Qwen3-VL-4B-Instruct - <strong>source trajectories</strong>：1600 - <strong>teacher schedule</strong>：fixed throughout single cycle - <strong>updates</strong>：100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：外部固定日志+OEL离线训练边界已声明。（状态：<code>supported</code>；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903）。
+- <strong>更新由什么过程产生</strong>：学生参数按ordinary responses与privileged固定teacher匹配更新，但数据并非自主新环境采样。（状态：<code>supported</code>；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903）。
+- <strong>状态怎样持久保留</strong>：更新后的模型checkpoint保留供后续输入行动预测。（状态：<code>supported</code>；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903）。
+- <strong>更新怎样进入后续改进</strong>：Appendix B.2 L745及E.4 L1404明确OEL/OEL+SGS每update从当前ordinary-view student新采样响应；更新参数改变下一步训练prefix/响应，回流后续蒸馏。该条件不额外要求教师或optimizer改写。（状态：<code>supported</code>；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903）。</p>
+<p><strong>配置判定</strong>：在此训练/生成/教师状态边界内支持结构四条件；固定优化器与目标不因此自改，不认证效率递增或无界增长。</p>
+<p>来源：https://arxiv.org/html/2609.39306v1；版本：2609.39306v1；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>ALFWorld</strong>：- <strong>ID test</strong>：128 - <strong>OOD test</strong>：128 - <strong>batch trajectories</strong>：32 - <strong>retention weight</strong>：0.5 - <strong>rho</strong>：0.05 - <strong>trajectories per cycle</strong>：960</li>
+<li><strong>TextCraft</strong>：- <strong>batch trajectories</strong>：8 - <strong>retention weight</strong>：1.0 - <strong>rho</strong>：0.25 - <strong>test</strong>：100 - <strong>trajectories per cycle</strong>：240</li>
+<li><strong>cycles</strong>：3</li>
+<li><strong>deployment PI</strong>：False</li>
+<li><strong>evaluation checkpoint</strong>：final each cycle, no intermediate selection</li>
+<li><strong>learning rate</strong>：1e-06</li>
+<li><strong>models</strong>：- Qwen3-4B - Qwen3-8B</li>
+<li><strong>optimizer</strong>：AdamW</li>
+<li><strong>teacher schedule</strong>：frozen within cycle; refreshed from preceding final student next cycle</li>
+<li><strong>thinking</strong>：False</li>
+<li><strong>training seed variance</strong>：not established by 3 decoding seeds</li>
+<li>
+<p><strong>updates per cycle</strong>：30</p>
+</li>
+<li>
+<p><strong>PR</strong>：False</p>
+</li>
+<li><strong>SGS fraction</strong>：0.8</li>
+<li><strong>TLB</strong>：False</li>
+<li><strong>batch trajectories</strong>：16</li>
+<li><strong>cycles</strong>：1</li>
+<li><strong>deployment PI</strong>：False</li>
+<li><strong>evaluation</strong>：101 logged episodes,843 non-stop steps,ground-truth prior actions; no action execution</li>
+<li><strong>model</strong>：Qwen3-VL-4B-Instruct</li>
+<li><strong>source trajectories</strong>：1600</li>
+<li><strong>teacher schedule</strong>：fixed throughout single cycle</li>
+<li><strong>updates</strong>：100</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r4_role_ev_wf_95f9020f5a6910dbff</code></strong>：ReSAIL在迭代privileged-information自蒸馏中选择信息步骤并约束学生保持下一轮教师行为；摘要报告三轮实验，不能外推无界增长。</li>
+<li>
+<p>来源版本：2609.39306v1；定位：Atom entry http://arxiv.org/abs/2609.39306v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r5dist_ev_cfg_resail_oel_three_cycle_retention_v1</code></strong>：ALFWorld/TextCraft的policy、按周期冻结的PI教师和下一周期部署—内化反馈链。 cycle-start从当前policy复制teacher/student；OEL每update采样新ordinary responses，按teacher PI敏感性选步骤、按轨迹平衡KL，并对全部步骤加privileged retention；final学生进入下一cycle。</p>
+</li>
+<li>
+<p>来源版本：2609.39306v1；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>r5dist_ev_cfg_resail_aitz_sgs_single_offline_cycle_v1</code></strong>：Qwen3-VL-4B-Instruct在外部Aguvis CoAT日志上单cycle训练；SGS仅作固定离线数据过滤。 初始policy对日志history准备诊断与summary，teacher PI敏感性全局选80%步骤；保留OEL loss，不用TLB/PR，训练响应每update新采样，teacher全cycle冻结。</p>
+</li>
+<li>来源版本：2609.39306v1；定位：§3.1–3.4 tool L129–181；§4.1 tool L187–196；Appendix A.1–A.3 tool L668–686；Appendix B.1–B.3 tool L696–776；Appendix D.1–D.3 tool L857–903；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>外部1,728条完整CoAT轨迹中固定抽1,600条，非此训练policy新探索；不能把文本3周期实验外推至GUI。</li>
+<li>评估为teacher-forced日志逐步行动准确率，真实history给定；不是端到端GUI任务成功或部署闭环。</li>
+<li>SGS一次过滤，rho0.8，无TBSD轨迹平衡和PR；不能称完整ReSAIL三模块在线自改。</li>
+<li>结构core仅限单cycle内student参数→fresh响应→蒸馏的回流，不因固定teacher而否认C4；不等于跨cycle教师升级或端到端GUI部署自举。</li>
+<li>监控固定test子集每10更新，一固定解码seed；作者声明不用于调参/早停/选择，未独立代码审查。</li>
+<li>文本只观察3个部署/内化周期，每周期30更新；3解码seed的SD是解码变异，不能误称3个独立训练seed。</li>
+<li>模型参数跨周期继承，但optimizer与random状态每周期重置；不是每轮从原基模重训，也不是optimizer规则自改。</li>
+<li>训练在已记录history上离线进行，不在训练内执行新的环境动作；下一周期用前一final policy重收轨迹并替换旧数据。</li>
+<li>PI为完整轨迹提取的summary，部署不输入PI；PI诊断固定128个OOD任务及固定Experience，不测试summary生成质量或后续教学生的因果效应。</li>
+<li>JSD敏感性用Top20+tail近似，仅分布变化非正确性；保留损失覆盖未选步骤，rho=1因归一化不同不必等同baseline。</li>
+<li>本文观察特定SDPO-offline/OEL集成的退化与缓解，不能外推所有自蒸馏必崩溃或永不崩溃。</li>
+<li>仅实读官方摘要作角色和范围判读，未核全文方法、实验、定理及数值；不得直接支持技术回答或继承关系。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r4_role_src_d65411d60f3e40c6</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28ti%3A%22recursive+self-improvement%22+OR+abs%3A%22recursive+self-improvement%22%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=0&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+<li><code>r5dist_src_resail</code> · 已存来源 · 2609.39306v1</li>
+<li>https://arxiv.org/html/2609.39306v1；阅读深度：<code>selected_primary_method_parameter_carry_teacher_refresh_and_limits</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_method_parameter_carry_teacher_refresh_and_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_95f9020f5a6910dbff --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

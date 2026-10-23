@@ -1,0 +1,124 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Self-evolving expertise in complex non-verifiable subject domains: dialogue as implicit meta-RL · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2510.15772" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#self-evolving-expertise-in-complex-non-verifiable-subject-domains-dialogue-as-implicit-meta-rl">Self-evolving expertise in complex non-verifiable subject domains: dialogue as implicit meta-RL</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_dialectica_persistent_context_evolution">configuration:cfg_dialectica_persistent_context_evolution</a></li>
+<li><a href="#s18ctx_role_review_wf_a5922eedfa5d79d43f">已存角色解释 · s18ctx_role_review_wf_a5922eedfa5d79d43f</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#dialectica-reflection-driven-persistent-personacontext-edits">Dialectica: reflection-driven persistent persona/context edits</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="self-evolving-expertise-in-complex-non-verifiable-subject-domains-dialogue-as-implicit-meta-rl">Self-evolving expertise in complex non-verifiable subject domains: dialogue as implicit meta-RL</h1>
+<blockquote>
+<p>方法论文 · 2025 · <code>wf_a5922eedfa5d79d43f</code></p>
+</blockquote>
+<p><strong>作者</strong>：Richard M. Bailey<br>
+<strong>原文</strong>：https://arxiv.org/abs/2510.15772<br>
+<strong>研究分支</strong>：持久记忆、反思与上下文<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Dialectica 让代理通过结构化对话、记忆、反思及受策略约束的上下文编辑积累专业表现，之后用判分的成对比较评估；implicit meta-RL 不等于参数 RL 更新，非可验证领域评价者偏差需全文核查。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_dialectica_persistent_context_evolution">configuration:cfg_dialectica_persistent_context_evolution</h3>
+<p>持久上下文/身份状态经自身讨论反馈编辑并参与下一轮反思和编辑，四项结构条件在context-state边界内满足；implicit meta-RL是解释视角，不是学到了权重或外层meta-policy参数。</p>
+<p><strong>适用版本</strong>：2510.15772v1；<strong>原文定位</strong>：v1 §1.2 tool L141–155；v1 §2.1–2.3 tool L166–240；v1 §3.1 tool L254–272；v1 §3.4–4.1 tool L335–344；v1 limitations tool L527–529。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="s18ctx_role_review_wf_a5922eedfa5d79d43f">已存角色解释 · <code>s18ctx_role_review_wf_a5922eedfa5d79d43f</code></h3>
+<p>Dialectica 让代理通过结构化对话、记忆、反思及受策略约束的上下文编辑积累专业表现，之后用判分的成对比较评估；implicit meta-RL 不等于参数 RL 更新，非可验证领域评价者偏差需全文核查。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="dialectica-reflection-driven-persistent-personacontext-edits">Dialectica: reflection-driven persistent persona/context edits</h3>
+<p><code>cfg_dialectica_persistent_context_evolution</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>各persona的session/persistent notes、consolidated reflections及allowlisted JSON配置S；LLM权重theta与外层模板/allowlist等meta-parameters psi固定。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>每轮对话后反思并整合主题，达到经验阈值时由LLM提配置变更，机械仅应用允许字段；后续prompt和下一次反思从新配置及检索memory重建。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>配置文件版本、evolution history、长期notes和topic consolidation跨turn及topic保存，后续讨论和评价使用这些快照。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- LLM参数theta - 外层反思/编辑提示等psi - allowlist及protected身份字段 - 实验阈值和工具开关 - 外部编排与事后锦标赛裁判</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>conditions</strong>：- baseline - memory-only - memory+web - memory+evolution - memory+evolution+web - <strong>main configuration</strong>：memory + context evolution, web optional comparison explicitly separate - <strong>models</strong>：- Qwen3:30b local - o4-mini-2025-04-16 - <strong>posthoc judge</strong>：GPT-4.1, same-persona anonymized randomized-order comparisons - <strong>rounds per topic</strong>：5 - <strong>test status</strong>：pre-specified topic-related questions; cross-topic held-out generalization not established - <strong>topics</strong>：9 - <strong>training reward</strong>：none; qualitative conversational feedback</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：持久上下文/身份状态经自身讨论反馈编辑并参与下一轮反思和编辑，四项结构条件在context-state边界内满足；implicit meta-RL是解释视角，不是学到了权重或外层meta-policy参数。</p>
+<p>来源：https://arxiv.org/html/2510.15772v1；版本：2510.15772v1；定位：v1 §1.2 tool L141–155；v1 §2.1–2.3 tool L166–240；v1 §3.1 tool L254–272；v1 §3.4–4.1 tool L335–344；v1 limitations tool L527–529。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>conditions</strong>：- baseline - memory-only - memory+web - memory+evolution - memory+evolution+web</li>
+<li><strong>main configuration</strong>：memory + context evolution, web optional comparison explicitly separate</li>
+<li><strong>models</strong>：- Qwen3:30b local - o4-mini-2025-04-16</li>
+<li><strong>posthoc judge</strong>：GPT-4.1, same-persona anonymized randomized-order comparisons</li>
+<li><strong>rounds per topic</strong>：5</li>
+<li><strong>test status</strong>：pre-specified topic-related questions; cross-topic held-out generalization not established</li>
+<li><strong>topics</strong>：9</li>
+<li><strong>training reward</strong>：none; qualitative conversational feedback</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18ctx_role_ev_wf_a5922eedfa5d79d43f</code></strong>：Dialectica 让代理通过结构化对话、记忆、反思及受策略约束的上下文编辑积累专业表现，之后用判分的成对比较评估；implicit meta-RL 不等于参数 RL 更新，非可验证领域评价者偏差需全文核查。</li>
+<li>
+<p>来源版本：2510.15772v1；定位：Atom entry http://arxiv.org/abs/2510.15772v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r5agent_ev_cfg_dialectica_persistent_context_evolution</code></strong>：持久上下文/身份状态经自身讨论反馈编辑并参与下一轮反思和编辑，四项结构条件在context-state边界内满足；implicit meta-RL是解释视角，不是学到了权重或外层meta-policy参数。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>对话没有显式numeric reward或可验证正确答案；GPT-4.1锦标赛裁判仅事后评价，不驱动保留或选择最优persona。</li>
+<li>配置经验阈值production default为3 debates/2 topics但实验脚本可改，不将默认值冒认所有实验精确值。</li>
+<li>评价同persona匿名成对、随机顺序，web关闭；20%人工复核约80%一致及换Qwen裁判约84%一致不能排除剩余评价偏差。</li>
+<li>作者未研究跨任务transfer和长时稳定，收益预期主题局部；没有独立证明事实真值或意识/一般专业能力提升。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+<li>有限任务配置的结构核查，不是全文逐段审核、独立复现或单调收益认证。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r5agent_src_w_dialectica</code> · 已存来源 · 2510.15772v1</li>
+<li>https://arxiv.org/html/2510.15772v1；阅读深度：<code>targeted_primary_method_controls_and_limits</code>。</li>
+<li><code>s18ctx_role_src_6e8698a7515fec27</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28%28ti%3Averifier+OR+ti%3A%22process+reward%22+OR+ti%3A%22feedback+reliability%22%29+AND+%28all%3Areasoning+OR+all%3Aagent%29%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=600&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：targeted_primary_method_controls_limits_20261018。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_a5922eedfa5d79d43f --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

@@ -1,0 +1,81 @@
+{
+  "schema_version": "survey-method-v1",
+  "name": "Survey for AI",
+  "status": "implemented_workflow_candidate",
+  "purpose": "Turn domain literature into queryable, versioned, evidence-bounded knowledge for AI readers.",
+  "domain_adapter": [
+    "operational_definition",
+    "inclusion_exclusion",
+    "search_sources_cutoff",
+    "roles_and_evidence_fields",
+    "comparison_axes",
+    "relation_predicates",
+    "reader_profiles_questions",
+    "budget",
+    "release_audience"
+  ],
+  "stages": [
+    {
+      "id": "scope",
+      "output": "domain adapter and frozen corpus",
+      "gate": "Explicit scope/cutoff, identity unit, budget and role-aware completion criteria."
+    },
+    {
+      "id": "identity",
+      "output": "work families and source manifestations",
+      "gate": "No title-only merge; versions and unresolved identities retained."
+    },
+    {
+      "id": "evidence",
+      "output": "dossiers, bounded claims, optional configurations",
+      "gate": "Primary-body locators for admitted technical claims; metadata-only and unknown remain labeled."
+    },
+    {
+      "id": "field",
+      "output": "branch tree and typed relationship graph",
+      "gate": "Valid endpoints; technical inheritance has two-endpoint support; grouping and chronology labeled separately."
+    },
+    {
+      "id": "synthesis",
+      "output": "vertical, horizontal, mechanism, frontier and reader modules",
+      "gate": "Each module resolves its claim IDs, comparison conditions, limits and open gaps."
+    },
+    {
+      "id": "answer",
+      "output": "question-routed answer packet",
+      "gate": "Exact claim permissions and citations, partial answers or abstention beyond evidence."
+    },
+    {
+      "id": "maintain",
+      "output": "versioned release and affected-record updates",
+      "gate": "Input/output hashes, dependency repair, membership conservation and no silent gate relaxation."
+    }
+  ],
+  "answer_contract": [
+    "question",
+    "corpus_version",
+    "answer",
+    "claim_ids",
+    "citations",
+    "comparison_conditions",
+    "limits",
+    "gaps",
+    "status"
+  ],
+  "evidence_permissions": {
+    "metadata": "identity/navigation only",
+    "abstract": "screening/context only",
+    "primary_body_reviewed": "only the reviewed role or claim",
+    "admitted_claim": "bounded technical citation",
+    "curator_comparison": "explicit synthesis, not a new experiment"
+  },
+  "view_contract": {
+    "vertical": "branch navigation plus typed evolutionary edges",
+    "horizontal": "adapter-defined axes and evaluation compatibility",
+    "mechanism": "inputs/mechanism/outputs/conditions; iterative state only when applicable",
+    "frontier": "latest observed inside frozen scope/cutoff, including tied leaves",
+    "reader": "goal -> questions -> modules -> admitted claims",
+    "qa": "answer contract with support, limits and abstention"
+  },
+  "transfer_status": "One worked RSI domain; cross-domain schema portability is implemented, effectiveness not yet established by controlled trials."
+}

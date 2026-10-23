@@ -1,0 +1,79 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Entropy-Reservoir Bregman Projection: An Information-Geometric Unification of Model Collapse · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2512.14879" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>0 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#entropy-reservoir-bregman-projection-an-information-geometric-unification-of-model-collapse">Entropy-Reservoir Bregman Projection: An Information-Geometric Unification of Model Collapse</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#roler6safe_role_w_entropy_reservoir">role:r6safe_role_w_entropy_reservoir</a></li>
+<li><a href="#r4_role_review_wf_bf62fda47bd4624b17">已存角色解释 · r4_role_review_wf_bf62fda47bd4624b17</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 具体机制、研究对象与协议</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="entropy-reservoir-bregman-projection-an-information-geometric-unification-of-model-collapse">Entropy-Reservoir Bregman Projection: An Information-Geometric Unification of Model Collapse</h1>
+<blockquote>
+<p>概念/理论/立场 · 2025 · <code>wf_bf62fda47bd4624b17</code></p>
+</blockquote>
+<p><strong>作者</strong>：Jingwei Chen<br>
+<strong>原文</strong>：https://arxiv.org/abs/2512.14879<br>
+<strong>研究分支</strong>：失败、漂移、坍塌与误导性反馈<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>摘要提出Bregman投影和entropy reservoir解释闭环训练退化；定理假设、熵下界和实验结论尚未核证，不当作普遍RSI定律。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roler6safe_role_w_entropy_reservoir">role:r6safe_role_w_entropy_reservoir</h3>
+<p>以有限样本随机Bregman投影模型提出条件熵收缩/带正reservoir的熵下界，区分分布状态与参数；仅作理论框架和假设对照。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：§4.1–4.4 tool L175–223；§7.4 tool L300–309。
+<strong>引用权限</strong>：<code>selected_role_claim_only_no_configuration_certification</code>。</p>
+<h3 id="r4_role_review_wf_bf62fda47bd4624b17">已存角色解释 · <code>r4_role_review_wf_bf62fda47bd4624b17</code></h3>
+<p>摘要提出Bregman投影和entropy reservoir解释闭环训练退化；定理假设、熵下界和实验结论尚未核证，不当作普遍RSI定律。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 具体机制、研究对象与协议</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r4_role_ev_wf_bf62fda47bd4624b17</code></strong>：摘要提出Bregman投影和entropy reservoir解释闭环训练退化；定理假设、熵下界和实验结论尚未核证，不当作普遍RSI定律。</li>
+<li>
+<p>来源版本：2512.14879v1；定位：Atom entry http://arxiv.org/abs/2512.14879v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r6safe_role_w_entropy_reservoir_ev</code></strong>：以有限样本随机Bregman投影模型提出条件熵收缩/带正reservoir的熵下界，区分分布状态与参数；仅作理论框架和假设对照。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Assumption1强凸/Lipschitz及Assumption2统一projection误差界需逐应用论证，论文声称MLE等满足不由本次复核认证。</li>
+<li>负Shannon潜势全simplex Lipschitz常数及本文F-entropy定义的解释需独立数学审计，不直接采纳普遍定律。</li>
+<li>熵下界不能推出知识正确、任务能力、全局收敛或所有RAG/RLHF稳定；经验近似proxy与理论量分开。</li>
+<li>仅实读官方摘要作角色和范围判读，未核全文方法、实验、定理及数值；不得直接支持技术回答或继承关系。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r4_role_src_cedf125a16a07099</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28ti%3A%22model+collapse%22+OR+ti%3A%22reward+hacking%22+OR+ti%3A%22reward+overoptimization%22+OR+ti%3A%22evaluator+drift%22+OR+ti%3A%22misevolution%22%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=0&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+<li><code>r6safe_src_entropy</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2512.14879v1；阅读深度：<code>selected_original_method_and_scope_limits</code>。</li>
+<li><code>r6safe_src_entropy_limits</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2512.14879v1；阅读深度：<code>selected_original_method_and_scope_limits</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract。
+<strong>当前引用权限</strong>：<code>selected_role_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_bf62fda47bd4624b17 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

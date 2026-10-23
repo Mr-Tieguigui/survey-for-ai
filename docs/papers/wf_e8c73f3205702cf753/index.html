@@ -1,0 +1,134 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Multi-agent harness built for recursive self-improvement that orchestrates built-in and third-party agents as task DAGs; an experimental Curator rewrites each agent&#x27;s Memory, Planning, Capability, and Action strategy modules and installs only verified changes · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>0 个配置</span><span>7 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#multi-agent-harness-built-for-recursive-self-improvement-that-orchestrates-built-in-and-third-party-agents-as-task-dags-an-experimental-curator-rewrites-each-agents-memory-planning-capability-and-action-strategy-modules-and-installs-only-verified-changes">Multi-agent harness built for recursive self-improvement that orchestrates built-in and third-party agents as task DAGs; an experimental Curator rewrites each agent's Memory, Planning, Capability, and Action strategy modules and installs only verified changes</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a><ul>
+<li><a href="#rsi">与 RSI 的具体关系</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#roleb570_11_role_wf_e8c73f3205702cf753">role:b570_11_role_wf_e8c73f3205702cf753</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 系统架构、组件与更新过程</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a><ul>
+<li><a href="#1-frozen-model-harness-loop">选段 1 · 机制 / 定义 · Frozen-model harness loop</a></li>
+<li><a href="#2-editable-policy-and-survivor-selection">选段 2 · 机制 / 定义 · Editable policy and survivor selection</a></li>
+<li><a href="#3-immutable-kernel-and-cumulative-patch-boundary">选段 3 · 机制 / 定义 · Immutable kernel and cumulative patch boundary</a></li>
+<li><a href="#4-trainingtest-measurement-contract">选段 4 · 机制 / 定义 · Training/test measurement contract</a></li>
+<li><a href="#5-finite-utility-and-evaluation-reuse-limits">选段 5 · 限制 · Finite utility and evaluation reuse limits</a></li>
+<li><a href="#6-no-weight-update-and-cost-boundary">选段 6 · 限制 · No weight update and cost boundary</a></li>
+<li><a href="#7-reported-external-experiments">选段 7 · 限制 · Reported external experiments</a></li>
+</ul>
+</li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="multi-agent-harness-built-for-recursive-self-improvement-that-orchestrates-built-in-and-third-party-agents-as-task-dags-an-experimental-curator-rewrites-each-agents-memory-planning-capability-and-action-strategy-modules-and-installs-only-verified-changes">Multi-agent harness built for recursive self-improvement that orchestrates built-in and third-party agents as task DAGs; an experimental Curator rewrites each agent&#x27;s Memory, Planning, Capability, and Action strategy modules and installs only verified changes</h1>
+<blockquote>
+<p>综合系统/智能体 · 年份待核 · <code>wf_e8c73f3205702cf753</code></p>
+</blockquote>
+<p><strong>作者</strong>：未登记，待核<br>
+<strong>原文</strong>：https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf<br>
+<strong>研究分支</strong>：代理架构、harness与代码<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<p><strong>实际来源题名（已存版本）</strong>：Raven: The Harness of Harnesses for Composable Agentic Intelligence。工作家族题名与具体来源题名分别保留。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Raven exposes Memory, Planning, Capability and Action strategies around a frozen Task Agent. An Evolver diagnoses failures and proposes restricted patches; screened survivors receive training evaluation and archive competition, and the training-selected harness is frozen before sealed testing. Retained as bounded persistent harness adaptation and composition; fixed model/evaluator do not eliminate the feedback loop and do not establish stronger recursive improvers.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>Retained as bounded persistent harness adaptation and composition; fixed model/evaluator do not eliminate the feedback loop and do not establish stronger recursive improvers.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roleb570_11_role_wf_e8c73f3205702cf753">role:b570_11_role_wf_e8c73f3205702cf753</h3>
+<p>Raven exposes Memory, Planning, Capability and Action strategies around a frozen Task Agent. An Evolver diagnoses failures and proposes restricted patches; screened survivors receive training evaluation and archive competition, and the training-selected harness is frozen before sealed testing.</p>
+<p><strong>适用版本</strong>：GitHub Raven release tech-report-v1 / technical-report.pdf；<strong>原文定位</strong>：Frozen-model harness loop; PDF physical page 24, derived page-text lines 3-11 (one-based local extraction, not web-tool lines)；Editable policy and survivor selection; PDF physical page 24, derived page-text lines 47-66 (one-based local extraction, not web-tool lines)；Immutable kernel and cumulative patch boundary; PDF physical page 25, derived page-text lines 26-42 (one-based local extraction, not web-tool lines)；Training/test measurement contract; PDF physical page 25, derived page-text lines 43-48 (one-based local extraction, not web-tool lines)；Finite utility and evaluation reuse limits; PDF physical page 26, derived page-text lines 1-17 (one-based local extraction, not web-tool lines)；No weight update and cost boundary; PDF physical page 26, derived page-text lines 24-36 (one-based local extraction, not web-tool lines)；Reported external experiments; PDF physical page 45, derived page-text lines 26-42 (one-based local extraction, not web-tool lines)。
+<strong>引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>。</p>
+<h2 id="3">3. 系统架构、组件与更新过程</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>Per-task mean of K scored attempts, then equal task average; mean per-attempt success is not probability of at least one success.</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>b570_11_ev_wf_e8c73f3205702cf753</code></strong>：Raven exposes Memory, Planning, Capability and Action strategies around a frozen Task Agent. An Evolver diagnoses failures and proposes restricted patches; screened survivors receive training evaluation and archive competition, and the training-selected harness is frozen before sealed testing.</li>
+<li>来源版本：GitHub Raven release tech-report-v1 / technical-report.pdf；定位：Frozen-model harness loop; PDF physical page 24, derived page-text lines 3-11 (one-based local extraction, not web-tool lines)；Editable policy and survivor selection; PDF physical page 24, derived page-text lines 47-66 (one-based local extraction, not web-tool lines)；Immutable kernel and cumulative patch boundary; PDF physical page 25, derived page-text lines 26-42 (one-based local extraction, not web-tool lines)；Training/test measurement contract; PDF physical page 25, derived page-text lines 43-48 (one-based local extraction, not web-tool lines)；Finite utility and evaluation reuse limits; PDF physical page 26, derived page-text lines 1-17 (one-based local extraction, not web-tool lines)；No weight update and cost boundary; PDF physical page 26, derived page-text lines 24-36 (one-based local extraction, not web-tool lines)；Reported external experiments; PDF physical page 45, derived page-text lines 26-42 (one-based local extraction, not web-tool lines)；深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<h3 id="1-frozen-model-harness-loop">选段 1 · 机制 / 定义 · Frozen-model harness loop</h3>
+<p><strong>来源</strong>：https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf<br>
+<strong>实际版本</strong>：GitHub Raven release tech-report-v1 / technical-report.pdf<br>
+<strong>精确定位</strong>：PDF physical page 24, derived page-text lines 3-11 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_11_ev_wf_e8c73f3205702cf753</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="2-editable-policy-and-survivor-selection">选段 2 · 机制 / 定义 · Editable policy and survivor selection</h3>
+<p><strong>来源</strong>：https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf<br>
+<strong>实际版本</strong>：GitHub Raven release tech-report-v1 / technical-report.pdf<br>
+<strong>精确定位</strong>：PDF physical page 24, derived page-text lines 47-66 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_11_ev_wf_e8c73f3205702cf753</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="3-immutable-kernel-and-cumulative-patch-boundary">选段 3 · 机制 / 定义 · Immutable kernel and cumulative patch boundary</h3>
+<p><strong>来源</strong>：https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf<br>
+<strong>实际版本</strong>：GitHub Raven release tech-report-v1 / technical-report.pdf<br>
+<strong>精确定位</strong>：PDF physical page 25, derived page-text lines 26-42 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_11_ev_wf_e8c73f3205702cf753</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="4-trainingtest-measurement-contract">选段 4 · 机制 / 定义 · Training/test measurement contract</h3>
+<p><strong>来源</strong>：https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf<br>
+<strong>实际版本</strong>：GitHub Raven release tech-report-v1 / technical-report.pdf<br>
+<strong>精确定位</strong>：PDF physical page 25, derived page-text lines 43-48 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_11_ev_wf_e8c73f3205702cf753</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="5-finite-utility-and-evaluation-reuse-limits">选段 5 · 限制 · Finite utility and evaluation reuse limits</h3>
+<p><strong>来源</strong>：https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf<br>
+<strong>实际版本</strong>：GitHub Raven release tech-report-v1 / technical-report.pdf<br>
+<strong>精确定位</strong>：PDF physical page 26, derived page-text lines 1-17 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_11_ev_wf_e8c73f3205702cf753</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="6-no-weight-update-and-cost-boundary">选段 6 · 限制 · No weight update and cost boundary</h3>
+<p><strong>来源</strong>：https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf<br>
+<strong>实际版本</strong>：GitHub Raven release tech-report-v1 / technical-report.pdf<br>
+<strong>精确定位</strong>：PDF physical page 26, derived page-text lines 24-36 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_11_ev_wf_e8c73f3205702cf753</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="7-reported-external-experiments">选段 7 · 限制 · Reported external experiments</h3>
+<p><strong>来源</strong>：https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf<br>
+<strong>实际版本</strong>：GitHub Raven release tech-report-v1 / technical-report.pdf<br>
+<strong>精确定位</strong>：PDF physical page 45, derived page-text lines 26-42 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_11_ev_wf_e8c73f3205702cf753</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>The evaluator, bookkeeping and required interfaces remain protected; weights do not change. Archive utility reuses designated full-training logs only in a stable environment; environment changes require common reevaluation. Finite search provides no global optimum. Section 7.2 reports published HarnessBank experiments rather than an independently replicated Raven end-to-end evolution result.</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>b570_11_src_wf_e8c73f3205702cf753</code> · Raven: The Harness of Harnesses for Composable Agentic Intelligence · GitHub Raven release tech-report-v1 / technical-report.pdf</li>
+<li>https://github.com/EverMind-AI/Raven/releases/download/tech-report-v1/technical-report.pdf；阅读深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<p><strong>仍未核准的内容</strong>：</p>
+<ul>
+<li>authors</li>
+<li>year</li>
+<li>Empirical claims are author reports, not independently replicated by this review.</li>
+<li>Detailed configurations, numeric magnitudes and inheritance relations are not certified by this role review.</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_role_definition_protocol_scope_and_limits。
+<strong>当前引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_e8c73f3205702cf753 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

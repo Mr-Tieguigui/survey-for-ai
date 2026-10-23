@@ -1,0 +1,112 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2610.11794" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#memento-3-model-based-recursive-self-improvement-through-reflective-rulebooks">Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_memento3_single_rulebook_executable_model_v1">configuration:cfg_memento3_single_rulebook_executable_model_v1</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#memento3-v1-single-persistent-rulebookexecutable-model-for-interactive-planning">Memento3 v1 single persistent rulebook/executable model for interactive planning</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="memento-3-model-based-recursive-self-improvement-through-reflective-rulebooks">Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_2144cdc921ff7eb4a5</code></p>
+</blockquote>
+<p><strong>作者</strong>：Haoyu Zhao, Zhengxu Yu, Zhiyuan He, Meng Fang, Rasul Tutunov, Haitham Bou-Ammar, Weilin Luo, Jun Wang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2610.11794<br>
+<strong>研究分支</strong>：持久记忆、反思与上下文<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：冻结LLM、自然语言rulebook ψ、可执行world model θ、交互历史H、replay verifier及planner，面向未知deterministic POMDP。θ指程序不是神经网络参数；具体更新过程为：预测与环境observation不符触发retain/revise_rulebook/repair_code；冻结LLM修规则及编译代码。所有历史exact replay加LLM语义fidelity审核后接受，reconstructed state用于下一次planning和exploration，取得新证据再改模型；更新状态的保留与后继使用为：Z=(H,ψ,θ)及replayed internal state跨同一环境的动作/尝试保留；更改θ后回放旧轨迹重构状态，未认证跨不同game长期共享。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_memento3_single_rulebook_executable_model_v1">configuration:cfg_memento3_single_rulebook_executable_model_v1</h3>
+<p>单环境外部world-model状态反馈满足四条件；不因冻结LLM或固定更新算子否定C4。模型选择近似不是完整Bayesian后验认证。</p>
+<p><strong>适用版本</strong>：2610.11794v1；<strong>原文定位</strong>：§2.1 persistent hypothesis/feedback tool L118–135；§2.2–2.3 verification/selection tool L226–248；§3.1 scoring cost boundary tool L305–316；§6–7 public set/limits tool L495–504。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="memento3-v1-single-persistent-rulebookexecutable-model-for-interactive-planning">Memento3 v1 single persistent rulebook/executable model for interactive planning</h3>
+<p><code>cfg_memento3_single_rulebook_executable_model_v1</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>冻结LLM、自然语言rulebook ψ、可执行world model θ、交互历史H、replay verifier及planner，面向未知deterministic POMDP。θ指程序不是神经网络参数。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>预测与环境observation不符触发retain/revise_rulebook/repair_code；冻结LLM修规则及编译代码。所有历史exact replay加LLM语义fidelity审核后接受，reconstructed state用于下一次planning和exploration，取得新证据再改模型。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>Z=(H,ψ,θ)及replayed internal state跨同一环境的动作/尝试保留；更改θ后回放旧轨迹重构状态，未认证跨不同game长期共享。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- frozen LLM及反射/编译/验证/规划接口 - 实际环境转移和completion反馈 - ARC-AGI-3 action budget/score</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>backbone</strong>：Claude Opus5 / Claude Code extra-high - <strong>benchmark</strong>：25 public ARC-AGI-3 games - <strong>objective</strong>：goal completion probability then conditional action cost; RHAE for ARC - <strong>verification</strong>：exact observation replay + frozen LLM semantic fidelity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：§2.1区分真实环境和外部学习state Z。（状态：<code>supported</code>；定位：§2.1 persistent hypothesis/feedback tool L118–135；§2.2–2.3 verification/selection tool L226–248；§3.1 scoring cost boundary tool L305–316；§6–7 public set/limits tool L495–504）。
+- <strong>更新由什么过程产生</strong>：代理依交互错误自主修ψ/θ。（状态：<code>supported</code>；定位：§2.1 persistent hypothesis/feedback tool L118–135；§2.2–2.3 verification/selection tool L226–248；§3.1 scoring cost boundary tool L305–316；§6–7 public set/limits tool L495–504）。
+- <strong>状态怎样持久保留</strong>：pair与历史超出单次输出持续，改代码后仍回放此前证据。（状态：<code>supported</code>；定位：§2.1 persistent hypothesis/feedback tool L118–135；§2.2–2.3 verification/selection tool L226–248；§3.1 scoring cost boundary tool L305–316；§6–7 public set/limits tool L495–504）。
+- <strong>更新怎样进入后续改进</strong>：已接受模型指导下次行动/探索，影响后续数据和下一次模型修订。（状态：<code>supported</code>；定位：§2.1 persistent hypothesis/feedback tool L118–135；§2.2–2.3 verification/selection tool L226–248；§3.1 scoring cost boundary tool L305–316；§6–7 public set/limits tool L495–504）。</p>
+<p><strong>配置判定</strong>：单环境外部world-model状态反馈满足四条件；不因冻结LLM或固定更新算子否定C4。模型选择近似不是完整Bayesian后验认证。</p>
+<p>来源：https://arxiv.org/html/2610.11794v1；版本：2610.11794v1；定位：§2.1 persistent hypothesis/feedback tool L118–135；§2.2–2.3 verification/selection tool L226–248；§3.1 scoring cost boundary tool L305–316；§6–7 public set/limits tool L495–504。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>backbone</strong>：Claude Opus5 / Claude Code extra-high</li>
+<li><strong>benchmark</strong>：25 public ARC-AGI-3 games</li>
+<li><strong>objective</strong>：goal completion probability then conditional action cost; RHAE for ARC</li>
+<li><strong>verification</strong>：exact observation replay + frozen LLM semantic fidelity</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r12_ev_cfg_memento3_single_rulebook_executable_model_v1</code></strong>：单环境外部world-model状态反馈满足四条件；不因冻结LLM或固定更新算子否定C4。模型选择近似不是完整Bayesian后验认证。 预测与环境observation不符触发retain/revise_rulebook/repair_code；冻结LLM修规则及编译代码。所有历史exact replay加LLM语义fidelity审核后接受，reconstructed state用于下一次planning和exploration，取得新证据再改模型。</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>targeted_primary_method_state_feedback_limits_20261019</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>exact replay只认证已观测轨迹的预测；rulebook fidelity由LLM审，不是对未见状态或语义正确的形式证明。</li>
+<li>25个公开ARC游戏饱和不能独立归因架构；作者要求考虑模型/推理预算、重复稳定性及heldout评价。</li>
+<li>real action数不含模型构建、simulation和replay成本，不能把action efficiency当总算力效率。</li>
+<li>本配置仅single-model，不把population或Pong controller视为同一实证边界。</li>
+<li>exact replay只认证已观测轨迹的预测；rulebook fidelity由LLM审，不是对未见状态或语义正确的形式证明。; 25个公开ARC游戏饱和不能独立归因架构；作者要求考虑模型/推理预算、重复稳定性及heldout评价。; real action数不含模型构建、simulation和replay成本，不能把action efficiency当总算力效率。; 本配置仅single-model，不把population或Pong controller视为同一实证边界。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r12_src_memento</code> · Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks · 2610.11794v1</li>
+<li>https://arxiv.org/html/2610.11794v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, targeted_primary_method_state_feedback_limits_20261019。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_2144cdc921ff7eb4a5 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

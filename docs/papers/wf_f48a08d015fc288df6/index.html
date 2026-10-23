@@ -1,0 +1,202 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>UniEvo-VL: An On-policy Self-Distillation Training Recipe for Multimodal Model Self-improvement · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2609.38721" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>2 条准入主张</span><span>2 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#unievo-vl-an-on-policy-self-distillation-training-recipe-for-multimodal-model-self-improvement">UniEvo-VL: An On-policy Self-Distillation Training Recipe for Multimodal Model Self-improvement</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_unievo_vl_one_critique_inference_v1">configuration:cfg_unievo_vl_one_critique_inference_v1</a></li>
+<li><a href="#configurationcfg_unievo_vl_verified_ema_training_v1">configuration:cfg_unievo_vl_verified_ema_training_v1</a></li>
+<li><a href="#s18ctx_role_review_wf_f48a08d015fc288df6">已存角色解释 · s18ctx_role_review_wf_f48a08d015fc288df6</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#unievo-vl-verified-corrective-prompt-ema-distillation">UniEvo-VL: verified corrective-prompt EMA distillation</a></li>
+<li><a href="#unievo-vl-saved-adapter-one-critique-inference">UniEvo-VL: saved-adapter one-critique inference</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="unievo-vl-an-on-policy-self-distillation-training-recipe-for-multimodal-model-self-improvement">UniEvo-VL: An On-policy Self-Distillation Training Recipe for Multimodal Model Self-improvement</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_f48a08d015fc288df6</code></p>
+</blockquote>
+<p><strong>作者</strong>：Fang Wu, Da Xing, Yanjie Huang, Junxi Wang, Ji Wang, Hejia Geng, Guancheng Wan, Bowen Zuo, Xiaomin Li, Shixiang Tang, Xinyu Xiang, Zehong Wang, Shiyi Du, Peng Xia, Shuangjia Zheng, Yining Hong, Li Erran Li, Jure Leskovec, Yejin Choi<br>
+<strong>原文</strong>：https://arxiv.org/abs/2609.38721<br>
+<strong>研究分支</strong>：多模态、医疗与视觉<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>UniEvo-VL 让同一多模态模型在普通问题与特权自批评上下文下分别作学生和教师，在学生轨迹上匹配去噪分布；摘要另比较外部 critic 并承认文本渲染表现混合，需核教师更新及任务差异。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_unievo_vl_one_critique_inference_v1">configuration:cfg_unievo_vl_one_critique_inference_v1</h3>
+<p>保留相邻对照；不将单次离线训练或单题推理自动认证为改进器递归升级。</p>
+<p><strong>适用版本</strong>：2609.38721v1；<strong>原文定位</strong>：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_unievo_vl_verified_ema_training_v1">configuration:cfg_unievo_vl_verified_ema_training_v1</h3>
+<p>在此训练/生成/教师状态边界内支持结构四条件；固定优化器与目标不因此自改，不认证效率递增或无界增长。</p>
+<p><strong>适用版本</strong>：2609.38721v1；<strong>原文定位</strong>：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="s18ctx_role_review_wf_f48a08d015fc288df6">已存角色解释 · <code>s18ctx_role_review_wf_f48a08d015fc288df6</code></h3>
+<p>UniEvo-VL 让同一多模态模型在普通问题与特权自批评上下文下分别作学生和教师，在学生轨迹上匹配去噪分布；摘要另比较外部 critic 并承认文本渲染表现混合，需核教师更新及任务差异。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="unievo-vl-verified-corrective-prompt-ema-distillation">UniEvo-VL: verified corrective-prompt EMA distillation</h3>
+<p><code>cfg_unievo_vl_verified_ema_training_v1</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Qwen-Image-2512 student与EMA teacher生成适配器，固定Qwen3-VL critique/synthesis及原prompt后验接受门；只LoRA可学习。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>用当前生成器草图得到修订prompt，仅接受在同noise下重生成被固定critic按原请求认可的修订；学生原prompt轨迹的六个最噪状态匹配EMA教师特权prompt转换，AdamW更新LoRA，teacher EMA吸收新LoRA。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>LoRA参数跨请求/更新保留，EMA teacher后续提供监督；base权重与critic冻结，非逐请求从初始adapter重启。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- Qwen-Image base权重 - Qwen3-VL-8B-Thinking critic与8B-Instruct synthesis - AdamW及latent transition MSE - 原请求接受规则与EMA0.999</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>LoRA alpha</strong>：16 - <strong>LoRA rank</strong>：16 - <strong>acquisition</strong>：one correction opportunity; same noise for revision - <strong>critic</strong>：fixed Qwen3-VL-8B-Thinking - <strong>denoising steps</strong>：20 - <strong>deployment direct PI</strong>：False - <strong>generator</strong>：Qwen-Image-2512 - <strong>iterations</strong>：reported optimizer checkpoint140 for verified GenEval table7; other coverage in supplementary data, not asserted fixed deployment-cycle count - <strong>learning rate</strong>：0.0003 - <strong>optimizer</strong>：AdamW - <strong>post revision verification</strong>：True - <strong>synthesis</strong>：fixed Qwen3-VL-8B-Instruct - <strong>teacher EMA decay</strong>：0.999 - <strong>training scope</strong>：generator LoRA only - <strong>transition selected</strong>：6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：生成器student、EMA参考teacher及固定critic/synthesis获得反馈的训练系统已分离。（状态：<code>supported</code>；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570）。
+- <strong>更新由什么过程产生</strong>：学生生成图像引出critic修订prompt，并沿自身状态轨迹蒸馏，更新generator LoRA。（状态：<code>supported</code>；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570）。
+- <strong>状态怎样持久保留</strong>：生成器LoRA跨请求/optimizer steps保留，不为每图重置；EMA参考也继承。（状态：<code>supported</code>；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570）。
+- <strong>更新怎样进入后续改进</strong>：更新生成器改变后续草图及训练轨迹，其LoRA又以EMA进入未来privileged教师目标；critic和optimizer未自改。（状态：<code>supported</code>；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570）。</p>
+<p><strong>配置判定</strong>：在此训练/生成/教师状态边界内支持结构四条件；固定优化器与目标不因此自改，不认证效率递增或无界增长。</p>
+<p>来源：https://arxiv.org/html/2609.38721v1；版本：2609.38721v1；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570。</p>
+<h3 id="unievo-vl-saved-adapter-one-critique-inference">UniEvo-VL: saved-adapter one-critique inference</h3>
+<p><code>cfg_unievo_vl_one_critique_inference_v1</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>固定保存的student adapter及每请求至多一次critic—prompt修订—重生成过程，训练不在此边界内。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>原prompt生成草图；若被接受直接保留，否则一次critic修订后重生成，始终按原请求评分。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>只在本请求保留草图/critique；模型adapter固定无optimizer更新。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 已训练adapter - fixed critic/synthesis - 一次修订机会 - 评价原请求</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>compute</strong>：accepted drafts require no regeneration; same opportunity budget need not mean equal compute - <strong>evaluation population</strong>：all original benchmark prompts, not filtered by training acceptance - <strong>max critique opportunities</strong>：1 - <strong>parameter updates</strong>：0 - <strong>saved student adapter</strong>：True</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：保存student adapter上的单请求direct与一次critique推理协议。（状态：<code>supported</code>；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570）。
+- <strong>更新由什么过程产生</strong>：修改prompt/重生成图像而非更新参数或训练teacher。（状态：<code>contradicted</code>；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570）。
+- <strong>状态怎样持久保留</strong>：此推理配置未将当前请求反馈作为跨请求学习状态保留。（状态：<code>contradicted</code>；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570）。
+- <strong>更新怎样进入后续改进</strong>：当前图像修订不改变未来请求的训练器或教师。（状态：<code>contradicted</code>；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570）。</p>
+<p><strong>配置判定</strong>：保留相邻对照；不将单次离线训练或单题推理自动认证为改进器递归升级。</p>
+<p>来源：https://arxiv.org/html/2609.38721v1；版本：2609.38721v1；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>LoRA alpha</strong>：16</li>
+<li><strong>LoRA rank</strong>：16</li>
+<li><strong>acquisition</strong>：one correction opportunity; same noise for revision</li>
+<li><strong>critic</strong>：fixed Qwen3-VL-8B-Thinking</li>
+<li><strong>denoising steps</strong>：20</li>
+<li><strong>deployment direct PI</strong>：False</li>
+<li><strong>generator</strong>：Qwen-Image-2512</li>
+<li><strong>iterations</strong>：reported optimizer checkpoint140 for verified GenEval table7; other coverage in supplementary data, not asserted fixed deployment-cycle count</li>
+<li><strong>learning rate</strong>：0.0003</li>
+<li><strong>optimizer</strong>：AdamW</li>
+<li><strong>post revision verification</strong>：True</li>
+<li><strong>synthesis</strong>：fixed Qwen3-VL-8B-Instruct</li>
+<li><strong>teacher EMA decay</strong>：0.999</li>
+<li><strong>training scope</strong>：generator LoRA only</li>
+<li>
+<p><strong>transition selected</strong>：6</p>
+</li>
+<li>
+<p><strong>compute</strong>：accepted drafts require no regeneration; same opportunity budget need not mean equal compute</p>
+</li>
+<li><strong>evaluation population</strong>：all original benchmark prompts, not filtered by training acceptance</li>
+<li><strong>max critique opportunities</strong>：1</li>
+<li><strong>parameter updates</strong>：0</li>
+<li><strong>saved student adapter</strong>：True</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18ctx_role_ev_wf_f48a08d015fc288df6</code></strong>：UniEvo-VL 让同一多模态模型在普通问题与特权自批评上下文下分别作学生和教师，在学生轨迹上匹配去噪分布；摘要另比较外部 critic 并承认文本渲染表现混合，需核教师更新及任务差异。</li>
+<li>
+<p>来源版本：2609.38721v1；定位：Atom entry http://arxiv.org/abs/2609.38721v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r5dist_ev_cfg_unievo_vl_verified_ema_training_v1</code></strong>：Qwen-Image-2512 student与EMA teacher生成适配器，固定Qwen3-VL critique/synthesis及原prompt后验接受门；只LoRA可学习。 用当前生成器草图得到修订prompt，仅接受在同noise下重生成被固定critic按原请求认可的修订；学生原prompt轨迹的六个最噪状态匹配EMA教师特权prompt转换，AdamW更新LoRA，teacher EMA吸收新LoRA。</p>
+</li>
+<li>
+<p>来源版本：2609.38721v1；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>r5dist_ev_cfg_unievo_vl_one_critique_inference_v1</code></strong>：固定保存的student adapter及每请求至多一次critic—prompt修订—重生成过程，训练不在此边界内。 原prompt生成草图；若被接受直接保留，否则一次critic修订后重生成，始终按原请求评分。</p>
+</li>
+<li>来源版本：2609.38721v1；定位：§2.1–2.3 tool L132–238；§3.1 tool L241–247；§3.4.1–3.4.2 tool L303–337；Appendix A.2–A.5 tool L404–459；Appendix D.3–D.4 tool L539–570；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>推理修订与训练收益分列；+1critique不称另一训练周期。</li>
+<li>GenEval direct训练收益与reflection额外收益部分重叠；GenEval HumanPref reflected base仍略高，不能所有指标宣称训练+reflection最优。</li>
+<li>模型已训练状态来自前置训练，但此配置只认证推理行为，不从前置训练借用core条件。</li>
+<li>理论叙述使用统一多模态角色，但实际配置仅生成器LoRA更新，Qwen3-VL反馈pipeline固定；不可声称视觉critic共同训练或整个MMM全权重自改。</li>
+<li>EMA0.999在optimizer后刷新，minibatch内固定；不是DCE每步硬同步，更不是全run冻结teacher。</li>
+<li>训练和推理分开：direct部署只原prompt，+1critique是额外推理计算；基于保存adapter，不在每个评价问题上更新参数。</li>
+<li>post-revision verification为固定critic判断是否满足原prompt，非形式正确性证明；重新生成图仅供过滤，不作图像蒸馏目标或标量训练reward。</li>
+<li>只单task分别训练适配器；优化更新数非固定总compute。验证通过率约10–21%，每对需约5–10采集尝试，拒绝开销不能忽略。</li>
+<li>比较有无verification的recipe还改变feedback、seed、学习率/梯度累积，不能从端点差异作verification单因素因果结论。</li>
+<li>未验证recipe的GenEval2原生Qwen分数32.86→32.37，OCR曲线波动/部分质量下降；不能声称所有任务持续单调提升。</li>
+<li>HumanPref为自动评价proxy非真实人类偏好；Gemini及原生指标为不同单位，不混为同一分数。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r5dist_src_unievo</code> · 已存来源 · 2609.38721v1</li>
+<li>https://arxiv.org/html/2609.38721v1；阅读深度：<code>selected_primary_method_parameter_carry_teacher_refresh_and_limits</code>。</li>
+<li><code>s18ctx_role_src_7edd05d3174e0b70</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28%28ti%3Aevolving+OR+ti%3A%22self-improvement%22+OR+ti%3A%22self-evolution%22%29+AND+%28all%3Arobot+OR+all%3Aembodied+OR+all%3Amultimodal%29%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=0&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_method_parameter_carry_teacher_refresh_and_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_f48a08d015fc288df6 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

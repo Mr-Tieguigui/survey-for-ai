@@ -1,0 +1,116 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Hyper Algorithm Design Agent: Evolving Learnable Optimizer from Zero · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2609.35328" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>0 个配置</span><span>5 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#hyper-algorithm-design-agent-evolving-learnable-optimizer-from-zero">Hyper Algorithm Design Agent: Evolving Learnable Optimizer from Zero</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a><ul>
+<li><a href="#rsi">与 RSI 的具体关系</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#roleb570_07_role_wf_62b4bbaa99be14d657">role:b570_07_role_wf_62b4bbaa99be14d657</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a><ul>
+<li><a href="#1-project-and-hyper-to-task-archive-update">选段 1 · 机制 / 定义 · Project and hyper-to-task archive update</a></li>
+<li><a href="#2-execution-feedback-and-aggregation">选段 2 · 机制 / 定义 · Execution feedback and aggregation</a></li>
+<li><a href="#3-domain-scoring">选段 3 · 测量 / 结果 · Domain scoring</a></li>
+<li><a href="#4-proxyfinal-scope">选段 4 · 限制 · Proxy/final scope</a></li>
+<li><a href="#5-adaptation-boundary">选段 5 · 限制 · Adaptation boundary</a></li>
+</ul>
+</li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="hyper-algorithm-design-agent-evolving-learnable-optimizer-from-zero">Hyper Algorithm Design Agent: Evolving Learnable Optimizer from Zero</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_62b4bbaa99be14d657</code></p>
+</blockquote>
+<p><strong>作者</strong>：Zipei Yu, Yue-Jiao Gong, Zeyuan Ma, Yuncheng Jiang, Zhiguang Cao<br>
+<strong>原文</strong>：https://arxiv.org/abs/2609.35328<br>
+<strong>研究分支</strong>：代理架构、harness与代码<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>HADA samples projects from an algorithm evolution tree; hyper agent can edit task-agent and its own files, then task agent edits the MetaBBO project. Training/evaluation logs and scores guide later iterations. Explicit meta-improver self-modification is allowed while projects and execution records persist. Evidence supports bounded recursive design search.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>Explicit meta-improver self-modification is allowed while projects and execution records persist. Evidence supports bounded recursive design search.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roleb570_07_role_wf_62b4bbaa99be14d657">role:b570_07_role_wf_62b4bbaa99be14d657</h3>
+<p>HADA samples projects from an algorithm evolution tree; hyper agent can edit task-agent and its own files, then task agent edits the MetaBBO project. Training/evaluation logs and scores guide later iterations.</p>
+<p><strong>适用版本</strong>：2609.35328v1；<strong>原文定位</strong>：Project and hyper-to-task archive update; PDF physical page 4, derived page-text lines 10-41 (one-based local extraction, not web-tool lines)；Execution feedback and aggregation; PDF physical page 5, derived page-text lines 32-44 (one-based local extraction, not web-tool lines)；Proxy/final scope; PDF physical page 6, derived page-text lines 17-35 (one-based local extraction, not web-tool lines)；Adaptation boundary; PDF physical page 9, derived page-text lines 34-41 (one-based local extraction, not web-tool lines)；Domain scoring; PDF physical page 6, derived page-text lines 23-34 (one-based local extraction, not web-tool lines)。
+<strong>引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>Instance/run gives a domain-dependent score aggregated across problems/runs. Constrained infeasibility maps to zero; multiobjective scoring uses normalized hypervolume. Proxy and final budgets differ.</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>b570_07_ev_wf_62b4bbaa99be14d657</code></strong>：HADA samples projects from an algorithm evolution tree; hyper agent can edit task-agent and its own files, then task agent edits the MetaBBO project. Training/evaluation logs and scores guide later iterations.</li>
+<li>来源版本：2609.35328v1；定位：Project and hyper-to-task archive update; PDF physical page 4, derived page-text lines 10-41 (one-based local extraction, not web-tool lines)；Execution feedback and aggregation; PDF physical page 5, derived page-text lines 32-44 (one-based local extraction, not web-tool lines)；Proxy/final scope; PDF physical page 6, derived page-text lines 17-35 (one-based local extraction, not web-tool lines)；Adaptation boundary; PDF physical page 9, derived page-text lines 34-41 (one-based local extraction, not web-tool lines)；Domain scoring; PDF physical page 6, derived page-text lines 23-34 (one-based local extraction, not web-tool lines)；深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<h3 id="1-project-and-hyper-to-task-archive-update">选段 1 · 机制 / 定义 · Project and hyper-to-task archive update</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2609.35328v1<br>
+<strong>实际版本</strong>：2609.35328v1<br>
+<strong>精确定位</strong>：PDF physical page 4, derived page-text lines 10-41 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_62b4bbaa99be14d657</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="2-execution-feedback-and-aggregation">选段 2 · 机制 / 定义 · Execution feedback and aggregation</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2609.35328v1<br>
+<strong>实际版本</strong>：2609.35328v1<br>
+<strong>精确定位</strong>：PDF physical page 5, derived page-text lines 32-44 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_62b4bbaa99be14d657</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="3-domain-scoring">选段 3 · 测量 / 结果 · Domain scoring</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2609.35328v1<br>
+<strong>实际版本</strong>：2609.35328v1<br>
+<strong>精确定位</strong>：PDF physical page 6, derived page-text lines 23-34 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_62b4bbaa99be14d657</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="4-proxyfinal-scope">选段 4 · 限制 · Proxy/final scope</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2609.35328v1<br>
+<strong>实际版本</strong>：2609.35328v1<br>
+<strong>精确定位</strong>：PDF physical page 6, derived page-text lines 17-35 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_62b4bbaa99be14d657</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="5-adaptation-boundary">选段 5 · 限制 · Adaptation boundary</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/2609.35328v1<br>
+<strong>实际版本</strong>：2609.35328v1<br>
+<strong>精确定位</strong>：PDF physical page 9, derived page-text lines 34-41 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_07_ev_wf_62b4bbaa99be14d657</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Study covers specified optimization domains and a 100-step horizon. Cheap five-epoch/five-run proxy evaluation differs from twenty-epoch/ten-run final evaluation; cross-domain adaptation continues evolution from an earlier optimum, not zero-shot transfer.</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>b570_07_src_wf_62b4bbaa99be14d657</code> · Hyper Algorithm Design Agent: Evolving Learnable Optimizer from Zero · 2609.35328v1</li>
+<li>https://arxiv.org/pdf/2609.35328v1；阅读深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<p><strong>仍未核准的内容</strong>：</p>
+<ul>
+<li>No certification of edited evaluator invariance or specific evolved projects; superiority unreplicated.</li>
+<li>Reported empirical results are author claims, not independently replicated by this review.</li>
+<li>Detailed configurations, performance magnitudes and inheritance relations are not certified by this role review.</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_role_definition_protocol_scope_and_limits。
+<strong>当前引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_62b4bbaa99be14d657 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

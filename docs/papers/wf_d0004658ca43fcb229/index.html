@@ -1,0 +1,310 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>TextGrad: Automatic &quot;Differentiation&quot; via Text · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2406.07496" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>2 条准入主张</span><span>3 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#textgrad-automatic-differentiation-via-text">TextGrad: Automatic "Differentiation" via Text</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_textgrad_instance">configuration:cfg_textgrad_instance</a></li>
+<li><a href="#configurationcfg_textgrad_prompt">configuration:cfg_textgrad_prompt</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#cfg_textgrad">cfg_textgrad</a></li>
+<li><a href="#cfg_textgrad_instance">cfg_textgrad_instance</a></li>
+<li><a href="#cfg_textgrad_prompt">cfg_textgrad_prompt</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="textgrad-automatic-differentiation-via-text">TextGrad: Automatic &quot;Differentiation&quot; via Text</h1>
+<blockquote>
+<p>方法论文 · 2024 · <code>wf_d0004658ca43fcb229</code></p>
+</blockquote>
+<p><strong>作者</strong>：Mert Yuksekgonul, Federico Bianchi, Joseph Boen, Sheng Liu, Zhi Huang, Carlos Guestrin, James Zou<br>
+<strong>原文</strong>：https://arxiv.org/abs/2406.07496<br>
+<strong>研究分支</strong>：提示与程序化优化<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：原混合实例/提示优化记录；具体更新过程为：实例解和跨查询提示是不同优化变量；momentum是可选读取旧变量机制；更新状态的保留与后继使用为：实例内或跨查询，必须拆分。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_textgrad_instance">configuration:cfg_textgrad_instance</h3>
+<p>只优化给定实例的代码/答案/分子；不认证跨输出系统自改</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：S2.SSx4.p2。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_textgrad_prompt">configuration:cfg_textgrad_prompt</h3>
+<p>更正条件4：保留提示通过真实执行影响下一轮诊断，不要求固定TGD指令改写。实例优化仍是另一个adjacent子配置；gpt-4o反馈与gpt-3.5前向模型不可写成同模型自主闭环。</p>
+<p><strong>适用版本</strong>：v1；<strong>原文定位</strong>：S2.SSx1.SSS0.Px2.pic1.p2；S2.SSx1.SSS0.Px3.pic2.p1；S2.SSx4.p3；S3.SS3.p2；S3.SS3.p5；S3.SS3.p7。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="cfg_textgrad">cfg_textgrad</h3>
+<p><code>cfg_textgrad</code> · scope_index</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>原混合实例/提示优化记录</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>实例解和跨查询提示是不同优化变量；momentum是可选读取旧变量机制</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>实例内或跨查询，必须拆分</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>TGD、图反馈程序、LM及约束</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：原文明确分实例优化与跨查询提示优化；混合父记录仅作为索引，四条件分别读取已建子配置。（状态：<code>unknown</code>；定位：§2 Instance vs Prompt Optimization tool L146–170）。
+- <strong>更新由什么过程产生</strong>：原文明确分实例优化与跨查询提示优化；混合父记录仅作为索引，四条件分别读取已建子配置。（状态：<code>unknown</code>；定位：§2 Instance vs Prompt Optimization tool L146–170）。
+- <strong>状态怎样持久保留</strong>：原文明确分实例优化与跨查询提示优化；混合父记录仅作为索引，四条件分别读取已建子配置。（状态：<code>unknown</code>；定位：§2 Instance vs Prompt Optimization tool L146–170）。
+- <strong>更新怎样进入后续改进</strong>：原文明确分实例优化与跨查询提示优化；混合父记录仅作为索引，四条件分别读取已建子配置。（状态：<code>unknown</code>；定位：§2 Instance vs Prompt Optimization tool L146–170）。</p>
+<p><strong>配置判定</strong>：原文明确分实例优化与跨查询提示优化；混合父记录仅作为索引，四条件分别读取已建子配置。</p>
+<p>来源：https://arxiv.org/html/2406.07496v1；版本：2406.07496v1；定位：§2 Instance vs Prompt Optimization tool L146–170。</p>
+<h3 id="cfg_textgrad_instance">cfg_textgrad_instance</h3>
+<p><code>cfg_textgrad_instance</code> · split_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单个解变量优化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：只优化给定实例的代码/答案/分子；不认证跨输出系统自改</p>
+<p>来源：https://arxiv.org/html/2406.07496v1；版本：v1；定位：S2.SSx4.p2。</p>
+<h3 id="cfg_textgrad_prompt">cfg_textgrad_prompt</h3>
+<p><code>cfg_textgrad_prompt</code> · split_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>跨查询任务提示优化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>更新怎样进入后续改进</strong>：跨查询持久Prompt进入当前小批量forward，答案与评价产生反馈，TGD结合当前变量和反馈更新Prompt，验证后的提示参与后续小批量forward和反馈生成。（状态：<code>supported</code>；定位：S2.SSx1.SSS0.Px2.pic1.p2；S2.SSx1.SSS0.Px3.pic2.p1；S2.SSx4.p3；S3.SS3.p2；S3.SS3.p5；S3.SS3.p7）。</p>
+<p><strong>配置判定</strong>：更正条件4：保留提示通过真实执行影响下一轮诊断，不要求固定TGD指令改写。实例优化仍是另一个adjacent子配置；gpt-4o反馈与gpt-3.5前向模型不可写成同模型自主闭环。</p>
+<p>来源：https://arxiv.org/html/2406.07496v1；版本：v1；定位：S2.SSx1.SSS0.Px2.pic1.p2；S2.SSx1.SSS0.Px3.pic2.p1；S2.SSx4.p3；S3.SS3.p2；S3.SS3.p5；S3.SS3.p7。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r7root_ev_cfg_textgrad</code></strong>：原文明确分实例优化与跨查询提示优化；混合父记录仅作为索引，四条件分别读取已建子配置。</li>
+<li>
+<p>来源版本：2406.07496v1；定位：§2 Instance vs Prompt Optimization tool L146–170；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>e2_w_textgrad</code></strong>：实例优化只修改当前解；提示优化跨查询学习；可选momentum读取旧变量</p>
+</li>
+<li>
+<p>来源版本：v1；定位：S2.SSx4.p2；S2.SSx4.p3；S2.SSx5.p2；S2.SSx5.p4；深度：<code>AI_primary_method_passage_recheck</code>。</p>
+</li>
+<li>
+<p><strong><code>e3_w_textgrad</code></strong>：实例解和跨查询提示是不同优化变量；momentum是可选读取旧变量机制</p>
+</li>
+<li>
+<p>来源版本：v1；定位：S2.SSx2.p1；S2.SSx2.p2；S2.SSx4.p2；S2.SSx4.p3；S2.SSx5.p4；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>e4_cfg_textgrad_prompt</code></strong>：跨查询持久Prompt进入当前小批量forward，答案与评价产生反馈，TGD结合当前变量和反馈更新Prompt，验证后的提示参与后续小批量forward和反馈生成。</p>
+</li>
+<li>
+<p>来源版本：v1；定位：S2.SSx1.SSS0.Px2.pic1.p2；S2.SSx1.SSS0.Px3.pic2.p1；S2.SSx4.p3；S3.SS3.p2；S3.SS3.p5；S3.SS3.p7；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>e4_cfg_textgrad</code></strong>：实例优化和跨查询Prompt优化具有不同保留尺度；本轮Prompt子配置已闭合反馈，实例子配置维持adjacent。</p>
+</li>
+<li>来源版本：v1；定位：S2.SSx4.p3；S3.SS3.p5；S3.SS3.p7；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>本索引不是一个额外实验臂，不给混合单位强加单一C4。</li>
+<li>原</li>
+<li>配</li>
+<li>置</li>
+<li>必</li>
+<li>须</li>
+<li>拆</li>
+<li>分</li>
+<li>，</li>
+<li>实</li>
+<li>例</li>
+<li>路</li>
+<li>线</li>
+<li>a</li>
+<li>d</li>
+<li>j</li>
+<li>c</li>
+<li>e</li>
+<li>n</li>
+<li>t</li>
+<li>；</li>
+<li>提</li>
+<li>示</li>
+<li>的</li>
+<li>改</li>
+<li>进</li>
+<li>机</li>
+<li>制</li>
+<li>参</li>
+<li>与</li>
+<li>仍</li>
+<li>待</li>
+<li>核</li>
+<li>不</li>
+<li>能</li>
+<li>整</li>
+<li>篇</li>
+<li>统</li>
+<li>一</li>
+<li>升</li>
+<li>心</li>
+<li>优</li>
+<li>化</li>
+<li>子</li>
+<li>可</li>
+<li>判</li>
+<li>p</li>
+<li>r</li>
+<li>o</li>
+<li>m</li>
+<li>执</li>
+<li>行</li>
+<li>者</li>
+<li>未</li>
+<li>知</li>
+<li>混</li>
+<li>在</li>
+<li>父</li>
+<li>记</li>
+<li>录</li>
+<li>中</li>
+<li>强</li>
+<li>定</li>
+<li>案</li>
+<li>更</li>
+<li>正</li>
+<li>条</li>
+<li>件</li>
+<li>4</li>
+<li>：</li>
+<li>保</li>
+<li>留</li>
+<li>通</li>
+<li>过</li>
+<li>真</li>
+<li>影</li>
+<li>响</li>
+<li>下</li>
+<li>轮</li>
+<li>诊</li>
+<li>断</li>
+<li>要</li>
+<li>求</li>
+<li>固</li>
+<li>T</li>
+<li>G</li>
+<li>D</li>
+<li>指</li>
+<li>令</li>
+<li>写</li>
+<li>。</li>
+<li>是</li>
+<li>另</li>
+<li>个</li>
+<li>g</li>
+<li>-</li>
+<li>反</li>
+<li>馈</li>
+<li>3</li>
+<li>.</li>
+<li>5</li>
+<li>前</li>
+<li>向</li>
+<li>模</li>
+<li>型</li>
+<li>成</li>
+<li>同</li>
+<li>自</li>
+<li>主</li>
+<li>闭</li>
+<li>环</li>
+<li>作</li>
+<li>为</li>
+<li>合</li>
+<li>入</li>
+<li>口</li>
+<li>i</li>
+<li>剩</li>
+<li>余</li>
+<li>问</li>
+<li>题</li>
+<li>单</li>
+<li>位</li>
+<li>而</li>
+<li>非</li>
+<li>P</li>
+<li>方</li>
+<li>法</li>
+<li>读</li>
+<li>把</li>
+<li>范</li>
+<li>围</li>
+<li>传</li>
+<li>播</li>
+<li>至</li>
+<li>所</li>
+<li>有</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>expand_src_w_textgrad</code> · TextGrad · v1</li>
+<li>https://arxiv.org/html/2406.07496v1；阅读深度：<code>未单列</code>。</li>
+<li><code>r7root_src_textgrad_scope</code> · 已存来源 · 2406.07496v1</li>
+<li>https://arxiv.org/html/2406.07496v1；阅读深度：<code>未单列</code>。</li>
+<li><code>src_20261013_w_textgrad</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2406.07496v1；阅读深度：<code>未单列</code>。</li>
+<li><code>stage1_src_w_textgrad</code> · 已存来源 · v1</li>
+<li>https://arxiv.org/html/2406.07496v1；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_method_passages_with_abstract_baseline。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_d0004658ca43fcb229 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

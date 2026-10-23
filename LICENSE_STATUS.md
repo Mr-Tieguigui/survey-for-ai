@@ -1,0 +1,3 @@
+# Rights and distribution status
+
+No project-wide reuse license has been selected. The public distribution contains project-authored method instructions, code, diagrams, metadata, bounded analysis and external source locators. Public availability does not itself grant an additional reuse license. The complete access-controlled knowledge package additionally preserves selected source passages from the saved ledger. Full PDFs and raw source caches are not redistributed. Public site exports omit the saved verbatim passage blocks and excerpt payloads; original sources remain linked under their own terms.

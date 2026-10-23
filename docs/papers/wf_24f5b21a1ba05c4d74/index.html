@@ -1,0 +1,77 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>AI-generated data contamination erodes pathological variability and diagnostic reliability · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2601.12946" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>0 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#ai-generated-data-contamination-erodes-pathological-variability-and-diagnostic-reliability">AI-generated data contamination erodes pathological variability and diagnostic reliability</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#roler6safe_role_w_pathological_contamination">role:r6safe_role_w_pathological_contamination</a></li>
+<li><a href="#s18_role_review_wf_24f5b21a1ba05c4d74">已存角色解释 · s18_role_review_wf_24f5b21a1ba05c4d74</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 具体机制、研究对象与协议</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="ai-generated-data-contamination-erodes-pathological-variability-and-diagnostic-reliability">AI-generated data contamination erodes pathological variability and diagnostic reliability</h1>
+<blockquote>
+<p>失败/限制/风险 · 2026 · <code>wf_24f5b21a1ba05c4d74</code></p>
+</blockquote>
+<p><strong>作者</strong>：Hongyu He, Shaowen Xiang, Ye Zhang, Yingtao Zhu, Jin Zhang, Hao Deng, Emily Alsentzer, Yun Liu, Qingyu Chen, Kun-Hsing Yu, Andrew Marshall, Tingting Chen, Srinivas Anumasa, Daniel Ebner, Dean Ho, Kee Yuan Ngiam, Ching-Yu Cheng, Dianbo Liu<br>
+<strong>原文</strong>：https://arxiv.org/abs/2601.12946<br>
+<strong>研究分支</strong>：失败、漂移、坍塌与误导性反馈<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>官方medRxiv v3正文描述临床文本generation0–4自生成数据递归训练，每代重置原基模，以区分数据污染与连续权重漂移；作为有限医疗合成数据负结果。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roler6safe_role_w_pathological_contamination">role:r6safe_role_w_pathological_contamination</h3>
+<p>官方medRxiv v3正文描述临床文本generation0–4自生成数据递归训练，每代重置原基模，以区分数据污染与连续权重漂移；作为有限医疗合成数据负结果。</p>
+<p><strong>适用版本</strong>：medRxiv-v3；<strong>原文定位</strong>：primary medRxiv v3 §2.1: generation0–4 reset-to-base design；primary medRxiv v3 §4.2.2: unconditional GPT2 protocol；primary medRxiv v3 Discussion: controlled accelerated English-data limitations。
+<strong>引用权限</strong>：<code>selected_role_claim_only_no_configuration_certification</code>。</p>
+<h3 id="s18_role_review_wf_24f5b21a1ba05c4d74">已存角色解释 · <code>s18_role_review_wf_24f5b21a1ba05c4d74</code></h3>
+<p>研究医学合成内容进入后续训练的数据反馈，摘要报告病理多样性和诊断可靠性退化并比较真实数据混合与质量过滤；这是数据循环风险候选，需核逐代生成、训练和评估条件后引用数值。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 具体机制、研究对象与协议</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_24f5b21a1ba05c4d74</code></strong>：研究医学合成内容进入后续训练的数据反馈，摘要报告病理多样性和诊断可靠性退化并比较真实数据混合与质量过滤；这是数据循环风险候选，需核逐代生成、训练和评估条件后引用数值。</li>
+<li>
+<p>来源版本：2601.12946v4；定位：Atom entry http://arxiv.org/abs/2601.12946v4；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r6safe_role_w_pathological_contamination_ev</code></strong>：官方medRxiv v3正文描述临床文本generation0–4自生成数据递归训练，每代重置原基模，以区分数据污染与连续权重漂移；作为有限医疗合成数据负结果。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>只实读官方indexed method/limitations选段；arXiv全文不可读，与medRxiv v3作者/文本版本精确对应未核，不冒称arXiv-v4原文核证。</li>
+<li>English受控加速模拟，不是实际医院随访或任意医学AI的因果普适结论。</li>
+<li>临床安全/监管建议是作者论证，不当作已生效规范或医学实践建议；数字跨模态/数据组不得合并。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r6safe_src_medical</code> · 已存来源 · medRxiv-v3</li>
+<li>https://www.medrxiv.org/content/10.64898/2026.01.19.26344383v3.full；阅读深度：<code>selected_original_method_and_scope_limits</code>。</li>
+<li><code>s18_role_src_a42cd15002f66e6d</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=2601.06676%2C2601.06748%2C2601.06786%2C2601.06789%2C2601.06794%2C2601.06860%2C2601.06943%2C2601.06966%2C2601.07180%2C2601.07190%2C2601.07208%2C2601.07262%2C2601.07338%2C2601.07372%2C2601.07468%2C2601.07577%2C2601.08005%2C2601.08160%2C2601.08173%2C2601.08323%2C2601.08605%2C2601.08613%2C2601.08654%2C2601.08670%2C2601.08676%2C2601.08699%2C2601.08773%2C2601.08843%2C2601.09113%2C2601.09822%2C2601.09981%2C2601.10120%2C2601.10338%2C2601.10657%2C2601.10702%2C2601.10971%2C2601.11044%2C2601.11077%2C2601.11100%2C2601.11655%2C2601.11699%2C2601.11776%2C2601.11868%2C2601.11969%2C2601.12030%2C2601.12307%2C2601.12310%2C2601.12560%2C2601.12720%2C2601.12807%2C2601.12938%2C2601.12945%2C2601.12946%2C2601.13118%2C2601.13247%2C2601.13383%2C2601.13518%2C2601.13702%2C2601.14171%2C2601.14525%2C2601.14532%2C2601.14615%2C2601.14857%2C2601.14914%2C2601.15161%2C2601.15486%2C2601.15690%2C2601.15715%2C2601.15778%2C2601.16175%2C2601.16280%2C2601.16443%2C2601.16486%2C2601.16746%2C2601.16849%2C2601.16964%2C2601.17058%2C2601.17842%2C2601.17887%2C2601.18197%2C2601.18207%2C2601.18418%2C2601.18467%2C2601.18491%2C2601.18642%2C2601.18692%2C2601.18730%2C2601.18734%2C2601.18778%2C2601.18779%2C2601.19871%2C2601.19935%2C2601.20412%2C2601.20687%2C2601.20730%2C2601.20886%2C2601.21015%2C2601.21096%2C2601.21123%2C2601.21233&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract。
+<strong>当前引用权限</strong>：<code>selected_role_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_24f5b21a1ba05c4d74 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

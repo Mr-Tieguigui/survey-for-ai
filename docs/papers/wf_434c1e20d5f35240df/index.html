@@ -1,0 +1,128 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>ReVision3D: Attribution-Guided Recursive Self-Improvement for 3D Medical Perception · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2609.32984" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>1 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#revision3d-attribution-guided-recursive-self-improvement-for-3d-medical-perception">ReVision3D: Attribution-Guided Recursive Self-Improvement for 3D Medical Perception</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_revision3d_orchestrated_retained_system_v2">configuration:cfg_revision3d_orchestrated_retained_system_v2</a></li>
+<li><a href="#s18_role_review_wf_434c1e20d5f35240df">已存角色解释 · s18_role_review_wf_434c1e20d5f35240df</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#revision3d-bounded-designer-revisions-under-fixed-verifier">ReVision3D: bounded designer revisions under fixed verifier</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="revision3d-attribution-guided-recursive-self-improvement-for-3d-medical-perception">ReVision3D: Attribution-Guided Recursive Self-Improvement for 3D Medical Perception</h1>
+<blockquote>
+<p>方法论文 · 2026 · <code>wf_434c1e20d5f35240df</code></p>
+</blockquote>
+<p><strong>作者</strong>：Ho Hin Lee, Yuyin Zhou, Yannan Yu, Shi Gu, Yifan Wu<br>
+<strong>原文</strong>：https://arxiv.org/abs/2609.32984<br>
+<strong>研究分支</strong>：自生成数据、课程与参数训练<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>在当前已核配置中，系统边界为：人工编排的冻结LLM designer、当前3D reader系统Sigma和跨修订playbook；不含未经执行的自动level scheduler；具体更新过程为：回放归因当前漏检→designer改采集/感知配置/训练recipe/推理程序→固定J和接受规则检验→保留Sigma及成败playbook，再归因剩余失败指导后续候选；更新状态的保留与后继使用为：reader参数、adapter/程序及playbook跨实际修订保留；允许四种预定义干预层。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_revision3d_orchestrated_retained_system_v2">configuration:cfg_revision3d_orchestrated_retained_system_v2</h3>
+<p>仅在已声明状态和回流边界支持四条件；不认证优化器自改、加速或部署自主性。</p>
+<p><strong>适用版本</strong>：2609.32984v2；<strong>原文定位</strong>：§3 tool L124–186；Appendix H tool L523–536。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="s18_role_review_wf_434c1e20d5f35240df">已存角色解释 · <code>s18_role_review_wf_434c1e20d5f35240df</code></h3>
+<p>ReVision3D 用冻结设计 LLM 提出采集、感知、训练或推理修订，固定验证器和系统目标，以空间标注回放定位瓶颈并保留超过种子噪声的变更；有可核闭环候选，需逐层拆配置。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="revision3d-bounded-designer-revisions-under-fixed-verifier">ReVision3D: bounded designer revisions under fixed verifier</h3>
+<p><code>cfg_revision3d_orchestrated_retained_system_v2</code> · declared_specific_configuration</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>人工编排的冻结LLM designer、当前3D reader系统Sigma和跨修订playbook；不含未经执行的自动level scheduler。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>回放归因当前漏检→designer改采集/感知配置/训练recipe/推理程序→固定J和接受规则检验→保留Sigma及成败playbook，再归因剩余失败指导后续候选。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>reader参数、adapter/程序及playbook跨实际修订保留；允许四种预定义干预层。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- reference masks及5mm空间verifier - 固定promotion J与接受规则 - 冻结designer及预定义动作空间 - 固定外部annotated volumes</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>designer</strong>：frozen Claude Opus 5 - <strong>inference acceptance</strong>：paired bootstrap P(deltaJ&gt;0)&gt;=0.9 - <strong>promotion FP budgets</strong>：- 0.25 - 0.5 - 1 - 2 - <strong>reader</strong>：Qwen3-VL-4B-Instruct - <strong>spatial tolerance mm</strong>：5 - <strong>training acceptance</strong>：positive every matched seed and mean deltaJ exceeds incumbent seed range - <strong>training reward</strong>：hits - bounded duplicate/falsefinding penalties + correct silence 0.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反馈闭环如何成立（按配置核查）</strong>：
+- <strong>明确的系统边界</strong>：实际designer/reader/retained artifact和人工编排边界明确。（状态：<code>supported</code>；定位：§3 tool L124–186；Appendix H tool L523–536）。
+- <strong>更新由什么过程产生</strong>：当前reader失败归因与designer代码/配置修改触发更新。（状态：<code>supported</code>；定位：§3 tool L124–186；Appendix H tool L523–536）。
+- <strong>状态怎样持久保留</strong>：通过检验的Sigma和经验playbook被保留。（状态：<code>supported</code>；定位：§3 tool L124–186；Appendix H tool L523–536）。
+- <strong>更新怎样进入后续改进</strong>：接受更新后重新归因剩余失败，并将成功/失败假设写playbook供后续设计；不要求Eq5实际自动执行。（状态：<code>supported</code>；定位：§3 tool L124–186；Appendix H tool L523–536）。</p>
+<p><strong>配置判定</strong>：仅在已声明状态和回流边界支持四条件；不认证优化器自改、加速或部署自主性。</p>
+<p>来源：https://arxiv.org/html/2609.32984v2；版本：2609.32984v2；定位：§3 tool L124–186；Appendix H tool L523–536。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>designer</strong>：frozen Claude Opus 5</li>
+<li><strong>inference acceptance</strong>：paired bootstrap P(deltaJ&gt;0)&gt;=0.9</li>
+<li><strong>promotion FP budgets</strong>：- 0.25 - 0.5 - 1 - 2</li>
+<li><strong>reader</strong>：Qwen3-VL-4B-Instruct</li>
+<li><strong>spatial tolerance mm</strong>：5</li>
+<li><strong>training acceptance</strong>：positive every matched seed and mean deltaJ exceeds incumbent seed range</li>
+<li><strong>training reward</strong>：hits - bounded duplicate/falsefinding penalties + correct silence 0.5</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_434c1e20d5f35240df</code></strong>：ReVision3D 用冻结设计 LLM 提出采集、感知、训练或推理修订，固定验证器和系统目标，以空间标注回放定位瓶颈并保留超过种子噪声的变更；有可核闭环候选，需逐层拆配置。</li>
+<li>
+<p>来源版本：2609.32984v2；定位：Atom entry http://arxiv.org/abs/2609.32984v2；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r6app_ev_cfg_revision3d_orchestrated_retained_system_v2</code></strong>：人工编排的冻结LLM designer、当前3D reader系统Sigma和跨修订playbook；不含未经执行的自动level scheduler。 回放归因当前漏检→designer改采集/感知配置/训练recipe/推理程序→固定J和接受规则检验→保留Sigma及成败playbook，再归因剩余失败指导后续候选。</p>
+</li>
+<li>来源版本：2609.32984v2；定位：§3 tool L124–186；Appendix H tool L523–536；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Equation 5 的level路由是回顾性表述，未调度实验；本core是实际有人编排的修订反馈系统，不认证端到端自主scheduler。</li>
+<li>replay仅几何/渲染精确；未见view的reader输出须实际运行。有限G采样归因不提供因果保证或证明不可检测。</li>
+<li>最终multi-organ测试在决策冻结后进行，但更早component-study test cohort存在重叠，不能统一称全部实验test完全未用于探索。</li>
+<li>mask verifier只认证定位，不能推病理、恶性、临床推理或安全；四种干预外的新backbone/模态并未自主引入。</li>
+<li>training reward可调权重不等于promotion J可编辑；本次未运行代码/重新训练。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r6app_src_revision</code> · 已存来源 · 2609.32984v2</li>
+<li>https://arxiv.org/html/2609.32984v2；阅读深度：<code>selected_primary_method_protocol_and_limits</code>。</li>
+<li><code>s18_role_src_7edd05d3174e0b70</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28%28ti%3Aevolving+OR+ti%3A%22self-improvement%22+OR+ti%3A%22self-evolution%22%29+AND+%28all%3Arobot+OR+all%3Aembodied+OR+all%3Amultimodal%29%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=0&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_method_protocol_and_limits。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_434c1e20d5f35240df --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

@@ -1,0 +1,77 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Curb Your Self-Modifying Code · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2202.13830" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>0 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#curb-your-self-modifying-code">Curb Your Self-Modifying Code</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#roler6safe_role_w_curb_selfmod">role:r6safe_role_w_curb_selfmod</a></li>
+<li><a href="#s18_role_review_wf_9a43d2e3f07064495e">已存角色解释 · s18_role_review_wf_9a43d2e3f07064495e</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 具体机制、研究对象与协议</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="curb-your-self-modifying-code">Curb Your Self-Modifying Code</h1>
+<blockquote>
+<p>背景/相邻基础 · 2022 · <code>wf_9a43d2e3f07064495e</code></p>
+</blockquote>
+<p><strong>作者</strong>：Patrik Christen<br>
+<strong>原文</strong>：https://arxiv.org/abs/2202.13830<br>
+<strong>研究分支</strong>：历史基础与其他背景<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>以 allagmatic 方法原型限制可修改代码区段及代码与数据间转换；摘要讨论控制机制与基因调控类比，尚不证明实际 RSI 性能提升或完整安全性。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roler6safe_role_w_curb_selfmod">role:r6safe_role_w_curb_selfmod</h3>
+<p>提出并原型实现C# code/data双向转换与可修改update-rule区域，用类型/邻域/有限代码词表限制运行时自修改；作为RSI实现基础语境。</p>
+<p><strong>适用版本</strong>：v2；<strong>原文定位</strong>：PDF p2–3 §III–IV tool L246–387；PDF p3–4 §V tool L388–455。
+<strong>引用权限</strong>：<code>selected_role_claim_only_no_configuration_certification</code>。</p>
+<h3 id="s18_role_review_wf_9a43d2e3f07064495e">已存角色解释 · <code>s18_role_review_wf_9a43d2e3f07064495e</code></h3>
+<p>以 allagmatic 方法原型限制可修改代码区段及代码与数据间转换；摘要讨论控制机制与基因调控类比，尚不证明实际 RSI 性能提升或完整安全性。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 具体机制、研究对象与协议</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_9a43d2e3f07064495e</code></strong>：以 allagmatic 方法原型限制可修改代码区段及代码与数据间转换；摘要讨论控制机制与基因调控类比，尚不证明实际 RSI 性能提升或完整安全性。</li>
+<li>
+<p>来源版本：2202.13830v2；定位：Atom entry http://arxiv.org/abs/2202.13830v2；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>r6safe_role_w_curb_selfmod_ev</code></strong>：提出并原型实现C# code/data双向转换与可修改update-rule区域，用类型/邻域/有限代码词表限制运行时自修改；作为RSI实现基础语境。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>选读§III–V原型，不是LLM训练/能力评测或安全证明。</li>
+<li>没有目标utility、学习选择或已测改进闭环，不因可修改U直接标核心自改方法。</li>
+<li>动态编译和命名约束只能限定所述原型，不能认证任意代码注入免疫。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r6safe_src_curb</code> · 已存来源 · v2</li>
+<li>https://arxiv.org/pdf/2202.13830v2；阅读深度：<code>selected_original_method_and_scope_limits</code>。</li>
+<li><code>s18_role_src_4a72693a250c423c</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?search_query=%28ti%3A%22self-modifying%22+OR+ti%3A%22self-referential%22+OR+ti%3A%22self-rewriting%22%29+AND+submittedDate%3A%5B190001010000+TO+202610112359%5D&amp;start=0&amp;max_results=200&amp;sortBy=submittedDate&amp;sortOrder=descending；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract。
+<strong>当前引用权限</strong>：<code>selected_role_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_9a43d2e3f07064495e --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

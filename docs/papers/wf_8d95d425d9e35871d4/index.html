@@ -1,0 +1,179 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Evolution Transformer: In-Context Evolutionary Optimization · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2403.02985" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>2 条准入主张</span><span>2 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#evolution-transformer-in-context-evolutionary-optimization">Evolution Transformer: In-Context Evolutionary Optimization</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#configurationcfg_evotf_self_referential_ead">configuration:cfg_evotf_self_referential_ead</a></li>
+<li><a href="#configurationcfg_evotf_teacher_distillation">configuration:cfg_evotf_teacher_distillation</a></li>
+<li><a href="#s18_role_review_wf_8d95d425d9e35871d4">已存角色解释 · s18_role_review_wf_8d95d425d9e35871d4</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a><ul>
+<li><a href="#evolution-transformer-fixed-teacher-ead-training">Evolution Transformer: fixed-teacher EAD training</a></li>
+<li><a href="#evolution-transformer-sr-ead-self-generated-trajectory-loop">Evolution Transformer: SR-EAD self-generated trajectory loop</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="evolution-transformer-in-context-evolutionary-optimization">Evolution Transformer: In-Context Evolutionary Optimization</h1>
+<blockquote>
+<p>方法论文 · 2024 · <code>wf_8d95d425d9e35871d4</code></p>
+</blockquote>
+<p><strong>作者</strong>：Robert Tjarko Lange, Yingtao Tian, Yujin Tang<br>
+<strong>原文</strong>：https://arxiv.org/abs/2403.02985<br>
+<strong>研究分支</strong>：程序、算法与演化搜索<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Evolution Transformer 从评估轨迹与搜索分布统计输出分布更新，先以教师算法轨迹蒸馏，并提出从随机初始化自指训练自举；教师蒸馏和自训练应拆作不同配置核实。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="configurationcfg_evotf_self_referential_ead">configuration:cfg_evotf_self_referential_ead</h3>
+<p>自己当前checkpoint生成扰动轨迹并筛选蒸馏形成下一轮checkpoint，四结构条件成立；未认证固定蒸馏/扰动元规则自改或单调收益。</p>
+<p><strong>适用版本</strong>：2403.02985v1；<strong>原文定位</strong>：v1 §7 tool L166–175；v1 §8 tool L176–183。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="configurationcfg_evotf_teacher_distillation">configuration:cfg_evotf_teacher_distillation</h3>
+<p>固定teacher的EAD训练中，学生更新不参与下一批teacher轨迹生成，因此本训练边界C4不成立；这是监督算法蒸馏相邻配置，不能记作自己生成数据的SR-EAD。</p>
+<p><strong>适用版本</strong>：2403.02985v1；<strong>原文定位</strong>：v1 §§3–4 tool L101–131；v1 §8 limits tool L176–183。
+<strong>引用权限</strong>：<code>listed_configuration_scope_only</code>。</p>
+<h3 id="s18_role_review_wf_8d95d425d9e35871d4">已存角色解释 · <code>s18_role_review_wf_8d95d425d9e35871d4</code></h3>
+<p>Evolution Transformer 从评估轨迹与搜索分布统计输出分布更新，先以教师算法轨迹蒸馏，并提出从随机初始化自指训练自举；教师蒸馏和自训练应拆作不同配置核实。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<h3 id="evolution-transformer-fixed-teacher-ead-training">Evolution Transformer: fixed-teacher EAD training</h3>
+<p><code>cfg_evotf_teacher_distillation</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本卡仅固定teacher的EAD训练阶段：teacher算法生成轨迹，EvoTF参数theta由KL蒸馏训练；不纳入训练后优化任务的部署搜索过程。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>theta仅预测teacher分布更新，训练期不主动作用任务；梯度学习到的theta不决定下一批teacher轨迹的提案分布。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>theta跨监督训练步保留；固定teacher目标生成机制不因学生theta更新而刷新。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- teacher算法与轨迹生成方式 - KL蒸馏目标与Adam</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>generations</strong>：32 - <strong>population</strong>：10 - <strong>teacher families</strong>：- OpenAI-ES - Sep-CMA-ES - Gaussian hillclimb - SNES - <strong>training boundary only</strong>：True - <strong>training dims</strong>：5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：固定teacher的EAD训练中，学生更新不参与下一批teacher轨迹生成，因此本训练边界C4不成立；这是监督算法蒸馏相邻配置，不能记作自己生成数据的SR-EAD。</p>
+<p>来源：https://arxiv.org/html/2403.02985v1；版本：2403.02985v1；定位：v1 §§3–4 tool L101–131；v1 §8 limits tool L176–183。</p>
+<h3 id="evolution-transformer-sr-ead-self-generated-trajectory-loop">Evolution Transformer: SR-EAD self-generated trajectory loop</h3>
+<p><code>cfg_evotf_self_referential_ead</code> · empirical_method</p>
+<table>
+<thead>
+<tr>
+<th>方法要素</th>
+<th>当前记录的具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>当前EvoTF checkpoint及其扰动子代，固定BBO任务与轨迹筛选、蒸馏操作；不依赖外部teacher算法。</td>
+</tr>
+<tr>
+<td>改进过程与下一轮参与</td>
+<td>扰动当前theta得64offspring；各offspring跑相同采样任务，按表现保留最好轨迹，做单次梯度蒸馏更新theta再重复。</td>
+</tr>
+<tr>
+<td>保留的状态及时间尺度</td>
+<td>更新checkpoint跨轮保存，其扰动offspring决定下一轮生成的优化轨迹和训练数据。</td>
+</tr>
+<tr>
+<td>外部固定部分</td>
+<td>- 任务集与fitness - Gaussian perturbation及衰减日程 - performance filter - distillation gradient rule</td>
+</tr>
+<tr>
+<td>评价与选择设置</td>
+<td>- <strong>hardware</strong>：4 A100 - <strong>negative result</strong>：Pendulum unstable - <strong>offspring</strong>：64 - <strong>per iteration</strong>：one gradient distillation update - <strong>perturbations</strong>：- 0.004 - 0.005 - <strong>runs</strong>：3 - <strong>tasks</strong>：5 BBOB subset, same sampled tasks for offspring</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置判定</strong>：自己当前checkpoint生成扰动轨迹并筛选蒸馏形成下一轮checkpoint，四结构条件成立；未认证固定蒸馏/扰动元规则自改或单调收益。</p>
+<p>来源：https://arxiv.org/html/2403.02985v1；版本：2403.02985v1；定位：v1 §7 tool L166–175；v1 §8 tool L176–183。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>generations</strong>：32</li>
+<li><strong>population</strong>：10</li>
+<li><strong>teacher families</strong>：- OpenAI-ES - Sep-CMA-ES - Gaussian hillclimb - SNES</li>
+<li><strong>training boundary only</strong>：True</li>
+<li>
+<p><strong>training dims</strong>：5</p>
+</li>
+<li>
+<p><strong>hardware</strong>：4 A100</p>
+</li>
+<li><strong>negative result</strong>：Pendulum unstable</li>
+<li><strong>offspring</strong>：64</li>
+<li><strong>per iteration</strong>：one gradient distillation update</li>
+<li><strong>perturbations</strong>：- 0.004 - 0.005</li>
+<li><strong>runs</strong>：3</li>
+<li><strong>tasks</strong>：5 BBOB subset, same sampled tasks for offspring</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18_role_ev_wf_8d95d425d9e35871d4</code></strong>：Evolution Transformer 从评估轨迹与搜索分布统计输出分布更新，先以教师算法轨迹蒸馏，并提出从随机初始化自指训练自举；教师蒸馏和自训练应拆作不同配置核实。</li>
+<li>
+<p>来源版本：2403.02985v1；定位：Atom entry http://arxiv.org/abs/2403.02985v1；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>h6_ev_cfg_evotf_teacher_distillation</code></strong>：固定teacher的EAD训练中，学生更新不参与下一批teacher轨迹生成，因此本训练边界C4不成立；这是监督算法蒸馏相邻配置，不能记作自己生成数据的SR-EAD。</p>
+</li>
+<li>
+<p>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</p>
+</li>
+<li>
+<p><strong><code>h6_ev_cfg_evotf_self_referential_ead</code></strong>：自己当前checkpoint生成扰动轨迹并筛选蒸馏形成下一轮checkpoint，四结构条件成立；未认证固定蒸馏/扰动元规则自改或单调收益。</p>
+</li>
+<li>来源版本：unknown；定位：参见来源索引；深度：<code>未单列</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Pendulum在初始提升后表现下降且对两种perturbation强度均可见；不能只列成功CartPole/MNIST。</li>
+<li>meta-evolution和SR-EAD是不同配置，前者过拟合结果不当作后者同一实验。</li>
+<li>只有5类BBOB训练任务、显存/短窗限制，open-ended discovery仅future方向。</li>
+<li>训练后冻结EvoTF部署的mu/sigma/history可形成另一个bounded search-state闭环，但该部署过程不在本配置中，需独立判读，不能因theta冻结直接否定其C4。</li>
+<li>context sliding window受显存约束，未核任意长历史与大维度性能。</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+<li>原文关键选段与指定状态反馈边界；非穷尽全文、所有证明认证或独立复现。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>h6_src_w_evolution_transformer</code> · 已存来源 · 2403.02985v1</li>
+<li>https://arxiv.org/html/2403.02985v1；阅读深度：<code>targeted_primary_method_state_feedback_and_limits</code>。</li>
+<li><code>s18_role_src_20fe003e28646d5b</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=2402.08957%2C2402.09015%2C2402.09269%2C2402.09283%2C2402.09727%2C2402.09742%2C2402.09748%2C2402.10110%2C2402.10176%2C2402.10196%2C2402.10200%2C2402.10663%2C2402.10770%2C2402.10890%2C2402.10963%2C2402.10980%2C2402.10987%2C2402.11190%2C2402.11218%2C2402.11359%2C2402.11411%2C2402.11451%2C2402.11550%2C2402.11633%2C2402.11827%2C2402.11975%2C2402.12048%2C2402.12185%2C2402.12255%2C2402.12317%2C2402.12348%2C2402.12391%2C2402.12431%2C2402.12451%2C2402.12545%2C2402.12914%2C2402.12959%2C2402.13210%2C2402.13212%2C2402.13296%2C2402.13426%2C2402.13542%2C2402.13598%2C2402.13669%2C2402.13717%2C2402.14034%2C2402.14083%2C2402.14207%2C2402.14268%2C2402.14382%2C2402.15057%2C2402.15116%2C2402.15391%2C2402.15538%2C2402.15589%2C2402.15809%2C2402.15810%2C2402.16288%2C2402.16313%2C2402.16499%2C2402.16696%2C2402.16767%2C2402.16823%2C2402.16837%2C2402.16906%2C2402.16965%2C2402.17168%2C2402.17453%2C2402.17505%2C2402.17574%2C2402.17613%2C2402.17753%2C2402.18005%2C2402.18060%2C2402.18361%2C2402.18381%2C2402.18485%2C2402.19085%2C2402.19173%2C2402.19446%2C2402.19473%2C2403.00198%2C2403.00690%2C2403.00833%2C2403.00839%2C2403.01197%2C2403.01244%2C2403.01248%2C2403.01528%2C2403.02164%2C2403.02502%2C2403.02691%2C2403.02817%2C2403.02985%2C2403.03101%2C2403.03129%2C2403.03186%2C2403.03218%2C2403.03768%2C2403.03883&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, targeted_primary_method_state_feedback_limits_20261018。
+<strong>当前引用权限</strong>：<code>configuration_bounded_claims_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_8d95d425d9e35871d4 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

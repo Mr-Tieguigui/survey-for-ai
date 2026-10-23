@@ -1,0 +1,72 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>Mathematics and Coding are Universal AI Benchmarks · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/2512.13764" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>0 个配置</span><span>0 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#mathematics-and-coding-are-universal-ai-benchmarks">Mathematics and Coding are Universal AI Benchmarks</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a></li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#roler14_role_universal">role:r14_role_universal</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 具体机制、研究对象与协议</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a></li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="mathematics-and-coding-are-universal-ai-benchmarks">Mathematics and Coding are Universal AI Benchmarks</h1>
+<blockquote>
+<p>概念/理论/立场 · 2025 · <code>wf_455256ee75c6cdebf9</code></p>
+</blockquote>
+<p><strong>作者</strong>：Przemyslaw Chojecki<br>
+<strong>原文</strong>：https://arxiv.org/abs/2512.13764<br>
+<strong>研究分支</strong>：定义、理论与系统边界<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>现有材料未形成可采用的具体内容解析。本卡保留身份、阅读位置与核查缺口，不以题名推断贡献。</p>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roler14_role_universal">role:r14_role_universal</h3>
+<p>这篇工作主要构造battery及其表示/评价metric，并在uniform tightness等假设下讨论coding/mathematics scorer的近似普适性。它是形式测量与理论背景，不是新增经验数据集；从题名计作R05 benchmark会混淆理论框架与实测benchmark。</p>
+<p><strong>适用版本</strong>：2512.13764v1；<strong>原文定位</strong>：§2.1 formal battery tool L87–103；§2.3 GVU/capability coefficient tool L148–161；§6.3 tightness/scope tool L481–490；§6.5 conditional bounded-scorer approximation tool L514–521。
+<strong>引用权限</strong>：<code>selected_primary_role_protocol_and_limits_only</code>。</p>
+<h2 id="3">3. 具体机制、研究对象与协议</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<ul>
+<li><strong>actual RSI relation</strong>：直接涉及GVU自改测量与“什么算通用benchmark”的理论议题；不据形式系数定义认证真实系统加速。</li>
+<li><strong>metrics</strong>：- battery capability curve与GVU self-improvement coefficient为形式定义；不视为已测递归增益 - d_A以agent class上的期望评分差比较scorers；有限support近似依赖tightness</li>
+<li><strong>selection and reuse</strong>：本批选读battery定义、GVU动态、uniform tightness与bounded-scorer approximation；未认证所有density theorem完整证明。</li>
+<li><strong>split and visibility</strong>：形式任务family与agent class假设，不适用train/validation/test protocol。</li>
+<li><strong>task or data unit</strong>：formal battery/agent trace distributions/scoring functions；不是一批新任务数据或模型run。</li>
+<li><strong>unknowns</strong>：- 完整定理假设/证明与现实benchmark选样效度未独立核定</li>
+</ul>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>r14_ev_universal</code></strong>：这篇工作主要构造battery及其表示/评价metric，并在uniform tightness等假设下讨论coding/mathematics scorer的近似普适性。它是形式测量与理论背景，不是新增经验数据集；从题名计作R05 benchmark会混淆理论框架与实测benchmark。</li>
+<li>来源版本：2512.13764v1；定位：§2.1 formal battery tool L87–103；§2.3 GVU/capability coefficient tool L148–161；§6.3 tightness/scope tool L481–490；§6.5 conditional bounded-scorer approximation tool L514–521；深度：<code>selected_primary_theoretical_measurement_scope_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<p>目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>uniform tightness例如bounded trace长度；unbounded情形moment-bound推广明确在scope外。</li>
+<li>近似任意bounded scorer的定理不意味着有限数学/代码题能充分、无偏、低成本测量所有现实能力。</li>
+<li>未独立全证明审查、实现或经验验证；不把被举数学库当本文新构建训练集。</li>
+<li>uniform tightness例如bounded trace长度；unbounded情形moment-bound推广明确在scope外。; 近似任意bounded scorer的定理不意味着有限数学/代码题能充分、无偏、低成本测量所有现实能力。; 未独立全证明审查、实现或经验验证；不把被举数学库当本文新构建训练集。</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>r14_src_universal</code> · Mathematics and Coding are Universal AI Benchmarks · 2512.13764v1</li>
+<li>https://arxiv.org/html/2512.13764v1；阅读深度：<code>selected_primary_theoretical_measurement_scope_and_limits</code>。</li>
+</ul>
+<p><strong>证据深度</strong>：original_abstract, selected_primary_theoretical_measurement_scope_and_limits。
+<strong>当前引用权限</strong>：<code>selected_primary_role_protocol_and_limits_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_455256ee75c6cdebf9 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

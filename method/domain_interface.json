@@ -1,0 +1,52 @@
+{
+  "extension_rule": "A new domain supplies the same interface and data globals; explorer code must not require RSI-specific branch or module identifiers.",
+  "required_domain_fields": [
+    "domain_id",
+    "name",
+    "release_version",
+    "operational_definition",
+    "completion_scope",
+    "data_sources",
+    "views"
+  ],
+  "required_entity_namespaces": [
+    "works",
+    "configurations",
+    "claims",
+    "relations",
+    "branches",
+    "modules",
+    "questions",
+    "reader_profiles",
+    "frontiers"
+  ],
+  "schema_version": "survey-domain-interface-v1",
+  "view_contract": {
+    "development": [
+      "branches",
+      "relations",
+      "works"
+    ],
+    "evidence": [
+      "works",
+      "configurations",
+      "claims"
+    ],
+    "frontier": [
+      "frontiers"
+    ],
+    "matrix": [
+      "configurations"
+    ],
+    "panorama": [
+      "scope",
+      "questions",
+      "modules"
+    ],
+    "reader": [
+      "reader_profiles",
+      "questions",
+      "modules"
+    ]
+  }
+}

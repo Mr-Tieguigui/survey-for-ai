@@ -1,0 +1,62 @@
+{
+  "answer_rules": {
+    "forbidden_shortcuts": [
+      "abstract_to_technical_fact",
+      "chronology_to_inheritance",
+      "attempt_to_accepted_improvement",
+      "local_leaf_to_global_latest",
+      "bounded_feedback_to_acceleration",
+      "same_benchmark_name_to_comparable_score"
+    ],
+    "steps": [
+      "identify_reader_question_and_role",
+      "select_question_branch_and_module",
+      "answer_using_admitted_claim_ids_only",
+      "attach_url_version_locator_and_material_limit",
+      "label_curator_comparisons_and_provisional_context",
+      "abstain_when_the_requested_claim_is_not_supported"
+    ]
+  },
+  "extension_rules": {
+    "dependency_inputs": [
+      "01_文献主表.jsonl",
+      "02_配置证据统一表.jsonl",
+      "03_规范关系与原文定位.jsonl",
+      "09_分支前沿快照.jsonl",
+      "stage3_synthesis_spec.json",
+      "stage3_branch_lenses.json"
+    ],
+    "new_branch": "Add a curated lens and explicit membership; fail validation on orphan or duplicate primary membership.",
+    "new_evidence": "Append versioned source/claim records through the existing ledger; recompute admission, do not overwrite history.",
+    "new_module": "Declare all eight fields and resolve claims to current admitted records; thematic overlaps are permitted.",
+    "stable_ids": [
+      "work_family_id",
+      "configuration_id",
+      "role_review_id",
+      "relation_id",
+      "branch_id",
+      "module_id"
+    ],
+    "unknown": "Missing provenance is held, missing method dimensions remain unknown; role cards do not certify method configurations.",
+    "validation_scope": "Root integrity and bounded organization checks; not an independent semantic or experimental review."
+  },
+  "files": {
+    "branches.json": "All 26 branch synthesis packets.",
+    "claims.jsonl": "Current admitted configuration and role evidence records.",
+    "configurations.jsonl": "Configuration-scoped method evidence and boundaries.",
+    "dependency_index.json": "Reverse impact paths for claims, works and configurations.",
+    "modules.json": "All 38 reader modules and 114 claim-bound units.",
+    "questions.json": "Six root questions and 18 claim-bound units.",
+    "relations.jsonl": "Typed, directed and evidence-bounded relationships.",
+    "works.jsonl": "One canonical work family per row."
+  },
+  "schema_version": "stage4-public-data-v1",
+  "stable_id_namespaces": {
+    "branch_id": "M-prefixed branch identifier",
+    "claim_id": "configuration:<configuration_id> or role:<role_review_id>; exported as record_id, while source_record_id preserves the private ledger's unprefixed record identifier",
+    "configuration_id": "cfg_",
+    "module_id": "stable reader-module slug",
+    "relation_id": "repository-defined stable relation identifier",
+    "work_family_id": "wf_"
+  }
+}

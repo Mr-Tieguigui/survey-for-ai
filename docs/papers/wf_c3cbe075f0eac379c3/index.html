@@ -1,0 +1,124 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="为 AI 阅读和检索构建领域 Survey 的可复用方法与 Skill；RSI 是当前实例。"><title>On First-Order Meta-Learning Algorithms · 论文解析</title><link rel="icon" href="../../assets/figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/css/app.css"></head><body data-page="paper" data-prefix="../../"><a href="#main" class="skip">跳至内容</a><nav class="top"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey<span> for AI</span></b></a><div class="navlinks"><a href="../../#atlas">RSI 图谱</a><a href="../../method/">构造方法</a><a href="../../#compare">技术比较</a><a href="../../#reader">需求阅读</a><a href="../../explore/">文献库</a></div><div class="navtools"><a class="nav-cta" href="../../data/">数据与使用 ↗</a><button id="themeToggle" aria-label="切换明暗主题">◐</button><button id="menuToggle" aria-label="打开导航" aria-expanded="false">☰</button></div></nav><div id="main"><main class="article-shell container"><div class="article-controls"><a href="../../explore/">← 返回文献库</a><div><a href="paper.md" download>Markdown ↓</a><a href="https://arxiv.org/abs/1803.02999" target="_blank" rel="noopener noreferrer">原文 / PDF ↗</a></div></div><div class="article-status"><span>1 条准入主张</span><span>0 个配置</span><span>4 段已存正文 · 公开页保留定位</span><span>0 条关系</span></div><div class="article-layout"><aside class="article-toc"><span>ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#on-first-order-meta-learning-algorithms">On First-Order Meta-Learning Algorithms</a><ul>
+<li><a href="#1">1. 这项工作研究什么</a><ul>
+<li><a href="#rsi">与 RSI 的具体关系</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 论文的核心内容与贡献</a><ul>
+<li><a href="#roleb570_06_role_wf_c3cbe075f0eac379c3">role:b570_06_role_wf_c3cbe075f0eac379c3</a></li>
+<li><a href="#s18ctx_role_review_wf_c3cbe075f0eac379c3">已存角色解释 · s18ctx_role_review_wf_c3cbe075f0eac379c3</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 方法机制与实现细节</a></li>
+<li><a href="#4">4. 实验、评价协议与结果的可解释范围</a><ul>
+<li><a href="#_1">原文证据记录中的具体观察</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 原文选段：把方法与实验细节展开</a><ul>
+<li><a href="#1-reptile-serial-update">选段 1 · 机制 / 定义 · Reptile serial update</a></li>
+<li><a href="#2-few-shot-task-protocol">选段 2 · 机制 / 定义 · Few-shot task protocol</a></li>
+<li><a href="#3-task-distribution-assumption">选段 3 · 限制 · Task-distribution assumption</a></li>
+<li><a href="#4-displayed-update-algebra-sign-conflict">选段 4 · 冲突 · Displayed update algebra sign conflict</a></li>
+</ul>
+</li>
+<li><a href="#6">6. 局限、冲突与不能推出的结论</a></li>
+<li><a href="#7">7. 与其他论文的具体关系</a></li>
+<li><a href="#8">8. 来源清单、复查入口与解析缺口</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><article class="paper-article"><h1 id="on-first-order-meta-learning-algorithms">On First-Order Meta-Learning Algorithms</h1>
+<blockquote>
+<p>方法论文 · 2018 · <code>wf_c3cbe075f0eac379c3</code></p>
+</blockquote>
+<p><strong>作者</strong>：Alex Nichol, Joshua Achiam, John Schulman<br>
+<strong>原文</strong>：https://arxiv.org/abs/1803.02999<br>
+<strong>研究分支</strong>：自指权重、优化器与元学习<br>
+<strong>解析依据</strong>：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。</p>
+<p><strong>实际来源题名（已存版本）</strong>：Reptile: a Scalable Metalearning Algorithm。工作家族题名与具体来源题名分别保留。</p>
+<h2 id="1">1. 这项工作研究什么</h2>
+<p>Cached v1 is Reptile: sample a task, train task weights with SGD, then move a shared initialization toward them. Few-shot classification tests adaptation of the initialization to a newly sampled task. RSI foundation for outer-loop improvement of adaptation ability; distinguishes a learned initial condition from a self-modified learning algorithm.</p>
+<h3 id="rsi">与 RSI 的具体关系</h3>
+<ul>
+<li>RSI foundation for outer-loop improvement of adaptation ability; distinguishes a learned initial condition from a self-modified learning algorithm.</li>
+</ul>
+<h2 id="2">2. 论文的核心内容与贡献</h2>
+<h3 id="roleb570_06_role_wf_c3cbe075f0eac379c3">role:b570_06_role_wf_c3cbe075f0eac379c3</h3>
+<p>Cached v1 is Reptile: sample a task, train task weights with SGD, then move a shared initialization toward them. Few-shot classification tests adaptation of the initialization to a newly sampled task.</p>
+<p><strong>适用版本</strong>：arXiv:1803.02999v1；<strong>原文定位</strong>：Reptile serial update; PDF p2; derived text lines 20-39 (one-based local extraction, not web-tool lines)；Few-shot task protocol; PDF p6; derived text lines 46-55 (one-based local extraction, not web-tool lines)；Task-distribution assumption; PDF p10; derived text lines 10-22 (one-based local extraction, not web-tool lines)；Displayed update algebra sign conflict; PDF p6; derived text lines 33-45 (one-based local extraction, not web-tool lines)。
+<strong>引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>。</p>
+<h3 id="s18ctx_role_review_wf_c3cbe075f0eac379c3">已存角色解释 · <code>s18ctx_role_review_wf_c3cbe075f0eac379c3</code></h3>
+<p>Reptile 与一阶 MAML 属学习可快速微调初始化的元学习方法，Reptile 采样任务训练后把初始化移向任务权重；是重要元学习邻接基础，但外层算法固定不能仅凭元学习认作递归改进器自改。</p>
+<p>研究类型：未单列；权限：<code>role_and_relevance_boundary_only_not_technical_answer_evidence</code>。</p>
+<h2 id="3">3. 方法机制与实现细节</h2>
+<p>该工作按研究角色解析，不强行构造方法配置。具体定义、协议或论证见以下证据片段及其来源定位。</p>
+<h2 id="4">4. 实验、评价协议与结果的可解释范围</h2>
+<p>K-shot N-way task sampled from classes with training examples and one held-out test example per class; score is held-out classification accuracy after adaptation.</p>
+<h3 id="_1">原文证据记录中的具体观察</h3>
+<p>这些是已存证据记录的有界解释。历史记录或未准入记录的存在，不覆盖上方当前准入权限。</p>
+<ul>
+<li><strong><code>s18ctx_role_ev_wf_c3cbe075f0eac379c3</code></strong>：Reptile 与一阶 MAML 属学习可快速微调初始化的元学习方法，Reptile 采样任务训练后把初始化移向任务权重；是重要元学习邻接基础，但外层算法固定不能仅凭元学习认作递归改进器自改。</li>
+<li>
+<p>来源版本：1803.02999v3；定位：Atom entry http://arxiv.org/abs/1803.02999v3；Atom summary element；深度：<code>official_primary_abstract_role_and_relevance_only</code>。</p>
+</li>
+<li>
+<p><strong><code>b570_06_ev_wf_c3cbe075f0eac379c3</code></strong>：Cached v1 is Reptile: sample a task, train task weights with SGD, then move a shared initialization toward them. Few-shot classification tests adaptation of the initialization to a newly sampled task.</p>
+</li>
+<li>来源版本：arXiv:1803.02999v1；定位：Reptile serial update; PDF p2; derived text lines 20-39 (one-based local extraction, not web-tool lines)；Few-shot task protocol; PDF p6; derived text lines 46-55 (one-based local extraction, not web-tool lines)；Task-distribution assumption; PDF p10; derived text lines 10-22 (one-based local extraction, not web-tool lines)；Displayed update algebra sign conflict; PDF p6; derived text lines 33-45 (one-based local extraction, not web-tool lines)；深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+</ul>
+<h2 id="5">5. 原文选段：把方法与实验细节展开</h2>
+<h3 id="1-reptile-serial-update">选段 1 · 机制 / 定义 · Reptile serial update</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/1803.02999v1<br>
+<strong>实际版本</strong>：arXiv:1803.02999v1<br>
+<strong>精确定位</strong>：PDF p2; derived text lines 20-39 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_c3cbe075f0eac379c3</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="2-few-shot-task-protocol">选段 2 · 机制 / 定义 · Few-shot task protocol</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/1803.02999v1<br>
+<strong>实际版本</strong>：arXiv:1803.02999v1<br>
+<strong>精确定位</strong>：PDF p6; derived text lines 46-55 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_c3cbe075f0eac379c3</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="3-task-distribution-assumption">选段 3 · 限制 · Task-distribution assumption</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/1803.02999v1<br>
+<strong>实际版本</strong>：arXiv:1803.02999v1<br>
+<strong>精确定位</strong>：PDF p10; derived text lines 10-22 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_c3cbe075f0eac379c3</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h3 id="4-displayed-update-algebra-sign-conflict">选段 4 · 冲突 · Displayed update algebra sign conflict</h3>
+<p><strong>来源</strong>：https://arxiv.org/pdf/1803.02999v1<br>
+<strong>实际版本</strong>：arXiv:1803.02999v1<br>
+<strong>精确定位</strong>：PDF p6; derived text lines 33-45 (one-based local extraction, not web-tool lines)<br>
+<strong>关联证据</strong>：<code>b570_06_ev_wf_c3cbe075f0eac379c3</code></p>
+<p>逐字选段保留在有访问控制的完整信息包；公开阅读视图保留上方版本与定位。</p>
+<p>以上仅为已存选段的转录；行号是该记录声明的派生文本行号，不改写为出版商页码。缺失数学符号不据上下文重构。</p>
+<h2 id="6">6. 局限、冲突与不能推出的结论</h2>
+<ul>
+<li>Assumes a training distribution of tasks. A fixed update algorithm can yield bounded meta-learning improvements; it does not demonstrate autonomous redesign of the optimizer.</li>
+<li>仅实读已缓存的官方 Atom 摘要作范围和角色判读；不是 2026-10-18 的最新版本检索，未核全文配置、定理、性能数值或继承关系，不支持技术性读者回答。</li>
+</ul>
+<p>存在已存冲突或待核证据；请保留各版本和判断，不自行合并为确定结论：</p>
+<ul>
+<li>b570_06_ev_wf_c3cbe075f0eac379c3</li>
+</ul>
+<h2 id="7">7. 与其他论文的具体关系</h2>
+<p>当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。</p>
+<h2 id="8">8. 来源清单、复查入口与解析缺口</h2>
+<ul>
+<li><code>b570_06_src_wf_c3cbe075f0eac379c3</code> · Reptile: a Scalable Metalearning Algorithm · arXiv:1803.02999v1</li>
+<li>https://arxiv.org/pdf/1803.02999v1；阅读深度：<code>selected_primary_role_definition_protocol_scope_and_limits</code>。</li>
+<li><code>s18ctx_role_src_36dcd0fd301066b1</code> · 已存来源 · Atom snapshot 2026-10-11; exact entry versions stored on review</li>
+<li>https://export.arxiv.org/api/query?id_list=1711.03938%2C1711.03953%2C1711.04340%2C1711.05101%2C1711.07414%2C1711.09846%2C1711.09883%2C1712.01815%2C1712.06567%2C1712.07040%2C1801.02668%2C1801.10314%2C1802.06070%2C1802.07569%2C1803.02999%2C1803.03453%2C1803.04585%2C1803.05457%2C1803.10122%2C1804.03980%2C1804.06893%2C1805.00899%2C1805.01109%2C1805.09613%2C1805.11604%2C1805.11973%2C1805.12069%2C1805.12114%2C1806.00178%2C1806.01261%2C1806.07937%2C1806.08730%2C1806.09030%2C1807.00734%2C1807.05076%2C1808.08745%2C1808.09422%2C1808.09468%2C1809.02156%2C1809.07124%2C1809.09600%2C1809.11096%2C1810.00069%2C1810.00123%2C1810.04805%2C1810.07074%2C1810.08272%2C1810.10535%2C1810.10863%2C1811.00739%2C1811.01241%2C1811.07871%2C1811.08886%2C1812.01070%2C1812.01825%2C1812.08775%2C1812.10757%2C1901.02860%2C1901.09492%2C1901.10995%2C1902.03689%2C1902.04043%2C1902.06705%2C1902.07638%2C1902.09469%2C1903.00161%2C1903.06733%2C1903.08772%2C1903.09848%2C1903.10145%2C1903.12261%2C1904.07734%2C1904.09675%2C1904.09728%2C1904.10509%2C1904.12901%2C1905.01386%2C1905.07830%2C1905.09717%2C1905.10044%2C1905.10847%2C1905.10985%2C1905.13053%2C1906.02243%2C1906.05015%2C1906.08253%2C1906.08663%2C1906.11951%2C1907.00909%2C1907.03651%2C1907.09190%2C1907.11692%2C1907.12108%2C1908.04734%2C1908.10084%2C1909.01095%2C1909.02622%2C1909.03848%2C1909.06146%2C1909.06576&amp;max_results=100；阅读深度：<code>未单列</code>。</li>
+</ul>
+<p><strong>仍未核准的内容</strong>：</p>
+<ul>
+<li>PDF p6 Eq22 has a sign inconsistent with Algorithm1 and Eq23; algorithm identity is clear but that displayed algebra is pending.</li>
+</ul>
+<p><strong>证据深度</strong>：selected_primary_role_definition_protocol_scope_and_limits。
+<strong>当前引用权限</strong>：<code>selected_primary_role_definitions_protocol_assumptions_and_limits_only</code>；人工签核：<code>False</code>。</p>
+<p><strong>AI 联合读取</strong>：<code>python scripts/dossier.py wf_c3cbe075f0eac379c3 --excerpts</code>。解析卡编排本身不新增主张、原文核查或独立复现。</p></article></div></main></div><footer class="container"><a class="brand" href="../../"><span class="brandmark">r↗</span><b>Survey for AI</b></a><p>A method for AI-readable surveys. RSI is the worked example.</p><div><a href="../../explore/">论文解析</a><a href="../../method/">方法</a><a href="../../data/">数据</a><a href="https://github.com/Mr-Tieguigui/survey-for-ai">GitHub ↗</a><a href="../../data/#limits">范围与例外</a></div></footer><script src="../../assets/js/main.js"></script></body></html>

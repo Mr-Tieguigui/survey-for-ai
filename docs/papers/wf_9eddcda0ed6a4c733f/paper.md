@@ -1,0 +1,56 @@
+# PAST-Bench: Benchmarking the Foundations of Recursive Self-Improvement in Personal Agents
+
+> Benchmark/数据集/任务套件 · 2026 · `wf_9eddcda0ed6a4c733f`
+
+**作者**：Shuhan Xue, Zixin Ding, Yichen Shen, Yinjie Wang, Zhenfei Yin, Yingcheng Wu, Yuxin Chen, Mengdi Wang, Ling Yang  
+**原文**：https://arxiv.org/abs/2608.04003  
+**研究分支**：Benchmark、数据集与任务  
+**解析依据**：已保存的角色审查、配置核查、原文定位与选段；不是重新全文精读。
+
+## 1. 这项工作研究什么
+在当前已核配置中，系统边界为：固定Hermes+代理框架与跨会话持久状态；具体更新过程为：代理在学习/更新episode保存状态，并在后续episode取用；框架干预由研究者设计；更新状态的保留与后继使用为：持久记录跨fresh-session episodes保留。
+
+## 2. 论文的核心内容与贡献
+
+### configuration:cfg_past_hermes_plus
+持久状态的行为与机制归因配置；论文中Hermes→Hermes+五项改动是研究者设计，不能当作代理自行改进器自改。
+
+**适用版本**：2608.04003v1；**原文定位**：§3.2；§4.3；Appendix E。
+**引用权限**：`listed_configuration_scope_only`。
+
+## 3. 任务、数据与评价设计
+
+### cfg_past_hermes_plus
+`cfg_past_hermes_plus` · 已存配置视图
+
+| 方法要素 | 当前记录的具体内容 |
+|---|---|
+| 系统边界 | 固定Hermes+代理框架与跨会话持久状态 |
+| 改进过程与下一轮参与 | 代理在学习/更新episode保存状态，并在后续episode取用；框架干预由研究者设计 |
+| 保留的状态及时间尺度 | 持久记录跨fresh-session episodes保留 |
+| 外部固定部分 | 任务族、评分、框架、对照协议、模型和工具栈 |
+
+**配置判定**：持久状态的行为与机制归因配置；论文中Hermes→Hermes+五项改动是研究者设计，不能当作代理自行改进器自改。
+
+来源：https://arxiv.org/html/2608.04003v1；版本：2608.04003v1；定位：§3.2；§4.3；Appendix E。
+
+## 4. 实验、评价协议与结果的可解释范围
+当前保存的解析未完整登记实验数据、基线、预算、误差条与统计检验。不能据此填入具体性能数字，或进行跨论文分数排序。理论、综述和背景工作也不因此被强造实验。
+
+## 5. 原文选段：把方法与实验细节展开
+目前没有可移植的逐字正文选段可纳入本卡。上面仍提供已存方法、结论和定位；不把概括重新包装成原文引文。若研究问题超出这些内容，需要针对对应版本补读。
+
+## 6. 局限、冲突与不能推出的结论
+当前未单列具体局限；这不表示没有局限。
+
+## 7. 与其他论文的具体关系
+当前没有准入的双端关系。可以通过研究分支进行主题连读，但不能把共同分支、引用或年代相邻理解为继承。
+
+## 8. 来源清单、复查入口与解析缺口
+- `registered_cfg_src_51a60065f1782660` · 已存来源 · 2608.04003v1
+  - https://arxiv.org/html/2608.04003v1；阅读深度：`未单列`。
+
+**证据深度**：original_abstract, targeted_primary_full_text_method_and_protocol_pass。
+**当前引用权限**：`configuration_bounded_claims_only`；人工签核：`False`。
+
+**AI 联合读取**：`python scripts/dossier.py wf_9eddcda0ed6a4c733f --excerpts`。解析卡编排本身不新增主张、原文核查或独立复现。

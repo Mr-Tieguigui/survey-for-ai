@@ -1,0 +1,15 @@
+{
+  "paper_cards": 808,
+  "cards_with_primary_passages": 509,
+  "selected_passages_in_cards": 1833,
+  "cards_with_saved_evaluation_details": 241,
+  "median_characters": 6698,
+  "min_characters": 923,
+  "max_characters": 31695,
+  "source_records": 1207,
+  "evidence_records": 1262,
+  "new_targeted_descriptive_readings": 6,
+  "new_whole_paper_reviews": 0,
+  "new_admitted_claims": 0,
+  "method": "Explicit ID joins; restored method/evaluation fields and exact selected passages. Separately labeled targeted primary-body detail updates. No title-based factual inference or invented results."
+}
