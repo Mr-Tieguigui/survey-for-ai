@@ -7,7 +7,7 @@ const cards=L.cards,byId=new Map(cards.map(w=>[w.work_family_id,w])),claimOwners
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 try{if(localStorage.getItem('survey-portal-theme')==='dark')document.body.classList.add('p-dark')}catch{}
 $('#themeToggle')?.addEventListener('click',()=>{document.body.classList.toggle('p-dark');try{localStorage.setItem('survey-portal-theme',document.body.classList.contains('p-dark')?'dark':'light')}catch{}});
-$('#menuToggle')?.addEventListener('click',()=>{const open=$('.p-mainnav').classList.toggle('is-open');$('#menuToggle').setAttribute('aria-expanded',String(open))});
+// The unified chapter rail is controlled by experience.js.
 if($('#languageSwitch'))$('#languageSwitch').href+=location.search+location.hash;
 if(!reduced&&'IntersectionObserver'in window){document.body.classList.add('p-motion');const io=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting){x.target.classList.add('is-visible');io.unobserve(x.target)}}),{threshold:.06});document.querySelectorAll('.p-reveal').forEach(x=>io.observe(x))}else document.body.classList.add('p-reduced');
 let ticking=false;addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{const h=document.documentElement.scrollHeight-innerHeight;document.body.style.setProperty('--scroll',(h>0?scrollY/h*100:0)+'%');ticking=false});ticking=true}},{passive:true});
