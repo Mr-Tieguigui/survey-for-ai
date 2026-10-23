@@ -1,0 +1,29 @@
+{
+  "schema_version": "survey-frontier-proposal-v1",
+  "domain_id": "your-domain",
+  "name": {
+    "en": "Your research field",
+    "zh": "你的研究领域"
+  },
+  "status": "proposed",
+  "maintainer": null,
+  "updated": "2026-10-23",
+  "focus": {
+    "en": "Define the question and boundary.",
+    "zh": "填写研究问题和边界。"
+  },
+  "reader_questions": {
+    "en": [],
+    "zh": []
+  },
+  "comparison_axes": {
+    "en": [],
+    "zh": []
+  },
+  "seed_sources": [],
+  "scope_lock": null,
+  "search_cutoff": null,
+  "survey_path": "survey",
+  "completed_primary_reviews": 0,
+  "admitted_claims": 0
+}

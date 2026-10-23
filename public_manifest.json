@@ -4,7 +4,7 @@
   "private_corpus_included": false,
   "source_transcripts_included": false,
   "knowledge_package_access": "Private repository permissions required",
-  "file_count": 2522,
+  "file_count": 2540,
   "files": [
     {
       "path": ".gitattributes",
@@ -9895,6 +9895,74 @@
       "sha256": "a882300bace9da1438a3e3c3bf6b90f3952ba7002a493024b9e93b2eebdc57f1"
     },
     {
+      "path": "frontiers/_template/README.md",
+      "sha256": "4406cfed1093cc185d1ee292b88275da0ef175f74ccd7e00908387aab3691dd4"
+    },
+    {
+      "path": "frontiers/_template/scope.json",
+      "sha256": "695557062f4f1f7f65ecb1dab41eafd0f5f2352644a09b894f58d3dfb46f4150"
+    },
+    {
+      "path": "frontiers/agent-evaluation/README.md",
+      "sha256": "44e8128ed0ed4ae4b1f113a48f14a72c9d85d014101333aafdf49401e1ec9254"
+    },
+    {
+      "path": "frontiers/agent-evaluation/scope.json",
+      "sha256": "0b45698d835365ef2fad23f12bc35aa3e63215d776a877ca9cba19b23dc87cfa"
+    },
+    {
+      "path": "frontiers/agent-memory/README.md",
+      "sha256": "af552a6c03cad4fae37c64aaf6be3597d150e44611034615e7aee482f3ce249b"
+    },
+    {
+      "path": "frontiers/agent-memory/scope.json",
+      "sha256": "c0e0f3d4d2344183e954f04087862167d9636f64b6b85a2f4a5a0a5ff5081aaa"
+    },
+    {
+      "path": "frontiers/multi-agent-systems/README.md",
+      "sha256": "4ed3218940987826c2c601462f77aeaa33d49feb8914d22ea561fa18dd874fe5"
+    },
+    {
+      "path": "frontiers/multi-agent-systems/scope.json",
+      "sha256": "0aa8ba296fbf570352ac6ea013bda2b703c0234f841ff176384407ccd9a081bb"
+    },
+    {
+      "path": "frontiers/README.md",
+      "sha256": "7073b4d6d2a3b79ec0466ad3b20ae89d098468617aaabcbb24d8395db477a7a8"
+    },
+    {
+      "path": "frontiers/README_CN.md",
+      "sha256": "ce9b5b245e0766b32d455817f1a83c042915d04d03fe0cb222a10674a47b803a"
+    },
+    {
+      "path": "frontiers/registry.json",
+      "sha256": "7838e27a702339764234ed97539272331ae8be1682b8d1acc1dec989fc31519e"
+    },
+    {
+      "path": "frontiers/scientific-discovery/README.md",
+      "sha256": "880fdf607200750d5dca933c3634fbf0808d390bdb95095a7cc13960353bb836"
+    },
+    {
+      "path": "frontiers/scientific-discovery/scope.json",
+      "sha256": "e53108501c6256330b9a7c6c11724c46d50ee8b6f5876e691ea9cfd4b61f010b"
+    },
+    {
+      "path": "frontiers/test-time-adaptation/README.md",
+      "sha256": "3be4d257ad210f1c13af2089e881645edc0c5d662d40f17267e45df9f230e0c0"
+    },
+    {
+      "path": "frontiers/test-time-adaptation/scope.json",
+      "sha256": "692b5c8402da76b76f52770d96e040af242b68573b1d28ff356bdf07c2e4bc1b"
+    },
+    {
+      "path": "frontiers/world-models/README.md",
+      "sha256": "7460ad18a96cf92ffa441d0ee3feaf0af54a0085f5ccf33ec0343c8e2509f110"
+    },
+    {
+      "path": "frontiers/world-models/scope.json",
+      "sha256": "3797d65069d87d273723f187d35c934375ec6d0f0e94f4782c4206fea793a514"
+    },
+    {
       "path": "LICENSE_STATUS.md",
       "sha256": "bb34e2e27c40f8d2738fef4d96d33b569d2a65c8547f594558d4bc2b5088e48f"
     },
@@ -9920,11 +9988,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "9b4793f3d77932a5ccfa108d071175fae4adb1c277acdb671d1031e790e2bf78"
+      "sha256": "82d4173c52b8dec6e645d02f6e83cd1d18bd55e4d6c6460a08eb98bf91eaa820"
     },
     {
       "path": "README_CN.md",
-      "sha256": "ff62425af609e6b4e41d92e0191034961ea5efa2b3033b70130b1818e4631e87"
+      "sha256": "4d1f7aa8f71c0c3194d43928d6eaa18b4028b4342cf2948d14ed91381ffa5f26"
+    },
+    {
+      "path": "scripts/build_frontier_index.py",
+      "sha256": "ea00ab3b2466a4c2c97084228bb8c38de0067ece3042457fd765f95900e588d1"
     },
     {
       "path": "scripts/build_portal.py",

@@ -1,0 +1,53 @@
+{
+  "schema_version": "survey-frontier-proposal-v1",
+  "domain_id": "multi-agent-systems",
+  "name": {
+    "en": "Multi-agent coordination & organization",
+    "zh": "多智能体协作与组织"
+  },
+  "status": "proposed",
+  "maintainer": null,
+  "updated": "2026-10-23",
+  "focus": {
+    "en": "How does coordination affect decomposition, communication and outcomes?",
+    "zh": "协作结构怎样影响任务分解、通信和执行结果？"
+  },
+  "reader_questions": {
+    "en": [
+      "How do fixed workflows, dynamic roles and collective learning differ?",
+      "How are gains attributed against single-agent baselines at matched budgets?"
+    ],
+    "zh": [
+      "固定工作流、动态分工和群体学习怎样区分？",
+      "相同预算下怎样与单智能体比较并归因？"
+    ]
+  },
+  "comparison_axes": {
+    "en": [
+      "Roles and topology",
+      "Communication and shared state",
+      "Coordination cost and single-agent baseline"
+    ],
+    "zh": [
+      "角色与拓扑",
+      "通信与共享状态",
+      "协调成本与单体基线"
+    ]
+  },
+  "seed_sources": [
+    {
+      "label": "AutoGen project",
+      "url": "https://github.com/microsoft/autogen",
+      "source_kind": "first_party_project_or_research_entry",
+      "checked_on": "2026-10-23",
+      "permission": "navigation_only",
+      "primary_body_reviewed": false,
+      "observed_version": null
+    }
+  ],
+  "scope_lock": null,
+  "search_cutoff": null,
+  "survey_path": "survey",
+  "completed_primary_reviews": 0,
+  "admitted_claims": 0
+}

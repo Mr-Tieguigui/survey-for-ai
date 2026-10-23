@@ -2,13 +2,15 @@
 
 <img src="website/assets/figures/survey-for-ai.svg" width="100%" alt="Survey for AI: papers, evidence, field map, modules and answers">
 
+<img src="website/assets/figures/mark.svg" width="64" height="64" alt="Survey for AI · Evidence Atlas">
+
 # Survey for AI
 
 ### A reusable method and Skill for building surveys that AI can read, query and maintain.
 
 **English** · [简体中文](README_CN.md)
 
-[Explore the live example](https://mr-tieguigui.github.io/survey-for-ai/en/) · [Use the Skill](skill/survey-evidence-ledger/SKILL.md) · [Method contract](method/workflow.json) · [AI reading guide](AI_GUIDE.md)
+[Explore the live example](https://mr-tieguigui.github.io/survey-for-ai/en/) · [Use the Skill](skill/survey-evidence-ledger/SKILL.md) · [Method contract](method/workflow.json) · [AI reading guide](AI_GUIDE.md) · [Add a Survey](#build-a-survey-in-another-domain) · [Frontier directory](#frontier-directory)
 
 ![Method](https://img.shields.io/badge/Method-domain_adapted-c7e9a4?labelColor=17211b&color=c7e9a4) ![Evidence](https://img.shields.io/badge/Knowledge-versioned_%26_traceable-abcac0?labelColor=17211b) ![Example](https://img.shields.io/badge/Worked_example-RSI-dbc7a0?labelColor=17211b)
 
@@ -41,7 +43,8 @@
 | Understand the idea | [Construction method](#the-construction-method) | Lifecycle, evidence permissions and completion gates |
 | Build a survey in another field | [New-domain quick start](#build-a-survey-in-another-domain) | An empty adapter-driven workspace and an agent workflow |
 | Give an existing survey to an AI | [AI_GUIDE.md](AI_GUIDE.md) | Authority order, targeted retrieval and citation rules |
-| Explore a finished example | [RSI research atlas](https://mr-tieguigui.github.io/survey-for-ai/en/atlas/) | Vertical branches, typed relations, comparisons and reader routes |
+| Choose or propose a new direction | [Frontier directory](#frontier-directory) | Six proposed scopes, open ownership and a reusable template |
+| Explore a worked example | [RSI research atlas](https://mr-tieguigui.github.io/survey-for-ai/en/atlas/) | Vertical branches, typed relations, comparisons and reader routes |
 | Inspect a paper | [808-paper library](https://mr-tieguigui.github.io/survey-for-ai/en/explore/) | Concrete content, protocol, limitations, links and evidence depth |
 | Download all RSI information | [Complete knowledge ZIP — access required](https://github.com/Mr-Tieguigui/rsi-survey/raw/refs/heads/main/survey/RSI-Survey-Knowledge.zip) | Canonical data, 808 Markdown dossiers, screening, methods and query tools |
 
@@ -111,54 +114,101 @@ The **tree is an entry point**. Typed cross-links preserve the relationships tha
 
 ## Build a survey in another domain
 
-The distributable Skill is [survey-evidence-ledger](skill/survey-evidence-ledger/SKILL.md). It includes concise operating instructions, a domain-neutral initializer, a contract validator, synthesis guidance, an evaluation protocol and a separate RSI adapter.
+**Choose a direction → initialize a draft → adapt the evidence contract → curate → synthesize → validate and release.** The same method and [Skill](skill/survey-evidence-ledger/SKILL.md) support this lifecycle; the new field supplies its own definitions, evidence fields and comparison criteria.
 
-**1. Obtain the method and Skill.** Clone this public distribution, or download the repository ZIP. An agent can read the Skill directly from the checked-out directory; no provider-specific installation is required for that usage.
+### 1 · Choose an open direction or define your own
+
+Browse the [frontier directory](frontiers/README.md). Each proposed topic has its own scope file and first-party discovery links. For an unlisted field, copy [`frontiers/_template/`](frontiers/_template/) to `frontiers/<domain-id>/`, edit `scope.json`, and add its relative path to [`registry.json`](frontiers/registry.json). Use a lowercase ID with letters, digits and hyphens. These proposals are starting points, with **zero completed primary reviews**, not completed surveys.
+
+### 2 · Create the actual survey workspace
+
+Run from the repository root after cloning:
 
 ```bash
 git clone https://github.com/Mr-Tieguigui/survey-for-ai.git
 cd survey-for-ai
 python skill/survey-evidence-ledger/scripts/init_domain.py \
-  --output ../my-survey --domain-id my-domain \
-  --name "My research field" --scope "My explicit research question and boundaries"
+  --output frontiers/agent-memory/survey --domain-id agent-memory \
+  --name "Agent Memory" --scope "External agent memory: retention, retrieval and cross-task evaluation"
 ```
 
-**2. Fill the adapter.** `../my-survey/method/domain_adapter.json` defines the vocabulary and acceptance criteria. Set inclusion/exclusion, search sources/cutoff, role-specific evidence fields, comparison axes, relation predicates, readers/questions and budget. The initializer creates an empty **draft**; it does not fabricate a corpus or count reviews as completed.
+Replace the ID, name, question and output for your field. Keep the proposal in its parent folder; its `survey/` child holds the actual research records. The initializer accepts a new or empty target and preserves an existing survey by refusing to overwrite it. Running it does **not** retrieve papers, admit claims or create a website.
 
-**3. Give the agent an explicit job.**
+### 3 · Adapt the domain contract before bulk collection
+
+Edit `frontiers/agent-memory/survey/method/domain_adapter.json`:
+
+| Decide | Record in the adapter | Agent-memory example — proposed scope |
+|---|---|---|
+| What belongs? | Definition, inclusion/exclusion, sources and cutoff | Distinguish external retained state from model-weight training |
+| What must each paper support? | Method, benchmark, theory and background evidence fields | Memory representation, write/read rules, retention, evaluation and limits |
+| What can be compared? | Comparison axes and compatible protocols | Cross-task split, base model, context, tools and compute budget |
+| How do works connect? | Branch vocabulary and typed relation rules | Separate comparison, shared mechanisms and supported technical inheritance |
+| Who will use it? | Reader profiles and answerable questions | Builder: which state and retrieval policy fit a task? |
+| What is the release scope? | Budget, completion unit and audience | Lock the corpus and evidence target; record unresolved cases separately |
+
+A proposal's `scope.json` is planning input. The initialized adapter is the execution contract; `catalog/` and saved evidence decide what is supported. Overlap with RSI does not automatically transfer claim permission or increase its membership.
+
+### 4 · Give an AI a concrete task
+
+Let the agent read the checked-out Skill directly; this does not require a provider-specific installation command. Start with a small pilot to verify the fields, then lock the batch scope.
 
 ```text
-Read skill/survey-evidence-ledger/SKILL.md and use it to build ../my-survey.
-Start by completing the domain adapter and locking the scope with the available information.
-Use real sources, preserve exact identities and versions, and label evidence depth.
-Build paper dossiers, a branch tree with typed cross-links, comparisons and reader modules.
-Route answers through admitted claims. Keep gaps visible and resume from saved state.
-Use deterministic tools for joins and checks; keep model context limited to the needed evidence.
+Read skill/survey-evidence-ledger/SKILL.md.
+Build frontiers/agent-memory/survey using frontiers/agent-memory/scope.json as planning input.
+Complete the domain adapter and explicitly record scope, sources, cutoff and budget.
+Use real identities, exact source versions, role-specific evidence and material limits.
+Keep discovery links separate from admitted technical claims; do not invent papers or results.
+Build dossiers, branches, typed cross-links, comparison axes and reader modules.
+Return bounded answers with claim IDs, citations, conditions and unresolved gaps.
+Resume from work/run_state.json; reuse saved evidence and update only affected records.
 ```
 
-**4. Curate, synthesize and check.** The agent performs the semantic work with available sources/tools. The exported-domain checker verifies identifiers and references, not scientific truth:
+### 5 · Produce knowledge that both people and AI can inspect
+
+```text
+frontiers/<domain-id>/
+├── scope.json                  # Proposed direction and discovery links
+├── README.md                   # Generated bilingual direction brief
+└── survey/                     # Created only when research starts
+    ├── method/domain_adapter.json
+    ├── catalog/                # Works, versions, evidence, claims, relations and modules
+    ├── papers/                 # Concrete per-paper dossiers
+    ├── indexes/                # Reader and question routes
+    └── work/run_state.json     # Resumable state and unresolved decisions
+```
+
+### 6 · Validate, then promote the status
 
 ```bash
-python skill/survey-evidence-ledger/scripts/validate_release.py ../my-survey/catalog
+python skill/survey-evidence-ledger/scripts/validate_release.py frontiers/agent-memory/survey/catalog
+python scripts/build_frontier_index.py
+python scripts/build_frontier_index.py --check
 ```
 
-An empty scaffold intentionally fails release readiness. A different domain supplies its own schema mapping and evidence requirements. The initializer and generic contract are portable; the complete RSI website builder and its current data projection remain a case-specific implementation.
+The first command checks the generic data contract and references; an empty draft intentionally fails readiness. Scientific accuracy still requires role-appropriate evidence review and semantic checks of relations and answers. The latter commands refresh and verify the bilingual directory without model or network calls. Promote `scope.json` through `proposed → scoped → curating → synthesizing → ready` only when the corresponding work exists. Record scope/cutoff, evidence depth and unresolved items at release.
 
-<details>
-<summary><b>What should change when moving to another field?</b></summary>
+**Website integration is a separate step.** The reusable initializer and data contracts are domain-neutral. The current RSI website projection is case-specific and needs a field-specific data/view adapter for another survey. Publishing or making a new corpus public requires its own audience decision.
 
-| Adapt | Preserve |
-|---|---|
-| Terminology and inclusion/exclusion | Stable work identities and observed source versions |
-| Paper roles and mechanism/evaluation fields | Role-appropriate primary support and explicit unknowns |
-| Comparison axes and protocol compatibility | Bounded statements, citation permission and limits |
-| Relationship vocabulary and branch taxonomy | Supported endpoints; no chronology-to-inheritance shortcut |
-| Reader profiles, questions and module structure | Question routing and traceable answers |
-| Search sources, cutoff, update cadence and budget | Versioned state, incremental repair and honest completion gates |
+<a id="frontier-directory"></a>
 
-For example, a retrieval-method survey and a materials-process survey may use completely different mechanism and evaluation dimensions. These are adapter design examples, not completed cross-domain experiments.
+## Frontier surveys · open extension directory
 
-</details>
+These are **curator-proposed future surveys**, not a ranked list of the newest fields or completed cross-domain validations. Seed URLs were checked on **2026-10-23** as first-party discovery entry points; they do not certify primary-body review or establish a literature cutoff. All six slots are unassigned and can be revised before scope lock.
+
+<!-- frontier-directory:start -->
+| ID | Proposed survey | Research question | Status | Directory |
+|---|---|---|---|---|
+| F01 | Agent memory & continual learning | How does external memory affect later tasks, and how is transfer evaluated? | ○ Proposed | [agent-memory](frontiers/agent-memory/) |
+| F02 | Test-time compute, reasoning & adaptation | What changes with inference compute versus test-time updates? | ○ Proposed | [test-time-adaptation](frontiers/test-time-adaptation/) |
+| F03 | Scientific discovery & research agents | Which steps from a research question to a candidate result are verifiable? | ○ Proposed | [scientific-discovery](frontiers/scientific-discovery/) |
+| F04 | World models & embodied interaction | What do generative, predictive and interactive environment models support? | ○ Proposed | [world-models](frontiers/world-models/) |
+| F05 | Agent evaluation & reliability | How can model, environment, harness and protocol contributions be separated? | ○ Proposed | [agent-evaluation](frontiers/agent-evaluation/) |
+| F06 | Multi-agent coordination & organization | How does coordination affect decomposition, communication and outcomes? | ○ Proposed | [multi-agent-systems](frontiers/multi-agent-systems/) |
+| ＋ | **Your domain** | Define the scope and reader questions | Open slot | [_template](frontiers/_template/) |
+<!-- frontier-directory:end -->
+
+**Your field is welcome.** Use the open template row for an additional AI or non-AI domain. Details and contribution steps: [English directory](frontiers/README.md) · [中文目录](frontiers/README_CN.md) · [Machine registry](frontiers/registry.json). Keep the RSI worked example and each future survey in separate versioned scopes.
 
 ## How an AI uses the resulting survey
 
@@ -232,7 +282,7 @@ No numeric efficiency claim is made. The [evaluation protocol](skill/survey-evid
 
 | Date | Version / scope | What changed |
 |---|---|---|
-| 2026-10-23 | Framework v1.1.0 | Bilingual page-based website, accessible motion, academic figures and representative-paper tables |
+| 2026-10-23 | Framework v1.1.0 | Evidence Atlas identity, unified vertical 01–10 navigation, scroll transitions, bilingual README and new-survey extension directory |
 | Fixed corpus | RSI snapshot | 808 families and existing evidence permissions retained; presentation changes do not count as new reviews |
 
 Read in order: **[Framework](https://mr-tieguigui.github.io/survey-for-ai/en/) → [Method](https://mr-tieguigui.github.io/survey-for-ai/en/method/) → [Skill](https://mr-tieguigui.github.io/survey-for-ai/en/skill/) → [RSI overview](https://mr-tieguigui.github.io/survey-for-ai/en/rsi/) → [Atlas](https://mr-tieguigui.github.io/survey-for-ai/en/atlas/) → [Cases](https://mr-tieguigui.github.io/survey-for-ai/en/cases/) → [Comparison](https://mr-tieguigui.github.io/survey-for-ai/en/compare/) → [Reader questions](https://mr-tieguigui.github.io/survey-for-ai/en/reader/)**. The language switch preserves the current page. Interfaces and selected briefs are bilingual; archival dossiers retain their original curatorial language.
@@ -249,6 +299,6 @@ The full knowledge package is arranged as `catalog/`, `papers/`, `indexes/`, `sc
 
 For changes, first identify the source version and affected claims/modules. Preserve earlier records and unresolved conflicts, validate the changed slice plus references, and update the release manifest last. A useful contribution includes a work/source ID, exact locator, proposed bounded correction, and affected reader route.
 
-**Status and rights.** The method and Skill are an implemented candidate, not a universally validated research result. No short paper is being written in this update. Public availability does not assign a new license to original code, analysis, metadata or third-party material; see [LICENSE_STATUS.md](LICENSE_STATUS.md).
+**Status and rights.** The method and Skill are an implemented candidate, not a universally validated research result. Public availability does not assign a new license to original code, analysis, metadata or third-party material; see [LICENSE_STATUS.md](LICENSE_STATUS.md).
 
 **Presentation reference.** The method-led introduction, clear entry points and progressive detail were inspired by [ARIS](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep); the workflow, diagrams and Survey content here are project-specific. The example website also draws presentation inspiration from [Ropedia W0](https://ropedia.github.io/ropedia-w0/).

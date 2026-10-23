@@ -1,0 +1,53 @@
+{
+  "schema_version": "survey-frontier-proposal-v1",
+  "domain_id": "agent-memory",
+  "name": {
+    "en": "Agent memory & continual learning",
+    "zh": "智能体记忆与持续学习"
+  },
+  "status": "proposed",
+  "maintainer": null,
+  "updated": "2026-10-23",
+  "focus": {
+    "en": "How does external memory affect later tasks, and how is transfer evaluated?",
+    "zh": "外部记忆如何影响后续任务，怎样评估真实迁移？"
+  },
+  "reader_questions": {
+    "en": [
+      "Which state is written, retrieved, compressed or forgotten?",
+      "Can cross-session gains be separated from context, training and task leakage?"
+    ],
+    "zh": [
+      "哪些状态被写入、检索、压缩和遗忘？",
+      "跨会话收益能否与上下文、训练和任务泄漏区分？"
+    ]
+  },
+  "comparison_axes": {
+    "en": [
+      "Memory representation and retention",
+      "Write/retrieval policy",
+      "Cross-task splits and cost"
+    ],
+    "zh": [
+      "记忆载体与保留周期",
+      "写入与检索策略",
+      "跨任务划分与成本"
+    ]
+  },
+  "seed_sources": [
+    {
+      "label": "Letta research",
+      "url": "https://www.letta.com/research/",
+      "source_kind": "first_party_project_or_research_entry",
+      "checked_on": "2026-10-23",
+      "permission": "navigation_only",
+      "primary_body_reviewed": false,
+      "observed_version": null
+    }
+  ],
+  "scope_lock": null,
+  "search_cutoff": null,
+  "survey_path": "survey",
+  "completed_primary_reviews": 0,
+  "admitted_claims": 0
+}

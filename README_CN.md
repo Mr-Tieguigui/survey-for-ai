@@ -2,13 +2,15 @@
 
 <img src="website/assets/figures/survey-for-ai.svg" width="100%" alt="Survey for AI：从论文、证据与领域图谱，到模块和回答">
 
+<img src="website/assets/figures/mark.svg" width="64" height="64" alt="Survey for AI · Evidence Atlas">
+
 # Survey for AI
 
 ### 为 AI 阅读、检索和持续更新而构建 Survey 的通用方法与 Skill。
 
 [English](README.md) · **简体中文**
 
-[打开在线示例](https://mr-tieguigui.github.io/survey-for-ai/) · [使用 Skill](skill/survey-evidence-ledger/SKILL.md) · [方法契约](method/workflow.json) · [AI 阅读指南](AI_GUIDE.md)
+[打开在线示例](https://mr-tieguigui.github.io/survey-for-ai/) · [使用 Skill](skill/survey-evidence-ledger/SKILL.md) · [方法契约](method/workflow.json) · [AI 阅读指南](AI_GUIDE.md) · [新增 Survey](#为其他领域构建-survey) · [前沿方向目录](#frontier-directory)
 
 ![方法](https://img.shields.io/badge/Method-domain_adapted-c7e9a4?labelColor=17211b&color=c7e9a4) ![证据](https://img.shields.io/badge/Knowledge-versioned_%26_traceable-abcac0?labelColor=17211b) ![实例](https://img.shields.io/badge/Worked_example-RSI-dbc7a0?labelColor=17211b)
 
@@ -41,6 +43,7 @@
 | 理解整套方法 | [构建流程](#整套方法如何运作) | 生命周期、证据权限和各阶段验收门槛 |
 | 为另一个领域构建 Survey | [新领域快速开始](#为其他领域构建-survey) | 空白适配工作区和可执行的研究流程 |
 | 把已有 Survey 交给 AI 使用 | [AI_GUIDE.md](AI_GUIDE.md) | 权威层级、按需检索和引用规则 |
+| 选择或提出新方向 | [前沿目录](#frontier-directory) | 六个候选范围、待认领位置与通用模板 |
 | 看领域梳理的真实效果 | [RSI 领域图谱](https://mr-tieguigui.github.io/survey-for-ai/atlas/) | 纵向分支、关系连接、横向比较和需求阅读 |
 | 查看具体论文 | [808 篇文献库](https://mr-tieguigui.github.io/survey-for-ai/explore/) | 具体机制、协议、限制、来源定位和证据深度 |
 | 下载 RSI 的全部整合信息 | [完整信息包——需访问权限](https://github.com/Mr-Tieguigui/rsi-survey/raw/refs/heads/main/survey/RSI-Survey-Knowledge.zip) | 规范数据、808 张 Markdown、筛选记录、方法及查询工具 |
@@ -110,54 +113,101 @@ flowchart LR
 
 ## 为其他领域构建 Survey
 
-可分发 Skill 为 [survey-evidence-ledger](skill/survey-evidence-ledger/SKILL.md)。它包含简洁入口、通用初始化工具、契约验证器、综合与问答规则、评估协议，以及独立的 RSI 适配说明。
+**选择方向 → 初始化草稿 → 适配证据契约 → 整理论文 → 综合知识 → 验收与发布。** 通用方法和 [Skill](skill/survey-evidence-ledger/SKILL.md) 负责流程；新领域提供自己的定义、证据字段与比较标准。
 
-**1. 获取方法与 Skill。** 克隆公开分发仓库，或下载其仓库 ZIP。AI 代理可以直接读取目录中的 Skill；这种使用方式不依赖特定提供商的安装命令。
+### 1 · 选择预留方向，或定义自己的领域
+
+查看[前沿目录](frontiers/README_CN.md)。每个候选方向都有独立的范围文件与一手发现入口。新增未列出的领域时，将 [`frontiers/_template/`](frontiers/_template/) 复制到 `frontiers/<domain-id>/`，修改 `scope.json`，并将相对路径登记到 [`registry.json`](frontiers/registry.json)。ID 使用小写字母、数字和连字符。这些是**原文审查数为零的规划起点**，不是已经完成的 Survey。
+
+### 2 · 创建真正的 Survey 工作区
+
+克隆后，在仓库根目录执行：
 
 ```bash
 git clone https://github.com/Mr-Tieguigui/survey-for-ai.git
 cd survey-for-ai
 python skill/survey-evidence-ledger/scripts/init_domain.py \
-  --output ../my-survey --domain-id my-domain \
-  --name "我的研究领域" --scope "明确的研究问题与边界"
+  --output frontiers/agent-memory/survey --domain-id agent-memory \
+  --name "Agent Memory" --scope "External agent memory: retention, retrieval and cross-task evaluation"
 ```
 
-**2. 完成领域适配。** 编辑 `../my-survey/method/domain_adapter.json`：设置纳入排除、检索来源与截止、角色证据字段、比较维度、关系谓词、读者需求和预算。初始化器创建的是**空白草稿**，不会生成虚构论文，也不会把初始化当成审查完成。
+替换成你的领域 ID、名称、研究问题和输出位置。父目录保存方向提案，`survey/` 子目录保存实际研究记录。初始化器只接受全新或空白目标，遇到已有 Survey 会拒绝覆盖。执行这条命令**不会**自动检索论文、准入主张或生成网站。
 
-**3. 将任务明确交给 AI。**
+### 3 · 先适配领域契约，再批量收集
+
+编辑 `frontiers/agent-memory/survey/method/domain_adapter.json`：
+
+| 要决定什么 | 写入适配器 | 智能体记忆示例——候选范围 |
+|---|---|---|
+| 哪些工作属于本领域？ | 定义、纳入排除、来源与截止 | 区分外部保留状态与模型权重训练 |
+| 每篇需要什么依据？ | 方法、benchmark、理论和背景的角色字段 | 记忆表示、读写规则、保留周期、评价与限制 |
+| 什么可以横向比较？ | 比较轴与协议兼容条件 | 跨任务划分、基础模型、上下文、工具和计算预算 |
+| 工作之间怎样连接？ | 分支词汇与有类型关系 | 区分比较、机制相似与有证据的技术继承 |
+| 谁来使用？ | 读者画像与可回答问题 | 实现者：哪种状态和检索策略适配具体任务？ |
+| 本轮完成到什么程度？ | 预算、完成单位与访问范围 | 固定语料和证据目标，单独保留未决项 |
+
+方向的 `scope.json` 是规划输入；初始化后的适配器是执行契约；`catalog/` 和已存证据决定哪些内容得到支持。与 RSI 有主题重叠，不会自动继承主张引用权限，也不会增加 RSI 的收录数量。
+
+### 4 · 给 AI 一份具体任务
+
+让代理直接读取仓库内的 Skill，无需先执行某个平台专属的安装命令。先用小规模试跑检查字段，再固定批次范围。
 
 ```text
-读取 skill/survey-evidence-ledger/SKILL.md，使用该流程构建 ../my-survey。
-先根据已有信息完成领域适配并固定范围。
-使用真实来源，保留准确身份、版本和证据深度。
-构建逐篇解析、分支树与横向关系、比较和读者模块。
-回答必须经过准入主张，保留缺口并从机器断点续跑。
-连接与检查交给确定性工具，模型上下文只加载当前需要的证据。
+读取 skill/survey-evidence-ledger/SKILL.md。
+以 frontiers/agent-memory/scope.json 为规划输入，构建 frontiers/agent-memory/survey。
+完成领域适配器，明确记录范围、来源、截止和预算。
+使用真实身份、准确来源版本、角色专属证据和结论限制。
+发现入口与技术准入分开；不编造论文、评价结果或完成状态。
+形成逐篇解析、分支、有类型横向关系、比较维度和读者模块。
+回答包含有界结论、主张 ID、引用、适用条件与缺口。
+从 work/run_state.json 续跑，复用已存证据，仅修复受影响记录。
 ```
 
-**4. 整理、综合并检查。** 代理使用实际可用工具和来源完成语义研究。通用验证器只核对身份及引用结构，不能代替科学判断：
+### 5 · 交付人和 AI 都能检查的知识
+
+```text
+frontiers/<domain-id>/
+├── scope.json                  # 候选方向、问题与发现入口
+├── README.md                   # 自动生成的双语方向说明
+└── survey/                     # 真正启动研究后才创建
+    ├── method/domain_adapter.json
+    ├── catalog/                # 文献、版本、证据、主张、关系和模块
+    ├── papers/                 # 逐篇具体解析
+    ├── indexes/                # 读者与问题入口
+    └── work/run_state.json     # 可恢复断点与未决判断
+```
+
+### 6 · 验收后，再提升状态
 
 ```bash
-python skill/survey-evidence-ledger/scripts/validate_release.py ../my-survey/catalog
+python skill/survey-evidence-ledger/scripts/validate_release.py frontiers/agent-memory/survey/catalog
+python scripts/build_frontier_index.py
+python scripts/build_frontier_index.py --check
 ```
 
-空工作区会有意地不通过发布就绪检查。新领域需要提供自己的字段映射和证据要求。初始化器与逻辑契约可迁移；完整 RSI 网页构建器及当前数据投影仍属于实例实现，不冒充已经泛化的网站生成器。
+第一条命令检查通用数据契约及引用，空草稿会有意地不通过发布就绪。科学准确性仍需对应角色的证据复核，以及关系和回答的语义检查。后两条命令无需模型或联网，用于更新和核对双语目录。只有实际工作存在，才能在 `scope.json` 中依次提升 `proposed → scoped → curating → synthesizing → ready`。发布时记录固定范围、截止、证据深度及仍未关闭的事项。
 
-<details>
-<summary><b>换一个领域，哪些需要修改，哪些应该保留？</b></summary>
+**网页接入是单独的一步。** 通用初始化器和数据契约可迁移；当前 RSI 网页投影属于实例实现，新领域还需对应的数据与视图适配器。是否发布以及是否公开新语料，需要单独确定访问范围。
 
-| 按领域适配 | 保持不变的核心 |
-|---|---|
-| 术语、纳入排除标准 | 稳定文献身份和实际来源版本 |
-| 文献角色、机制与评价字段 | 对应角色的正文依据和明确未知项 |
-| 比较维度与协议兼容条件 | 有界主张、引用权限和结论限制 |
-| 关系词汇与分支分类 | 端点证据，不把时间顺序当继承 |
-| 读者、问题和模块 | 问题路由与可追溯回答 |
-| 检索库、截止、更新节奏和预算 | 版本化状态、局部更新、如实验收 |
+<a id="frontier-directory"></a>
 
-例如，检索方法与材料工艺两个领域可能需要完全不同的机制、评价字段。这是适配器的设计示例，并非已经完成的跨领域实验。
+## 前沿 Survey：开放扩展目录
 
-</details>
+以下是**策展者提出的未来 Survey 候选**，不是“最新领域排行榜”，也不是已完成的跨领域验证。种子链接已于 **2026-10-23** 核对为一手发现入口；这不等于正文审查，也不代表完整文献检索截止。六个位置均待认领，可在范围固定前调整。
+
+<!-- frontier-directory:start -->
+| 编号 | 候选方向 | 核心研究问题 | 状态 | 文件夹 |
+|---|---|---|---|---|
+| F01 | 智能体记忆与持续学习 | 外部记忆如何影响后续任务，怎样评估真实迁移？ | ○ 待启动 | [agent-memory](frontiers/agent-memory/) |
+| F02 | 测试时计算、推理与适配 | 额外推理预算和测试时更新分别带来什么变化？ | ○ 待启动 | [test-time-adaptation](frontiers/test-time-adaptation/) |
+| F03 | 科学发现与研究智能体 | 从研究问题到候选结果，哪些环节有可复核证据？ | ○ 待启动 | [scientific-discovery](frontiers/scientific-discovery/) |
+| F04 | 世界模型与具身交互 | 可生成、可预测和可交互的环境模型分别支持什么？ | ○ 待启动 | [world-models](frontiers/world-models/) |
+| F05 | 智能体评测与可靠性 | 怎样区分模型、环境、harness 与评价协议的贡献？ | ○ 待启动 | [agent-evaluation](frontiers/agent-evaluation/) |
+| F06 | 多智能体协作与组织 | 协作结构怎样影响任务分解、通信和执行结果？ | ○ 待启动 | [multi-agent-systems](frontiers/multi-agent-systems/) |
+| ＋ | **你的领域** | 提出范围与读者问题 | 开放补充 | [_template](frontiers/_template/) |
+<!-- frontier-directory:end -->
+
+**为你的领域留一个位置。** 开放模板行可继续加入 AI 或非 AI 领域。详见[中文目录](frontiers/README_CN.md) · [English directory](frontiers/README.md) · [机器注册表](frontiers/registry.json)。RSI 实例和未来每个 Survey 分别管理自己的版本与范围。
 
 ## AI 如何快速使用整理后的 Survey？
 
@@ -231,7 +281,7 @@ python scripts/dossier.py wf_c29f716871f8031486 --excerpts
 
 | 日期 | 版本 / 范围 | 变化 |
 |---|---|---|
-| 2026-10-23 | 框架 v1.1.0 | 双语独立页面、可减少的动态效果、学术图示与代表论文表格 |
+| 2026-10-23 | 框架 v1.1.0 | Evidence Atlas 标志、01–10 统一竖向导航、滚动切换、双语介绍与新 Survey 扩展目录 |
 | 固定语料 | RSI 快照 | 保留 808 家族及原有证据权限；展示更新不计为新的原文审查 |
 
 建议顺序：**[框架](https://mr-tieguigui.github.io/survey-for-ai/) → [方法](https://mr-tieguigui.github.io/survey-for-ai/method/) → [Skill](https://mr-tieguigui.github.io/survey-for-ai/skill/) → [RSI 概览](https://mr-tieguigui.github.io/survey-for-ai/rsi/) → [图谱](https://mr-tieguigui.github.io/survey-for-ai/atlas/) → [案例](https://mr-tieguigui.github.io/survey-for-ai/cases/) → [比较](https://mr-tieguigui.github.io/survey-for-ai/compare/) → [需求问答](https://mr-tieguigui.github.io/survey-for-ai/reader/)**。语言切换保持当前页面。主界面和代表导读为双语，档案保留原始整理语言。
@@ -248,6 +298,6 @@ python scripts/dossier.py wf_c29f716871f8031486 --excerpts
 
 维护时先定位来源版本、受影响主张和模块；保留历史与真实冲突，检查变化及引用，最后更新清单。提出修正时，提供文献/来源 ID、准确定位、有界修改建议和受影响阅读入口即可。
 
-**状态与权利。** 当前方法和 Skill 是已实现的候选版本，尚未完成跨领域受控有效性验证；本轮不写短篇论文。公开可访问不自动赋予代码、分析、元数据或第三方材料新的许可，详见 [LICENSE_STATUS.md](LICENSE_STATUS.md)。
+**状态与权利。** 当前方法和 Skill 是已实现的候选版本，尚未完成跨领域受控有效性验证。公开可访问不自动赋予代码、分析、元数据或第三方材料新的许可，详见 [LICENSE_STATUS.md](LICENSE_STATUS.md)。
 
 **展示参考。** README 借鉴 [ARIS](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep) 的方法优先、清晰入口和渐进展开形式；具体流程、图形和 Survey 编排为本项目制作。实例网页的展示构造也参考了 [Ropedia W0](https://ropedia.github.io/ropedia-w0/)。

@@ -1,0 +1,53 @@
+{
+  "schema_version": "survey-frontier-proposal-v1",
+  "domain_id": "agent-evaluation",
+  "name": {
+    "en": "Agent evaluation & reliability",
+    "zh": "智能体评测与可靠性"
+  },
+  "status": "proposed",
+  "maintainer": null,
+  "updated": "2026-10-23",
+  "focus": {
+    "en": "How can model, environment, harness and protocol contributions be separated?",
+    "zh": "怎样区分模型、环境、harness 与评价协议的贡献？"
+  },
+  "reader_questions": {
+    "en": [
+      "Are task units, splits and tool permissions compatible?",
+      "How are contamination, repeated trials, selection and cost reported?"
+    ],
+    "zh": [
+      "任务单位、数据划分和工具权限是否兼容？",
+      "污染、重复试验、选择偏差和成本怎样报告？"
+    ]
+  },
+  "comparison_axes": {
+    "en": [
+      "Task and execution environment",
+      "Success criteria and repeated trials",
+      "Contamination, permissions and cost"
+    ],
+    "zh": [
+      "任务与执行环境",
+      "成功标准与重复试验",
+      "数据污染、权限与成本"
+    ]
+  },
+  "seed_sources": [
+    {
+      "label": "SWE-bench official project",
+      "url": "https://www.swebench.com/",
+      "source_kind": "first_party_project_or_research_entry",
+      "checked_on": "2026-10-23",
+      "permission": "navigation_only",
+      "primary_body_reviewed": false,
+      "observed_version": null
+    }
+  ],
+  "scope_lock": null,
+  "search_cutoff": null,
+  "survey_path": "survey",
+  "completed_primary_reviews": 0,
+  "admitted_claims": 0
+}

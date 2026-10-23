@@ -1,0 +1,53 @@
+{
+  "schema_version": "survey-frontier-proposal-v1",
+  "domain_id": "test-time-adaptation",
+  "name": {
+    "en": "Test-time compute, reasoning & adaptation",
+    "zh": "测试时计算、推理与适配"
+  },
+  "status": "proposed",
+  "maintainer": null,
+  "updated": "2026-10-23",
+  "focus": {
+    "en": "What changes with inference compute versus test-time updates?",
+    "zh": "额外推理预算和测试时更新分别带来什么变化？"
+  },
+  "reader_questions": {
+    "en": [
+      "How do search, verification, reflection and parameter updates differ?",
+      "How do accuracy and cost compare under matched models, tools and budgets?"
+    ],
+    "zh": [
+      "搜索、验证、反思和参数更新如何区分？",
+      "相同模型、工具与预算下，准确率和成本如何比较？"
+    ]
+  },
+  "comparison_axes": {
+    "en": [
+      "Update object and timing",
+      "Sampling, verification and selection",
+      "Budget and data exposure"
+    ],
+    "zh": [
+      "更新对象与时机",
+      "采样、验证与选择",
+      "预算与数据暴露"
+    ]
+  },
+  "seed_sources": [
+    {
+      "label": "s1 project",
+      "url": "https://github.com/simplescaling/s1",
+      "source_kind": "first_party_project_or_research_entry",
+      "checked_on": "2026-10-23",
+      "permission": "navigation_only",
+      "primary_body_reviewed": false,
+      "observed_version": null
+    }
+  ],
+  "scope_lock": null,
+  "search_cutoff": null,
+  "survey_path": "survey",
+  "completed_primary_reviews": 0,
+  "admitted_claims": 0
+}

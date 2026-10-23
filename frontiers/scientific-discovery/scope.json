@@ -1,0 +1,53 @@
+{
+  "schema_version": "survey-frontier-proposal-v1",
+  "domain_id": "scientific-discovery",
+  "name": {
+    "en": "Scientific discovery & research agents",
+    "zh": "科学发现与研究智能体"
+  },
+  "status": "proposed",
+  "maintainer": null,
+  "updated": "2026-10-23",
+  "focus": {
+    "en": "Which steps from a research question to a candidate result are verifiable?",
+    "zh": "从研究问题到候选结果，哪些环节有可复核证据？"
+  },
+  "reader_questions": {
+    "en": [
+      "How are hypotheses, experiments, code, results and checks linked?",
+      "How are automation and scientific validity evaluated separately?"
+    ],
+    "zh": [
+      "如何连接假设、实验、代码、结果与检验？",
+      "代理自动化与科学发现的有效性如何分别评价？"
+    ]
+  },
+  "comparison_axes": {
+    "en": [
+      "Scientific task and result type",
+      "Verifier and external resources",
+      "Reproducibility and human involvement"
+    ],
+    "zh": [
+      "科学任务与结果类型",
+      "验证器与外部资源",
+      "复现和人工参与边界"
+    ]
+  },
+  "seed_sources": [
+    {
+      "label": "AlphaEvolve research overview",
+      "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "source_kind": "first_party_project_or_research_entry",
+      "checked_on": "2026-10-23",
+      "permission": "navigation_only",
+      "primary_body_reviewed": false,
+      "observed_version": null
+    }
+  ],
+  "scope_lock": null,
+  "search_cutoff": null,
+  "survey_path": "survey",
+  "completed_primary_reviews": 0,
+  "admitted_claims": 0
+}

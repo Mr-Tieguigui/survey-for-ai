@@ -1,0 +1,53 @@
+{
+  "schema_version": "survey-frontier-proposal-v1",
+  "domain_id": "world-models",
+  "name": {
+    "en": "World models & embodied interaction",
+    "zh": "世界模型与具身交互"
+  },
+  "status": "proposed",
+  "maintainer": null,
+  "updated": "2026-10-23",
+  "focus": {
+    "en": "What do generative, predictive and interactive environment models support?",
+    "zh": "可生成、可预测和可交互的环境模型分别支持什么？"
+  },
+  "reader_questions": {
+    "en": [
+      "How do visual generation, state prediction and action-conditioned simulation differ?",
+      "How are temporal consistency, control and downstream transfer evaluated?"
+    ],
+    "zh": [
+      "视觉生成、状态预测和行动条件模拟怎样区分？",
+      "长时一致性、控制和下游迁移如何评估？"
+    ]
+  },
+  "comparison_axes": {
+    "en": [
+      "State/action representation",
+      "Prediction horizon and interaction",
+      "Control tasks and generalization"
+    ],
+    "zh": [
+      "状态与动作表示",
+      "预测时域与交互条件",
+      "控制任务与泛化评价"
+    ]
+  },
+  "seed_sources": [
+    {
+      "label": "Genie official project",
+      "url": "https://deepmind.google/models/genie/",
+      "source_kind": "first_party_project_or_research_entry",
+      "checked_on": "2026-10-23",
+      "permission": "navigation_only",
+      "primary_body_reviewed": false,
+      "observed_version": null
+    }
+  ],
+  "scope_lock": null,
+  "search_cutoff": null,
+  "survey_path": "survey",
+  "completed_primary_reviews": 0,
+  "admitted_claims": 0
+}
